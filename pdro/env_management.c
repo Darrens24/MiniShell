@@ -55,8 +55,8 @@ int	print_echo(t_shell *shell)
 		temp = shell->user_command->start->next;
 	while (temp->next)
 	{
-		
-		ft_putstr_fd(temp->next->var, STDOUT_FILENO);
+		ft_putstr_fd(temp->var, STDOUT_FILENO);
+		ft_putchar_fd(' ', STDOUT_FILENO);
 		temp = temp->next;
 	}
 	if (option_n(shell))
@@ -111,6 +111,7 @@ int	unset_variable(t_shell *shell)
 
 int	execute_env_cmd(t_shell *shell)
 {
+	execute_directory_cmd(shell);
 	if (ft_strncmp(shell->user_command->start->var, "env", 4) == 0)
 	{
 		if (argument_after_cmd(shell) == TRUE)

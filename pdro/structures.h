@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/30 13:27:49 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:04:06 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef struct s_shell
 	const char			*dir_path;
 	char				*line_readed;
 	struct s_toklst		*user_command;
+	char				**all_path;
+	char				*correct_path;
+	char				**array_command;
 
 }				t_shell;
 
