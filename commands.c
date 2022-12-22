@@ -69,9 +69,9 @@ int	command_manager(t_shell *shell, char **envp)
 		printf("arraycommand %d is %s\n",i, res[i]);
 		i++;
 	}*/
-	if (pipe_case)
-		execupe_pipe_command(shell, envp);
-	else if (get_correct_path(shell))
+	//if (pipe_case)
+	//	execupe_pipe_command(shell, envp);
+	if (get_correct_path(shell))
 		execute_command(shell, envp);
 	return (EXIT_SUCCESS);
 }

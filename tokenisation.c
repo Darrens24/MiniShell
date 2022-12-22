@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/30 18:00:11 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:42:30 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 		newvar = envfinder(ft_strndup(token->var, start, i), newvar, env);
 		i++;
 	}
-	else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '"' || token->var[i] == '\'')
+	else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '\"' || token->var[i] == '\'')
 		newvar = ft_strjoin(newvar, "$");
 	return (newvar);
 }
@@ -57,8 +57,6 @@ int    envvarjumper(t_tok *token, int i, char *newvar, t_chained *env)
 			i++;
 		i++;
 	}
-	else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '"' || token->var[i] == '\'')
-		newvar = ft_strjoin(newvar, "$");
 	return (i);
 }
 char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
@@ -170,7 +168,7 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
                         {
 							i++;
 							newvar = envvarparser(elem, i, newvar, env);
-							i += envvarjumper(elem, i, newvar, env);
+							i = envvarjumper(elem, i, newvar, env);
                         }
                         else
                                 newvar = ft_strjoin(newvar, ft_strndup(elem->var, start, ++i));
