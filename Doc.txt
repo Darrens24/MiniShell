@@ -1,0 +1,134 @@
+----------------------------------------------------------------------------------------------------------
+wait3():
+Obsolete, utiliser waitpid
+
+----------------------------------------------------------------------------------------------------------
+wait4():
+Obsolete, utiliser waitpid
+
+----------------------------------------------------------------------------------------------------------
+char *getcwd(char *buffer, size_t size)
+
+Fonction de la lib <unistd.h>
+Permet de recuperer le chemin du repertoire de travail courant.
+getcwd = get current working directory.
+buffer: bloc memoire dans lequel le chemin de travail courant sera retourne.
+size: taille du bloc de memoire passe en premier param
+return (buffer);
+----------------------------------------------------------------------------------------------------------
+int chdir(const char *path)
+
+Fonction de la lib <unsitd.h>
+Remplace le repertoire de travail courant par celui indique dans le chemin path.
+Renvoie 0 si reussi, -1 si echec.
+----------------------------------------------------------------------------------------------------------
+int stat(const char *path, struct stat *buf)
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+Recupere l'etat du fichier pointe par path et remplit le tampon buf.
+struct stat 
+{
+    dev_t     st_dev;      /* ID du périphérique contenant le fichier */
+    ino_t     st_ino;      /* Numéro inœud */
+    mode_t    st_mode;     /* Protection */
+    nlink_t   st_nlink;    /* Nb liens matériels */
+    uid_t     st_uid;      /* UID propriétaire */
+    gid_t     st_gid;      /* GID propriétaire */
+    dev_t     st_rdev;     /* ID périphérique (si fichier spécial) */
+    off_t     st_size;     /* Taille totale en octets */
+    blksize_t st_blksize;  /* Taille de bloc pour E/S */
+    blkcnt_t  st_blocks;   /* Nombre de blocs alloués */
+    time_t    st_atime;    /* Heure dernier accès */
+    time_t    st_mtime;    /* Heure dernière modification */
+    time_t    st_ctime;    /* Heure dernier changement état */
+};
+Renvoie 0 si reussi, -1 si echec.
+----------------------------------------------------------------------------------------------------------
+int	fstat(int fd, struct stat *buf)
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+Recupere l'etat du fichier pointe par le descriteur fd et remplit le tampon buf.
+Voir structure de buf dans int stat.
+Renvoie 0 si reussi, -1 si echec.
+----------------------------------------------------------------------------------------------------------
+int	lstat(const char *path, struct stat *buf)
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+Recupere l'etat du lien symbolique pointe par path et remplit le tampon buf.
+Renvoie 0 si reussi, -1 si echec.
+----------------------------------------------------------------------------------------------------------
+int	unlink(const char *pathname)
+
+#include <unistd.h>
+unlink permet de detruire un nom dans le systeme de fichiers.
+-Si ce nom était le dernier lien sur un fichier, et si aucun processus n'a ouvert ce fichier, ce dernier est effacé, et l'espace qu'il utilisait est rendu disponible.
+-Si le nom était le dernier lien sur un fichier, mais qu'un processus conserve encore le fichier ouvert, celui-ci continue d'exister jusqu'à ce que le dernier descripteur le référençant soit fermé.
+-Si le nom correspond à un lien symbolique, le lien est supprimé.
+-Si le nom correspond à une socket, une FIFO, ou un périphérique, le nom est supprimé mais les processus qui ont ouvert l'objet peuvent continuer à l'utiliser.
+Renvoie 0 si reussi, -1 si echec.
+----------------------------------------------------------------------------------------------------------
+DIR	*opendir(const char *name)
+
+#include <sys/types.h>
+#include <dirent.h>
+Permet d'ouvrir un flux repertoire correspondant au nom name.
+Renvoie un pointeur sur ce flux, si erreur envoie NULL.
+----------------------------------------------------------------------------------------------------------
+struct dirent* readdir(DIR* repertoire);
+
+#include <dirent.h>
+Permet de lire les fichiers d'un repertoire (un par un?)
+Retourne un pointeur sur une structure dirent:
+struct dirent 
+{
+    ino_t          d_ino;       /* numéro d'inœud */
+    off_t          d_off;       /* décalage jusqu'à la dirent suivante */
+    unsigned short d_reclen;    /* longueur de cet enregistrement */
+    unsigned char  d_type;      /* type du fichier */
+    char           d_name[256]; /* nom du fichier */
+};
+Renvoie NULL si erreur ou quand la fin du repertoire est atteinte. 
+#include <dirent.h>
+----------------------------------------------------------------------------------------------------------
+int closedir(DIR* repertoire)
+
+#include <dirent.h>
+Permet de fermer un repertoire.
+Renvoie 0 si bien ferme, -1 si erreur.
+----------------------------------------------------------------------------------------------------------
+char *strerror(int errnum)
+
+#include <string.h>
+Renvoie la description de l'erreur en fonction du numero de l'erreur mit en param (errnum);
+----------------------------------------------------------------------------------------------------------
+void perror(const char *s);
+
+#include <errno.h>
+Affiche un message dans la sortie d'erreur decrivant la derniere erreur rencontree dans l'appel de s.
+----------------------------------------------------------------------------------------------------------
+int isatty(int desc)
+
+#include <unistd.h>
+Return 1 si desc est co a un term, 0 si non.
+----------------------------------------------------------------------------------------------------------
+char *ttyname(int fd)
+
+#include <unistd.h>
+Si le fd est associe a un terminal, renvoie le chemin d'acces du terminal associe a fd.
+----------------------------------------------------------------------------------------------------------
+int ttyslot(void)
+
+La fonction ttyslot() renvoie la position de l'entrée du terminal en cours dans un fichier.
+#include <unistd.h> /* sur les systèmes BSD et Linux */
+#include <stdlib.h> /* sur les systèmes System V ou assimilés */
+----------------------------------------------------------------------------------------------------------
+int ioctl(int d, int requête, ...)
+
+#include <sys/ioctl.h>
