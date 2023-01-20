@@ -24,7 +24,8 @@ typedef struct s_shell
 
 typedef struct s_history
 {
-
+	char	*user_command;
+	char	*next;
 }				t_history;
 
 #endif
