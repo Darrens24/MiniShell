@@ -1,0 +1,101 @@
+-----------------------------------------------------------------------------------------------------------------
+READLINE - <stdio.h> <readline/readline.h> <readline/history.h> - char	*readline(const char * prompt);
+
+Reads from terminal, \n is removed
+-----------------------------------------------------------------------------------------------------------------
+RL_CLEAR_HISTORY - void	rl_clear_history(void);
+
+Clear the history, frees private Data saved by readline
+-----------------------------------------------------------------------------------------------------------------
+RL_ON_NEW_LINE - int rl_on_new_line(void);
+
+Usually after ouputting a newline, tell the update functions that we moved onto a new empty line
+-----------------------------------------------------------------------------------------------------------------
+RL_REPLACE_LINE - void rl_replace_line(const char *text, int clear_undo);
+
+Replace the content of the buffer with 'text', 'clear undo' can be 0, or a a list to clear
+-----------------------------------------------------------------------------------------------------------------
+RL_REDISPLAY - void rl_redisplay(void)
+
+Change the display of the screen to reflect the content of the rl_line_buffer
+-----------------------------------------------------------------------------------------------------------------
+ADD_HISTORY - void add_history(line)
+
+add_history(line) saves the line to the history
+-----------------------------------------------------------------------------------------------------------------
+FORK - -1 = erreur, 0 = fils, pid du fils = pere - <sys/types.h> car valeur retournee de type pid_t
+
+erreurs accessibles dans errno --> <errno.h>
+-----------------------------------------------------------------------------------------------------------------
+ACCESS - int access(const char *pathname, int mode);
+
+Check access, modes = F_OK(existence) | W_OK | R_OK | X_OK
+Return 0 if success, -1 error
+-----------------------------------------------------------------------------------------------------------------
+WAIT - <sys/wait.h> - wait(&status); -> la valeur de retour du processus fils sera dans 'status'
+
+Permet au processus fils d'être libéré pour éviter les zombies
+-----------------------------------------------------------------------------------------------------------------
+WAITPID - pid_t waitpid(pid_t pid, int *status, int options);
+
+wait(&status) est equivalent a waitpid(-1, &status, 0);
+L'etat du fils est stocke dans 'status'
+
+wait -> jusqu'a ce que l'un des enfants se termine
+waitpid -> par defaut attend les fils termines, peut etre modifie par les options : 
+
+<-1 = attendre les fils appartenant au meme groupe
+-1 = attendre n'importe lequel
+0 = attendre n'importe lequel du meme groupe
+> 0 attendre le processus numero pid
+-----------------------------------------------------------------------------------------------------------------
+EXECVE - int execve(char const *path, char **argv, char const **envp);
+
+Kill le process en cours et execute la commande, v signifie qu'on travaille avec des tableaux, e avec des variables d'environnement
+
+execve(path, command, envp);
+-----------------------------------------------------------------------------------------------------------------
+PIPE - int pipe(int pipefd[2]); 0 s'il reussit, -1 s'il echoue
+
+Cree un tuyau ou pipefd[0] correspond a l'entree de lecture du tube et pipefd[1] a l'ecriture du tube
+Les donnes ecrites sont mises en memoire tampon par le noyau jusqu'a ce qu'elles soient lues
+-----------------------------------------------------------------------------------------------------------------
+DUP - int dup(int fd);
+
+Utilise le plus petit numero inutilise
+-----------------------------------------------------------------------------------------------------------------
+DUP2 - int dup2(int oldfd, int newfd);
+
+Ferme newfd auparavant, mais le fermer quand meme par securite, il ne se ferme pas en cas d'erreur
+-----------------------------------------------------------------------------------------------------------------
+GETENV - char *getenv(const char *varname);
+
+Recupere le contenu d'une variable d'environnement
+
+Exemples de varname : PATH, LD_LIBRARY_PATH ...
+NE JAMAIS FREE UNE VARIABLE D'ENVIRONNEMENT APRES SON UTILISATION
+-----------------------------------------------------------------------------------------------------------------
+TCSETATTR - int tsceattr(int fd, int when,  struct termios *termios_p); D'ABORD GETATTR
+
+Terminal interface to control asynchronous communication ports
+-----------------------------------------------------------------------------------------------------------------
+TCGETATTR - int tcgeattr(int fd, struct termios *termios_p)
+
+Termios structures contains at least : 
+
+tcflag_t c_iflag;      /* input modes */
+tcflag_t c_oflag;      /* output modes */
+tcflag_t c_cflag;      /* control modes */
+tcflag_t c_lflag;      /* local modes */
+cc_t     c_cc[NCCS];   /* special characters */
+
+
+-----------------------------------------------------------------------------------------------------------------
+TGETENT
+
+-----------------------------------------------------------------------------------------------------------------
+TGETFLAG
+
+
+-----------------------------------------------------------------------------------------------------------------
+
