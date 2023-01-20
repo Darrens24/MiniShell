@@ -22,15 +22,24 @@ typedef struct s_shell
 
 }				t_shell;
 
+typedef struct s_node
+{
+	struct s_node	*prev;
+	char			*history_line;
+	struct s_node	*next;
+}				t_node;
+
 typedef struct s_history
 {
-	char	*user_command;
-	char	*next;
+	struct s_node	*start;
+	int				nb_of_cmd;
+	struct s_node	*end;
 }				t_history;
 
-#endif
 
 //	DATA	//
 
 int		allocate_data(t_shell *shell);
 int		clean_leaks(t_shell *shell);
+
+#endif

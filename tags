@@ -1,0 +1,447 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ABORT_CHAR	readline/include/readline/chardefs.h	/^#define ABORT_CHAR /;"	d
+ABORT_CHAR	readline/include/readline/chardefs.h	/^#undef ABORT_CHAR$/;"	d
+ALPHABETIC	readline/include/readline/chardefs.h	/^#define ALPHABETIC(/;"	d
+ANYOTHERKEY	readline/include/readline/keymaps.h	/^#define ANYOTHERKEY /;"	d
+BUFFER_SIZE	Libft/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
+CC	Libft/Makefile	/^CC = gcc$/;"	m
+CC	Makefile	/^CC = gcc$/;"	m
+CFLAGS	Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+COLOR_SUPPORT	readline/include/readline/rlconf.h	/^#define COLOR_SUPPORT$/;"	d
+COMMAND	readline/share/readline/fileman.c	/^} COMMAND;$/;"	t	typeref:struct:__anon1	file:
+CPFunction	readline/include/readline/rltypedefs.h	/^typedef char *CPFunction () __attribute__ ((deprecated));$/;"	t
+CPFunction	readline/include/readline/rltypedefs.h	/^typedef char *CPFunction ();$/;"	t
+CPPFunction	readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction () __attribute__ ((deprecated));$/;"	t
+CPPFunction	readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction ();$/;"	t
+CTRL	readline/include/readline/chardefs.h	/^#  undef CTRL$/;"	d
+CTRL	readline/include/readline/chardefs.h	/^#define CTRL(/;"	d
+CTRL_CHAR	readline/include/readline/chardefs.h	/^#define CTRL_CHAR(/;"	d
+DECIMAL	Libft/ft_printf.h	/^# define DECIMAL /;"	d
+DEFAULT_INPUTRC	readline/include/readline/rlconf.h	/^#define DEFAULT_INPUTRC /;"	d
+DISPLAY_TABS	readline/include/readline/rlconf.h	/^#define DISPLAY_TABS$/;"	d
+ESC	readline/include/readline/chardefs.h	/^#define ESC /;"	d
+ESC	readline/include/readline/chardefs.h	/^#undef ESC$/;"	d
+FLAGS	Makefile	/^FLAGS = -Wall -Wextra -Werror$/;"	m
+FT_PRINTF_H	Libft/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+FUNMAP	readline/include/readline/readline.h	/^} FUNMAP;$/;"	t	typeref:struct:_funmap
+Function	readline/include/readline/rltypedefs.h	/^typedef int Function () __attribute__ ((deprecated));$/;"	t
+Function	readline/include/readline/rltypedefs.h	/^typedef int Function ();$/;"	t
+GET_NEXT_LINE_H	Libft/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+HANDLE_SIGNALS	readline/include/readline/rlconf.h	/^#define HANDLE_SIGNALS$/;"	d
+HEXALOW	Libft/ft_printf.h	/^# define HEXALOW /;"	d
+HEXAUP	Libft/ft_printf.h	/^# define HEXAUP /;"	d
+HEXVALUE	readline/include/readline/chardefs.h	/^#define HEXVALUE(/;"	d
+HISTENT_BYTES	readline/include/readline/history.h	/^#define HISTENT_BYTES(/;"	d
+HISTORY_STATE	readline/include/readline/history.h	/^} HISTORY_STATE;$/;"	t	typeref:struct:_hist_state
+HIST_ENTRY	readline/include/readline/history.h	/^} HIST_ENTRY;$/;"	t	typeref:struct:_hist_entry
+HS_STIFLED	readline/include/readline/history.h	/^#define HS_STIFLED	/;"	d
+IN_CTYPE_DOMAIN	readline/include/readline/chardefs.h	/^#  define IN_CTYPE_DOMAIN(/;"	d
+ISALNUM	readline/include/readline/chardefs.h	/^#define ISALNUM(/;"	d
+ISALPHA	readline/include/readline/chardefs.h	/^#define ISALPHA(/;"	d
+ISDIGIT	readline/include/readline/chardefs.h	/^#define ISDIGIT(/;"	d
+ISFUNC	readline/include/readline/keymaps.h	/^#define ISFUNC /;"	d
+ISKMAP	readline/include/readline/keymaps.h	/^#define ISKMAP /;"	d
+ISLOWER	readline/include/readline/chardefs.h	/^#define ISLOWER(/;"	d
+ISMACR	readline/include/readline/keymaps.h	/^#define ISMACR /;"	d
+ISOCTAL	readline/include/readline/chardefs.h	/^#  define ISOCTAL(/;"	d
+ISPRINT	readline/include/readline/chardefs.h	/^#define ISPRINT(/;"	d
+ISPRINT	readline/include/readline/chardefs.h	/^#undef ISPRINT$/;"	d
+ISUPPER	readline/include/readline/chardefs.h	/^#define ISUPPER(/;"	d
+ISXDIGIT	readline/include/readline/chardefs.h	/^#define ISXDIGIT(/;"	d
+KEYMAP_ENTRY	readline/include/readline/keymaps.h	/^} KEYMAP_ENTRY;$/;"	t	typeref:struct:_keymap_entry
+KEYMAP_ENTRY_ARRAY	readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY KEYMAP_ENTRY_ARRAY[KEYMAP_SIZE];$/;"	t
+KEYMAP_SIZE	readline/include/readline/keymaps.h	/^#define KEYMAP_SIZE /;"	d
+Keymap	readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY *Keymap;$/;"	t
+LIBFT_H	Libft/libft.h	/^# define LIBFT_H$/;"	d
+META	readline/include/readline/chardefs.h	/^#define META(/;"	d
+META_CHAR	readline/include/readline/chardefs.h	/^#define META_CHAR(/;"	d
+MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
+MULT_MATCH	readline/include/readline/readline.h	/^#define MULT_MATCH /;"	d
+NAME	Libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	Makefile	/^NAME = minishell$/;"	m
+NEWLINE	readline/include/readline/chardefs.h	/^#define NEWLINE /;"	d
+NON_NEGATIVE	readline/include/readline/chardefs.h	/^#  define NON_NEGATIVE(/;"	d
+NO_MATCH	readline/include/readline/readline.h	/^#define NO_MATCH /;"	d
+OBJ	Libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
+OCTVALUE	readline/include/readline/chardefs.h	/^#define OCTVALUE(/;"	d
+PAGE	readline/include/readline/chardefs.h	/^#define PAGE /;"	d
+PAGE	readline/include/readline/chardefs.h	/^#undef PAGE$/;"	d
+PARAMS	readline/include/readline/rlstdc.h	/^#    define PARAMS(/;"	d
+PARAMS	readline/include/readline/tilde.h	/^#    define PARAMS(/;"	d
+PREFER_STDARG	readline/include/readline/rlstdc.h	/^#  define PREFER_STDARG$/;"	d
+PREFER_VARARGS	readline/include/readline/rlstdc.h	/^#    define PREFER_VARARGS$/;"	d
+PREFIX_META_HACK	readline/include/readline/rlconf.h	/^#define PREFIX_META_HACK$/;"	d
+PURGE_REGEXP	readline/share/readline/hist_purgecmd.c	/^#define PURGE_REGEXP	/;"	d	file:
+READERR	readline/include/readline/readline.h	/^#define READERR	/;"	d
+READLINE_CALLBACKS	readline/include/readline/rlconf.h	/^#define READLINE_CALLBACKS$/;"	d
+READLINE_LIBRARY	readline/share/readline/hist_erasedups.c	/^#define READLINE_LIBRARY /;"	d	file:
+READLINE_LIBRARY	readline/share/readline/hist_purgecmd.c	/^#define READLINE_LIBRARY /;"	d	file:
+REAL_LIBC	readline/share/readline/rl-fgets.c	/^#define REAL_LIBC /;"	d	file:
+RESET	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anon2	file:
+RETURN	readline/include/readline/chardefs.h	/^#define RETURN /;"	d
+RL_COMMENT_BEGIN_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_COMMENT_BEGIN_DEFAULT /;"	d
+RL_EMACS_MODESTR_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_EMACS_MODESTR_DEFAULT	/;"	d
+RL_EMACS_MODESTR_DEFLEN	readline/include/readline/rlconf.h	/^#define RL_EMACS_MODESTR_DEFLEN	/;"	d
+RL_ISSTATE	readline/include/readline/readline.h	/^#define RL_ISSTATE(/;"	d
+RL_PROMPT_END_IGNORE	readline/include/readline/readline.h	/^#define RL_PROMPT_END_IGNORE	/;"	d
+RL_PROMPT_START_IGNORE	readline/include/readline/readline.h	/^#define RL_PROMPT_START_IGNORE	/;"	d
+RL_READLINE_VERSION	readline/include/readline/readline.h	/^#define RL_READLINE_VERSION	/;"	d
+RL_SETSTATE	readline/include/readline/readline.h	/^#define RL_SETSTATE(/;"	d
+RL_STATE_CALLBACK	readline/include/readline/readline.h	/^#define RL_STATE_CALLBACK	/;"	d
+RL_STATE_CHARSEARCH	readline/include/readline/readline.h	/^#define RL_STATE_CHARSEARCH	/;"	d
+RL_STATE_COMPLETING	readline/include/readline/readline.h	/^#define RL_STATE_COMPLETING	/;"	d
+RL_STATE_DISPATCHING	readline/include/readline/readline.h	/^#define RL_STATE_DISPATCHING	/;"	d
+RL_STATE_DONE	readline/include/readline/readline.h	/^#define RL_STATE_DONE	/;"	d
+RL_STATE_INITIALIZED	readline/include/readline/readline.h	/^#define RL_STATE_INITIALIZED	/;"	d
+RL_STATE_INITIALIZING	readline/include/readline/readline.h	/^#define RL_STATE_INITIALIZING	/;"	d
+RL_STATE_INPUTPENDING	readline/include/readline/readline.h	/^#define RL_STATE_INPUTPENDING	/;"	d
+RL_STATE_ISEARCH	readline/include/readline/readline.h	/^#define RL_STATE_ISEARCH	/;"	d
+RL_STATE_MACRODEF	readline/include/readline/readline.h	/^#define RL_STATE_MACRODEF	/;"	d
+RL_STATE_MACROINPUT	readline/include/readline/readline.h	/^#define RL_STATE_MACROINPUT	/;"	d
+RL_STATE_METANEXT	readline/include/readline/readline.h	/^#define RL_STATE_METANEXT	/;"	d
+RL_STATE_MOREINPUT	readline/include/readline/readline.h	/^#define RL_STATE_MOREINPUT	/;"	d
+RL_STATE_MULTIKEY	readline/include/readline/readline.h	/^#define RL_STATE_MULTIKEY	/;"	d
+RL_STATE_NONE	readline/include/readline/readline.h	/^#define RL_STATE_NONE	/;"	d
+RL_STATE_NSEARCH	readline/include/readline/readline.h	/^#define RL_STATE_NSEARCH	/;"	d
+RL_STATE_NUMERICARG	readline/include/readline/readline.h	/^#define RL_STATE_NUMERICARG	/;"	d
+RL_STATE_OVERWRITE	readline/include/readline/readline.h	/^#define RL_STATE_OVERWRITE	/;"	d
+RL_STATE_READCMD	readline/include/readline/readline.h	/^#define RL_STATE_READCMD	/;"	d
+RL_STATE_REDISPLAYING	readline/include/readline/readline.h	/^#define RL_STATE_REDISPLAYING	/;"	d
+RL_STATE_SEARCH	readline/include/readline/readline.h	/^#define RL_STATE_SEARCH	/;"	d
+RL_STATE_SIGHANDLER	readline/include/readline/readline.h	/^#define RL_STATE_SIGHANDLER	/;"	d
+RL_STATE_TERMPREPPED	readline/include/readline/readline.h	/^#define RL_STATE_TERMPREPPED	/;"	d
+RL_STATE_TTYCSAVED	readline/include/readline/readline.h	/^#define RL_STATE_TTYCSAVED	/;"	d
+RL_STATE_UNDOING	readline/include/readline/readline.h	/^#define RL_STATE_UNDOING	/;"	d
+RL_STATE_VICMDONCE	readline/include/readline/readline.h	/^#define RL_STATE_VICMDONCE	/;"	d
+RL_STATE_VIMOTION	readline/include/readline/readline.h	/^#define RL_STATE_VIMOTION	/;"	d
+RL_UNSETSTATE	readline/include/readline/readline.h	/^#define RL_UNSETSTATE(/;"	d
+RL_VERSION_MAJOR	readline/include/readline/readline.h	/^#define RL_VERSION_MAJOR	/;"	d
+RL_VERSION_MINOR	readline/include/readline/readline.h	/^#define RL_VERSION_MINOR	/;"	d
+RL_VI_CMD_MODESTR_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_VI_CMD_MODESTR_DEFAULT	/;"	d
+RL_VI_CMD_MODESTR_DEFLEN	readline/include/readline/rlconf.h	/^#define RL_VI_CMD_MODESTR_DEFLEN	/;"	d
+RL_VI_INS_MODESTR_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_VI_INS_MODESTR_DEFAULT	/;"	d
+RL_VI_INS_MODESTR_DEFLEN	readline/include/readline/rlconf.h	/^#define RL_VI_INS_MODESTR_DEFLEN	/;"	d
+RUBOUT	readline/include/readline/chardefs.h	/^#define RUBOUT /;"	d
+SINGLE_MATCH	readline/include/readline/readline.h	/^#define SINGLE_MATCH /;"	d
+SPACE	readline/include/readline/chardefs.h	/^#define SPACE /;"	d
+SPACE	readline/include/readline/chardefs.h	/^#undef SPACE$/;"	d
+SRC	Libft/Makefile	/^SRC = ft_atoi.c \\$/;"	m
+SRC	Makefile	/^SRC = main.c \\$/;"	m
+STDIN_FILENO	readline/share/readline/excallback.c	/^#  define STDIN_FILENO /;"	d	file:
+STREQ	readline/share/readline/hist_erasedups.c	/^#define STREQ(/;"	d	file:
+STREQ	readline/share/readline/hist_purgecmd.c	/^#define STREQ(/;"	d	file:
+STREQN	readline/share/readline/hist_erasedups.c	/^#define STREQN(/;"	d	file:
+STREQN	readline/share/readline/hist_purgecmd.c	/^#define STREQN(/;"	d	file:
+SYS_INPUTRC	readline/include/readline/rlconf.h	/^#define SYS_INPUTRC /;"	d
+TAB	readline/include/readline/chardefs.h	/^#define TAB /;"	d
+TCBREAK	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anon2	file:
+UNCTRL	readline/include/readline/chardefs.h	/^#  undef UNCTRL$/;"	d
+UNCTRL	readline/include/readline/chardefs.h	/^#define UNCTRL(/;"	d
+UNDO_BEGIN	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
+UNDO_DELETE	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
+UNDO_END	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
+UNDO_INSERT	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
+UNDO_LIST	readline/include/readline/readline.h	/^} UNDO_LIST;$/;"	t	typeref:struct:undo_list
+UNMETA	readline/include/readline/chardefs.h	/^#define UNMETA(/;"	d
+USE_VARARGS	readline/include/readline/rlstdc.h	/^#    define USE_VARARGS$/;"	d
+USE_VARARGS	readline/include/readline/rlstdc.h	/^#  define USE_VARARGS$/;"	d
+VFunction	readline/include/readline/rltypedefs.h	/^typedef void VFunction () __attribute__ ((deprecated));$/;"	t
+VFunction	readline/include/readline/rltypedefs.h	/^typedef void VFunction ();$/;"	t
+VISIBLE_STATS	readline/include/readline/rlconf.h	/^#define VISIBLE_STATS$/;"	d
+VI_MODE	readline/include/readline/rlconf.h	/^#define VI_MODE$/;"	d
+_CHARDEFS_H_	readline/include/readline/chardefs.h	/^#define _CHARDEFS_H_$/;"	d
+_FUNCTION_DEF	readline/include/readline/rltypedefs.h	/^#  define _FUNCTION_DEF$/;"	d
+_HISTORY_H_	readline/include/readline/history.h	/^#define _HISTORY_H_$/;"	d
+_KEYMAPS_H_	readline/include/readline/keymaps.h	/^#define _KEYMAPS_H_$/;"	d
+_READLINE_H_	readline/include/readline/readline.h	/^#define _READLINE_H_$/;"	d
+_RLCONF_H_	readline/include/readline/rlconf.h	/^#define _RLCONF_H_$/;"	d
+_RL_FUNCTION_TYPEDEF	readline/include/readline/rltypedefs.h	/^#  define _RL_FUNCTION_TYPEDEF$/;"	d
+_RL_STDC_H_	readline/include/readline/rlstdc.h	/^#define _RL_STDC_H_$/;"	d
+_RL_TYPEDEFS_H_	readline/include/readline/rltypedefs.h	/^#define _RL_TYPEDEFS_H_$/;"	d
+_TILDE_H_	readline/include/readline/tilde.h	/^#  define _TILDE_H_$/;"	d
+__attribute__	readline/include/readline/rlstdc.h	/^#    define __attribute__(/;"	d
+_funmap	readline/include/readline/readline.h	/^typedef struct _funmap {$/;"	s
+_hist_entry	readline/include/readline/history.h	/^typedef struct _hist_entry {$/;"	s
+_hist_state	readline/include/readline/history.h	/^typedef struct _hist_state {$/;"	s
+_keymap_entry	readline/include/readline/keymaps.h	/^typedef struct _keymap_entry {$/;"	s
+_rl_digit_p	readline/include/readline/chardefs.h	/^#define _rl_digit_p(/;"	d
+_rl_digit_value	readline/include/readline/chardefs.h	/^#  define _rl_digit_value(/;"	d
+_rl_isident	readline/include/readline/chardefs.h	/^#  define _rl_isident(/;"	d
+_rl_lowercase_p	readline/include/readline/chardefs.h	/^#define _rl_lowercase_p(/;"	d
+_rl_pure_alphabetic	readline/include/readline/chardefs.h	/^#define _rl_pure_alphabetic(/;"	d
+_rl_to_lower	readline/include/readline/chardefs.h	/^#  define _rl_to_lower(/;"	d
+_rl_to_upper	readline/include/readline/chardefs.h	/^#  define _rl_to_upper(/;"	d
+_rl_uppercase_p	readline/include/readline/chardefs.h	/^#define _rl_uppercase_p(/;"	d
+already	Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
+already	Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
+attemptfunc	readline/include/readline/readline.h	/^  rl_completion_func_t *attemptfunc;$/;"	m	struct:readline_state
+buffer	readline/include/readline/readline.h	/^  char *buffer;$/;"	m	struct:readline_state
+buflen	readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state
+catchsigs	readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state
+catchsigwinch	readline/include/readline/readline.h	/^  int catchsigwinch;$/;"	m	struct:readline_state
+cb_linehandler	readline/share/readline/rl-callbacktest.c	/^cb_linehandler (char *line)$/;"	f	file:
+change_prompt	readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
+cleanstock	Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f
+com_cd	readline/share/readline/fileman.c	/^com_cd (arg)$/;"	f
+com_delete	readline/share/readline/fileman.c	/^com_delete (arg)$/;"	f
+com_help	readline/share/readline/fileman.c	/^com_help (arg)$/;"	f
+com_list	readline/share/readline/fileman.c	/^com_list (arg)$/;"	f
+com_pwd	readline/share/readline/fileman.c	/^com_pwd (ignore)$/;"	f
+com_quit	readline/share/readline/fileman.c	/^com_quit (arg)$/;"	f
+com_rename	readline/share/readline/fileman.c	/^com_rename (arg)$/;"	f
+com_stat	readline/share/readline/fileman.c	/^com_stat (arg)$/;"	f
+com_view	readline/share/readline/fileman.c	/^com_view (arg)$/;"	f
+command_generator	readline/share/readline/fileman.c	/^command_generator (text, state)$/;"	f
+commands	readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v
+content	Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+control_character_bit	readline/include/readline/chardefs.h	/^#define control_character_bit /;"	d
+control_character_mask	readline/include/readline/chardefs.h	/^#define control_character_mask /;"	d
+control_character_threshold	readline/include/readline/chardefs.h	/^#define control_character_threshold /;"	d
+copystock	Libft/get_next_line.c	/^char	*copystock(char *stock, char *buffer)$/;"	f
+count_set	Libft/ft_strtrim.c	/^int	count_set(char const *s1, char const *set)$/;"	f
+custom_deprep_term_function	readline/share/readline/rlptytest.c	/^custom_deprep_term_function ()$/;"	f	file:
+data	readline/include/readline/history.h	/^  histdata_t data;$/;"	m	struct:_hist_entry
+deftext	readline/share/readline/rl.c	/^static char *deftext;$/;"	v	file:
+deftext	readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	file:
+doc	readline/share/readline/fileman.c	/^  char *doc;			\/* Documentation for this function.  *\/$/;"	m	struct:__anon1	file:
+done	readline/include/readline/readline.h	/^  int done;$/;"	m	struct:readline_state
+done	readline/share/readline/fileman.c	/^int done;$/;"	v
+duplicate	Libft/ft_split.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
+dupstr	readline/share/readline/fileman.c	/^dupstr (s)$/;"	f
+edmode	readline/include/readline/readline.h	/^  int edmode;$/;"	m	struct:readline_state
+end	readline/include/readline/readline.h	/^  int end;$/;"	m	struct:readline_state
+end	readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list
+entries	readline/include/readline/history.h	/^  HIST_ENTRY **entries;		\/* Pointer to the entries themselves. *\/$/;"	m	struct:_hist_state
+entryfunc	readline/include/readline/readline.h	/^  rl_compentry_func_t *entryfunc;$/;"	m	struct:readline_state
+event_hook	readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	file:
+execute_line	readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
+fcopy	readline/share/readline/rlcat.c	/^fcopy(fp)$/;"	f	file:
+fgets	readline/share/readline/rl-fgets.c	/^fgets ($/;"	f
+fgets_t	readline/share/readline/rl-fgets.c	/^typedef char * ( * fgets_t ) ( char * s, int n, FILE * stream ) ;$/;"	t	file:
+fileman_completion	readline/share/readline/fileman.c	/^fileman_completion (text, start, end)$/;"	f
+find_command	readline/share/readline/fileman.c	/^find_command (name)$/;"	f
+flags	readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state
+freetab	Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
+ft_atoi	Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_bzero	Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	Libft/get_next_line_utils.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_calloc	Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	Libft/get_next_line_utils.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_intputchar_fd	Libft/ft_intputchar_fd.c	/^int	ft_intputchar_fd(char c, int fd)$/;"	f
+ft_intputstr_fd	Libft/ft_intputstr_fd.c	/^int	ft_intputstr_fd(char *s, int fd)$/;"	f
+ft_intstrlen	Libft/get_next_line_utils.c	/^int	ft_intstrlen(char *str)$/;"	f
+ft_isalnum	Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalpha	Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isascii	Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isdigit	Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isprint	Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_itoa	Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_join_nextline	Libft/get_next_line_utils.c	/^char	*ft_join_nextline(char *s1, char *s2)$/;"	f
+ft_lstadd_back	Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstclear	Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstdelone	Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstiter	Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstlast	Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstmap	Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstnew	Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstsize	Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_memchr	Libft/ft_memchr.c	/^void	*ft_memchr(const void *memblock, int searched, size_t size)$/;"	f
+ft_memcmp	Libft/ft_memcmp.c	/^int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)$/;"	f
+ft_memcpy	Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t size)$/;"	f
+ft_memmove	Libft/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t size)$/;"	f
+ft_memset	Libft/ft_memset.c	/^void	*ft_memset(void *ptr, int value, size_t count)$/;"	f
+ft_printf	Libft/ft_printf.c	/^int	ft_printf(const char *param, ...)$/;"	f
+ft_putarg	Libft/ft_printf.c	/^static int	ft_putarg(char c, va_list ap)$/;"	f	file:
+ft_putchar_fd	Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl_fd	Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putnbr_base_fd	Libft/ft_putnbr_base_fd.c	/^int	ft_putnbr_base_fd(long nbr, char *base, int fd)$/;"	f
+ft_putnbr_fd	Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr_fd	Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_sizebase_fd	Libft/ft_sizebase_fd.c	/^int	ft_sizebase_fd(size_t nbr, char *base, int fd)$/;"	f
+ft_split	Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_strchr	Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f
+ft_strdup	Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f
+ft_striteri	Libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_strjoin	Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dest, const char *src, size_t size)$/;"	f
+ft_strlcpy	Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dest, const char *src, size_t size)$/;"	f
+ft_strlen	Libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f
+ft_strmapi	Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncmp	Libft/ft_strncmp.c	/^int	ft_strncmp(const char *str1, const char *str2, size_t length)$/;"	f
+ft_strnstr	Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *little, size_t len)$/;"	f
+ft_strrchr	Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *str, int searched)$/;"	f
+ft_strtrim	Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_substr	Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_tolower	Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_toupper	Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+func	readline/share/readline/fileman.c	/^  rl_icpfunc_t *func;		\/* Function to call to do the job. *\/$/;"	m	struct:__anon1	file:
+function	readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;"	m	struct:_keymap_entry
+function	readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap
+get_next_line	Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_prompt	readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f
+get_size	Libft/ft_itoa.c	/^static int	get_size(long n)$/;"	f	file:
+give_line	Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f
+hist_erasedups	readline/share/readline/hist_erasedups.c	/^hist_erasedups ()$/;"	f
+hist_purgecmd	readline/share/readline/hist_purgecmd.c	/^hist_purgecmd (cmd, flags)$/;"	f
+histdata_t	readline/include/readline/history.h	/^typedef char *histdata_t;$/;"	t
+histdata_t	readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t
+ignorefunc	readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
+inf	readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
+init_readline	readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	file:
+initialize_readline	readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
+insmode	readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state
+invert_case_line	readline/share/readline/manexamp.c	/^invert_case_line (count, key)$/;"	f
+is_set	Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	file:
+isxdigit	readline/include/readline/chardefs.h	/^#  define isxdigit(/;"	d
+itoa_is_neg	Libft/ft_itoa.c	/^static char	*itoa_is_neg(long n)$/;"	f	file:
+itoa_is_pos	Libft/ft_itoa.c	/^static char	*itoa_is_pos(long n)$/;"	f	file:
+kmap	readline/include/readline/readline.h	/^  Keymap kmap;$/;"	m	struct:readline_state
+kseq	readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_state
+kseqlen	readline/include/readline/readline.h	/^  int kseqlen;$/;"	m	struct:readline_state
+largest_char	readline/include/readline/chardefs.h	/^#define largest_char /;"	d
+lastfunc	readline/include/readline/readline.h	/^  rl_command_func_t *lastfunc;$/;"	m	struct:readline_state
+length	readline/include/readline/history.h	/^  int length;			\/* Number of elements within this array. *\/$/;"	m	struct:_hist_state
+line	readline/include/readline/history.h	/^  char *line;$/;"	m	struct:_hist_entry
+line_buf	readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
+line_from_prompt	minishell.h	/^	char		*line_from_prompt;$/;"	m	struct:s_shell
+line_in_stock	Libft/get_next_line_utils.c	/^int	line_in_stock(char *str)$/;"	f
+line_read	readline/share/readline/manexamp.c	/^static char *line_read = (char *)NULL;$/;"	v	file:
+macro	readline/include/readline/readline.h	/^  char *macro;$/;"	m	struct:readline_state
+main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	readline/share/readline/excallback.c	/^main()$/;"	f
+main	readline/share/readline/fileman.c	/^main (argc, argv)$/;"	f
+main	readline/share/readline/hist_erasedups.c	/^main (argc, argv)$/;"	f
+main	readline/share/readline/hist_purgecmd.c	/^main (argc, argv)$/;"	f
+main	readline/share/readline/histexamp.c	/^main (argc, argv)$/;"	f
+main	readline/share/readline/rl-callbacktest.c	/^main (int c, char **v)$/;"	f
+main	readline/share/readline/rl.c	/^main (argc, argv)$/;"	f
+main	readline/share/readline/rlbasic.c	/^main (int c, char **v)$/;"	f
+main	readline/share/readline/rlcat.c	/^main (argc, argv)$/;"	f
+main	readline/share/readline/rlevent.c	/^main (argc, argv)$/;"	f
+main	readline/share/readline/rlkeymaps.c	/^main (int c, char **v)$/;"	f
+main	readline/share/readline/rlptytest.c	/^main()$/;"	f
+main	readline/share/readline/rltest.c	/^main ()$/;"	f
+main	readline/share/readline/rlversion.c	/^main()$/;"	f
+main_loop	readline/share/readline/rlptytest.c	/^main_loop(void)$/;"	f	file:
+mark	readline/include/readline/readline.h	/^  int mark;$/;"	m	struct:readline_state
+masterfd	readline/share/readline/rlptytest.c	/^static int masterfd = -1;$/;"	v	file:
+menuentryfunc	readline/include/readline/readline.h	/^  rl_compentry_func_t *menuentryfunc;$/;"	m	struct:readline_state
+meta_character_bit	readline/include/readline/chardefs.h	/^#define meta_character_bit /;"	d
+meta_character_threshold	readline/include/readline/chardefs.h	/^#define meta_character_threshold /;"	d
+my_fgets_completion	readline/share/readline/rl-fgets.c	/^my_fgets_completion ($/;"	f	file:
+my_fgets_debug_flag	readline/share/readline/rl-fgets.c	/^static int     my_fgets_debug_flag      = 0    ;$/;"	v	file:
+my_fgets_debug_toggle	readline/share/readline/rl-fgets.c	/^my_fgets_debug_toggle ($/;"	f	file:
+my_fgets_dump	readline/share/readline/rl-fgets.c	/^my_fgets_dump ($/;"	f	file:
+my_fgets_generator	readline/share/readline/rl-fgets.c	/^my_fgets_generator ($/;"	f	file:
+my_fgets_lookup	readline/share/readline/rl-fgets.c	/^my_fgets_lookup ($/;"	f	file:
+my_fgets_names	readline/share/readline/rl-fgets.c	/^static char ** my_fgets_names           = NULL ;$/;"	v	file:
+my_fgets_number_of_names	readline/share/readline/rl-fgets.c	/^static int     my_fgets_number_of_names = 0    ;$/;"	v	file:
+my_fgets_reset	readline/share/readline/rl-fgets.c	/^my_fgets_reset ($/;"	f	file:
+name	readline/include/readline/readline.h	/^  const char *name;$/;"	m	struct:_funmap
+name	readline/share/readline/fileman.c	/^  char *name;			\/* User printable name of the function. *\/$/;"	m	struct:__anon1	file:
+next	Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	minishell.h	/^	char	*next;$/;"	m	struct:s_history
+next	readline/include/readline/readline.h	/^  struct undo_list *next;$/;"	m	struct:undo_list	typeref:struct:undo_list::undo_list
+offset	readline/include/readline/history.h	/^  int offset;			\/* The location pointer within this array. *\/$/;"	m	struct:_hist_state
+old_lflag	readline/share/readline/excallback.c	/^tcflag_t old_lflag;$/;"	v
+old_vtime	readline/share/readline/excallback.c	/^cc_t     old_vtime;$/;"	v
+outf	readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:readline_state
+pendingin	readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state
+plusminus	Libft/ft_putnbr_base_fd.c	/^static int	plusminus(char *str)$/;"	f	file:
+plusminus	Libft/ft_sizebase_fd.c	/^static int	plusminus(char *str)$/;"	f	file:
+point	readline/include/readline/readline.h	/^  int point;$/;"	m	struct:readline_state
+process_line	readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f
+progname	readline/share/readline/fileman.c	/^char *progname;$/;"	v
+progname	readline/share/readline/rl.c	/^static char *progname;$/;"	v	file:
+progname	readline/share/readline/rlcat.c	/^static char *progname;$/;"	v	file:
+progname	readline/share/readline/rlevent.c	/^static char *progname;$/;"	v	file:
+prompt	minishell.h	/^	const char	*prompt;$/;"	m	struct:s_shell
+prompt	readline/include/readline/readline.h	/^  char *prompt;$/;"	m	struct:readline_state
+prompt	readline/share/readline/excallback.c	/^int prompt = 1;$/;"	v
+prompt	readline/share/readline/rl-callbacktest.c	/^const char *prompt = "rltest$ ";$/;"	v
+prompt_buf	readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
+readbuff_copystock	Libft/get_next_line.c	/^char	*readbuff_copystock(int fd, char *stock)$/;"	f
+readline_input	readline/share/readline/rlptytest.c	/^readline_input()$/;"	f	file:
+readline_state	readline/include/readline/readline.h	/^struct readline_state {$/;"	s
+reserved	readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
+rl_command_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t
+rl_compdisp_func_t	readline/include/readline/rltypedefs.h	/^typedef void rl_compdisp_func_t PARAMS((char **, int, int));$/;"	t
+rl_compentry_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_compentry_func_t PARAMS((const char *, int));$/;"	t
+rl_compignore_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_compignore_func_t PARAMS((char **));$/;"	t
+rl_completion_func_t	readline/include/readline/rltypedefs.h	/^typedef char **rl_completion_func_t PARAMS((const char *, int, int));$/;"	t
+rl_cpcpfunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcpfunc_t PARAMS((char  *));$/;"	t
+rl_cpcppfunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcppfunc_t PARAMS((char  **));$/;"	t
+rl_cpifunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpifunc_t PARAMS((int));$/;"	t
+rl_cpvfunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpvfunc_t PARAMS((void));$/;"	t
+rl_dequote_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_dequote_func_t PARAMS((char *, int));$/;"	t
+rl_getc_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_getc_func_t PARAMS((FILE *));$/;"	t
+rl_gets	readline/share/readline/manexamp.c	/^rl_gets ()$/;"	f
+rl_hook_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_hook_func_t PARAMS((void));$/;"	t
+rl_icpfunc_t	readline/include/readline/rltypedefs.h	/^typedef int rl_icpfunc_t PARAMS((char *));$/;"	t
+rl_icppfunc_t	readline/include/readline/rltypedefs.h	/^typedef int rl_icppfunc_t PARAMS((char **));$/;"	t
+rl_intfunc_t	readline/include/readline/rltypedefs.h	/^typedef int rl_intfunc_t PARAMS((int));$/;"	t
+rl_ivoidfunc_t	readline/include/readline/rltypedefs.h	/^#define rl_ivoidfunc_t /;"	d
+rl_linebuf_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_linebuf_func_t PARAMS((char *, int));$/;"	t
+rl_quote_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_quote_func_t PARAMS((char *, int, char *));$/;"	t
+rl_symbolic_link_hook	readline/include/readline/readline.h	/^#define rl_symbolic_link_hook /;"	d
+rl_vcpfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_vcpfunc_t PARAMS((char *));$/;"	t
+rl_vcppfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_vcppfunc_t PARAMS((char **));$/;"	t
+rl_vintfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_vintfunc_t PARAMS((int));$/;"	t
+rl_voidfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_voidfunc_t PARAMS((void));$/;"	t
+rlctx_send_user_command	readline/share/readline/rlptytest.c	/^rlctx_send_user_command(char *line)$/;"	f	file:
+rlstate	readline/include/readline/readline.h	/^  int rlstate;$/;"	m	struct:readline_state
+running	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
+s_history	minishell.h	/^typedef struct s_history$/;"	s
+s_list	Libft/libft.h	/^typedef struct s_list$/;"	s
+s_shell	minishell.h	/^typedef struct s_shell$/;"	s
+save_termios	readline/share/readline/rlptytest.c	/^static struct termios save_termios;$/;"	v	typeref:struct:termios	file:
+set_deftext	readline/share/readline/rl.c	/^set_deftext ()$/;"	f	file:
+set_deftext	readline/share/readline/rlevent.c	/^set_deftext ()$/;"	f	file:
+sighandler	readline/share/readline/rl-callbacktest.c	/^sighandler (int sig)$/;"	f	file:
+sigint	readline/share/readline/rlptytest.c	/^sigint (s)$/;"	f
+sigwinch	readline/share/readline/rlptytest.c	/^sigwinch (s)$/;"	f
+sigwinch_received	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
+size	readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state
+size	readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typeref:struct:winsize	file:
+slavefd	readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
+splitcount	Libft/ft_split.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
+splitter	Libft/ft_split.c	/^char	**splitter(char const *s, char c, char **recipe)$/;"	f
+start	readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list
+stdcat	readline/share/readline/rlcat.c	/^stdcat (argc, argv)$/;"	f
+stripwhite	readline/share/readline/fileman.c	/^stripwhite (string)$/;"	f
+syscom	readline/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	file:
+t_history	minishell.h	/^}				t_history;$/;"	t	typeref:struct:s_history
+t_list	Libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
+t_shell	minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+term	readline/share/readline/excallback.c	/^struct termios term;$/;"	v	typeref:struct:termios
+text	readline/include/readline/readline.h	/^  char *text;			\/* The text to insert, if undoing a delete. *\/$/;"	m	struct:undo_list
+tilde_hook_func_t	readline/include/readline/tilde.h	/^typedef char *tilde_hook_func_t PARAMS((char *));$/;"	t
+timestamp	readline/include/readline/history.h	/^  char *timestamp;		\/* char * rather than time_t for read\/write *\/$/;"	m	struct:_hist_entry
+too_dangerous	readline/share/readline/fileman.c	/^too_dangerous (caller)$/;"	f
+tty_cbreak	readline/share/readline/rlptytest.c	/^int tty_cbreak(int fd){$/;"	f
+tty_off_xon_xoff	readline/share/readline/rlptytest.c	/^tty_off_xon_xoff (int fd)$/;"	f
+tty_reset	readline/share/readline/rlptytest.c	/^int tty_reset(int fd)$/;"	f
+ttystate	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	v	typeref:enum:__anon2	file:
+type	readline/include/readline/keymaps.h	/^  char type;$/;"	m	struct:_keymap_entry
+ul	readline/include/readline/readline.h	/^  UNDO_LIST *ul;$/;"	m	struct:readline_state
+undo_code	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	g
+undo_list	readline/include/readline/readline.h	/^typedef struct undo_list {$/;"	s
+usage	readline/share/readline/hist_erasedups.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/hist_purgecmd.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/rl.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/rlcat.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/rlevent.c	/^usage()$/;"	f	file:
+user_command	minishell.h	/^	char	*user_command;$/;"	m	struct:s_history
+user_input	readline/share/readline/rlptytest.c	/^user_input()$/;"	f	file:
+valid_argument	readline/share/readline/fileman.c	/^valid_argument (caller, arg)$/;"	f
+vflag	readline/share/readline/rlcat.c	/^static int vflag;$/;"	v	file:
+what	readline/include/readline/readline.h	/^  enum undo_code what;		\/* Delete, Insert, Begin, End. *\/$/;"	m	struct:undo_list	typeref:enum:undo_list::undo_code
+whitespace	readline/include/readline/chardefs.h	/^#define whitespace(/;"	d
+wordbreakchars	readline/include/readline/readline.h	/^  char *wordbreakchars;$/;"	m	struct:readline_state
