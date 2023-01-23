@@ -61,4 +61,12 @@ t_chained	*null_list(void);
 
 void		print_cwd(void);
 
+//	DIRECTORY	//
+
+void red(void);
+void cyan(void);
+void green(void);
+void yellow(void);
+void reset(void);
+
 #endif

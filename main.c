@@ -7,7 +7,7 @@ int	main(int ac, char **av, char **envp)
 	t_shell	shell;
 
 	allocate_shell(&shell, envp);
-	while (ft_strncmp(shell.line_readed, "exit\n", 5))
+	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
 		print_cwd();
 		free(shell.line_readed);
