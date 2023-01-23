@@ -32,6 +32,7 @@ typedef struct s_chained
 
 typedef struct s_shell
 {
+	char				**env;
 	struct s_chained	*history;
 	const char			*prompt;
 
@@ -39,7 +40,7 @@ typedef struct s_shell
 
 //	DATA	//
 
-int			allocate_shell(t_shell *shell);
+int			allocate_shell(t_shell *shell, char **envp);
 int			clean_leaks(t_shell *shell);
 
 //	LISTS	//

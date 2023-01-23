@@ -16,7 +16,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./Libft
-	$(CC) $(CFLAGS) -I ./ -lreadline -LLibft -lft $(SRC) -o $@ ./Libft/libft.a -g -fsanitize=address
+	$(CC) $(CFLAGS) -I ./ -lreadline -LLibft -lft $(SRC) -o $@ ./Libft/libft.a
 
 clean:
 	rm -f $(OBJ)
