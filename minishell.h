@@ -14,13 +14,7 @@
 # include <dirent.h>
 # include <termios.h>
 # include <string.h>
-
-typedef struct s_shell
-{
-	struct s_chained	*history;
-	const char			*prompt;
-
-}				t_shell;
+# include "./Libft/libft.h"
 
 typedef struct s_node
 {
@@ -35,6 +29,13 @@ typedef struct s_chained
 	int					nb_elem;
 	struct s_node		*end;
 }				t_chained;
+
+typedef struct s_shell
+{
+	struct s_chained	*history;
+	const char			*prompt;
+
+}				t_shell;
 
 //	DATA	//
 

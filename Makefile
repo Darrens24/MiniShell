@@ -2,7 +2,7 @@ NAME = minishell
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c \
 	  	data.c \
@@ -16,7 +16,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./Libft
-	$(CC) $(FLAGS) -I ./ -lreadline -LLibft -lft $(SRC) -o $@ ./Libft/libft.a
+	$(CC) $(CFLAGS) -I ./ -lreadline -LLibft -lft $(SRC) -o $@ ./Libft/libft.a -g -fsanitize=address
 
 clean:
 	rm -f $(OBJ)
