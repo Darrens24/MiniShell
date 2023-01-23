@@ -7,8 +7,14 @@ int	main(int ac, char **av, char **envp)
 	(void)envp;
 	t_shell	*shell;
 
-	shell = malloc(sizeof(*shell));
-	shell->line_from_prompt = readline(shell->prompt);
-	printf("%s\n", shell->line_from_prompt);
+	char*	line;
+	const char*	prompt;
+
+	shell = malloc(sizeof(t_shell));
+	if (!shell)	
+		printf("Malloc: Shell malloc failed\n");
+	allocate_shell(shell);
+	line = readline(prompt);
+	printf("%s\n", line);
 	return (0);
 }

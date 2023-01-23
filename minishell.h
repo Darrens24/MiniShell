@@ -17,29 +17,41 @@
 
 typedef struct s_shell
 {
-	char		*line_from_prompt;
-	const char	*prompt;
+	struct s_chained	*history;
+	const char			*prompt;
 
 }				t_shell;
 
 typedef struct s_node
 {
-	struct s_node	*prev;
-	char			*history_line;
-	struct s_node	*next;
+	struct s_node		*prev;
+	char				*usr_cmd;
+	struct s_node		*next;
 }				t_node;
 
-typedef struct s_history
+typedef struct s_chained
 {
-	struct s_node	*start;
-	int				nb_of_cmd;
-	struct s_node	*end;
-}				t_history;
-
+	struct s_node		*start;
+	int					nb_elem;
+	struct s_node		*end;
+}				t_chained;
 
 //	DATA	//
 
-int		allocate_data(t_shell *shell);
-int		clean_leaks(t_shell *shell);
+int			allocate_shell(t_shell *shell);
+int			clean_leaks(t_shell *shell);
+
+//	LISTS	//
+
+t_chained	*new_front_node(t_chained *list, char *line);
+t_chained	*new_back_node(t_chained *list, char *line);
+t_chained	*remove_front_node(t_chained *list);
+t_chained	*remove_back_node(t_chained *list);
+t_node		*go_to_end(t_chained *list);
+
+//	LISTS UTILS	//
+
+int			is_empty(t_chained *list);
+t_chained	*null_list(void);
 
 #endif

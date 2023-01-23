@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:04:12 by eleleux           #+#    #+#             */
-/*   Updated: 2022/12/23 11:08:19 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/23 15:19:31 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_join_nextline(char *s1, char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	recipe = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	recipe = malloc(sizeof(char) * (ft_intstrlen(s1) + ft_intstrlen(s2)) + 1);
 	if (!recipe)
 		return (NULL);
 	j = 0;
@@ -53,7 +53,7 @@ int	line_in_stock(char *str)
 {
 	int	i;
 
-	if (str == NULL)
+	if (!str)
 		return (0);
 	i = 0;
 	while (str[i])

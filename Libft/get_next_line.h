@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 18:21:04 by eleleux           #+#    #+#             */
-/*   Updated: 2022/12/23 11:07:16 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/23 15:18:13 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 20
 # endif
 
-# include "libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>

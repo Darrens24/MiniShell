@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:21:53 by eleleux           #+#    #+#             */
-/*   Updated: 2022/12/21 16:58:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/23 15:19:47 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	*readbuff_copystock(int fd, char *stock)
 		if (ret < 0 || (ret == 0 && !stock))
 		{
 			free (buff);
+			buff = NULL;
 			return (NULL);
 		}
 		buff[ret] = '\0';
@@ -47,6 +48,7 @@ char	*copystock(char *stock, char *buffer)
 	if (!recipe)
 		return (NULL);
 	free (stock);
+	stock = NULL;
 	return (recipe);
 }
 
@@ -90,6 +92,7 @@ char	*cleanstock(char *stock)
 	if (!stock[i])
 	{
 		free (stock);
+		stock = NULL;
 		return (NULL);
 	}
 	cleaned = malloc(sizeof(char) * (ft_intstrlen(stock) - i + 1));
@@ -100,6 +103,7 @@ char	*cleanstock(char *stock)
 		cleaned[j++] = stock[++i];
 	cleaned[j++] = '\0';
 	free (stock);
+	stock = NULL;
 	return (cleaned);
 }
 
@@ -111,6 +115,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{
 		free (stock);
+		stock = NULL;
 		return (NULL);
 	}
 	stock = readbuff_copystock(fd, stock);
@@ -121,6 +126,7 @@ char	*get_next_line(int fd)
 	if (newline[0] == '\0')
 	{
 		free (newline);
+		newline = NULL;
 		return (NULL);
 	}
 	return (newline);

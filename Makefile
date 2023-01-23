@@ -5,6 +5,10 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 
 SRC = main.c \
+	  	data.c \
+	  	list_manip.c \
+		list_utils.c \
+		dirmanagement.c \
 
 OBJ = $(SRC:.c=.o)
 
