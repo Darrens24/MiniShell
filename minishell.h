@@ -35,6 +35,7 @@ typedef struct s_shell
 	char				**env;
 	struct s_chained	*history;
 	const char			*prompt;
+	char				*line_readed;
 
 }				t_shell;
 
@@ -55,5 +56,9 @@ t_node		*go_to_end(t_chained *list);
 
 int			is_empty(t_chained *list);
 t_chained	*null_list(void);
+
+//	DIRECTORY	//
+
+void		print_cwd(void);
 
 #endif
