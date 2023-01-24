@@ -76,7 +76,7 @@ void	ft_bzero(void *s, size_t n)
 		s2[i++] = '\0';
 }
 
-void	*ft_calloc(size_t count, size_t size)
+void	*ft_callloc(size_t count, size_t size)
 {
 	char	*recipe;
 	size_t	memory;

@@ -14,6 +14,7 @@
 # include <dirent.h>
 # include <termios.h>
 # include <string.h>
+# include <stdint.h>
 # include "./Libft/libft.h"
 
 typedef struct s_node
@@ -32,8 +33,7 @@ typedef struct s_chained
 
 typedef struct s_shell
 {
-	char				**env;
-	struct s_chained	*history;
+	struct s_chained	*env_l;
 	const char			*prompt;
 	char				*line_readed;
 
@@ -59,7 +59,8 @@ t_chained	*null_list(void);
 
 //	DIRECTORY	//
 
-void		print_cwd(void);
+void		print_cwd_linux(void);
+void		print_cwd_mac(void);
 
 //	DIRECTORY	//
 

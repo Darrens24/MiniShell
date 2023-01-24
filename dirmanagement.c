@@ -11,19 +11,27 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	print_cwd(void)
+/*
+void	print_cwd_mac(void)
 {
 	char	*tmp;
 
 	tmp = NULL;
-	ft_putstr_fd(getcwd(tmp, sizeof(tmp)), 1);
-	ft_putstr_fd(" >> ", 1);
+	cyan();
+	printf("%s >> \n", getcwd(tmp, sizeof(tmp)));
+	reset();
 	free(tmp);
 	tmp = NULL;
-}
-/*
-int	main(void)
-{
-	printcwd();
 }*/
+
+void	print_cwd_linux(void)
+{
+	char	*directory;
+
+	directory = getcwd(NULL, 0);
+	cyan();
+	printf("%s >> \n", directory);
+	reset();
+	free(directory);
+	directory = NULL;
+}

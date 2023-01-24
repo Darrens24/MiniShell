@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdint.h>
 
 // UTILS
 
@@ -28,7 +29,7 @@ int		ft_intstrlen(char *str);
 char	*ft_join_nextline(char *dest, char *src);
 int		line_in_stock(char *str);
 void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t count, size_t size);
+void	*ft_callloc(size_t count, size_t size);
 
 // GNL
 

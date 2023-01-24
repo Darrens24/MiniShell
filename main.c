@@ -4,15 +4,16 @@ int	main(int ac, char **av, char **envp)
 {
 	(void)ac;
 	(void)av;
-	t_shell	shell;
+	t_shell	*shell;
 
-	allocate_shell(&shell, envp);
-	while (ft_strncmp(shell.line_readed, "exit", 5))
+	shell = malloc(sizeof(*shell));
+	allocate_shell(shell, envp);
+	while (shell->line_readed && ft_strncmp(shell->line_readed, "exit", 5))
 	{
-		print_cwd();
-		free(shell.line_readed);
-		shell.line_readed = readline(shell.prompt);
-		add_history(shell.line_readed);
+		free(shell->line_readed);
+		print_cwd_linux();
+		shell->line_readed = readline(shell->prompt);
+		add_history(shell->line_readed);
 	}
 //	int	i = -1;
 //	while (shell.env[++i])

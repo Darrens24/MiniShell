@@ -17,7 +17,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C ./Libft
-	$(CC) $(CFLAGS) -I ./ -lreadline -LLibft -lft $(SRC) -o $@ ./Libft/libft.a
+	$(CC) $(CFLAGS) -I ./ -LLibft -lft $(SRC) -o $@ ./Libft/libft.a -lreadline
 
 clean:
 	rm -f $(OBJ)

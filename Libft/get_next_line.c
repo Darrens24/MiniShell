@@ -33,7 +33,7 @@ char	*readbuff_copystock(int fd, char *stock)
 		}
 		buff[ret] = '\0';
 		if (!stock)
-			stock = ft_calloc(1, 1);
+			stock = ft_callloc(1, 1);
 		stock = copystock(stock, buff);
 		free (buff);
 	}
