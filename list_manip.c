@@ -20,7 +20,7 @@ t_chained	*new_front_node(t_chained *list, char *line)
 		printf("Node: Dynamic allocation failed\n");
 		return (null_list());
 	}
-	elem->usr_cmd = ft_strdup(line);
+	elem->variable = ft_strdup(line);
 	elem->next = NULL;
 	elem->prev = NULL;
 	if (list->nb_elem == 0)
@@ -49,7 +49,7 @@ t_chained	*new_back_node(t_chained *list, char *line)
 		printf("Node: Dynamic allocation failed\n");
 		return (null_list());
 	}
-	elem->usr_cmd = ft_strdup(line);
+	elem->variable = ft_strdup(line);
 	elem->next = NULL;
 	elem->prev = NULL;
 	if (list->nb_elem == 0)

@@ -20,7 +20,7 @@
 typedef struct s_node
 {
 	struct s_node		*prev;
-	char				*usr_cmd;
+	char				*variable;
 	struct s_node		*next;
 }				t_node;
 
@@ -56,6 +56,7 @@ t_node		*go_to_end(t_chained *list);
 
 int			is_empty(t_chained *list);
 t_chained	*null_list(void);
+void		print_list(t_chained *list);
 
 //	DIRECTORY	//
 

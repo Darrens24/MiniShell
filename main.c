@@ -8,19 +8,13 @@ int	main(int ac, char **av, char **envp)
 
 	shell = malloc(sizeof(*shell));
 	allocate_shell(shell, envp);
-	while (shell->line_readed && ft_strncmp(shell->line_readed, "exit", 5))
+/*	while (shell->line_readed && ft_strncmp(shell->line_readed, "exit", 5))
 	{
 		free(shell->line_readed);
 		print_cwd_linux();
 		shell->line_readed = readline(shell->prompt);
 		add_history(shell->line_readed);
-	}
-//	int	i = -1;
-//	while (shell.env[++i])
-//		printf("%s\n", shell.env[i]);  -->env recupere
-//	temp = readline(shell.prompt);
-//	add_history(temp);
-//	new_front_node(shell.history, temp);
-//	printf("%s\n", shell.history->start->usr_cmd);
+	}*/
+	print_list(shell->env_l);
 	return (0);
 }
