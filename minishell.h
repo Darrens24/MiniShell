@@ -62,6 +62,7 @@ void		print_list(t_chained *list);
 
 void		print_cwd_linux(void);
 void		print_cwd_mac(void);
+void    	print_pwd_linux(void);
 
 //	DIRECTORY	//
 
