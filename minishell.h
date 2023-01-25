@@ -1,6 +1,15 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# define BLK "\e[0;90m"
+# define RED "\e[0;91m"
+# define GRN "\e[0;92m"
+# define YEL "\e[0;93m"
+# define BLU "\e[0;94m"
+# define MAG "\e[0;95m"
+# define CYN "\e[0;96m"
+# define WHT "\e[0;97m"
+
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -60,16 +69,6 @@ void		print_list(t_chained *list);
 
 //	DIRECTORY	//
 
-void		print_cwd_linux(void);
-void		print_cwd_mac(void);
 void    	print_pwd_linux(void);
-
-//	DIRECTORY	//
-
-void red(void);
-void cyan(void);
-void green(void);
-void yellow(void);
-void reset(void);
 
 #endif
