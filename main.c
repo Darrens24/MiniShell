@@ -6,11 +6,12 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/25 18:46:43 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/27 13:19:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 
 int	main(int ac, char **av, char **envp)
 {
@@ -24,9 +25,12 @@ int	main(int ac, char **av, char **envp)
 	{
 		free(shell.line_readed);
 		shell.line_readed = readline(MAG "Minishell >> " WHT);
-		if (ft_strncmp(shell.line_readed, "pwd", 4) == 0)
-			print_pwd_linux();
 		add_history(shell.line_readed);
+		if (execute_directory_cmd(&shell) == TRUE)
+			execute_directory_cmd(&shell);
+		else if (execute_env_cmd(&shell) == TRUE)
+			execute_env_cmd(&shell);
 	}
+	clean_memory(&shell);
 	return (0);
 }

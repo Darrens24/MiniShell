@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-int			allocate_shell(t_shell *shell, char **envp)
+int	allocate_shell(t_shell *shell, char **envp)
 {
 	int	i;
 
@@ -13,5 +13,12 @@ int			allocate_shell(t_shell *shell, char **envp)
 	while (envp[++i])
 		new_back_node(shell->env_l, envp[i]);
 
-	return (0);
+	return (EXIT_SUCCESS);
+}
+
+int	clean_memory(t_shell *shell)
+{
+	free(shell->line_readed);
+	free(shell->env_l);
+	return (EXIT_SUCCESS);
 }
