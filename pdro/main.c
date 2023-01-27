@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/25 18:46:43 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/27 12:26:20 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	main(int ac, char **av, char **envp)
 	(void)ac;
 	(void)av;
 	t_shell	shell;
+	signal(SIGINT, handler);
+	signal(SIGQUIT, handler);
 
 	//shell = malloc(sizeof(t_shell));
 	allocate_shell(&shell, envp);

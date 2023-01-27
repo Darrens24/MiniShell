@@ -71,4 +71,7 @@ void		print_list(t_chained *list);
 
 void    	print_pwd_linux(void);
 
+//	SIGNALS UTILS	//
+
+void		handler(int num);
 #endif
