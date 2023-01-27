@@ -9,7 +9,7 @@ SRC = main.c \
 	  	list_manip.c \
 		list_utils.c \
 		dirmanagement.c \
-		colors.c \
+		signals.c
 
 OBJ = $(SRC:.c=.o)
 
