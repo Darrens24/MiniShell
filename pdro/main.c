@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/28 14:49:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/28 15:42:16 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ int	main(int ac, char **av, char **envp)
 		parsing(&toklst, shell.line_readed);
 		if (ft_strncmp(shell.line_readed, "pwd", 4) == 0)
 			print_pwd_linux();
-		print_toklst(&toklst);
+		if (toklst.nb_elem != 0)
+			print_toklst(&toklst);
 		add_history(shell.line_readed);
-		clear_toklst(&toklst);
+		if (toklst.nb_elem != 0)
+			clear_toklst(&toklst);
 	}
 	return (0);
 }
