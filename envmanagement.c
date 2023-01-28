@@ -29,7 +29,7 @@ int	print_export(t_shell *shell)
 	}
 	return (1);
 }
-
+/*
 int	print_echo(t_shell *shell)
 {
 	int	i;
@@ -46,7 +46,7 @@ int	print_echo(t_shell *shell)
 	else
 		ft_putendl_fd(shell->builtin_args[i], STDOUT_FILENO);
 	return (EXIT_SUCCESS);		
-}
+}*/
 
 int	execute_env_cmd(t_shell *shell)
 {
@@ -63,8 +63,7 @@ int	execute_env_cmd(t_shell *shell)
 //		if (!argument_after_cmd)
 			return (print_export(shell));
 	}
-	else if (ft_strncmp(shell->line_readed, "echo", 5) == 0)
-		print_echo(shell);
-	}
+//	else if (ft_strncmp(shell->line_readed, "echo", 5) == 0)
+//		print_echo(shell);
 	return (EXIT_SUCCESS);
 }
