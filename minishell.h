@@ -59,5 +59,7 @@ int			change_directory(const char *path);
 /***\	ENV - VAR	\***/
 
 int			execute_env_cmd(t_shell *shell);
+int			print_export(t_shell *shell);
+int			add_env_variable(t_shell *shell);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/27 12:53:57 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/28 09:36:47 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct s_shell
 	const char			*prompt;
 	const char			*dir_path;
 	char				*line_readed;
+	char				**builtin_args;
 
 }				t_shell;
 
