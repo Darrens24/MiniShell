@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:04:14 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 15:41:34 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2022/12/22 12:58:15 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	parsing(t_toklst *tokenlst, char *line)
 	int	start;
 	int	i;
 	char	quote;
+	int	tmp;
 
 	i = 0;
 	while (line[i])
@@ -65,9 +66,10 @@ void	parsing(t_toklst *tokenlst, char *line)
 		start = i;
 		while (line[i] && !is_wspace(line[i]) && line[i] != '|' && line[i] != '<')
 		{
+			tmp = i;
 		if (line[i] == '\'' || line[i] == '\"')
 		{
-			if (checknextquote(line, line[i], start))
+			if (checknextquote(line, line[i], tmp))
 			{
 				quote = line[i++];
 				while (line[i] && line[i] != quote)
