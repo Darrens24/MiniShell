@@ -50,16 +50,24 @@ int			is_empty(t_chained *list);
 t_chained	*null_list(void);
 void		print_list(t_chained *list);
 
-/***\	DIRECTORY	\***/
+
+/***\	BUILTINS	\***/
+
+//********>> Directory
 
 int			execute_directory_cmd(t_shell *shell);
 int	    	print_pwd_linux(void);
 int			change_directory(const char *path);
 
-/***\	ENV - VAR	\***/
+//********>> Env
 
 int			execute_env_cmd(t_shell *shell);
 int			print_export(t_shell *shell);
 int			add_env_variable(t_shell *shell);
+
+//********>> Echo
+
+int			print_echo(t_shell *shell);
+int			echo_parsing(t_shell *shell);
 
 #endif
