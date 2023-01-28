@@ -61,7 +61,7 @@ typedef struct s_toklst
 {
 	struct s_tok		*start;
 	int					nb_elem;
-	struct s_tol		*end;
+	struct s_tok		*end;
 }				t_toklst;
 
 //	DATA	//
@@ -93,10 +93,14 @@ void		handler(int num);
 
 //	TOKEN MANAG	//
 
-int     	is_emptytok(t_toklst *list);
-t_toklst        *new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
-t_toklst        *remove_back_tok(t_toklst *list);
-
+int		is_emptytok(t_toklst *list);
+t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
+t_toklst	*remove_back_tok(t_toklst *list);
+void		print_toklst(t_toklst *list); 
+void		clear_toklst(t_toklst *lst);
 //	UTILS		//
 char    *ft_strndup(char *line, int start, int end);
+
+//	PARSING		//
+void    parsing(t_toklst *tokenlst, char *line);
 #endif

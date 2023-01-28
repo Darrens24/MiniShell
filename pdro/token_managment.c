@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 13:50:39 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:51:43 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,21 @@
 
 int     is_emptytok(t_toklst *list)
 {
-        if (!list || list->nb_elem == 0)
+        if (list->nb_elem == 0)
                 return (1);
         return (0);
+}
+
+void    print_toklst(t_toklst *list)
+{
+        t_tok *temp;
+
+        temp = list->start;
+        while (temp)
+        {
+                printf("%s\n", temp->variable);
+                temp = temp->next;
+        }
 }
 
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
@@ -27,13 +39,13 @@ t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
 	if (!elem)
 	{
 		printf("Node: Dynamic allocation failed\n");
-		return (null);
+		return (NULL);
 	}
-	elem->variable = ft_strdnup(line, start, end);
+	elem->variable = ft_strndup(line, start, end);
 	elem->next = NULL;
 	elem->prev = NULL;
 	elem->quote = 0;
-	if (list->nb_elem == 0)
+	if (tokenlst->nb_elem == 0)
 	{
 		tokenlst->start = elem;
 		tokenlst->end = elem;
@@ -45,7 +57,7 @@ t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
 		tokenlst->end = elem;
 	}
 	tokenlst->nb_elem++;
-	return (list);
+	return (tokenlst);
 }
 
 t_toklst	*remove_back_tok(t_toklst *list)
@@ -55,7 +67,7 @@ t_toklst	*remove_back_tok(t_toklst *list)
 	if (is_emptytok(list))
 	{
 		printf("ListRemove: Nothing to free\n");
-		return (null_list());
+		return (NULL);
 	}
 	if (list->nb_elem == 1)
 	{
@@ -73,4 +85,10 @@ t_toklst	*remove_back_tok(t_toklst *list)
 	temp = NULL;
 	list->nb_elem--;
 	return (list);
+}
+
+void	clear_toklst(t_toklst *lst)
+{
+	while (lst->nb_elem)
+		remove_back_tok(lst);
 }

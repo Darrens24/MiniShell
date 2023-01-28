@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:42:26 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 13:48:23 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:43:07 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ char	*ft_strndup(char *line, int start, int end)
 		return (NULL);
 	while (start != end && line[start])
 	{
-		str[i] == line[start++];
+		str[i] = line[start];
+		start++;
 		i++;
 	}
 	str[i] = '\0';
-	return (str[i]);
+	return (str);
 }

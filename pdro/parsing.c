@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:04:14 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 14:06:40 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:58:53 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	jump_wspace(char *line, int i)
 		i++;
 	return (i);
 }
-
+/*
 static int	checknextquote(char *line, char quote)
 {
 	int	i;
@@ -38,7 +38,7 @@ static int	checknextquote(char *line, char quote)
 		i++;
 	}
 	return (0);
-}
+}*/
 
 void	parsing(t_toklst *tokenlst, char *line)
 {
@@ -61,7 +61,8 @@ void	parsing(t_toklst *tokenlst, char *line)
 		if (start != i)
 			new_back_tok(tokenlst, line, start, i);
 		i = jump_wspace(line, i);
-		while (line [i] && !is_wspace(line[i]))
+		while (line [i] && !is_wspace(line[i])
+			&& line[i] != '|' && line[i] != '<')
 			i++;
 		if (start != i)
 			new_back_tok(tokenlst, line, start, i);

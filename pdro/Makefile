@@ -10,7 +10,9 @@ SRC = main.c \
 		list_utils.c \
 		dirmanagement.c \
 		signals.c \
-		token_management.c \
+		token_managment.c \
+		utils.c \
+		parsing.c \
 
 OBJ = $(SRC:.c=.o)
 
