@@ -47,6 +47,22 @@ typedef struct s_shell
 	char				*line_readed;
 
 }				t_shell;
+//	TOKENS	//
+typedef struct s_tok
+{
+	struct s_tok		*prev;
+	char				*variable;
+	int			quote;
+	struct s_tok		*next;
+}				t_tok;
+// 0 = 0 quotes, 1 = simple quote, 2 = double quote
+
+typedef struct s_toklst
+{
+	struct s_tok		*start;
+	int					nb_elem;
+	struct s_tol		*end;
+}				t_toklst;
 
 //	DATA	//
 
@@ -74,4 +90,13 @@ void    	print_pwd_linux(void);
 //	SIGNALS UTILS	//
 
 void		handler(int num);
+
+//	TOKEN MANAG	//
+
+int     	is_emptytok(t_toklst *list);
+t_toklst        *new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
+t_toklst        *remove_back_tok(t_toklst *list);
+
+//	UTILS		//
+char    *ft_strndup(char *line, int start, int end);
 #endif
