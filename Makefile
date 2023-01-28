@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/01/28 10:36:33 by eleleux          ###   ########.fr        #
+#    Updated: 2023/01/28 11:10:03 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,21 +48,21 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@echo ${ORANGE}Libft Compiling... !${NOCOLOR}
+	@echo ${LIGHTBLUE}Libft Compiling... !${NOCOLOR}
 	@make -C ./Libft
-	@echo ${ORANGE}Minishell Compiling... !${NOCOLOR}
+	@echo ${LIGHTBLUE}Minishell Compiling... !${NOCOLOR}
 	@$(CC) $(CFLAGS) -I ./ -LLibft -lft $(OBJ) -o $@ ./Libft/libft.a -lreadline
-	@echo ${GREEN}Minishell Compiled !${NOCOLOR}
+	@echo ${LIGHTGREEN}Minishell Compiled !${NOCOLOR}
 
 clean:
 	@make clean -C ./Libft
 	@rm -f $(OBJ)
-	@echo ${LIGHTPURPLE}Minishell Objects Removed !${NOCOLOR}
+	@echo ${LIGHTRED}Minishell Objects Removed !${NOCOLOR}
 
 fclean:	clean
 	@make fclean -C ./Libft
 	@rm -f $(NAME)
-	@echo ${RED}Minishell Removed !${NOCOLOR}
+	@echo ${LIGHTRED}Minishell Removed !${NOCOLOR}
 
 re:	fclean all
 

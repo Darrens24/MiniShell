@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 17:50:06 by eleleux           #+#    #+#              #
-#    Updated: 2023/01/28 10:31:39 by eleleux          ###   ########.fr        #
+#    Updated: 2023/01/28 11:09:39 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,16 +92,17 @@ OBJ = $(SRC:.c=.o)
 	@$(CC) $(CFLAGS) -I ./ -c $< -o ${<:.c=.o}
 
 $(NAME) : $(OBJ)
+	@echo ${LIGHTBLUE}Libft Compiling...${NOCOLOR}
 	@ar rcs $@ $(OBJ)
-	@echo ${GREEN}Libft Compiled !${NOCOLOR}
+	@echo ${LIGHTGREEN}Libft Compiled !${NOCOLOR}
 
 fclean : clean
 	@rm -f libft.a
-	@echo ${RED}Libft Removed !${NOCOLOR}
+	@echo ${LIGHTRED}Libft Removed !${NOCOLOR}
 
 clean :
 	@rm -f $(OBJ) $(OBJBONUS)
-	@echo ${LIGHTPURPLE}Libft Objects Removed !${NOCOLOR}
+	@echo ${LIGHTRED}Libft Objects Removed !${NOCOLOR}
 
 re : fclean all
 
