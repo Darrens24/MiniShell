@@ -36,21 +36,6 @@
 int			allocate_shell(t_shell *shell, char **envp);
 int			clean_memory(t_shell *shell);
 
-/***\	LISTS	\***/
-
-t_chained	*new_front_node(t_chained *list, char *line);
-t_chained	*new_back_node(t_chained *list, char *line);
-t_chained	*remove_front_node(t_chained *list);
-t_chained	*remove_back_node(t_chained *list);
-t_node		*go_to_end(t_chained *list);
-
-/***\	LIST UTILS	\***/
-
-int			is_empty(t_chained *list);
-t_chained	*null_list(void);
-void		print_list(t_chained *list);
-
-
 /***\	BUILTINS	\***/
 
 //********>> Directory
@@ -69,5 +54,37 @@ int			add_env_variable(t_shell *shell);
 
 int			print_echo(t_shell *shell);
 int			echo_parsing(t_shell *shell);
+
+/***\	TOKENS	\***/
+
+int     	is_emptytok(t_toklst *list);
+void		print_toklst(t_toklst *list);
+t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
+t_toklst	*remove_back_tok(t_toklst *list);
+void		clear_toklst(t_toklst *lst);
+
+
+/***\	LISTS	\***/
+
+t_chained	*new_front_node(t_chained *list, char *line);
+t_chained	*new_back_node(t_chained *list, char *line);
+t_chained	*remove_front_node(t_chained *list);
+t_chained	*remove_back_node(t_chained *list);
+t_node		*go_to_end(t_chained *list);
+
+/***\	LIST UTILS	\***/
+
+int			is_empty(t_chained *list);
+t_chained	*null_list(void);
+void		print_list(t_chained *list);
+t_chained	*sort_list(t_chained *list);
+
+/***\	UTILS	\***/
+
+char	*ft_strndup(char *line, int start, int end);
+
+
+
+
 
 #endif

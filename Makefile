@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/01/28 11:10:03 by eleleux          ###   ########.fr        #
+#    Updated: 2023/01/29 09:44:19 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,13 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c \
 	  	data.c \
+	  	utils.c \
 	  	list_manip.c \
 		list_utils.c \
-		dirmanagement.c \
-		envmanagement.c \
+		dir_management.c \
+		env_management.c \
+		token_management.c \
+		parsing.c \
 
 OBJ = $(SRC:.c=.o)
 

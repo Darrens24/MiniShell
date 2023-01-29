@@ -97,7 +97,9 @@ int		is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
 void		print_toklst(t_toklst *list); 
+
 void		clear_toklst(t_toklst *lst);
+
 //	UTILS		//
 char    *ft_strndup(char *line, int start, int end);
 

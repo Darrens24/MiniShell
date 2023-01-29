@@ -6,18 +6,21 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/28 09:36:47 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/29 09:43:36 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef STRUCTURES_H
+# define STRUCTURES_H
 
 typedef struct s_shell
 {
 	struct s_chained	*env_l;
+	struct s_chained	*sorted_env_l;
 	const char			*prompt;
 	const char			*dir_path;
 	char				*line_readed;
-	char				**builtin_args;
+	struct s_toklst		*user_command;
 
 }				t_shell;
 
@@ -34,3 +37,20 @@ typedef struct s_chained
 	int					nb_elem;
 	struct s_node		*end;
 }				t_chained;
+
+typedef struct s_tok
+{
+	struct s_tok		*prev;
+	char				*variable;
+	int			quote;
+	struct s_tok		*next;
+}				t_tok;
+
+typedef struct s_toklst
+{
+	struct s_tok		*start;
+	int					nb_elem;
+	struct s_tok		*end;
+}				t_toklst;
+
+#endif

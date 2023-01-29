@@ -16,11 +16,14 @@ int	add_env_variable(t_shell *shell)
 		new_back_node(shell->env_l, shell->builtin_args[i]);
 }*/
 
+
+
 int	print_export(t_shell *shell)
 {
 	t_node	*temp;
-
-	temp = shell->env_l->start;
+	
+	shell->sorted_env_l = sort_list(shell->env_l);
+	temp = shell->sorted_env_l->start;
 	while (temp)
 	{
 		ft_putstr_fd("declare -x ", 1);
