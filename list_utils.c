@@ -12,28 +12,49 @@ int	is_empty(t_chained *list)
 	return (0);
 }
 
+t_chained	*list_copy(t_chained *list)
+{
+	t_chained	*new;
+	t_node		*temp;
+
+	new = malloc(sizeof(*new));
+	if (!new)
+		return (list);
+	new->nb_elem = 0;
+	temp = list->start;
+	while (temp)
+	{
+		new = new_back_node(new, temp->variable);
+		temp = temp->next;
+	}
+	return (new);
+
+}
+
 t_chained	*sort_list(t_chained *list)
 {
-	t_chained	*temp;
-	char		*buffer;
+	t_node		*temp;
+	char		*buffer = NULL;
+	t_chained	*new;
 
-	temp = list;
-	while (list->start->next)
+	new = list_copy(list);
+	temp = new->start;
+	while (temp->next)
 	{
-		if (ft_strncmp(list->start->variable, list->start->next->variable, (ft_strlen(list->start->variable) + 1)) >= 0)
+		if (ft_strncmp(temp->variable, temp->next->variable, (ft_strlen(temp->variable) + 1)) > 0)
 		{
-			buffer = ft_strdup(list->start->variable);
-			//free(temp->variable);
-			list->start->variable = ft_strdup(list->start->next->variable);
-			//free(temp->next->variable);
-			list->start->next->variable = ft_strdup(buffer);
+			buffer = ft_strdup(temp->variable);
+			free(temp->variable);
+			temp->variable = ft_strdup(temp->next->variable);
+			free(temp->next->variable);
+			temp->next->variable = ft_strdup(buffer);
 			free(buffer);
-			list = temp;
+			temp = new->start;
 		}
 		else
-			list->start = list->start->next;
+			temp = temp->next;
 	}
-	return (list);
+	return (new);
 }
 
 void	print_list(t_chained *list)

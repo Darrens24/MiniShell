@@ -55,6 +55,11 @@ int			add_env_variable(t_shell *shell);
 int			print_echo(t_shell *shell);
 int			echo_parsing(t_shell *shell);
 
+/***\	PARSING	\***/
+
+void		parsing(t_toklst *tokenlst, char *line);
+
+
 /***\	TOKENS	\***/
 
 int     	is_emptytok(t_toklst *list);
