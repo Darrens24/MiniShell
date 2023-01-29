@@ -6,29 +6,29 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 14:51:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:13:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int     is_emptytok(t_toklst *list)
+int	is_emptytok(t_toklst *list)
 {
-        if (list->nb_elem == 0)
-                return (1);
-        return (0);
+	if (list->nb_elem == 0)
+		return (1);
+	return (0);
 }
 
-void    print_toklst(t_toklst *list)
+void	print_toklst(t_toklst *list)
 {
-        t_tok *temp;
+	t_tok	*temp;
 
-        temp = list->start;
-        while (temp)
-        {
-                printf("%s\n", temp->variable);
-                temp = temp->next;
-        }
+	temp = list->start;
+	while (temp)
+	{
+		printf("%s\n", temp->variable);
+		temp = temp->next;
+	}
 }
 
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)

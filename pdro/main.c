@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2022/12/22 12:54:37 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:41:54 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	main(int ac, char **av, char **envp)
 {
-	(void)ac;
-	(void)av;
 	t_shell		shell;
 	t_toklst	toklst;
 
+	(void)ac;
+	(void)av;
 	signal(SIGINT, handler);
 	signal(SIGQUIT, handler);
+	toklst.nb_elem = 0;
 	allocate_shell(&shell, envp);
 	while (shell.line_readed && ft_strncmp(shell.line_readed, "exit", 5))
 	{

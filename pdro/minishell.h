@@ -52,7 +52,7 @@ typedef struct s_tok
 {
 	struct s_tok		*prev;
 	char				*variable;
-	int			quote;
+	int					quote;
 	struct s_tok		*next;
 }				t_tok;
 // 0 = 0 quotes, 1 = simple quote, 2 = double quote
@@ -85,7 +85,7 @@ void		print_list(t_chained *list);
 
 //	DIRECTORY	//
 
-void    	print_pwd_linux(void);
+void		print_pwd_linux(void);
 
 //	SIGNALS UTILS	//
 
@@ -93,16 +93,24 @@ void		handler(int num);
 
 //	TOKEN MANAG	//
 
-int		is_emptytok(t_toklst *list);
+int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
-void		print_toklst(t_toklst *list); 
-
+void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
 
 //	UTILS		//
-char    *ft_strndup(char *line, int start, int end);
+char		*ft_strndup(char *line, int start, int end);
+
+//	PARSING UTILS	//
+
+int			is_wspace(char c);
+int			is_sep(char c);
+int			jump_wspace(char *line, int i);
+int			checknextquote(char *line, char quote, int start);
+int			errorintoken(t_toklst *tokenlst);
 
 //	PARSING		//
-void    parsing(t_toklst *tokenlst, char *line);
+void		parsing(t_toklst *tokenlst, char *line);
+
 #endif
