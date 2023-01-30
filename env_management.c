@@ -71,13 +71,27 @@ int	export_variable(t_shell *shell)
 	new_back_node(shell->sorted_env_l, shell->user_command->start->next->variable);
 	return (EXIT_SUCCESS);
 }
-/*
-t_chained	*remove_current_node(t_chained *list)
+
+t_node	*remove_current_node(t_node *node, t_chained *lst)
 {
-	t_node	*temp;
-
-	temp = list->
-
+	if (node->prev && node->next)
+	{
+		node->prev->next = node->next;
+		node->next->prev = node->prev;
+	}
+	if (!node->next)
+	{
+		remove_back_node(lst);
+		return (node);
+	}
+	free(node->variable);
+	lst->nb_elem--;
+	node->variable = NULL;
+	node->prev = NULL;
+	node->next = NULL;
+	free(node);
+	node = NULL;
+	return (node);
 }
 
 int	unset_variable(t_shell *shell)
@@ -87,17 +101,12 @@ int	unset_variable(t_shell *shell)
 	temp = shell->sorted_env_l->end;
 	while (temp && ft_strncmp(temp->variable, shell->user_command->start->next->variable, sizeof(temp->variable)))
 		temp = temp->prev;
-	if (temp)
-	{
-		if (shell->sorted_env_l->nb_elem == 1)
-			remove_back_node(shell->sorted_env_l);
-		else		
-		{
-			remove_current_node(shell->sorted_env_l);
-		}
-	}
+	if (shell->sorted_env_l->nb_elem == 1)
+		remove_back_node(shell->sorted_env_l);
+	else		
+		remove_current_node(temp, shell->sorted_env_l);
 	return (EXIT_SUCCESS);
-}*/
+}
 
 
 int	execute_env_cmd(t_shell *shell)
@@ -115,13 +124,13 @@ int	execute_env_cmd(t_shell *shell)
 		else
 			return (export_variable(shell));
 	}
-/*	else if (ft_strncmp(shell->user_command->start->variable, "unset", 6) == 0)
+	else if (ft_strncmp(shell->user_command->start->variable, "unset", 6) == 0)
 	{
 		if (argument_after_cmd(shell) == FALSE)
 			return (EXIT_SUCCESS);
 		else
 			return (unset_variable(shell));
-	}*/
+	}
 	else if (ft_strncmp(shell->user_command->start->variable, "echo", 5) == 0)
 		print_echo(shell);
 	return (EXIT_SUCCESS);

@@ -76,7 +76,7 @@ t_chained	*new_back_node(t_chained *list, char *line);
 t_chained	*remove_front_node(t_chained *list);
 t_chained	*remove_back_node(t_chained *list);
 t_node		*go_to_end(t_chained *list);
-t_chained	*remove_current_node(t_chained *list);
+t_node		*remove_current_node(t_node *node, t_chained *lst);
 
 /***\	LIST UTILS	\***/
 

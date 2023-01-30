@@ -12,14 +12,14 @@ set shortmess=aoO
 argglobal
 %argdel
 $argadd env_management.c
-edit minishell.h
+set stal=2
+tabnew
+tabrewind
+edit env_management.c
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
-wincmd _ | wincmd |
-vsplit
-2wincmd h
-wincmd w
+1wincmd h
 wincmd w
 set nosplitbelow
 set nosplitright
@@ -29,8 +29,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 31 + 86) / 173)
-exe 'vert 2resize ' . ((&columns * 70 + 86) / 173)
-exe 'vert 3resize ' . ((&columns * 70 + 86) / 173)
+exe 'vert 2resize ' . ((&columns * 141 + 86) / 173)
 argglobal
 enew
 file NERD_tree_1
@@ -53,15 +52,45 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 79 - ((35 * winheight(0) + 25) / 51)
+let s:l = 93 - ((16 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-79
-normal! 050|
+93
+normal! 09|
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 31 + 86) / 173)
+exe 'vert 2resize ' . ((&columns * 141 + 86) / 173)
+tabnext
+edit env_management.c
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 31 + 86) / 173)
+exe 'vert 2resize ' . ((&columns * 141 + 86) / 173)
+argglobal
+enew
+file NERD_tree_2
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal nofen
 wincmd w
 argglobal
-if bufexists("env_management.c") | buffer env_management.c | else | edit env_management.c | endif
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -71,20 +100,22 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 54 - ((31 * winheight(0) + 25) / 51)
+let s:l = 29 - ((28 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-54
-normal! 0
+29
+normal! 023|
 wincmd w
-3wincmd w
 exe 'vert 1resize ' . ((&columns * 31 + 86) / 173)
-exe 'vert 2resize ' . ((&columns * 70 + 86) / 173)
-exe 'vert 3resize ' . ((&columns * 70 + 86) / 173)
+exe 'vert 2resize ' . ((&columns * 141 + 86) / 173)
 tabnext 1
-badd +52 env_management.c
-badd +0 minishell.h
+set stal=1
+badd +93 env_management.c
+badd +70 list_utils.c
+badd +109 list_manip.c
+badd +35 structures.h
+badd +79 minishell.h
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
