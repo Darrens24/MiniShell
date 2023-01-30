@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/30 08:14:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/30 13:42:35 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	main(int ac, char **av, char **envp)
 		readline_manager(&shell);
 		if (!shell.line_readed)
 			break ;
-		parsing(shell.user_command, shell.line_readed);
+		token_parsing(shell.user_command, shell.line_readed);
+		tokenisation(shell.user_command, shell.sorted_env_l);
 		if (execute_directory_cmd(&shell) == TRUE)
 			execute_directory_cmd(&shell);
 		execute_env_cmd(&shell);

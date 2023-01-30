@@ -1,36 +1,75 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
+#    Updated: 2023/01/30 13:39:12 by pfaria-d         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = minishell
+NOCOLOR='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+LIGHTGRAY='\033[0;37m'
+DARKGRAY='\033[1;30m'
+LIGHTRED='\033[1;31m'
+LIGHTGREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+LIGHTBLUE='\033[1;34m'
+LIGHTPURPLE='\033[1;35m'
+LIGHTCYAN='\033[1;36m'
+WHITE='\033[1;37m'
 
 CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c \
-	  	data.c \
-	  	list_manip.c \
+		data.c \
+		utils.c \
+		list_manip.c \
 		list_utils.c \
-		dirmanagement.c \
+		dir_management.c \
+		env_management.c \
 		signals.c \
 		token_managment.c \
-		utils.c \
-		parsing.c \
 		parsing_utils.c \
 		tokenisation.c \
+		parsing.c \
+
 
 OBJ = $(SRC:.c=.o)
+
+%.o: %.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo ${LIGHTBLUE}Libft Compiling... !${NOCOLOR}
 	@make -C ./Libft
-	$(CC) $(CFLAGS) -I ./ -LLibft -lft $(SRC) -o $@ ./Libft/libft.a -lreadline
+	@echo ${LIGHTBLUE}Minishell Compiling... !${NOCOLOR}
+	@$(CC) $(CFLAGS) -I ./ -LLibft -lft $(OBJ) -o $@ ./Libft/libft.a -lreadline
+	@echo ${LIGHTGREEN}Minishell Compiled !${NOCOLOR}
 
 clean:
-	rm -f $(OBJ)
 	@make clean -C ./Libft
+	@rm -f $(OBJ)
+	@echo ${LIGHTRED}Minishell Objects Removed !${NOCOLOR}
 
 fclean:	clean
-	rm -f $(NAME)
 	@make fclean -C ./Libft
+	@rm -f $(NAME)
+	@echo ${LIGHTRED}Minishell Removed !${NOCOLOR}
 
 re:	fclean all
 

@@ -55,20 +55,6 @@ int			add_env_variable(t_shell *shell);
 int			print_echo(t_shell *shell);
 int			echo_parsing(t_shell *shell);
 
-/***\	PARSING	\***/
-
-void		parsing(t_toklst *tokenlst, char *line);
-
-
-/***\	TOKENS	\***/
-
-int     	is_emptytok(t_toklst *list);
-void		print_toklst(t_toklst *list);
-t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
-t_toklst	*remove_back_tok(t_toklst *list);
-void		clear_toklst(t_toklst *lst);
-
-
 /***\	LISTS	\***/
 
 t_chained	*new_front_node(t_chained *list, char *line);
@@ -89,8 +75,36 @@ t_chained	*sort_list(t_chained *list);
 
 char	*ft_strndup(char *line, int start, int end);
 
+/***\	SIGNALS UTILS   \***/
 
+void            handler(int num);
 
+/***\      TOKEN MANAG     \***/
+
+int                     is_emptytok(t_toklst *list);
+t_toklst        *new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
+t_toklst        *remove_back_tok(t_toklst *list);
+void            print_toklst(t_toklst *list);
+void            clear_toklst(t_toklst *lst);
+
+/***\      UTILS           \***/
+char            *ft_strndup(char *line, int start, int end);
+
+/***\      PARSING UTILS   \***/
+
+int                     is_wspace(char c);
+int                     is_sep(char c);
+int                     jump_wspace(char *line, int i);
+int                     checknextquote(char *line, char quote, int start);
+int                     errorintoken(t_toklst *tokenlst, char *error);
+
+/***\      PARSING         \***/
+
+void            token_parsing(t_toklst *tokenlst, char *line);
+
+/***\      TOKENISATION		\***/
+
+void    tokenisation(t_toklst *tokenlst, t_chained *env);
 
 
 #endif
