@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:37:28 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/29 15:38:00 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/30 10:13:43 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	checknextquote(char *line, char quote, int start)
 	return (0);
 }
 
-int	errorintoken(t_toklst *tokenlst)
+int	errorintoken(t_toklst *tokenlst, char *error)
 {
-	printf("no ending quote\n");
+	printf("%s\n", error);
 	clear_toklst(tokenlst);
 	return (-1);
 }

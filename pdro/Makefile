@@ -14,6 +14,7 @@ SRC = main.c \
 		utils.c \
 		parsing.c \
 		parsing_utils.c \
+		tokenisation.c \
 
 OBJ = $(SRC:.c=.o)
 

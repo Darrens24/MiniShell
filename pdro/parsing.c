@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:04:14 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/29 15:42:29 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:17:01 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)
 			if (checknextquote(line, line[i], tmp))
 				i = jump_text(line, i);
 			else
-				return (errorintoken(tokenlst));
+				return (errorintoken(tokenlst, "no ending quote"));
 			i++;
 		}
 		else

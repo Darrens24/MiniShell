@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/29 15:41:54 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:21:25 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av, char **envp)
 
 	(void)ac;
 	(void)av;
-	signal(SIGINT, handler);
+//	signal(SIGINT, handler);
 	signal(SIGQUIT, handler);
 	toklst.nb_elem = 0;
 	allocate_shell(&shell, envp);
@@ -30,6 +30,7 @@ int	main(int ac, char **av, char **envp)
 		parsing(&toklst, shell.line_readed);
 		if (ft_strncmp(shell.line_readed, "pwd", 4) == 0)
 			print_pwd_linux();
+		tokenisation(&toklst, shell.env_l);
 		if (toklst.nb_elem != 0)
 			print_toklst(&toklst);
 		add_history(shell.line_readed);

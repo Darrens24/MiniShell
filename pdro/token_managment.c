@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/29 15:13:46 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:53:47 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_toklst(t_toklst *list)
 	temp = list->start;
 	while (temp)
 	{
-		printf("%s\n", temp->variable);
+		printf("%s\n", temp->var);
 		temp = temp->next;
 	}
 }
@@ -41,7 +41,7 @@ t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
 		printf("Node: Dynamic allocation failed\n");
 		return (NULL);
 	}
-	elem->variable = ft_strndup(line, start, end);
+	elem->var = ft_strndup(line, start, end);
 	elem->next = NULL;
 	elem->prev = NULL;
 	elem->quote = 0;

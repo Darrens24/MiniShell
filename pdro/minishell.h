@@ -51,7 +51,7 @@ typedef struct s_shell
 typedef struct s_tok
 {
 	struct s_tok		*prev;
-	char				*variable;
+	char				*var;
 	int					quote;
 	struct s_tok		*next;
 }				t_tok;
@@ -108,9 +108,11 @@ int			is_wspace(char c);
 int			is_sep(char c);
 int			jump_wspace(char *line, int i);
 int			checknextquote(char *line, char quote, int start);
-int			errorintoken(t_toklst *tokenlst);
+int			errorintoken(t_toklst *tokenlst, char *error);
 
 //	PARSING		//
 void		parsing(t_toklst *tokenlst, char *line);
 
+//	TOKENISATION	//
+void    tokenisation(t_toklst *tokenlst, t_chained *env);
 #endif
