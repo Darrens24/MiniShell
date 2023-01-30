@@ -1,10 +1,5 @@
 #include "minishell.h"
 
-/*static int	argument_after_cmd(void)
-{
-	return (0);
-}*/
-
 // char	**get_builtin_args() --> Parsing
 /*
 int	add_env_variable(t_shell *shell)
@@ -15,6 +10,13 @@ int	add_env_variable(t_shell *shell)
 	while (++i < nb_of_args)
 		new_back_node(shell->env_l, shell->builtin_args[i]);
 }*/
+
+int	argument_after_cmd(t_shell *shell)
+{
+	if (shell->user_command->nb_elem > 1)
+		return (1);
+	return (0);
+}
 
 int	print_export(t_shell *shell)
 {
@@ -29,37 +31,74 @@ int	print_export(t_shell *shell)
 	}
 	return (EXIT_SUCCESS);
 }
-/*
+
+int	option_n(t_shell *shell)
+{
+	if (shell->user_command->start->next
+		&& !ft_strncmp(shell->user_command->start->next->variable, "-n", 3))
+			return (1);
+	return (0);
+}
+
 int	print_echo(t_shell *shell)
 {
-	int	i;
 
-	if (option_n && !argument_after_cmd)
+	t_tok	*temp;
+
+	if (option_n(shell) && shell->user_command->nb_elem == 2)
 		return (EXIT_SUCCESS);
-	else if (!argument_after_cmd)
-		return (ft_putchar_fd('\n', STDOUT_FILENO), EXIT_SUCCESS);
-	i = 0;
-	while (i < number_of_args - 1)
-		ft_putstr_fd(shell->builtin_args[i++], STDOUT_FILENO);
-	if (option_n)
-		ft_putstr_fd(shell->builtin_args[i], STDOUT_FILENO);
+	else if (shell->user_command->nb_elem == 1)
+		return (ft_putchar_fd('\n', STDOUT_FILENO), 1);
+	if (option_n(shell))
+		temp = shell->user_command->start->next->next;
 	else
-		ft_putendl_fd(shell->builtin_args[i], STDOUT_FILENO);
+		temp = shell->user_command->start->next;
+	while (temp->next)
+	{
+		
+		ft_putstr_fd(temp->next->variable, STDOUT_FILENO);
+		temp = temp->next;
+	}
+	if (option_n(shell))
+		ft_putstr_fd(temp->variable, STDOUT_FILENO);
+	else
+		ft_putendl_fd(temp->variable, STDOUT_FILENO);
 	return (EXIT_SUCCESS);		
-}*/
+}
 
 int	export_variable(t_shell *shell)
 {
 	new_back_node(shell->sorted_env_l, shell->user_command->start->next->variable);
 	return (EXIT_SUCCESS);
 }
-
-int	argument_after_cmd(t_shell *shell)
+/*
+t_chained	*remove_current_node(t_chained *list)
 {
-	if (shell->user_command->nb_elem > 1)
-		return (1);
-	return (0);
+	t_node	*temp;
+
+	temp = list->
+
 }
+
+int	unset_variable(t_shell *shell)
+{
+	t_node	*temp;
+
+	temp = shell->sorted_env_l->end;
+	while (temp && ft_strncmp(temp->variable, shell->user_command->start->next->variable, sizeof(temp->variable)))
+		temp = temp->prev;
+	if (temp)
+	{
+		if (shell->sorted_env_l->nb_elem == 1)
+			remove_back_node(shell->sorted_env_l);
+		else		
+		{
+			remove_current_node(shell->sorted_env_l);
+		}
+	}
+	return (EXIT_SUCCESS);
+}*/
+
 
 int	execute_env_cmd(t_shell *shell)
 {
@@ -76,7 +115,14 @@ int	execute_env_cmd(t_shell *shell)
 		else
 			return (export_variable(shell));
 	}
-//	else if (ft_strncmp(shell->line_readed, "echo", 5) == 0)
-//		print_echo(shell);
+/*	else if (ft_strncmp(shell->user_command->start->variable, "unset", 6) == 0)
+	{
+		if (argument_after_cmd(shell) == FALSE)
+			return (EXIT_SUCCESS);
+		else
+			return (unset_variable(shell));
+	}*/
+	else if (ft_strncmp(shell->user_command->start->variable, "echo", 5) == 0)
+		print_echo(shell);
 	return (EXIT_SUCCESS);
 }

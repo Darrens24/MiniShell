@@ -4,6 +4,8 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+0	Session.vim	/^normal! 0$/;"	m
+050|	Session.vim	/^normal! 050|$/;"	m
 ABORT_CHAR	pdro/readline/include/readline/chardefs.h	145;"	d
 ABORT_CHAR	pdro/readline/include/readline/chardefs.h	147;"	d
 ABORT_CHAR	readline/include/readline/chardefs.h	145;"	d
@@ -326,6 +328,7 @@ STREQN	readline/share/readline/hist_purgecmd.c	41;"	d	file:
 STRUCTURES_H	structures.h	14;"	d
 SYS_INPUTRC	pdro/readline/include/readline/rlconf.h	46;"	d
 SYS_INPUTRC	readline/include/readline/rlconf.h	46;"	d
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
 TAB	pdro/readline/include/readline/chardefs.h	141;"	d
 TAB	readline/include/readline/chardefs.h	141;"	d
 TCBREAK	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anon3	file:
@@ -419,6 +422,7 @@ already	Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
 already	Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
 already	pdro/Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
 already	pdro/Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
+argument_after_cmd	env_management.c	/^int	argument_after_cmd(t_shell *shell)$/;"	f
 attemptfunc	pdro/readline/include/readline/readline.h	/^  rl_completion_func_t *attemptfunc;$/;"	m	struct:readline_state
 attemptfunc	readline/include/readline/readline.h	/^  rl_completion_func_t *attemptfunc;$/;"	m	struct:readline_state
 buffer	pdro/readline/include/readline/readline.h	/^  char *buffer;$/;"	m	struct:readline_state
@@ -435,7 +439,7 @@ change_directory	dir_management.c	/^int	change_directory(const char *path)$/;"	f
 change_prompt	pdro/readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
 change_prompt	readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
 checknextquote	parsing.c	/^static int	checknextquote(char *line, char quote, int start)$/;"	f	file:
-checknextquote	pdro/parsing.c	/^static int	checknextquote(char *line, char quote, int start)$/;"	f	file:
+checknextquote	pdro/parsing_utils.c	/^int	checknextquote(char *line, char quote, int start)$/;"	f
 clean_memory	data.c	/^int	clean_memory(t_shell *shell)$/;"	f
 cleanstock	Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f
 cleanstock	pdro/Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f
@@ -461,6 +465,7 @@ com_view	pdro/readline/share/readline/fileman.c	/^com_view (arg)$/;"	f
 com_view	readline/share/readline/fileman.c	/^com_view (arg)$/;"	f
 command_generator	pdro/readline/share/readline/fileman.c	/^command_generator (text, state)$/;"	f
 command_generator	readline/share/readline/fileman.c	/^command_generator (text, state)$/;"	f
+command_manager	commands.c	/^int	command_manager(t_shell *shell)$/;"	f
 commands	pdro/readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v
 commands	readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v
 content	Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
@@ -491,6 +496,7 @@ done	pdro/readline/share/readline/fileman.c	/^int done;$/;"	v
 done	readline/include/readline/readline.h	/^  int done;$/;"	m	struct:readline_state
 done	readline/share/readline/fileman.c	/^int done;$/;"	v
 duplicate	Libft/ft_split.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
+duplicate	Libft/ft_split_slash.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
 duplicate	pdro/Libft/ft_split.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
 dupstr	pdro/readline/share/readline/fileman.c	/^dupstr (s)$/;"	f
 dupstr	readline/share/readline/fileman.c	/^dupstr (s)$/;"	f
@@ -510,12 +516,14 @@ entryfunc	pdro/readline/include/readline/readline.h	/^  rl_compentry_func_t *ent
 entryfunc	readline/include/readline/readline.h	/^  rl_compentry_func_t *entryfunc;$/;"	m	struct:readline_state
 env_l	pdro/minishell.h	/^	struct s_chained	*env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
 env_l	structures.h	/^	struct s_chained	*env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
+errorintoken	pdro/parsing_utils.c	/^int	errorintoken(t_toklst *tokenlst)$/;"	f
 event_hook	pdro/readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	file:
 event_hook	readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	file:
 execute_directory_cmd	dir_management.c	/^int	execute_directory_cmd(t_shell *shell)$/;"	f
 execute_env_cmd	env_management.c	/^int	execute_env_cmd(t_shell *shell)$/;"	f
 execute_line	pdro/readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
 execute_line	readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
+export_variable	env_management.c	/^int	export_variable(t_shell *shell)$/;"	f
 fcopy	pdro/readline/share/readline/rlcat.c	/^fcopy(fp)$/;"	f	file:
 fcopy	readline/share/readline/rlcat.c	/^fcopy(fp)$/;"	f	file:
 fgets	pdro/readline/share/readline/rl-fgets.c	/^fgets ($/;"	f
@@ -526,9 +534,11 @@ fileman_completion	pdro/readline/share/readline/fileman.c	/^fileman_completion (
 fileman_completion	readline/share/readline/fileman.c	/^fileman_completion (text, start, end)$/;"	f
 find_command	pdro/readline/share/readline/fileman.c	/^find_command (name)$/;"	f
 find_command	readline/share/readline/fileman.c	/^find_command (name)$/;"	f
+firstparsing	pdro/parsing.c	/^int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f
 flags	pdro/readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state
 flags	readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state
 freetab	Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
+freetab	Libft/ft_split_slash.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
 freetab	pdro/Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
 ft_atoi	Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
 ft_atoi	pdro/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
@@ -606,6 +616,7 @@ ft_sizebase_fd	Libft/ft_sizebase_fd.c	/^int	ft_sizebase_fd(size_t nbr, char *bas
 ft_sizebase_fd	pdro/Libft/ft_sizebase_fd.c	/^int	ft_sizebase_fd(size_t nbr, char *base, int fd)$/;"	f
 ft_split	Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
 ft_split	pdro/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split_slash	Libft/ft_split_slash.c	/^char	**ft_split_slash(char const *s, char c)$/;"	f
 ft_strchr	Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f
 ft_strchr	pdro/Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f
 ft_strdup	Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f
@@ -677,20 +688,22 @@ invert_case_line	pdro/readline/share/readline/manexamp.c	/^invert_case_line (cou
 invert_case_line	readline/share/readline/manexamp.c	/^invert_case_line (count, key)$/;"	f
 is_empty	list_utils.c	/^int	is_empty(t_chained *list)$/;"	f
 is_empty	pdro/list_utils.c	/^int	is_empty(t_chained *list)$/;"	f
-is_emptytok	pdro/token_managment.c	/^int     is_emptytok(t_toklst *list)$/;"	f
+is_emptytok	pdro/token_managment.c	/^int	is_emptytok(t_toklst *list)$/;"	f
 is_emptytok	token_management.c	/^int     is_emptytok(t_toklst *list)$/;"	f
+is_sep	pdro/parsing_utils.c	/^int	is_sep(char c)$/;"	f
 is_set	Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	file:
 is_set	pdro/Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	file:
 is_wspace	parsing.c	/^static int	is_wspace(char c)$/;"	f	file:
-is_wspace	pdro/parsing.c	/^static int	is_wspace(char c)$/;"	f	file:
+is_wspace	pdro/parsing_utils.c	/^int	is_wspace(char c)$/;"	f
 isxdigit	pdro/readline/include/readline/chardefs.h	76;"	d
 isxdigit	readline/include/readline/chardefs.h	76;"	d
 itoa_is_neg	Libft/ft_itoa.c	/^static char	*itoa_is_neg(long n)$/;"	f	file:
 itoa_is_neg	pdro/Libft/ft_itoa.c	/^static char	*itoa_is_neg(long n)$/;"	f	file:
 itoa_is_pos	Libft/ft_itoa.c	/^static char	*itoa_is_pos(long n)$/;"	f	file:
 itoa_is_pos	pdro/Libft/ft_itoa.c	/^static char	*itoa_is_pos(long n)$/;"	f	file:
+jump_text	pdro/parsing.c	/^static int	jump_text(char *line, int i)$/;"	f	file:
 jump_wspace	parsing.c	/^static int	jump_wspace(char *line, int i)$/;"	f	file:
-jump_wspace	pdro/parsing.c	/^static int	jump_wspace(char *line, int i)$/;"	f	file:
+jump_wspace	pdro/parsing_utils.c	/^int	jump_wspace(char *line, int i)$/;"	f
 kmap	pdro/readline/include/readline/readline.h	/^  Keymap kmap;$/;"	m	struct:readline_state
 kmap	readline/include/readline/readline.h	/^  Keymap kmap;$/;"	m	struct:readline_state
 kseq	pdro/readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_state
@@ -827,7 +840,7 @@ print_list	list_utils.c	/^void	print_list(t_chained *list)$/;"	f
 print_list	pdro/list_utils.c	/^void	print_list(t_chained *list)$/;"	f
 print_pwd_linux	dir_management.c	/^int	print_pwd_linux(void)$/;"	f
 print_pwd_linux	pdro/dirmanagement.c	/^void	print_pwd_linux(void)$/;"	f
-print_toklst	pdro/token_managment.c	/^void    print_toklst(t_toklst *list)$/;"	f
+print_toklst	pdro/token_managment.c	/^void	print_toklst(t_toklst *list)$/;"	f
 print_toklst	token_management.c	/^void    print_toklst(t_toklst *list)$/;"	f
 process_line	pdro/readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f
 process_line	readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f
@@ -849,7 +862,7 @@ prompt	readline/share/readline/rl-callbacktest.c	/^const char *prompt = "rltest$
 prompt	structures.h	/^	const char			*prompt;$/;"	m	struct:s_shell
 prompt_buf	pdro/readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
 prompt_buf	readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
-quote	pdro/minishell.h	/^	int			quote;$/;"	m	struct:s_tok
+quote	pdro/minishell.h	/^	int					quote;$/;"	m	struct:s_tok
 quote	structures.h	/^	int			quote;$/;"	m	struct:s_tok
 readbuff_copystock	Libft/get_next_line.c	/^char	*readbuff_copystock(int fd, char *stock)$/;"	f
 readbuff_copystock	pdro/Libft/get_next_line.c	/^char	*readbuff_copystock(int fd, char *stock)$/;"	f
@@ -862,6 +875,7 @@ remove_back_node	list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"
 remove_back_node	pdro/list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f
 remove_back_tok	pdro/token_managment.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
 remove_back_tok	token_management.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
+remove_current_node	env_management.c	/^t_chained	*remove_current_node(t_chained *list)$/;"	f
 remove_front_node	list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f
 remove_front_node	pdro/list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f
 reserved	pdro/readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
@@ -920,6 +934,11 @@ rlstate	pdro/readline/include/readline/readline.h	/^  int rlstate;$/;"	m	struct:
 rlstate	readline/include/readline/readline.h	/^  int rlstate;$/;"	m	struct:readline_state
 running	pdro/readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
 running	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
+s:l	Session.vim	/^let s:l = 54 - ((31 * winheight(0) + 25) \/ 51)$/;"	v
+s:l	Session.vim	/^let s:l = 79 - ((35 * winheight(0) + 25) \/ 51)$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
 s_chained	pdro/minishell.h	/^typedef struct s_chained$/;"	s
 s_chained	structures.h	/^typedef struct s_chained$/;"	s
 s_list	Libft/libft.h	/^typedef struct s_list$/;"	s
@@ -934,6 +953,7 @@ s_toklst	pdro/minishell.h	/^typedef struct s_toklst$/;"	s
 s_toklst	structures.h	/^typedef struct s_toklst$/;"	s
 save_termios	pdro/readline/share/readline/rlptytest.c	/^static struct termios save_termios;$/;"	v	typeref:struct:termios	file:
 save_termios	readline/share/readline/rlptytest.c	/^static struct termios save_termios;$/;"	v	typeref:struct:termios	file:
+secondparsing	pdro/parsing.c	/^int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f
 set_deftext	pdro/readline/share/readline/rl.c	/^set_deftext ()$/;"	f	file:
 set_deftext	pdro/readline/share/readline/rlevent.c	/^set_deftext ()$/;"	f	file:
 set_deftext	readline/share/readline/rl.c	/^set_deftext ()$/;"	f	file:
@@ -955,8 +975,10 @@ slavefd	readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
 sort_list	list_utils.c	/^t_chained	*sort_list(t_chained *list)$/;"	f
 sorted_env_l	structures.h	/^	struct s_chained	*sorted_env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
 splitcount	Libft/ft_split.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
+splitcount	Libft/ft_split_slash.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
 splitcount	pdro/Libft/ft_split.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
 splitter	Libft/ft_split.c	/^char	**splitter(char const *s, char c, char **recipe)$/;"	f
+splitter	Libft/ft_split_slash.c	/^static char	**splitter(char const *s, char c, char **recipe)$/;"	f	file:
 splitter	pdro/Libft/ft_split.c	/^char	**splitter(char const *s, char c, char **recipe)$/;"	f
 start	pdro/minishell.h	/^	struct s_node		*start;$/;"	m	struct:s_chained	typeref:struct:s_chained::s_node
 start	pdro/minishell.h	/^	struct s_tok		*start;$/;"	m	struct:s_toklst	typeref:struct:s_toklst::s_tok
@@ -1008,6 +1030,7 @@ undo_code	pdro/readline/include/readline/readline.h	/^enum undo_code { UNDO_DELE
 undo_code	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	g
 undo_list	pdro/readline/include/readline/readline.h	/^typedef struct undo_list {$/;"	s
 undo_list	readline/include/readline/readline.h	/^typedef struct undo_list {$/;"	s
+unset_variable	env_management.c	/^int	unset_variable(t_shell *shell)$/;"	f
 usage	pdro/readline/share/readline/hist_erasedups.c	/^usage()$/;"	f	file:
 usage	pdro/readline/share/readline/hist_purgecmd.c	/^usage()$/;"	f	file:
 usage	pdro/readline/share/readline/rl.c	/^usage()$/;"	f	file:
@@ -1035,3 +1058,4 @@ whitespace	pdro/readline/include/readline/chardefs.h	42;"	d
 whitespace	readline/include/readline/chardefs.h	42;"	d
 wordbreakchars	pdro/readline/include/readline/readline.h	/^  char *wordbreakchars;$/;"	m	struct:readline_state
 wordbreakchars	readline/include/readline/readline.h	/^  char *wordbreakchars;$/;"	m	struct:readline_state
+zt	Session.vim	/^normal! zt$/;"	m

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/29 17:25:02 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/30 08:14:00 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main(int ac, char **av, char **envp)
 		if (!shell.line_readed)
 			break ;
 		parsing(shell.user_command, shell.line_readed);
-		printf("nb of args : %d\n", shell.user_command->nb_elem);
 		if (execute_directory_cmd(&shell) == TRUE)
 			execute_directory_cmd(&shell);
 		execute_env_cmd(&shell);

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:31:47 by eleleux           #+#    #+#             */
-/*   Updated: 2022/12/23 11:05:30 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/30 08:55:39 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+char	**ft_split_slash(char const *s, char c);
 
 #endif

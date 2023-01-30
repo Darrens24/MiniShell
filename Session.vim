@@ -11,59 +11,8 @@ endif
 set shortmess=aoO
 argglobal
 %argdel
-$argadd .
-set stal=2
-tabnew
-tabnew
-tabrewind
-edit data.c
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-exe 'vert 1resize ' . ((&columns * 31 + 86) / 173)
-exe 'vert 2resize ' . ((&columns * 141 + 86) / 173)
-argglobal
-enew
-file NERD_tree_3
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal nofen
-wincmd w
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 30 - ((29 * winheight(0) + 25) / 50)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-30
-normal! 0
-wincmd w
-exe 'vert 1resize ' . ((&columns * 31 + 86) / 173)
-exe 'vert 2resize ' . ((&columns * 141 + 86) / 173)
-tabnext
-edit parsing.c
+$argadd env_management.c
+edit minishell.h
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -84,7 +33,7 @@ exe 'vert 2resize ' . ((&columns * 70 + 86) / 173)
 exe 'vert 3resize ' . ((&columns * 70 + 86) / 173)
 argglobal
 enew
-file NERD_tree_4
+file NERD_tree_1
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -104,12 +53,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 32 - ((1 * winheight(0) + 25) / 50)
+let s:l = 79 - ((35 * winheight(0) + 25) / 51)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-32
-normal! 0
+79
+normal! 050|
 wincmd w
 argglobal
 if bufexists("env_management.c") | buffer env_management.c | else | edit env_management.c | endif
@@ -122,51 +71,20 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 81 - ((46 * winheight(0) + 25) / 50)
+let s:l = 54 - ((31 * winheight(0) + 25) / 51)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-81
+54
 normal! 0
 wincmd w
+3wincmd w
 exe 'vert 1resize ' . ((&columns * 31 + 86) / 173)
 exe 'vert 2resize ' . ((&columns * 70 + 86) / 173)
 exe 'vert 3resize ' . ((&columns * 70 + 86) / 173)
-tabnext
-edit main.c
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 39 - ((38 * winheight(0) + 25) / 50)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-39
-normal! 020|
-tabnext 3
-set stal=1
-badd +81 env_management.c
-badd +49 structures.h
-badd +92 parsing.c
-badd +41 main.c
-badd +61 minishell.h
-badd +0 data.c
-badd +22 pdro/token_managment.c
+tabnext 1
+badd +52 env_management.c
+badd +0 minishell.h
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -178,6 +96,7 @@ if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &so = s:so_save | let &siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

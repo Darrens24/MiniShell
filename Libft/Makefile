@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 17:50:06 by eleleux           #+#    #+#              #
-#    Updated: 2023/01/28 11:09:39 by eleleux          ###   ########.fr        #
+#    Updated: 2023/01/30 09:11:00 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRC = ft_atoi.c \
 	  ft_strjoin.c \
 	  ft_strtrim.c \
 	  ft_split.c \
+	  ft_split_slash.c \
 	  ft_itoa.c \
 	  ft_strmapi.c \
 	  ft_striteri.c \
