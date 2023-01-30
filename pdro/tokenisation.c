@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/30 17:31:47 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:00:11 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 {
 	int	start;
 
-	if (token->var[i] == '{')
+	if (token->var[i] && token->var[i] == '{')
 	{
 		start = ++i;
-		while (token->var[i] && ft_isalnum(token->var[i]) && token->var[i] != '}')
+		while (token->var[i] && token->var[i] != '}')
 			i++;
 		newvar = envfinder(ft_strndup(token->var, start, i), newvar, env);
 		i++;
 	}
+	else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '"' || token->var[i] == '\'')
+		newvar = ft_strjoin(newvar, "$");
 	return (newvar);
 }
 
@@ -48,13 +50,15 @@ int    envvarjumper(t_tok *token, int i, char *newvar, t_chained *env)
 {
 	(void)env;
 	(void)newvar;
-	if (token->var[i] == '{')
+	if (token->var[i] && token->var[i] == '{')
 	{
 		i++;
 		while (token->var[i] && token->var[i] != '}')
 			i++;
 		i++;
 	}
+	else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '"' || token->var[i] == '\'')
+		newvar = ft_strjoin(newvar, "$");
 	return (i);
 }
 char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
@@ -65,10 +69,10 @@ char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
 	while (token->var[i] && token->var[i] != '\"')
 	{
 		start = i;
-		if (token->var[i] == '$')
+		if (token->var[i] && token->var[i] == '$')
 		{
 			i++;
-			if (token->var[i] == '{')
+			if (token->var[i] &&token->var[i] == '{')
 			{
 				start = ++i;
 				while (token->var[i] && token->var[i] != '\"' && token->var[i] != '}')
@@ -76,6 +80,8 @@ char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
 				newvar = envfinder(ft_strndup(token->var, start, i), newvar, env);
 				i++;
 			}
+			else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '"')
+				newvar = ft_strjoin(newvar, "$");
 		}
 		else
 			newvar = ft_strjoin(newvar, ft_strndup(token->var, start, ++i));
@@ -92,10 +98,10 @@ int	dquotejumper(t_tok *token, int i, char *newvar, t_chained *env)
 	while (token->var[i] && token->var[i] != '\"')
 	{
 		start = i;
-		if (token->var[i] == '$')
+		if (token->var[i] && token->var[i] == '$')
 		{
 			i++;
-			if (token->var[i] == '{')
+			if (token->var[i] && token->var[i] == '{')
 			{
 				while (token->var[i] && token->var[i] != '\"' && token->var[i] != '}')
 					i++;
@@ -104,6 +110,8 @@ int	dquotejumper(t_tok *token, int i, char *newvar, t_chained *env)
 				newvar = envfinder(ft_strndup(token->var, start, i), newvar, env);
 				i++;
 			}
+			else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '"')
+				newvar = ft_strjoin(newvar, "$");
 		}
 		else
 			newvar = ft_strjoin(newvar, ft_strndup(token->var, start, ++i));
