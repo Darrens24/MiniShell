@@ -5,6 +5,7 @@ int	allocate_shell(t_shell *shell, char **envp)
 	int	i;
 
 	shell->line_readed = ft_calloc(1, 1);
+	shell->all_path = ft_split_slash(get_path(envp), ':');
 	shell->env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->env_l)
 		return (printf("Malloc: Env failed\n"));
@@ -28,5 +29,18 @@ int	clean_memory(t_shell *shell)
 	free(shell->env_l);
 	free(shell->sorted_env_l);
 	free(shell->user_command);
+	free(shell->correct_path);
+	free_array(shell->all_path);
+	return (EXIT_SUCCESS);
+}
+
+int	free_array(char **array)
+{
+	int	i;
+
+	i = -1;
+	while (array[++i])
+		free(array[i]);
+	free(array);
 	return (EXIT_SUCCESS);
 }
