@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/30 13:42:35 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/01/31 08:59:17 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,19 @@ int	readline_manager(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
+int	is_builtin_command(t_shell *shell)
+{
+		
+	if (ft_strncmp(shell->line_readed, "pwd", 4) == 0
+		|| ft_strncmp(shell->line_readed, "cd", 4) == 0
+		|| ft_strncmp(shell->user_command->start->var, "export", 7) == 0
+		|| ft_strncmp(shell->user_command->start->var, "env", 4) == 0
+		|| ft_strncmp(shell->user_command->start->var, "unset", 6) == 0
+		|| ft_strncmp(shell->user_command->start->var, "echo", 5) == 0)
+			return (TRUE);
+	return (FALSE);
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
@@ -39,9 +52,10 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		token_parsing(shell.user_command, shell.line_readed);
 		tokenisation(shell.user_command, shell.sorted_env_l);
-		if (execute_directory_cmd(&shell) == TRUE)
-			execute_directory_cmd(&shell);
-		execute_env_cmd(&shell);
+		if (is_builtin_command(&shell))
+			execute_env_cmd(&shell);
+		else
+			command_manager(&shell, envp);
 		if (shell.user_command->nb_elem != 0)
 			clear_toklst(shell.user_command);
 	}
