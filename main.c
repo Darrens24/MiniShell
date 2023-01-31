@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/31 11:50:47 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/01/31 16:56:04 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	main(int ac, char **av, char **envp)
 			if (is_builtin_command(&shell))
 				execute_builtin_cmd(&shell);
 			else
-				command_manager(&shell, envp);
+				execupe_pipe_command(&shell, envp);
+			//	command_manager(&shell, envp);
 			if (shell.user_command->nb_elem != 0)
 				clear_toklst(shell.user_command);
 		}

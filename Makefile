@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/01/30 15:48:13 by eleleux          ###   ########.fr        #
+#    Updated: 2023/01/31 16:06:07 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRC = main.c \
 		tokenisation.c \
 		parsing.c \
 		commands.c \
+		pipe.c \
 
 
 OBJ = $(SRC:.c=.o)

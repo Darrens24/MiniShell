@@ -65,14 +65,15 @@ int			command_manager(t_shell *shell, char **envp);
 int			execute_command(t_shell *shell, char **envp);
 char		**get_array_command(t_shell *shell);
 
-//********>> Path
+//************* Path
 
 char		*get_path(char **envp);
 char		*get_correct_path(t_shell *shell);
 
-//********>> Pipe
+//************* Pipe
 
 int			execupe_pipe_command(t_shell *shell, char **envp);
+char		**get_command_in_tok(t_shell *shell, int index);
 
 /***\	LISTS	\***/
 
@@ -89,10 +90,6 @@ int			is_empty(t_chained *list);
 t_chained	*null_list(void);
 void		print_list(t_chained *list);
 t_chained	*sort_list(t_chained *list);
-
-/***\	UTILS	\***/
-
-char		*ft_strndup(char *line, int start, int end);
 
 /***\	SIGNALS UTILS   \***/
 
