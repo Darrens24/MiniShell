@@ -1,44 +1,28 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
-!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
-!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
-!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
-!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
-!_TAG_PROC_CWD	/home/xq/Documents/42/common-core/tempshell/Minishell/	//
-!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
-!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
-!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	5.9.0	//
-$(NAME)	Libft/Makefile	/^$(NAME) : $(OBJ)$/;"	t
-$(NAME)	Makefile	/^$(NAME): $(OBJ)$/;"	t
-$(NAME)	pdro/Libft/Makefile	/^$(NAME) : $(OBJ)$/;"	t
-$(NAME)	pdro/Makefile	/^$(NAME): $(OBJ)$/;"	t
-%.o	Makefile	/^%.o: %.c$/;"	t
-.c.o	Libft/Makefile	/^.c.o :$/;"	t
-.c.o	pdro/Libft/Makefile	/^.c.o :$/;"	t
-ABORT_CHAR	pdro/readline/include/readline/chardefs.h	/^#define ABORT_CHAR /;"	d
-ABORT_CHAR	readline/include/readline/chardefs.h	/^#define ABORT_CHAR /;"	d
-ALPHABETIC	pdro/readline/include/readline/chardefs.h	/^#define ALPHABETIC(/;"	d
-ALPHABETIC	readline/include/readline/chardefs.h	/^#define ALPHABETIC(/;"	d
-ANYOTHERKEY	pdro/readline/include/readline/keymaps.h	/^#define ANYOTHERKEY /;"	d
-ANYOTHERKEY	readline/include/readline/keymaps.h	/^#define ANYOTHERKEY /;"	d
-AUTHORS	pdro/readline/share/man/man3/history.3	/^.SH AUTHORS$/;"	s	title:HISTORY
-AUTHORS	pdro/readline/share/man/man3/readline.3	/^.SH AUTHORS$/;"	s	title:READLINE
-AUTHORS	readline/share/man/man3/history.3	/^.SH AUTHORS$/;"	s	title:HISTORY
-AUTHORS	readline/share/man/man3/readline.3	/^.SH AUTHORS$/;"	s	title:READLINE
-BLK	minishell.h	/^# define BLK /;"	d
-BLK	pdro/minishell.h	/^# define BLK /;"	d
-BLU	minishell.h	/^# define BLU /;"	d
-BLU	pdro/minishell.h	/^# define BLU /;"	d
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+023|	Session.vim	/^normal! 023|$/;"	m
+09|	Session.vim	/^normal! 09|$/;"	m
+ABORT_CHAR	pdro/readline/include/readline/chardefs.h	145;"	d
+ABORT_CHAR	pdro/readline/include/readline/chardefs.h	147;"	d
+ABORT_CHAR	readline/include/readline/chardefs.h	145;"	d
+ABORT_CHAR	readline/include/readline/chardefs.h	147;"	d
+ALPHABETIC	pdro/readline/include/readline/chardefs.h	103;"	d
+ALPHABETIC	readline/include/readline/chardefs.h	103;"	d
+ANYOTHERKEY	pdro/readline/include/readline/keymaps.h	53;"	d
+ANYOTHERKEY	readline/include/readline/keymaps.h	53;"	d
+BLK	minishell.h	4;"	d
+BLK	pdro/minishell.h	4;"	d
+BLU	minishell.h	8;"	d
+BLU	pdro/minishell.h	8;"	d
+BLUE	Libft/Makefile	/^BLUE='\\033[0;34m'$/;"	m
 BLUE	Makefile	/^BLUE='\\033[0;34m'$/;"	m
-BUFFER_SIZE	Libft/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
-BUFFER_SIZE	pdro/Libft/get_next_line.h	/^#  define BUFFER_SIZE /;"	d
-BUG	pdro/readline/share/man/man3/history.3	/^.SH BUG REPORTS$/;"	s	title:HISTORY
-BUG	pdro/readline/share/man/man3/readline.3	/^.SH BUG REPORTS$/;"	s	title:READLINE
-BUG	readline/share/man/man3/history.3	/^.SH BUG REPORTS$/;"	s	title:HISTORY
-BUG	readline/share/man/man3/readline.3	/^.SH BUG REPORTS$/;"	s	title:READLINE
-BUGS	pdro/readline/share/man/man3/readline.3	/^.SH BUGS$/;"	s	title:READLINE
-BUGS	readline/share/man/man3/readline.3	/^.SH BUGS$/;"	s	title:READLINE
+BLUE	pdro/Makefile	/^BLUE='\\033[0;34m'$/;"	m
+BUFFER_SIZE	Libft/get_next_line.h	17;"	d
+BUFFER_SIZE	pdro/Libft/get_next_line.h	17;"	d
 CC	Libft/Makefile	/^CC = gcc$/;"	m
 CC	Makefile	/^CC = gcc$/;"	m
 CC	pdro/Libft/Makefile	/^CC = gcc$/;"	m
@@ -47,360 +31,330 @@ CFLAGS	Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	pdro/Libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 CFLAGS	pdro/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
-COLOR_SUPPORT	pdro/readline/include/readline/rlconf.h	/^#define COLOR_SUPPORT$/;"	d
-COLOR_SUPPORT	readline/include/readline/rlconf.h	/^#define COLOR_SUPPORT$/;"	d
-COMMAND	pdro/readline/share/readline/fileman.c	/^} COMMAND;$/;"	t	typeref:struct:__anon2b43a43e0108	file:
-COMMAND	readline/share/readline/fileman.c	/^} COMMAND;$/;"	t	typeref:struct:__anona7270ada0108	file:
-COPYRIGHT	pdro/readline/share/man/man3/history.3	/^.SH COPYRIGHT$/;"	s	title:HISTORY
-COPYRIGHT	pdro/readline/share/man/man3/readline.3	/^.SH COPYRIGHT$/;"	s	title:READLINE
-COPYRIGHT	readline/share/man/man3/history.3	/^.SH COPYRIGHT$/;"	s	title:HISTORY
-COPYRIGHT	readline/share/man/man3/readline.3	/^.SH COPYRIGHT$/;"	s	title:READLINE
-CPFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef char *CPFunction () __attribute__ ((deprecated));$/;"	t	typeref:typename:char * ()()
-CPFunction	readline/include/readline/rltypedefs.h	/^typedef char *CPFunction () __attribute__ ((deprecated));$/;"	t	typeref:typename:char * ()()
-CPPFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction () __attribute__ ((deprecated));$/;"	t	typeref:typename:char ** ()()
-CPPFunction	readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction () __attribute__ ((deprecated));$/;"	t	typeref:typename:char ** ()()
-CTRL	pdro/readline/include/readline/chardefs.h	/^#define CTRL(/;"	d
-CTRL	readline/include/readline/chardefs.h	/^#define CTRL(/;"	d
-CTRL_CHAR	pdro/readline/include/readline/chardefs.h	/^#define CTRL_CHAR(/;"	d
-CTRL_CHAR	readline/include/readline/chardefs.h	/^#define CTRL_CHAR(/;"	d
+COLOR_SUPPORT	pdro/readline/include/readline/rlconf.h	33;"	d
+COLOR_SUPPORT	readline/include/readline/rlconf.h	33;"	d
+COMMAND	pdro/readline/share/readline/fileman.c	/^} COMMAND;$/;"	t	typeref:struct:__anon4	file:
+COMMAND	readline/share/readline/fileman.c	/^} COMMAND;$/;"	t	typeref:struct:__anon2	file:
+CPFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef char *CPFunction () __attribute__ ((deprecated));$/;"	t
+CPFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef char *CPFunction ();$/;"	t
+CPFunction	readline/include/readline/rltypedefs.h	/^typedef char *CPFunction () __attribute__ ((deprecated));$/;"	t
+CPFunction	readline/include/readline/rltypedefs.h	/^typedef char *CPFunction ();$/;"	t
+CPPFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction () __attribute__ ((deprecated));$/;"	t
+CPPFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction ();$/;"	t
+CPPFunction	readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction () __attribute__ ((deprecated));$/;"	t
+CPPFunction	readline/include/readline/rltypedefs.h	/^typedef char **CPPFunction ();$/;"	t
+CTRL	pdro/readline/include/readline/chardefs.h	46;"	d
+CTRL	pdro/readline/include/readline/chardefs.h	63;"	d
+CTRL	readline/include/readline/chardefs.h	46;"	d
+CTRL	readline/include/readline/chardefs.h	63;"	d
+CTRL_CHAR	pdro/readline/include/readline/chardefs.h	60;"	d
+CTRL_CHAR	readline/include/readline/chardefs.h	60;"	d
+CYAN	Libft/Makefile	/^CYAN='\\033[0;36m'$/;"	m
 CYAN	Makefile	/^CYAN='\\033[0;36m'$/;"	m
-CYN	minishell.h	/^# define CYN /;"	d
-CYN	pdro/minishell.h	/^# define CYN /;"	d
+CYAN	pdro/Makefile	/^CYAN='\\033[0;36m'$/;"	m
+CYN	minishell.h	10;"	d
+CYN	pdro/minishell.h	10;"	d
+DARKGRAY	Libft/Makefile	/^DARKGRAY='\\033[1;30m'$/;"	m
 DARKGRAY	Makefile	/^DARKGRAY='\\033[1;30m'$/;"	m
-DECIMAL	Libft/ft_printf.h	/^# define DECIMAL /;"	d
-DECIMAL	pdro/Libft/ft_printf.h	/^# define DECIMAL /;"	d
-DEFAULT	pdro/readline/share/man/man3/readline.3	/^.SH DEFAULT KEY BINDINGS$/;"	s	title:READLINE
-DEFAULT	readline/share/man/man3/readline.3	/^.SH DEFAULT KEY BINDINGS$/;"	s	title:READLINE
-DEFAULT_INPUTRC	pdro/readline/include/readline/rlconf.h	/^#define DEFAULT_INPUTRC /;"	d
-DEFAULT_INPUTRC	readline/include/readline/rlconf.h	/^#define DEFAULT_INPUTRC /;"	d
-DESCRIPTION	pdro/readline/share/man/man3/history.3	/^.SH DESCRIPTION$/;"	s	title:HISTORY
-DESCRIPTION	pdro/readline/share/man/man3/readline.3	/^.SH DESCRIPTION$/;"	s	title:READLINE
-DESCRIPTION	readline/share/man/man3/history.3	/^.SH DESCRIPTION$/;"	s	title:HISTORY
-DESCRIPTION	readline/share/man/man3/readline.3	/^.SH DESCRIPTION$/;"	s	title:READLINE
-DISPLAY_TABS	pdro/readline/include/readline/rlconf.h	/^#define DISPLAY_TABS$/;"	d
-DISPLAY_TABS	readline/include/readline/rlconf.h	/^#define DISPLAY_TABS$/;"	d
-EDITING	pdro/readline/share/man/man3/readline.3	/^.SH EDITING COMMANDS$/;"	s	title:READLINE
-EDITING	readline/share/man/man3/readline.3	/^.SH EDITING COMMANDS$/;"	s	title:READLINE
-ESC	pdro/readline/include/readline/chardefs.h	/^#define ESC /;"	d
-ESC	readline/include/readline/chardefs.h	/^#define ESC /;"	d
-FALSE	minishell.h	/^# define FALSE /;"	d
-FILES	pdro/readline/share/man/man3/history.3	/^.SH FILES$/;"	s	title:HISTORY
-FILES	pdro/readline/share/man/man3/readline.3	/^.SH FILES$/;"	s	title:READLINE
-FILES	readline/share/man/man3/history.3	/^.SH FILES$/;"	s	title:HISTORY
-FILES	readline/share/man/man3/readline.3	/^.SH FILES$/;"	s	title:READLINE
-FT_PRINTF_H	Libft/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
-FT_PRINTF_H	pdro/Libft/ft_printf.h	/^# define FT_PRINTF_H$/;"	d
+DARKGRAY	pdro/Makefile	/^DARKGRAY='\\033[1;30m'$/;"	m
+DECIMAL	Libft/ft_printf.h	18;"	d
+DECIMAL	pdro/Libft/ft_printf.h	18;"	d
+DEFAULT_INPUTRC	pdro/readline/include/readline/rlconf.h	43;"	d
+DEFAULT_INPUTRC	readline/include/readline/rlconf.h	43;"	d
+DISPLAY_TABS	pdro/readline/include/readline/rlconf.h	49;"	d
+DISPLAY_TABS	readline/include/readline/rlconf.h	49;"	d
+ESC	pdro/readline/include/readline/chardefs.h	160;"	d
+ESC	pdro/readline/include/readline/chardefs.h	162;"	d
+ESC	readline/include/readline/chardefs.h	160;"	d
+ESC	readline/include/readline/chardefs.h	162;"	d
+FALSE	minishell.h	14;"	d
+FALSE	pdro/minishell.h	14;"	d
+FT_PRINTF_H	Libft/ft_printf.h	14;"	d
+FT_PRINTF_H	pdro/Libft/ft_printf.h	14;"	d
 FUNMAP	pdro/readline/include/readline/readline.h	/^} FUNMAP;$/;"	t	typeref:struct:_funmap
 FUNMAP	readline/include/readline/readline.h	/^} FUNMAP;$/;"	t	typeref:struct:_funmap
-Function	pdro/readline/include/readline/rltypedefs.h	/^typedef int Function () __attribute__ ((deprecated));$/;"	t	typeref:typename:int ()()
-Function	readline/include/readline/rltypedefs.h	/^typedef int Function () __attribute__ ((deprecated));$/;"	t	typeref:typename:int ()()
-GET_NEXT_LINE_H	Libft/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
-GET_NEXT_LINE_H	pdro/Libft/get_next_line.h	/^# define GET_NEXT_LINE_H$/;"	d
+Function	pdro/readline/include/readline/rltypedefs.h	/^typedef int Function () __attribute__ ((deprecated));$/;"	t
+Function	pdro/readline/include/readline/rltypedefs.h	/^typedef int Function ();$/;"	t
+Function	readline/include/readline/rltypedefs.h	/^typedef int Function () __attribute__ ((deprecated));$/;"	t
+Function	readline/include/readline/rltypedefs.h	/^typedef int Function ();$/;"	t
+GET_NEXT_LINE_H	Libft/get_next_line.h	14;"	d
+GET_NEXT_LINE_H	pdro/Libft/get_next_line.h	14;"	d
+GREEN	Libft/Makefile	/^GREEN='\\033[0;32m'$/;"	m
 GREEN	Makefile	/^GREEN='\\033[0;32m'$/;"	m
-GRN	minishell.h	/^# define GRN /;"	d
-GRN	pdro/minishell.h	/^# define GRN /;"	d
-HANDLE_SIGNALS	pdro/readline/include/readline/rlconf.h	/^#define HANDLE_SIGNALS$/;"	d
-HANDLE_SIGNALS	readline/include/readline/rlconf.h	/^#define HANDLE_SIGNALS$/;"	d
-HEXALOW	Libft/ft_printf.h	/^# define HEXALOW /;"	d
-HEXALOW	pdro/Libft/ft_printf.h	/^# define HEXALOW /;"	d
-HEXAUP	Libft/ft_printf.h	/^# define HEXAUP /;"	d
-HEXAUP	pdro/Libft/ft_printf.h	/^# define HEXAUP /;"	d
-HEXVALUE	pdro/readline/include/readline/chardefs.h	/^#define HEXVALUE(/;"	d
-HEXVALUE	readline/include/readline/chardefs.h	/^#define HEXVALUE(/;"	d
-HISTENT_BYTES	pdro/readline/include/readline/history.h	/^#define HISTENT_BYTES(/;"	d
-HISTENT_BYTES	readline/include/readline/history.h	/^#define HISTENT_BYTES(/;"	d
-HISTORY	pdro/readline/share/man/man3/history.3	/^.TH HISTORY 3 "2020 July 17" "GNU History 8.1"$/;"	t
-HISTORY	readline/share/man/man3/history.3	/^.TH HISTORY 3 "2020 July 17" "GNU History 8.1"$/;"	t
-HISTORY EXPANSION	pdro/readline/share/man/man3/history.3	/^.SH "HISTORY EXPANSION"$/;"	s	title:HISTORY
-HISTORY EXPANSION	readline/share/man/man3/history.3	/^.SH "HISTORY EXPANSION"$/;"	s	title:HISTORY
+GREEN	pdro/Makefile	/^GREEN='\\033[0;32m'$/;"	m
+GRN	minishell.h	6;"	d
+GRN	pdro/minishell.h	6;"	d
+HANDLE_SIGNALS	pdro/readline/include/readline/rlconf.h	37;"	d
+HANDLE_SIGNALS	readline/include/readline/rlconf.h	37;"	d
+HEXALOW	Libft/ft_printf.h	16;"	d
+HEXALOW	pdro/Libft/ft_printf.h	16;"	d
+HEXAUP	Libft/ft_printf.h	17;"	d
+HEXAUP	pdro/Libft/ft_printf.h	17;"	d
+HEXVALUE	pdro/readline/include/readline/chardefs.h	123;"	d
+HEXVALUE	readline/include/readline/chardefs.h	123;"	d
+HISTENT_BYTES	pdro/readline/include/readline/history.h	53;"	d
+HISTENT_BYTES	readline/include/readline/history.h	53;"	d
 HISTORY_STATE	pdro/readline/include/readline/history.h	/^} HISTORY_STATE;$/;"	t	typeref:struct:_hist_state
 HISTORY_STATE	readline/include/readline/history.h	/^} HISTORY_STATE;$/;"	t	typeref:struct:_hist_state
 HIST_ENTRY	pdro/readline/include/readline/history.h	/^} HIST_ENTRY;$/;"	t	typeref:struct:_hist_entry
 HIST_ENTRY	readline/include/readline/history.h	/^} HIST_ENTRY;$/;"	t	typeref:struct:_hist_entry
-HS_STIFLED	pdro/readline/include/readline/history.h	/^#define HS_STIFLED	/;"	d
-HS_STIFLED	readline/include/readline/history.h	/^#define HS_STIFLED	/;"	d
-History Functions	pdro/readline/share/man/man3/history.3	/^.SH "History Functions"$/;"	s	title:HISTORY
-History Functions	readline/share/man/man3/history.3	/^.SH "History Functions"$/;"	s	title:HISTORY
-INITIALIZATION	pdro/readline/share/man/man3/readline.3	/^.SH INITIALIZATION FILE$/;"	s	title:READLINE
-INITIALIZATION	readline/share/man/man3/readline.3	/^.SH INITIALIZATION FILE$/;"	s	title:READLINE
-IN_CTYPE_DOMAIN	pdro/readline/include/readline/chardefs.h	/^#  define IN_CTYPE_DOMAIN(/;"	d
-IN_CTYPE_DOMAIN	readline/include/readline/chardefs.h	/^#  define IN_CTYPE_DOMAIN(/;"	d
-ISALNUM	pdro/readline/include/readline/chardefs.h	/^#define ISALNUM(/;"	d
-ISALNUM	readline/include/readline/chardefs.h	/^#define ISALNUM(/;"	d
-ISALPHA	pdro/readline/include/readline/chardefs.h	/^#define ISALPHA(/;"	d
-ISALPHA	readline/include/readline/chardefs.h	/^#define ISALPHA(/;"	d
-ISDIGIT	pdro/readline/include/readline/chardefs.h	/^#define ISDIGIT(/;"	d
-ISDIGIT	readline/include/readline/chardefs.h	/^#define ISDIGIT(/;"	d
-ISFUNC	pdro/readline/include/readline/keymaps.h	/^#define ISFUNC /;"	d
-ISFUNC	readline/include/readline/keymaps.h	/^#define ISFUNC /;"	d
-ISKMAP	pdro/readline/include/readline/keymaps.h	/^#define ISKMAP /;"	d
-ISKMAP	readline/include/readline/keymaps.h	/^#define ISKMAP /;"	d
-ISLOWER	pdro/readline/include/readline/chardefs.h	/^#define ISLOWER(/;"	d
-ISLOWER	readline/include/readline/chardefs.h	/^#define ISLOWER(/;"	d
-ISMACR	pdro/readline/include/readline/keymaps.h	/^#define ISMACR /;"	d
-ISMACR	readline/include/readline/keymaps.h	/^#define ISMACR /;"	d
-ISOCTAL	pdro/readline/include/readline/chardefs.h	/^#  define ISOCTAL(/;"	d
-ISOCTAL	readline/include/readline/chardefs.h	/^#  define ISOCTAL(/;"	d
-ISPRINT	pdro/readline/include/readline/chardefs.h	/^#define ISPRINT(/;"	d
-ISPRINT	readline/include/readline/chardefs.h	/^#define ISPRINT(/;"	d
-ISUPPER	pdro/readline/include/readline/chardefs.h	/^#define ISUPPER(/;"	d
-ISUPPER	readline/include/readline/chardefs.h	/^#define ISUPPER(/;"	d
-ISXDIGIT	pdro/readline/include/readline/chardefs.h	/^#define ISXDIGIT(/;"	d
-ISXDIGIT	readline/include/readline/chardefs.h	/^#define ISXDIGIT(/;"	d
+HS_STIFLED	pdro/readline/include/readline/history.h	65;"	d
+HS_STIFLED	readline/include/readline/history.h	65;"	d
+IN_CTYPE_DOMAIN	pdro/readline/include/readline/chardefs.h	70;"	d
+IN_CTYPE_DOMAIN	pdro/readline/include/readline/chardefs.h	72;"	d
+IN_CTYPE_DOMAIN	readline/include/readline/chardefs.h	70;"	d
+IN_CTYPE_DOMAIN	readline/include/readline/chardefs.h	72;"	d
+ISALNUM	pdro/readline/include/readline/chardefs.h	90;"	d
+ISALNUM	readline/include/readline/chardefs.h	90;"	d
+ISALPHA	pdro/readline/include/readline/chardefs.h	91;"	d
+ISALPHA	readline/include/readline/chardefs.h	91;"	d
+ISDIGIT	pdro/readline/include/readline/chardefs.h	92;"	d
+ISDIGIT	readline/include/readline/chardefs.h	92;"	d
+ISFUNC	pdro/readline/include/readline/keymaps.h	59;"	d
+ISFUNC	readline/include/readline/keymaps.h	59;"	d
+ISKMAP	pdro/readline/include/readline/keymaps.h	60;"	d
+ISKMAP	readline/include/readline/keymaps.h	60;"	d
+ISLOWER	pdro/readline/include/readline/chardefs.h	93;"	d
+ISLOWER	readline/include/readline/chardefs.h	93;"	d
+ISMACR	pdro/readline/include/readline/keymaps.h	61;"	d
+ISMACR	readline/include/readline/keymaps.h	61;"	d
+ISOCTAL	pdro/readline/include/readline/chardefs.h	119;"	d
+ISOCTAL	readline/include/readline/chardefs.h	119;"	d
+ISPRINT	pdro/readline/include/readline/chardefs.h	86;"	d
+ISPRINT	pdro/readline/include/readline/chardefs.h	94;"	d
+ISPRINT	readline/include/readline/chardefs.h	86;"	d
+ISPRINT	readline/include/readline/chardefs.h	94;"	d
+ISUPPER	pdro/readline/include/readline/chardefs.h	95;"	d
+ISUPPER	readline/include/readline/chardefs.h	95;"	d
+ISXDIGIT	pdro/readline/include/readline/chardefs.h	96;"	d
+ISXDIGIT	readline/include/readline/chardefs.h	96;"	d
 KEYMAP_ENTRY	pdro/readline/include/readline/keymaps.h	/^} KEYMAP_ENTRY;$/;"	t	typeref:struct:_keymap_entry
 KEYMAP_ENTRY	readline/include/readline/keymaps.h	/^} KEYMAP_ENTRY;$/;"	t	typeref:struct:_keymap_entry
-KEYMAP_ENTRY_ARRAY	pdro/readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY KEYMAP_ENTRY_ARRAY[KEYMAP_SIZE];$/;"	t	typeref:typename:KEYMAP_ENTRY[KEYMAP_SIZE]
-KEYMAP_ENTRY_ARRAY	readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY KEYMAP_ENTRY_ARRAY[KEYMAP_SIZE];$/;"	t	typeref:typename:KEYMAP_ENTRY[KEYMAP_SIZE]
-KEYMAP_SIZE	pdro/readline/include/readline/keymaps.h	/^#define KEYMAP_SIZE /;"	d
-KEYMAP_SIZE	readline/include/readline/keymaps.h	/^#define KEYMAP_SIZE /;"	d
-Keymap	pdro/readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY *Keymap;$/;"	t	typeref:typename:KEYMAP_ENTRY *
-Keymap	readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY *Keymap;$/;"	t	typeref:typename:KEYMAP_ENTRY *
-LIBFT_H	Libft/libft.h	/^# define LIBFT_H$/;"	d
-LIBFT_H	pdro/Libft/libft.h	/^# define LIBFT_H$/;"	d
+KEYMAP_ENTRY_ARRAY	pdro/readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY KEYMAP_ENTRY_ARRAY[KEYMAP_SIZE];$/;"	t
+KEYMAP_ENTRY_ARRAY	readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY KEYMAP_ENTRY_ARRAY[KEYMAP_SIZE];$/;"	t
+KEYMAP_SIZE	pdro/readline/include/readline/keymaps.h	52;"	d
+KEYMAP_SIZE	readline/include/readline/keymaps.h	52;"	d
+Keymap	pdro/readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY *Keymap;$/;"	t
+Keymap	readline/include/readline/keymaps.h	/^typedef KEYMAP_ENTRY *Keymap;$/;"	t
+LIBFT_H	Libft/libft.h	14;"	d
+LIBFT_H	pdro/Libft/libft.h	14;"	d
+LIGHTBLUE	Libft/Makefile	/^LIGHTBLUE='\\033[1;34m'$/;"	m
 LIGHTBLUE	Makefile	/^LIGHTBLUE='\\033[1;34m'$/;"	m
+LIGHTBLUE	pdro/Makefile	/^LIGHTBLUE='\\033[1;34m'$/;"	m
+LIGHTCYAN	Libft/Makefile	/^LIGHTCYAN='\\033[1;36m'$/;"	m
 LIGHTCYAN	Makefile	/^LIGHTCYAN='\\033[1;36m'$/;"	m
+LIGHTCYAN	pdro/Makefile	/^LIGHTCYAN='\\033[1;36m'$/;"	m
+LIGHTGRAY	Libft/Makefile	/^LIGHTGRAY='\\033[0;37m'$/;"	m
 LIGHTGRAY	Makefile	/^LIGHTGRAY='\\033[0;37m'$/;"	m
+LIGHTGRAY	pdro/Makefile	/^LIGHTGRAY='\\033[0;37m'$/;"	m
+LIGHTGREEN	Libft/Makefile	/^LIGHTGREEN='\\033[1;32m'$/;"	m
 LIGHTGREEN	Makefile	/^LIGHTGREEN='\\033[1;32m'$/;"	m
+LIGHTGREEN	pdro/Makefile	/^LIGHTGREEN='\\033[1;32m'$/;"	m
+LIGHTPURPLE	Libft/Makefile	/^LIGHTPURPLE='\\033[1;35m'$/;"	m
 LIGHTPURPLE	Makefile	/^LIGHTPURPLE='\\033[1;35m'$/;"	m
+LIGHTPURPLE	pdro/Makefile	/^LIGHTPURPLE='\\033[1;35m'$/;"	m
+LIGHTRED	Libft/Makefile	/^LIGHTRED='\\033[1;31m'$/;"	m
 LIGHTRED	Makefile	/^LIGHTRED='\\033[1;31m'$/;"	m
-MAG	minishell.h	/^# define MAG /;"	d
-MAG	pdro/minishell.h	/^# define MAG /;"	d
-META	pdro/readline/include/readline/chardefs.h	/^#define META(/;"	d
-META	readline/include/readline/chardefs.h	/^#define META(/;"	d
-META_CHAR	pdro/readline/include/readline/chardefs.h	/^#define META_CHAR(/;"	d
-META_CHAR	readline/include/readline/chardefs.h	/^#define META_CHAR(/;"	d
-MINISHELL_H	minishell.h	/^# define MINISHELL_H$/;"	d
-MINISHELL_H	pdro/minishell.h	/^# define MINISHELL_H$/;"	d
-MULT_MATCH	pdro/readline/include/readline/readline.h	/^#define MULT_MATCH /;"	d
-MULT_MATCH	readline/include/readline/readline.h	/^#define MULT_MATCH /;"	d
+LIGHTRED	pdro/Makefile	/^LIGHTRED='\\033[1;31m'$/;"	m
+MAG	minishell.h	9;"	d
+MAG	pdro/minishell.h	9;"	d
+META	pdro/readline/include/readline/chardefs.h	64;"	d
+META	readline/include/readline/chardefs.h	64;"	d
+META_CHAR	pdro/readline/include/readline/chardefs.h	61;"	d
+META_CHAR	readline/include/readline/chardefs.h	61;"	d
+MINISHELL_H	minishell.h	2;"	d
+MINISHELL_H	pdro/minishell.h	2;"	d
+MULT_MATCH	pdro/readline/include/readline/readline.h	877;"	d
+MULT_MATCH	readline/include/readline/readline.h	877;"	d
 NAME	Libft/Makefile	/^NAME = libft.a$/;"	m
 NAME	Makefile	/^NAME = minishell$/;"	m
 NAME	pdro/Libft/Makefile	/^NAME = libft.a$/;"	m
 NAME	pdro/Makefile	/^NAME = minishell$/;"	m
-NAME	pdro/readline/share/man/man3/history.3	/^.SH NAME$/;"	s	title:HISTORY
-NAME	pdro/readline/share/man/man3/readline.3	/^.SH NAME$/;"	s	title:READLINE
-NAME	readline/share/man/man3/history.3	/^.SH NAME$/;"	s	title:HISTORY
-NAME	readline/share/man/man3/readline.3	/^.SH NAME$/;"	s	title:READLINE
-NEWLINE	pdro/readline/include/readline/chardefs.h	/^#define NEWLINE /;"	d
-NEWLINE	readline/include/readline/chardefs.h	/^#define NEWLINE /;"	d
+NEWLINE	pdro/readline/include/readline/chardefs.h	129;"	d
+NEWLINE	readline/include/readline/chardefs.h	129;"	d
+NOCOLOR	Libft/Makefile	/^NOCOLOR='\\033[0m'$/;"	m
 NOCOLOR	Makefile	/^NOCOLOR='\\033[0m'$/;"	m
-NON_NEGATIVE	pdro/readline/include/readline/chardefs.h	/^#  define NON_NEGATIVE(/;"	d
-NON_NEGATIVE	readline/include/readline/chardefs.h	/^#  define NON_NEGATIVE(/;"	d
-NOTATION	pdro/readline/share/man/man3/readline.3	/^.SH NOTATION$/;"	s	title:READLINE
-NOTATION	readline/share/man/man3/readline.3	/^.SH NOTATION$/;"	s	title:READLINE
-NO_MATCH	pdro/readline/include/readline/readline.h	/^#define NO_MATCH /;"	d
-NO_MATCH	readline/include/readline/readline.h	/^#define NO_MATCH /;"	d
+NOCOLOR	pdro/Makefile	/^NOCOLOR='\\033[0m'$/;"	m
+NON_NEGATIVE	pdro/readline/include/readline/chardefs.h	80;"	d
+NON_NEGATIVE	pdro/readline/include/readline/chardefs.h	82;"	d
+NON_NEGATIVE	readline/include/readline/chardefs.h	80;"	d
+NON_NEGATIVE	readline/include/readline/chardefs.h	82;"	d
+NO_MATCH	pdro/readline/include/readline/readline.h	875;"	d
+NO_MATCH	readline/include/readline/readline.h	875;"	d
 OBJ	Libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ	Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ	pdro/Libft/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
 OBJ	pdro/Makefile	/^OBJ = $(SRC:.c=.o)$/;"	m
-OCTVALUE	pdro/readline/include/readline/chardefs.h	/^#define OCTVALUE(/;"	d
-OCTVALUE	readline/include/readline/chardefs.h	/^#define OCTVALUE(/;"	d
+OCTVALUE	pdro/readline/include/readline/chardefs.h	121;"	d
+OCTVALUE	readline/include/readline/chardefs.h	121;"	d
+ORANGE	Libft/Makefile	/^ORANGE='\\033[0;33m'$/;"	m
 ORANGE	Makefile	/^ORANGE='\\033[0;33m'$/;"	m
-PAGE	pdro/readline/include/readline/chardefs.h	/^#define PAGE /;"	d
-PAGE	readline/include/readline/chardefs.h	/^#define PAGE /;"	d
-PARAMS	pdro/readline/include/readline/rlstdc.h	/^#    define PARAMS(/;"	d
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char **rl_completion_func_t PARAMS((const char *, int, int));$/;"	t	typeref:typename:char ** rl_completion_func_t ()((const char *,int,int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_compentry_func_t PARAMS((const char *, int));$/;"	t	typeref:typename:char * rl_compentry_func_t ()((const char *,int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcpfunc_t PARAMS((char  *));$/;"	t	typeref:typename:char * rl_cpcpfunc_t ()((char *))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcppfunc_t PARAMS((char  **));$/;"	t	typeref:typename:char * rl_cpcppfunc_t ()((char **))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpifunc_t PARAMS((int));$/;"	t	typeref:typename:char * rl_cpifunc_t ()((int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpvfunc_t PARAMS((void));$/;"	t	typeref:typename:char * rl_cpvfunc_t ()((void))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_dequote_func_t PARAMS((char *, int));$/;"	t	typeref:typename:char * rl_dequote_func_t ()((char *,int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_quote_func_t PARAMS((char *, int, char *));$/;"	t	typeref:typename:char * rl_quote_func_t ()((char *,int,char *))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t	typeref:typename:int rl_command_func_t ()((int,int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_compignore_func_t PARAMS((char **));$/;"	t	typeref:typename:int rl_compignore_func_t ()((char **))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_getc_func_t PARAMS((FILE *));$/;"	t	typeref:typename:int rl_getc_func_t ()((FILE *))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_hook_func_t PARAMS((void));$/;"	t	typeref:typename:int rl_hook_func_t ()((void))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_icpfunc_t PARAMS((char *));$/;"	t	typeref:typename:int rl_icpfunc_t ()((char *))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_icppfunc_t PARAMS((char **));$/;"	t	typeref:typename:int rl_icppfunc_t ()((char **))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_intfunc_t PARAMS((int));$/;"	t	typeref:typename:int rl_intfunc_t ()((int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_linebuf_func_t PARAMS((char *, int));$/;"	t	typeref:typename:int rl_linebuf_func_t ()((char *,int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_compdisp_func_t PARAMS((char **, int, int));$/;"	t	typeref:typename:void rl_compdisp_func_t ()((char **,int,int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_vcpfunc_t PARAMS((char *));$/;"	t	typeref:typename:void rl_vcpfunc_t ()((char *))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_vcppfunc_t PARAMS((char **));$/;"	t	typeref:typename:void rl_vcppfunc_t ()((char **))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_vintfunc_t PARAMS((int));$/;"	t	typeref:typename:void rl_vintfunc_t ()((int))
-PARAMS	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_voidfunc_t PARAMS((void));$/;"	t	typeref:typename:void rl_voidfunc_t ()((void))
-PARAMS	pdro/readline/include/readline/tilde.h	/^#    define PARAMS(/;"	d
-PARAMS	pdro/readline/include/readline/tilde.h	/^typedef char *tilde_hook_func_t PARAMS((char *));$/;"	t	typeref:typename:char * tilde_hook_func_t ()((char *))
-PARAMS	readline/include/readline/rlstdc.h	/^#    define PARAMS(/;"	d
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char **rl_completion_func_t PARAMS((const char *, int, int));$/;"	t	typeref:typename:char ** rl_completion_func_t ()((const char *,int,int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char *rl_compentry_func_t PARAMS((const char *, int));$/;"	t	typeref:typename:char * rl_compentry_func_t ()((const char *,int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcpfunc_t PARAMS((char  *));$/;"	t	typeref:typename:char * rl_cpcpfunc_t ()((char *))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcppfunc_t PARAMS((char  **));$/;"	t	typeref:typename:char * rl_cpcppfunc_t ()((char **))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpifunc_t PARAMS((int));$/;"	t	typeref:typename:char * rl_cpifunc_t ()((int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpvfunc_t PARAMS((void));$/;"	t	typeref:typename:char * rl_cpvfunc_t ()((void))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char *rl_dequote_func_t PARAMS((char *, int));$/;"	t	typeref:typename:char * rl_dequote_func_t ()((char *,int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef char *rl_quote_func_t PARAMS((char *, int, char *));$/;"	t	typeref:typename:char * rl_quote_func_t ()((char *,int,char *))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t	typeref:typename:int rl_command_func_t ()((int,int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_compignore_func_t PARAMS((char **));$/;"	t	typeref:typename:int rl_compignore_func_t ()((char **))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_getc_func_t PARAMS((FILE *));$/;"	t	typeref:typename:int rl_getc_func_t ()((FILE *))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_hook_func_t PARAMS((void));$/;"	t	typeref:typename:int rl_hook_func_t ()((void))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_icpfunc_t PARAMS((char *));$/;"	t	typeref:typename:int rl_icpfunc_t ()((char *))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_icppfunc_t PARAMS((char **));$/;"	t	typeref:typename:int rl_icppfunc_t ()((char **))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_intfunc_t PARAMS((int));$/;"	t	typeref:typename:int rl_intfunc_t ()((int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef int rl_linebuf_func_t PARAMS((char *, int));$/;"	t	typeref:typename:int rl_linebuf_func_t ()((char *,int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef void rl_compdisp_func_t PARAMS((char **, int, int));$/;"	t	typeref:typename:void rl_compdisp_func_t ()((char **,int,int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef void rl_vcpfunc_t PARAMS((char *));$/;"	t	typeref:typename:void rl_vcpfunc_t ()((char *))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef void rl_vcppfunc_t PARAMS((char **));$/;"	t	typeref:typename:void rl_vcppfunc_t ()((char **))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef void rl_vintfunc_t PARAMS((int));$/;"	t	typeref:typename:void rl_vintfunc_t ()((int))
-PARAMS	readline/include/readline/rltypedefs.h	/^typedef void rl_voidfunc_t PARAMS((void));$/;"	t	typeref:typename:void rl_voidfunc_t ()((void))
-PARAMS	readline/include/readline/tilde.h	/^#    define PARAMS(/;"	d
-PARAMS	readline/include/readline/tilde.h	/^typedef char *tilde_hook_func_t PARAMS((char *));$/;"	t	typeref:typename:char * tilde_hook_func_t ()((char *))
-PREFER_STDARG	pdro/readline/include/readline/rlstdc.h	/^#  define PREFER_STDARG$/;"	d
-PREFER_STDARG	readline/include/readline/rlstdc.h	/^#  define PREFER_STDARG$/;"	d
-PREFER_VARARGS	pdro/readline/include/readline/rlstdc.h	/^#    define PREFER_VARARGS$/;"	d
-PREFER_VARARGS	readline/include/readline/rlstdc.h	/^#    define PREFER_VARARGS$/;"	d
-PREFIX_META_HACK	pdro/readline/include/readline/rlconf.h	/^#define PREFIX_META_HACK$/;"	d
-PREFIX_META_HACK	readline/include/readline/rlconf.h	/^#define PREFIX_META_HACK$/;"	d
-PROGRAMMING WITH HISTORY FUNCTIONS	pdro/readline/share/man/man3/history.3	/^.SH "PROGRAMMING WITH HISTORY FUNCTIONS"$/;"	s	title:HISTORY
-PROGRAMMING WITH HISTORY FUNCTIONS	readline/share/man/man3/history.3	/^.SH "PROGRAMMING WITH HISTORY FUNCTIONS"$/;"	s	title:HISTORY
-PURGE_REGEXP	pdro/readline/share/readline/hist_purgecmd.c	/^#define PURGE_REGEXP	/;"	d	file:
-PURGE_REGEXP	readline/share/readline/hist_purgecmd.c	/^#define PURGE_REGEXP	/;"	d	file:
+ORANGE	pdro/Makefile	/^ORANGE='\\033[0;33m'$/;"	m
+PAGE	pdro/readline/include/readline/chardefs.h	150;"	d
+PAGE	pdro/readline/include/readline/chardefs.h	152;"	d
+PAGE	readline/include/readline/chardefs.h	150;"	d
+PAGE	readline/include/readline/chardefs.h	152;"	d
+PARAMS	pdro/readline/include/readline/rlstdc.h	33;"	d
+PARAMS	pdro/readline/include/readline/rlstdc.h	35;"	d
+PARAMS	pdro/readline/include/readline/tilde.h	36;"	d
+PARAMS	pdro/readline/include/readline/tilde.h	38;"	d
+PARAMS	readline/include/readline/rlstdc.h	33;"	d
+PARAMS	readline/include/readline/rlstdc.h	35;"	d
+PARAMS	readline/include/readline/tilde.h	36;"	d
+PARAMS	readline/include/readline/tilde.h	38;"	d
+PREFER_STDARG	pdro/readline/include/readline/rlstdc.h	48;"	d
+PREFER_STDARG	readline/include/readline/rlstdc.h	48;"	d
+PREFER_VARARGS	pdro/readline/include/readline/rlstdc.h	52;"	d
+PREFER_VARARGS	readline/include/readline/rlstdc.h	52;"	d
+PREFIX_META_HACK	pdro/readline/include/readline/rlconf.h	40;"	d
+PREFIX_META_HACK	readline/include/readline/rlconf.h	40;"	d
+PURGE_REGEXP	pdro/readline/share/readline/hist_purgecmd.c	44;"	d	file:
+PURGE_REGEXP	readline/share/readline/hist_purgecmd.c	44;"	d	file:
+PURPLE	Libft/Makefile	/^PURPLE='\\033[0;35m'$/;"	m
 PURPLE	Makefile	/^PURPLE='\\033[0;35m'$/;"	m
-READERR	pdro/readline/include/readline/readline.h	/^#define READERR	/;"	d
-READERR	readline/include/readline/readline.h	/^#define READERR	/;"	d
-READLINE	pdro/readline/share/man/man3/readline.3	/^.TH READLINE 3 "2020 October 29" "GNU Readline 8.1"$/;"	t
-READLINE	readline/share/man/man3/readline.3	/^.TH READLINE 3 "2020 October 29" "GNU Readline 8.1"$/;"	t
-READLINE_CALLBACKS	pdro/readline/include/readline/rlconf.h	/^#define READLINE_CALLBACKS$/;"	d
-READLINE_CALLBACKS	readline/include/readline/rlconf.h	/^#define READLINE_CALLBACKS$/;"	d
-READLINE_LIBRARY	pdro/readline/share/readline/hist_erasedups.c	/^#define READLINE_LIBRARY /;"	d	file:
-READLINE_LIBRARY	pdro/readline/share/readline/hist_purgecmd.c	/^#define READLINE_LIBRARY /;"	d	file:
-READLINE_LIBRARY	readline/share/readline/hist_erasedups.c	/^#define READLINE_LIBRARY /;"	d	file:
-READLINE_LIBRARY	readline/share/readline/hist_purgecmd.c	/^#define READLINE_LIBRARY /;"	d	file:
-REAL_LIBC	pdro/readline/share/readline/rl-fgets.c	/^#define REAL_LIBC /;"	d	file:
-REAL_LIBC	readline/share/readline/rl-fgets.c	/^#define REAL_LIBC /;"	d	file:
+PURPLE	pdro/Makefile	/^PURPLE='\\033[0;35m'$/;"	m
+READERR	pdro/readline/include/readline/readline.h	867;"	d
+READERR	readline/include/readline/readline.h	867;"	d
+READLINE_CALLBACKS	pdro/readline/include/readline/rlconf.h	60;"	d
+READLINE_CALLBACKS	readline/include/readline/rlconf.h	60;"	d
+READLINE_LIBRARY	pdro/readline/share/readline/hist_erasedups.c	22;"	d	file:
+READLINE_LIBRARY	pdro/readline/share/readline/hist_purgecmd.c	23;"	d	file:
+READLINE_LIBRARY	readline/share/readline/hist_erasedups.c	22;"	d	file:
+READLINE_LIBRARY	readline/share/readline/hist_purgecmd.c	23;"	d	file:
+REAL_LIBC	pdro/readline/share/readline/rl-fgets.c	133;"	d	file:
+REAL_LIBC	pdro/readline/share/readline/rl-fgets.c	135;"	d	file:
+REAL_LIBC	readline/share/readline/rl-fgets.c	133;"	d	file:
+REAL_LIBC	readline/share/readline/rl-fgets.c	135;"	d	file:
+RED	Libft/Makefile	/^RED='\\033[0;31m'$/;"	m
 RED	Makefile	/^RED='\\033[0;31m'$/;"	m
-RED	minishell.h	/^# define RED /;"	d
-RED	pdro/minishell.h	/^# define RED /;"	d
-RESET	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anonc893409d0103	file:
-RESET	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anoncaeabe390103	file:
-RETURN	pdro/readline/include/readline/chardefs.h	/^#define RETURN /;"	d
-RETURN	pdro/readline/share/man/man3/readline.3	/^.SH RETURN VALUE$/;"	s	title:READLINE
-RETURN	readline/include/readline/chardefs.h	/^#define RETURN /;"	d
-RETURN	readline/share/man/man3/readline.3	/^.SH RETURN VALUE$/;"	s	title:READLINE
-RL_COMMENT_BEGIN_DEFAULT	pdro/readline/include/readline/rlconf.h	/^#define RL_COMMENT_BEGIN_DEFAULT /;"	d
-RL_COMMENT_BEGIN_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_COMMENT_BEGIN_DEFAULT /;"	d
-RL_EMACS_MODESTR_DEFAULT	pdro/readline/include/readline/rlconf.h	/^#define RL_EMACS_MODESTR_DEFAULT	/;"	d
-RL_EMACS_MODESTR_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_EMACS_MODESTR_DEFAULT	/;"	d
-RL_EMACS_MODESTR_DEFLEN	pdro/readline/include/readline/rlconf.h	/^#define RL_EMACS_MODESTR_DEFLEN	/;"	d
-RL_EMACS_MODESTR_DEFLEN	readline/include/readline/rlconf.h	/^#define RL_EMACS_MODESTR_DEFLEN	/;"	d
-RL_ISSTATE	pdro/readline/include/readline/readline.h	/^#define RL_ISSTATE(/;"	d
-RL_ISSTATE	readline/include/readline/readline.h	/^#define RL_ISSTATE(/;"	d
-RL_PROMPT_END_IGNORE	pdro/readline/include/readline/readline.h	/^#define RL_PROMPT_END_IGNORE	/;"	d
-RL_PROMPT_END_IGNORE	readline/include/readline/readline.h	/^#define RL_PROMPT_END_IGNORE	/;"	d
-RL_PROMPT_START_IGNORE	pdro/readline/include/readline/readline.h	/^#define RL_PROMPT_START_IGNORE	/;"	d
-RL_PROMPT_START_IGNORE	readline/include/readline/readline.h	/^#define RL_PROMPT_START_IGNORE	/;"	d
-RL_READLINE_VERSION	pdro/readline/include/readline/readline.h	/^#define RL_READLINE_VERSION	/;"	d
-RL_READLINE_VERSION	readline/include/readline/readline.h	/^#define RL_READLINE_VERSION	/;"	d
-RL_SETSTATE	pdro/readline/include/readline/readline.h	/^#define RL_SETSTATE(/;"	d
-RL_SETSTATE	readline/include/readline/readline.h	/^#define RL_SETSTATE(/;"	d
-RL_STATE_CALLBACK	pdro/readline/include/readline/readline.h	/^#define RL_STATE_CALLBACK	/;"	d
-RL_STATE_CALLBACK	readline/include/readline/readline.h	/^#define RL_STATE_CALLBACK	/;"	d
-RL_STATE_CHARSEARCH	pdro/readline/include/readline/readline.h	/^#define RL_STATE_CHARSEARCH	/;"	d
-RL_STATE_CHARSEARCH	readline/include/readline/readline.h	/^#define RL_STATE_CHARSEARCH	/;"	d
-RL_STATE_COMPLETING	pdro/readline/include/readline/readline.h	/^#define RL_STATE_COMPLETING	/;"	d
-RL_STATE_COMPLETING	readline/include/readline/readline.h	/^#define RL_STATE_COMPLETING	/;"	d
-RL_STATE_DISPATCHING	pdro/readline/include/readline/readline.h	/^#define RL_STATE_DISPATCHING	/;"	d
-RL_STATE_DISPATCHING	readline/include/readline/readline.h	/^#define RL_STATE_DISPATCHING	/;"	d
-RL_STATE_DONE	pdro/readline/include/readline/readline.h	/^#define RL_STATE_DONE	/;"	d
-RL_STATE_DONE	readline/include/readline/readline.h	/^#define RL_STATE_DONE	/;"	d
-RL_STATE_INITIALIZED	pdro/readline/include/readline/readline.h	/^#define RL_STATE_INITIALIZED	/;"	d
-RL_STATE_INITIALIZED	readline/include/readline/readline.h	/^#define RL_STATE_INITIALIZED	/;"	d
-RL_STATE_INITIALIZING	pdro/readline/include/readline/readline.h	/^#define RL_STATE_INITIALIZING	/;"	d
-RL_STATE_INITIALIZING	readline/include/readline/readline.h	/^#define RL_STATE_INITIALIZING	/;"	d
-RL_STATE_INPUTPENDING	pdro/readline/include/readline/readline.h	/^#define RL_STATE_INPUTPENDING	/;"	d
-RL_STATE_INPUTPENDING	readline/include/readline/readline.h	/^#define RL_STATE_INPUTPENDING	/;"	d
-RL_STATE_ISEARCH	pdro/readline/include/readline/readline.h	/^#define RL_STATE_ISEARCH	/;"	d
-RL_STATE_ISEARCH	readline/include/readline/readline.h	/^#define RL_STATE_ISEARCH	/;"	d
-RL_STATE_MACRODEF	pdro/readline/include/readline/readline.h	/^#define RL_STATE_MACRODEF	/;"	d
-RL_STATE_MACRODEF	readline/include/readline/readline.h	/^#define RL_STATE_MACRODEF	/;"	d
-RL_STATE_MACROINPUT	pdro/readline/include/readline/readline.h	/^#define RL_STATE_MACROINPUT	/;"	d
-RL_STATE_MACROINPUT	readline/include/readline/readline.h	/^#define RL_STATE_MACROINPUT	/;"	d
-RL_STATE_METANEXT	pdro/readline/include/readline/readline.h	/^#define RL_STATE_METANEXT	/;"	d
-RL_STATE_METANEXT	readline/include/readline/readline.h	/^#define RL_STATE_METANEXT	/;"	d
-RL_STATE_MOREINPUT	pdro/readline/include/readline/readline.h	/^#define RL_STATE_MOREINPUT	/;"	d
-RL_STATE_MOREINPUT	readline/include/readline/readline.h	/^#define RL_STATE_MOREINPUT	/;"	d
-RL_STATE_MULTIKEY	pdro/readline/include/readline/readline.h	/^#define RL_STATE_MULTIKEY	/;"	d
-RL_STATE_MULTIKEY	readline/include/readline/readline.h	/^#define RL_STATE_MULTIKEY	/;"	d
-RL_STATE_NONE	pdro/readline/include/readline/readline.h	/^#define RL_STATE_NONE	/;"	d
-RL_STATE_NONE	readline/include/readline/readline.h	/^#define RL_STATE_NONE	/;"	d
-RL_STATE_NSEARCH	pdro/readline/include/readline/readline.h	/^#define RL_STATE_NSEARCH	/;"	d
-RL_STATE_NSEARCH	readline/include/readline/readline.h	/^#define RL_STATE_NSEARCH	/;"	d
-RL_STATE_NUMERICARG	pdro/readline/include/readline/readline.h	/^#define RL_STATE_NUMERICARG	/;"	d
-RL_STATE_NUMERICARG	readline/include/readline/readline.h	/^#define RL_STATE_NUMERICARG	/;"	d
-RL_STATE_OVERWRITE	pdro/readline/include/readline/readline.h	/^#define RL_STATE_OVERWRITE	/;"	d
-RL_STATE_OVERWRITE	readline/include/readline/readline.h	/^#define RL_STATE_OVERWRITE	/;"	d
-RL_STATE_READCMD	pdro/readline/include/readline/readline.h	/^#define RL_STATE_READCMD	/;"	d
-RL_STATE_READCMD	readline/include/readline/readline.h	/^#define RL_STATE_READCMD	/;"	d
-RL_STATE_REDISPLAYING	pdro/readline/include/readline/readline.h	/^#define RL_STATE_REDISPLAYING	/;"	d
-RL_STATE_REDISPLAYING	readline/include/readline/readline.h	/^#define RL_STATE_REDISPLAYING	/;"	d
-RL_STATE_SEARCH	pdro/readline/include/readline/readline.h	/^#define RL_STATE_SEARCH	/;"	d
-RL_STATE_SEARCH	readline/include/readline/readline.h	/^#define RL_STATE_SEARCH	/;"	d
-RL_STATE_SIGHANDLER	pdro/readline/include/readline/readline.h	/^#define RL_STATE_SIGHANDLER	/;"	d
-RL_STATE_SIGHANDLER	readline/include/readline/readline.h	/^#define RL_STATE_SIGHANDLER	/;"	d
-RL_STATE_TERMPREPPED	pdro/readline/include/readline/readline.h	/^#define RL_STATE_TERMPREPPED	/;"	d
-RL_STATE_TERMPREPPED	readline/include/readline/readline.h	/^#define RL_STATE_TERMPREPPED	/;"	d
-RL_STATE_TTYCSAVED	pdro/readline/include/readline/readline.h	/^#define RL_STATE_TTYCSAVED	/;"	d
-RL_STATE_TTYCSAVED	readline/include/readline/readline.h	/^#define RL_STATE_TTYCSAVED	/;"	d
-RL_STATE_UNDOING	pdro/readline/include/readline/readline.h	/^#define RL_STATE_UNDOING	/;"	d
-RL_STATE_UNDOING	readline/include/readline/readline.h	/^#define RL_STATE_UNDOING	/;"	d
-RL_STATE_VICMDONCE	pdro/readline/include/readline/readline.h	/^#define RL_STATE_VICMDONCE	/;"	d
-RL_STATE_VICMDONCE	readline/include/readline/readline.h	/^#define RL_STATE_VICMDONCE	/;"	d
-RL_STATE_VIMOTION	pdro/readline/include/readline/readline.h	/^#define RL_STATE_VIMOTION	/;"	d
-RL_STATE_VIMOTION	readline/include/readline/readline.h	/^#define RL_STATE_VIMOTION	/;"	d
-RL_UNSETSTATE	pdro/readline/include/readline/readline.h	/^#define RL_UNSETSTATE(/;"	d
-RL_UNSETSTATE	readline/include/readline/readline.h	/^#define RL_UNSETSTATE(/;"	d
-RL_VERSION_MAJOR	pdro/readline/include/readline/readline.h	/^#define RL_VERSION_MAJOR	/;"	d
-RL_VERSION_MAJOR	readline/include/readline/readline.h	/^#define RL_VERSION_MAJOR	/;"	d
-RL_VERSION_MINOR	pdro/readline/include/readline/readline.h	/^#define RL_VERSION_MINOR	/;"	d
-RL_VERSION_MINOR	readline/include/readline/readline.h	/^#define RL_VERSION_MINOR	/;"	d
-RL_VI_CMD_MODESTR_DEFAULT	pdro/readline/include/readline/rlconf.h	/^#define RL_VI_CMD_MODESTR_DEFAULT	/;"	d
-RL_VI_CMD_MODESTR_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_VI_CMD_MODESTR_DEFAULT	/;"	d
-RL_VI_CMD_MODESTR_DEFLEN	pdro/readline/include/readline/rlconf.h	/^#define RL_VI_CMD_MODESTR_DEFLEN	/;"	d
-RL_VI_CMD_MODESTR_DEFLEN	readline/include/readline/rlconf.h	/^#define RL_VI_CMD_MODESTR_DEFLEN	/;"	d
-RL_VI_INS_MODESTR_DEFAULT	pdro/readline/include/readline/rlconf.h	/^#define RL_VI_INS_MODESTR_DEFAULT	/;"	d
-RL_VI_INS_MODESTR_DEFAULT	readline/include/readline/rlconf.h	/^#define RL_VI_INS_MODESTR_DEFAULT	/;"	d
-RL_VI_INS_MODESTR_DEFLEN	pdro/readline/include/readline/rlconf.h	/^#define RL_VI_INS_MODESTR_DEFLEN	/;"	d
-RL_VI_INS_MODESTR_DEFLEN	readline/include/readline/rlconf.h	/^#define RL_VI_INS_MODESTR_DEFLEN	/;"	d
-RUBOUT	pdro/readline/include/readline/chardefs.h	/^#define RUBOUT /;"	d
-RUBOUT	readline/include/readline/chardefs.h	/^#define RUBOUT /;"	d
-SEARCHING	pdro/readline/share/man/man3/readline.3	/^.SH SEARCHING$/;"	s	title:READLINE
-SEARCHING	readline/share/man/man3/readline.3	/^.SH SEARCHING$/;"	s	title:READLINE
-SEE ALSO	pdro/readline/share/man/man3/history.3	/^.SH "SEE ALSO"$/;"	s	title:HISTORY
-SEE ALSO	pdro/readline/share/man/man3/readline.3	/^.SH "SEE ALSO"$/;"	s	title:READLINE
-SEE ALSO	readline/share/man/man3/history.3	/^.SH "SEE ALSO"$/;"	s	title:HISTORY
-SEE ALSO	readline/share/man/man3/readline.3	/^.SH "SEE ALSO"$/;"	s	title:READLINE
-SINGLE_MATCH	pdro/readline/include/readline/readline.h	/^#define SINGLE_MATCH /;"	d
-SINGLE_MATCH	readline/include/readline/readline.h	/^#define SINGLE_MATCH /;"	d
-SPACE	pdro/readline/include/readline/chardefs.h	/^#define SPACE /;"	d
-SPACE	readline/include/readline/chardefs.h	/^#define SPACE /;"	d
+RED	minishell.h	5;"	d
+RED	pdro/Makefile	/^RED='\\033[0;31m'$/;"	m
+RED	pdro/minishell.h	5;"	d
+RESET	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anon3	file:
+RESET	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anon1	file:
+RETURN	pdro/readline/include/readline/chardefs.h	133;"	d
+RETURN	readline/include/readline/chardefs.h	133;"	d
+RL_COMMENT_BEGIN_DEFAULT	pdro/readline/include/readline/rlconf.h	56;"	d
+RL_COMMENT_BEGIN_DEFAULT	readline/include/readline/rlconf.h	56;"	d
+RL_EMACS_MODESTR_DEFAULT	pdro/readline/include/readline/rlconf.h	71;"	d
+RL_EMACS_MODESTR_DEFAULT	readline/include/readline/rlconf.h	71;"	d
+RL_EMACS_MODESTR_DEFLEN	pdro/readline/include/readline/rlconf.h	72;"	d
+RL_EMACS_MODESTR_DEFLEN	readline/include/readline/rlconf.h	72;"	d
+RL_ISSTATE	pdro/readline/include/readline/readline.h	912;"	d
+RL_ISSTATE	readline/include/readline/readline.h	912;"	d
+RL_PROMPT_END_IGNORE	pdro/readline/include/readline/readline.h	871;"	d
+RL_PROMPT_END_IGNORE	readline/include/readline/readline.h	871;"	d
+RL_PROMPT_START_IGNORE	pdro/readline/include/readline/readline.h	870;"	d
+RL_PROMPT_START_IGNORE	readline/include/readline/readline.h	870;"	d
+RL_READLINE_VERSION	pdro/readline/include/readline/readline.h	42;"	d
+RL_READLINE_VERSION	readline/include/readline/readline.h	42;"	d
+RL_SETSTATE	pdro/readline/include/readline/readline.h	910;"	d
+RL_SETSTATE	readline/include/readline/readline.h	910;"	d
+RL_STATE_CALLBACK	pdro/readline/include/readline/readline.h	901;"	d
+RL_STATE_CALLBACK	readline/include/readline/readline.h	901;"	d
+RL_STATE_CHARSEARCH	pdro/readline/include/readline/readline.h	905;"	d
+RL_STATE_CHARSEARCH	readline/include/readline/readline.h	905;"	d
+RL_STATE_COMPLETING	pdro/readline/include/readline/readline.h	896;"	d
+RL_STATE_COMPLETING	readline/include/readline/readline.h	896;"	d
+RL_STATE_DISPATCHING	pdro/readline/include/readline/readline.h	887;"	d
+RL_STATE_DISPATCHING	readline/include/readline/readline.h	887;"	d
+RL_STATE_DONE	pdro/readline/include/readline/readline.h	908;"	d
+RL_STATE_DONE	readline/include/readline/readline.h	908;"	d
+RL_STATE_INITIALIZED	pdro/readline/include/readline/readline.h	883;"	d
+RL_STATE_INITIALIZED	readline/include/readline/readline.h	883;"	d
+RL_STATE_INITIALIZING	pdro/readline/include/readline/readline.h	882;"	d
+RL_STATE_INITIALIZING	readline/include/readline/readline.h	882;"	d
+RL_STATE_INPUTPENDING	pdro/readline/include/readline/readline.h	899;"	d
+RL_STATE_INPUTPENDING	readline/include/readline/readline.h	899;"	d
+RL_STATE_ISEARCH	pdro/readline/include/readline/readline.h	889;"	d
+RL_STATE_ISEARCH	readline/include/readline/readline.h	889;"	d
+RL_STATE_MACRODEF	pdro/readline/include/readline/readline.h	894;"	d
+RL_STATE_MACRODEF	readline/include/readline/readline.h	894;"	d
+RL_STATE_MACROINPUT	pdro/readline/include/readline/readline.h	893;"	d
+RL_STATE_MACROINPUT	readline/include/readline/readline.h	893;"	d
+RL_STATE_METANEXT	pdro/readline/include/readline/readline.h	886;"	d
+RL_STATE_METANEXT	readline/include/readline/readline.h	886;"	d
+RL_STATE_MOREINPUT	pdro/readline/include/readline/readline.h	888;"	d
+RL_STATE_MOREINPUT	readline/include/readline/readline.h	888;"	d
+RL_STATE_MULTIKEY	pdro/readline/include/readline/readline.h	903;"	d
+RL_STATE_MULTIKEY	readline/include/readline/readline.h	903;"	d
+RL_STATE_NONE	pdro/readline/include/readline/readline.h	880;"	d
+RL_STATE_NONE	readline/include/readline/readline.h	880;"	d
+RL_STATE_NSEARCH	pdro/readline/include/readline/readline.h	890;"	d
+RL_STATE_NSEARCH	readline/include/readline/readline.h	890;"	d
+RL_STATE_NUMERICARG	pdro/readline/include/readline/readline.h	892;"	d
+RL_STATE_NUMERICARG	readline/include/readline/readline.h	892;"	d
+RL_STATE_OVERWRITE	pdro/readline/include/readline/readline.h	895;"	d
+RL_STATE_OVERWRITE	readline/include/readline/readline.h	895;"	d
+RL_STATE_READCMD	pdro/readline/include/readline/readline.h	885;"	d
+RL_STATE_READCMD	readline/include/readline/readline.h	885;"	d
+RL_STATE_REDISPLAYING	pdro/readline/include/readline/readline.h	906;"	d
+RL_STATE_REDISPLAYING	readline/include/readline/readline.h	906;"	d
+RL_STATE_SEARCH	pdro/readline/include/readline/readline.h	891;"	d
+RL_STATE_SEARCH	readline/include/readline/readline.h	891;"	d
+RL_STATE_SIGHANDLER	pdro/readline/include/readline/readline.h	897;"	d
+RL_STATE_SIGHANDLER	readline/include/readline/readline.h	897;"	d
+RL_STATE_TERMPREPPED	pdro/readline/include/readline/readline.h	884;"	d
+RL_STATE_TERMPREPPED	readline/include/readline/readline.h	884;"	d
+RL_STATE_TTYCSAVED	pdro/readline/include/readline/readline.h	900;"	d
+RL_STATE_TTYCSAVED	readline/include/readline/readline.h	900;"	d
+RL_STATE_UNDOING	pdro/readline/include/readline/readline.h	898;"	d
+RL_STATE_UNDOING	readline/include/readline/readline.h	898;"	d
+RL_STATE_VICMDONCE	pdro/readline/include/readline/readline.h	904;"	d
+RL_STATE_VICMDONCE	readline/include/readline/readline.h	904;"	d
+RL_STATE_VIMOTION	pdro/readline/include/readline/readline.h	902;"	d
+RL_STATE_VIMOTION	readline/include/readline/readline.h	902;"	d
+RL_UNSETSTATE	pdro/readline/include/readline/readline.h	911;"	d
+RL_UNSETSTATE	readline/include/readline/readline.h	911;"	d
+RL_VERSION_MAJOR	pdro/readline/include/readline/readline.h	43;"	d
+RL_VERSION_MAJOR	readline/include/readline/readline.h	43;"	d
+RL_VERSION_MINOR	pdro/readline/include/readline/readline.h	44;"	d
+RL_VERSION_MINOR	readline/include/readline/readline.h	44;"	d
+RL_VI_CMD_MODESTR_DEFAULT	pdro/readline/include/readline/rlconf.h	76;"	d
+RL_VI_CMD_MODESTR_DEFAULT	readline/include/readline/rlconf.h	76;"	d
+RL_VI_CMD_MODESTR_DEFLEN	pdro/readline/include/readline/rlconf.h	77;"	d
+RL_VI_CMD_MODESTR_DEFLEN	readline/include/readline/rlconf.h	77;"	d
+RL_VI_INS_MODESTR_DEFAULT	pdro/readline/include/readline/rlconf.h	74;"	d
+RL_VI_INS_MODESTR_DEFAULT	readline/include/readline/rlconf.h	74;"	d
+RL_VI_INS_MODESTR_DEFLEN	pdro/readline/include/readline/rlconf.h	75;"	d
+RL_VI_INS_MODESTR_DEFLEN	readline/include/readline/rlconf.h	75;"	d
+RUBOUT	pdro/readline/include/readline/chardefs.h	137;"	d
+RUBOUT	readline/include/readline/chardefs.h	137;"	d
+SINGLE_MATCH	pdro/readline/include/readline/readline.h	876;"	d
+SINGLE_MATCH	readline/include/readline/readline.h	876;"	d
+SPACE	pdro/readline/include/readline/chardefs.h	155;"	d
+SPACE	pdro/readline/include/readline/chardefs.h	157;"	d
+SPACE	readline/include/readline/chardefs.h	155;"	d
+SPACE	readline/include/readline/chardefs.h	157;"	d
 SRC	Libft/Makefile	/^SRC = ft_atoi.c \\$/;"	m
 SRC	Makefile	/^SRC = main.c \\$/;"	m
 SRC	pdro/Libft/Makefile	/^SRC = ft_atoi.c \\$/;"	m
 SRC	pdro/Makefile	/^SRC = main.c \\$/;"	m
-STDIN_FILENO	pdro/readline/share/readline/excallback.c	/^#  define STDIN_FILENO /;"	d	file:
-STDIN_FILENO	readline/share/readline/excallback.c	/^#  define STDIN_FILENO /;"	d	file:
-STREQ	pdro/readline/share/readline/hist_erasedups.c	/^#define STREQ(/;"	d	file:
-STREQ	pdro/readline/share/readline/hist_purgecmd.c	/^#define STREQ(/;"	d	file:
-STREQ	readline/share/readline/hist_erasedups.c	/^#define STREQ(/;"	d	file:
-STREQ	readline/share/readline/hist_purgecmd.c	/^#define STREQ(/;"	d	file:
-STREQN	pdro/readline/share/readline/hist_erasedups.c	/^#define STREQN(/;"	d	file:
-STREQN	pdro/readline/share/readline/hist_purgecmd.c	/^#define STREQN(/;"	d	file:
-STREQN	readline/share/readline/hist_erasedups.c	/^#define STREQN(/;"	d	file:
-STREQN	readline/share/readline/hist_purgecmd.c	/^#define STREQN(/;"	d	file:
-STRUCTURES_H	structures.h	/^# define STRUCTURES_H$/;"	d
-SYNOPSIS	pdro/readline/share/man/man3/readline.3	/^.SH SYNOPSIS$/;"	s	title:READLINE
-SYNOPSIS	readline/share/man/man3/readline.3	/^.SH SYNOPSIS$/;"	s	title:READLINE
-SYS_INPUTRC	pdro/readline/include/readline/rlconf.h	/^#define SYS_INPUTRC /;"	d
-SYS_INPUTRC	readline/include/readline/rlconf.h	/^#define SYS_INPUTRC /;"	d
-TAB	pdro/readline/include/readline/chardefs.h	/^#define TAB /;"	d
-TAB	readline/include/readline/chardefs.h	/^#define TAB /;"	d
-TCBREAK	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anonc893409d0103	file:
-TCBREAK	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anoncaeabe390103	file:
-TRUE	minishell.h	/^# define TRUE /;"	d
-UNCTRL	pdro/readline/include/readline/chardefs.h	/^#define UNCTRL(/;"	d
-UNCTRL	readline/include/readline/chardefs.h	/^#define UNCTRL(/;"	d
+STDIN_FILENO	pdro/readline/share/readline/excallback.c	60;"	d	file:
+STDIN_FILENO	readline/share/readline/excallback.c	60;"	d	file:
+STREQ	pdro/readline/share/readline/hist_erasedups.c	37;"	d	file:
+STREQ	pdro/readline/share/readline/hist_purgecmd.c	40;"	d	file:
+STREQ	readline/share/readline/hist_erasedups.c	37;"	d	file:
+STREQ	readline/share/readline/hist_purgecmd.c	40;"	d	file:
+STREQN	pdro/readline/share/readline/hist_erasedups.c	38;"	d	file:
+STREQN	pdro/readline/share/readline/hist_purgecmd.c	41;"	d	file:
+STREQN	readline/share/readline/hist_erasedups.c	38;"	d	file:
+STREQN	readline/share/readline/hist_purgecmd.c	41;"	d	file:
+STRUCTURES_H	pdro/structures.h	14;"	d
+STRUCTURES_H	structures.h	14;"	d
+SYS_INPUTRC	pdro/readline/include/readline/rlconf.h	46;"	d
+SYS_INPUTRC	readline/include/readline/rlconf.h	46;"	d
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
+TAB	pdro/readline/include/readline/chardefs.h	141;"	d
+TAB	readline/include/readline/chardefs.h	141;"	d
+TCBREAK	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anon3	file:
+TCBREAK	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	e	enum:__anon1	file:
+TRUE	minishell.h	13;"	d
+TRUE	pdro/minishell.h	13;"	d
+UNCTRL	pdro/readline/include/readline/chardefs.h	49;"	d
+UNCTRL	pdro/readline/include/readline/chardefs.h	67;"	d
+UNCTRL	readline/include/readline/chardefs.h	49;"	d
+UNCTRL	readline/include/readline/chardefs.h	67;"	d
 UNDO_BEGIN	pdro/readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
 UNDO_BEGIN	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
 UNDO_DELETE	pdro/readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
@@ -411,50 +365,52 @@ UNDO_INSERT	pdro/readline/include/readline/readline.h	/^enum undo_code { UNDO_DE
 UNDO_INSERT	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	e	enum:undo_code
 UNDO_LIST	pdro/readline/include/readline/readline.h	/^} UNDO_LIST;$/;"	t	typeref:struct:undo_list
 UNDO_LIST	readline/include/readline/readline.h	/^} UNDO_LIST;$/;"	t	typeref:struct:undo_list
-UNMETA	pdro/readline/include/readline/chardefs.h	/^#define UNMETA(/;"	d
-UNMETA	readline/include/readline/chardefs.h	/^#define UNMETA(/;"	d
-USE_VARARGS	pdro/readline/include/readline/rlstdc.h	/^#    define USE_VARARGS$/;"	d
-USE_VARARGS	pdro/readline/include/readline/rlstdc.h	/^#  define USE_VARARGS$/;"	d
-USE_VARARGS	readline/include/readline/rlstdc.h	/^#    define USE_VARARGS$/;"	d
-USE_VARARGS	readline/include/readline/rlstdc.h	/^#  define USE_VARARGS$/;"	d
-VFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef void VFunction () __attribute__ ((deprecated));$/;"	t	typeref:typename:void ()()
-VFunction	readline/include/readline/rltypedefs.h	/^typedef void VFunction () __attribute__ ((deprecated));$/;"	t	typeref:typename:void ()()
-VISIBLE_STATS	pdro/readline/include/readline/rlconf.h	/^#define VISIBLE_STATS$/;"	d
-VISIBLE_STATS	readline/include/readline/rlconf.h	/^#define VISIBLE_STATS$/;"	d
-VI_MODE	pdro/readline/include/readline/rlconf.h	/^#define VI_MODE$/;"	d
-VI_MODE	readline/include/readline/rlconf.h	/^#define VI_MODE$/;"	d
+UNMETA	pdro/readline/include/readline/chardefs.h	66;"	d
+UNMETA	readline/include/readline/chardefs.h	66;"	d
+USE_VARARGS	pdro/readline/include/readline/rlstdc.h	49;"	d
+USE_VARARGS	pdro/readline/include/readline/rlstdc.h	53;"	d
+USE_VARARGS	readline/include/readline/rlstdc.h	49;"	d
+USE_VARARGS	readline/include/readline/rlstdc.h	53;"	d
+VFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef void VFunction () __attribute__ ((deprecated));$/;"	t
+VFunction	pdro/readline/include/readline/rltypedefs.h	/^typedef void VFunction ();$/;"	t
+VFunction	readline/include/readline/rltypedefs.h	/^typedef void VFunction () __attribute__ ((deprecated));$/;"	t
+VFunction	readline/include/readline/rltypedefs.h	/^typedef void VFunction ();$/;"	t
+VISIBLE_STATS	pdro/readline/include/readline/rlconf.h	29;"	d
+VISIBLE_STATS	readline/include/readline/rlconf.h	29;"	d
+VI_MODE	pdro/readline/include/readline/rlconf.h	26;"	d
+VI_MODE	readline/include/readline/rlconf.h	26;"	d
+WHITE	Libft/Makefile	/^WHITE='\\033[1;37m'$/;"	m
 WHITE	Makefile	/^WHITE='\\033[1;37m'$/;"	m
-WHT	minishell.h	/^# define WHT /;"	d
-WHT	pdro/minishell.h	/^# define WHT /;"	d
-YEL	minishell.h	/^# define YEL /;"	d
-YEL	pdro/minishell.h	/^# define YEL /;"	d
+WHITE	pdro/Makefile	/^WHITE='\\033[1;37m'$/;"	m
+WHT	minishell.h	11;"	d
+WHT	pdro/minishell.h	11;"	d
+YEL	minishell.h	7;"	d
+YEL	pdro/minishell.h	7;"	d
+YELLOW	Libft/Makefile	/^YELLOW='\\033[1;33m'$/;"	m
 YELLOW	Makefile	/^YELLOW='\\033[1;33m'$/;"	m
-_CHARDEFS_H_	pdro/readline/include/readline/chardefs.h	/^#define _CHARDEFS_H_$/;"	d
-_CHARDEFS_H_	readline/include/readline/chardefs.h	/^#define _CHARDEFS_H_$/;"	d
-_FUNCTION_DEF	pdro/readline/include/readline/rltypedefs.h	/^#  define _FUNCTION_DEF$/;"	d
-_FUNCTION_DEF	readline/include/readline/rltypedefs.h	/^#  define _FUNCTION_DEF$/;"	d
-_HISTORY_H_	pdro/readline/include/readline/history.h	/^#define _HISTORY_H_$/;"	d
-_HISTORY_H_	readline/include/readline/history.h	/^#define _HISTORY_H_$/;"	d
-_KEYMAPS_H_	pdro/readline/include/readline/keymaps.h	/^#define _KEYMAPS_H_$/;"	d
-_KEYMAPS_H_	readline/include/readline/keymaps.h	/^#define _KEYMAPS_H_$/;"	d
-_READLINE_H_	pdro/readline/include/readline/readline.h	/^#define _READLINE_H_$/;"	d
-_READLINE_H_	readline/include/readline/readline.h	/^#define _READLINE_H_$/;"	d
-_RLCONF_H_	pdro/readline/include/readline/rlconf.h	/^#define _RLCONF_H_$/;"	d
-_RLCONF_H_	readline/include/readline/rlconf.h	/^#define _RLCONF_H_$/;"	d
-_RL_FUNCTION_TYPEDEF	pdro/readline/include/readline/rltypedefs.h	/^#  define _RL_FUNCTION_TYPEDEF$/;"	d
-_RL_FUNCTION_TYPEDEF	readline/include/readline/rltypedefs.h	/^#  define _RL_FUNCTION_TYPEDEF$/;"	d
-_RL_STDC_H_	pdro/readline/include/readline/rlstdc.h	/^#define _RL_STDC_H_$/;"	d
-_RL_STDC_H_	readline/include/readline/rlstdc.h	/^#define _RL_STDC_H_$/;"	d
-_RL_TYPEDEFS_H_	pdro/readline/include/readline/rltypedefs.h	/^#define _RL_TYPEDEFS_H_$/;"	d
-_RL_TYPEDEFS_H_	readline/include/readline/rltypedefs.h	/^#define _RL_TYPEDEFS_H_$/;"	d
-_TILDE_H_	pdro/readline/include/readline/tilde.h	/^#  define _TILDE_H_$/;"	d
-_TILDE_H_	readline/include/readline/tilde.h	/^#  define _TILDE_H_$/;"	d
-__anon2b43a43e0108	pdro/readline/share/readline/fileman.c	/^typedef struct {$/;"	s	file:
-__anona7270ada0108	readline/share/readline/fileman.c	/^typedef struct {$/;"	s	file:
-__anonc893409d0103	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	g	file:
-__anoncaeabe390103	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	g	file:
-__attribute__	pdro/readline/include/readline/rlstdc.h	/^#    define __attribute__(/;"	d
-__attribute__	readline/include/readline/rlstdc.h	/^#    define __attribute__(/;"	d
+YELLOW	pdro/Makefile	/^YELLOW='\\033[1;33m'$/;"	m
+_CHARDEFS_H_	pdro/readline/include/readline/chardefs.h	23;"	d
+_CHARDEFS_H_	readline/include/readline/chardefs.h	23;"	d
+_FUNCTION_DEF	pdro/readline/include/readline/rltypedefs.h	32;"	d
+_FUNCTION_DEF	readline/include/readline/rltypedefs.h	32;"	d
+_HISTORY_H_	pdro/readline/include/readline/history.h	23;"	d
+_HISTORY_H_	readline/include/readline/history.h	23;"	d
+_KEYMAPS_H_	pdro/readline/include/readline/keymaps.h	23;"	d
+_KEYMAPS_H_	readline/include/readline/keymaps.h	23;"	d
+_READLINE_H_	pdro/readline/include/readline/readline.h	23;"	d
+_READLINE_H_	readline/include/readline/readline.h	23;"	d
+_RLCONF_H_	pdro/readline/include/readline/rlconf.h	23;"	d
+_RLCONF_H_	readline/include/readline/rlconf.h	23;"	d
+_RL_FUNCTION_TYPEDEF	pdro/readline/include/readline/rltypedefs.h	51;"	d
+_RL_FUNCTION_TYPEDEF	readline/include/readline/rltypedefs.h	51;"	d
+_RL_STDC_H_	pdro/readline/include/readline/rlstdc.h	23;"	d
+_RL_STDC_H_	readline/include/readline/rlstdc.h	23;"	d
+_RL_TYPEDEFS_H_	pdro/readline/include/readline/rltypedefs.h	23;"	d
+_RL_TYPEDEFS_H_	readline/include/readline/rltypedefs.h	23;"	d
+_TILDE_H_	pdro/readline/include/readline/tilde.h	24;"	d
+_TILDE_H_	readline/include/readline/tilde.h	24;"	d
+__attribute__	pdro/readline/include/readline/rlstdc.h	41;"	d
+__attribute__	readline/include/readline/rlstdc.h	41;"	d
 _funmap	pdro/readline/include/readline/readline.h	/^typedef struct _funmap {$/;"	s
 _funmap	readline/include/readline/readline.h	/^typedef struct _funmap {$/;"	s
 _hist_entry	pdro/readline/include/readline/history.h	/^typedef struct _hist_entry {$/;"	s
@@ -463,59 +419,57 @@ _hist_state	pdro/readline/include/readline/history.h	/^typedef struct _hist_stat
 _hist_state	readline/include/readline/history.h	/^typedef struct _hist_state {$/;"	s
 _keymap_entry	pdro/readline/include/readline/keymaps.h	/^typedef struct _keymap_entry {$/;"	s
 _keymap_entry	readline/include/readline/keymaps.h	/^typedef struct _keymap_entry {$/;"	s
-_rl_digit_p	pdro/readline/include/readline/chardefs.h	/^#define _rl_digit_p(/;"	d
-_rl_digit_p	readline/include/readline/chardefs.h	/^#define _rl_digit_p(/;"	d
-_rl_digit_value	pdro/readline/include/readline/chardefs.h	/^#  define _rl_digit_value(/;"	d
-_rl_digit_value	readline/include/readline/chardefs.h	/^#  define _rl_digit_value(/;"	d
-_rl_isident	pdro/readline/include/readline/chardefs.h	/^#  define _rl_isident(/;"	d
-_rl_isident	readline/include/readline/chardefs.h	/^#  define _rl_isident(/;"	d
-_rl_lowercase_p	pdro/readline/include/readline/chardefs.h	/^#define _rl_lowercase_p(/;"	d
-_rl_lowercase_p	readline/include/readline/chardefs.h	/^#define _rl_lowercase_p(/;"	d
-_rl_pure_alphabetic	pdro/readline/include/readline/chardefs.h	/^#define _rl_pure_alphabetic(/;"	d
-_rl_pure_alphabetic	readline/include/readline/chardefs.h	/^#define _rl_pure_alphabetic(/;"	d
-_rl_to_lower	pdro/readline/include/readline/chardefs.h	/^#  define _rl_to_lower(/;"	d
-_rl_to_lower	readline/include/readline/chardefs.h	/^#  define _rl_to_lower(/;"	d
-_rl_to_upper	pdro/readline/include/readline/chardefs.h	/^#  define _rl_to_upper(/;"	d
-_rl_to_upper	readline/include/readline/chardefs.h	/^#  define _rl_to_upper(/;"	d
-_rl_uppercase_p	pdro/readline/include/readline/chardefs.h	/^#define _rl_uppercase_p(/;"	d
-_rl_uppercase_p	readline/include/readline/chardefs.h	/^#define _rl_uppercase_p(/;"	d
-all	Libft/Makefile	/^all : $(NAME)$/;"	t
-all	Makefile	/^all: $(NAME)$/;"	t
-all	pdro/Libft/Makefile	/^all : $(NAME)$/;"	t
-all	pdro/Makefile	/^all: $(NAME)$/;"	t
-allocate_shell	data.c	/^int	allocate_shell(t_shell *shell, char **envp)$/;"	f	typeref:typename:int
-allocate_shell	pdro/data.c	/^int			allocate_shell(t_shell *shell, char **envp)$/;"	f	typeref:typename:int
-already	Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	typeref:typename:int	file:
-already	Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	typeref:typename:int	file:
-already	pdro/Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	typeref:typename:int	file:
-already	pdro/Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	typeref:typename:int	file:
-argument_after_cmd	env_management.c	/^int	argument_after_cmd(t_shell *shell)$/;"	f	typeref:typename:int
-attemptfunc	pdro/readline/include/readline/readline.h	/^  rl_completion_func_t *attemptfunc;$/;"	m	struct:readline_state	typeref:typename:rl_completion_func_t *
-attemptfunc	readline/include/readline/readline.h	/^  rl_completion_func_t *attemptfunc;$/;"	m	struct:readline_state	typeref:typename:rl_completion_func_t *
-buffer	pdro/readline/include/readline/readline.h	/^  char *buffer;$/;"	m	struct:readline_state	typeref:typename:char *
-buffer	readline/include/readline/readline.h	/^  char *buffer;$/;"	m	struct:readline_state	typeref:typename:char *
-buflen	pdro/readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state	typeref:typename:int
-buflen	readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state	typeref:typename:int
-catchsigs	pdro/readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state	typeref:typename:int
-catchsigs	readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state	typeref:typename:int
-catchsigwinch	pdro/readline/include/readline/readline.h	/^  int catchsigwinch;$/;"	m	struct:readline_state	typeref:typename:int
-catchsigwinch	readline/include/readline/readline.h	/^  int catchsigwinch;$/;"	m	struct:readline_state	typeref:typename:int
-cb_linehandler	pdro/readline/share/readline/rl-callbacktest.c	/^cb_linehandler (char *line)$/;"	f	typeref:typename:void	file:
-cb_linehandler	readline/share/readline/rl-callbacktest.c	/^cb_linehandler (char *line)$/;"	f	typeref:typename:void	file:
-change_directory	dir_management.c	/^int	change_directory(const char *path)$/;"	f	typeref:typename:int
-change_prompt	pdro/readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f	typeref:typename:int
-change_prompt	readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f	typeref:typename:int
-checknextquote	parsing_utils.c	/^int	checknextquote(char *line, char quote, int start)$/;"	f	typeref:typename:int
-checknextquote	pdro/parsing_utils.c	/^int	checknextquote(char *line, char quote, int start)$/;"	f	typeref:typename:int
-clean	Libft/Makefile	/^clean :$/;"	t
-clean	Makefile	/^clean:$/;"	t
-clean	pdro/Libft/Makefile	/^clean :$/;"	t
-clean	pdro/Makefile	/^clean:$/;"	t
-clean_memory	data.c	/^int	clean_memory(t_shell *shell)$/;"	f	typeref:typename:int
-cleanstock	Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f	typeref:typename:char *
-cleanstock	pdro/Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f	typeref:typename:char *
-clear_toklst	pdro/token_managment.c	/^void	clear_toklst(t_toklst *lst)$/;"	f	typeref:typename:void
-clear_toklst	token_managment.c	/^void	clear_toklst(t_toklst *lst)$/;"	f	typeref:typename:void
+_rl_digit_p	pdro/readline/include/readline/chardefs.h	100;"	d
+_rl_digit_p	readline/include/readline/chardefs.h	100;"	d
+_rl_digit_value	pdro/readline/include/readline/chardefs.h	111;"	d
+_rl_digit_value	readline/include/readline/chardefs.h	111;"	d
+_rl_isident	pdro/readline/include/readline/chardefs.h	115;"	d
+_rl_isident	readline/include/readline/chardefs.h	115;"	d
+_rl_lowercase_p	pdro/readline/include/readline/chardefs.h	98;"	d
+_rl_lowercase_p	readline/include/readline/chardefs.h	98;"	d
+_rl_pure_alphabetic	pdro/readline/include/readline/chardefs.h	102;"	d
+_rl_pure_alphabetic	readline/include/readline/chardefs.h	102;"	d
+_rl_to_lower	pdro/readline/include/readline/chardefs.h	107;"	d
+_rl_to_lower	readline/include/readline/chardefs.h	107;"	d
+_rl_to_upper	pdro/readline/include/readline/chardefs.h	106;"	d
+_rl_to_upper	readline/include/readline/chardefs.h	106;"	d
+_rl_uppercase_p	pdro/readline/include/readline/chardefs.h	99;"	d
+_rl_uppercase_p	readline/include/readline/chardefs.h	99;"	d
+all_path	structures.h	/^	char				**all_path;$/;"	m	struct:s_shell
+allocate_shell	data.c	/^int	allocate_shell(t_shell *shell, char **envp)$/;"	f
+allocate_shell	pdro/data.c	/^int	allocate_shell(t_shell *shell, char **envp)$/;"	f
+already	Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
+already	Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
+already	pdro/Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
+already	pdro/Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
+argument_after_cmd	env_management.c	/^int	argument_after_cmd(t_shell *shell)$/;"	f
+argument_after_cmd	pdro/env_management.c	/^int	argument_after_cmd(t_shell *shell)$/;"	f
+array_command	structures.h	/^	char				**array_command;$/;"	m	struct:s_shell
+attemptfunc	pdro/readline/include/readline/readline.h	/^  rl_completion_func_t *attemptfunc;$/;"	m	struct:readline_state
+attemptfunc	readline/include/readline/readline.h	/^  rl_completion_func_t *attemptfunc;$/;"	m	struct:readline_state
+buffer	pdro/readline/include/readline/readline.h	/^  char *buffer;$/;"	m	struct:readline_state
+buffer	readline/include/readline/readline.h	/^  char *buffer;$/;"	m	struct:readline_state
+buflen	pdro/readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state
+buflen	readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state
+catchsigs	pdro/readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state
+catchsigs	readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state
+catchsigwinch	pdro/readline/include/readline/readline.h	/^  int catchsigwinch;$/;"	m	struct:readline_state
+catchsigwinch	readline/include/readline/readline.h	/^  int catchsigwinch;$/;"	m	struct:readline_state
+cb_linehandler	pdro/readline/share/readline/rl-callbacktest.c	/^cb_linehandler (char *line)$/;"	f	file:
+cb_linehandler	readline/share/readline/rl-callbacktest.c	/^cb_linehandler (char *line)$/;"	f	file:
+change_directory	dir_management.c	/^int	change_directory(const char *path)$/;"	f
+change_directory	pdro/dir_management.c	/^int	change_directory(const char *path)$/;"	f
+change_prompt	pdro/readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
+change_prompt	readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
+checknextquote	parsing_utils.c	/^int	checknextquote(char *line, char quote, int start)$/;"	f
+checknextquote	pdro/parsing_utils.c	/^int	checknextquote(char *line, char quote, int start)$/;"	f
+clean_memory	data.c	/^int	clean_memory(t_shell *shell)$/;"	f
+clean_memory	pdro/data.c	/^int	clean_memory(t_shell *shell)$/;"	f
+cleanstock	Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f
+cleanstock	pdro/Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f
+clear_toklst	pdro/token_managment.c	/^void	clear_toklst(t_toklst *lst)$/;"	f
+clear_toklst	token_management.c	/^void	clear_toklst(t_toklst *lst)$/;"	f
+clear_toklst	token_managment.c	/^void	clear_toklst(t_toklst *lst)$/;"	f
 com_cd	pdro/readline/share/readline/fileman.c	/^com_cd (arg)$/;"	f
 com_cd	readline/share/readline/fileman.c	/^com_cd (arg)$/;"	f
 com_delete	pdro/readline/share/readline/fileman.c	/^com_delete (arg)$/;"	f
@@ -536,571 +490,649 @@ com_view	pdro/readline/share/readline/fileman.c	/^com_view (arg)$/;"	f
 com_view	readline/share/readline/fileman.c	/^com_view (arg)$/;"	f
 command_generator	pdro/readline/share/readline/fileman.c	/^command_generator (text, state)$/;"	f
 command_generator	readline/share/readline/fileman.c	/^command_generator (text, state)$/;"	f
-command_manager	commands.c	/^int	command_manager(t_shell *shell)$/;"	f	typeref:typename:int
-commands	pdro/readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v	typeref:typename:COMMAND[]
-commands	readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v	typeref:typename:COMMAND[]
-content	Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
-content	pdro/Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
-control_character_bit	pdro/readline/include/readline/chardefs.h	/^#define control_character_bit /;"	d
-control_character_bit	readline/include/readline/chardefs.h	/^#define control_character_bit /;"	d
-control_character_mask	pdro/readline/include/readline/chardefs.h	/^#define control_character_mask /;"	d
-control_character_mask	readline/include/readline/chardefs.h	/^#define control_character_mask /;"	d
-control_character_threshold	pdro/readline/include/readline/chardefs.h	/^#define control_character_threshold /;"	d
-control_character_threshold	readline/include/readline/chardefs.h	/^#define control_character_threshold /;"	d
-copystock	Libft/get_next_line.c	/^char	*copystock(char *stock, char *buffer)$/;"	f	typeref:typename:char *
-copystock	pdro/Libft/get_next_line.c	/^char	*copystock(char *stock, char *buffer)$/;"	f	typeref:typename:char *
-count_set	Libft/ft_strtrim.c	/^int	count_set(char const *s1, char const *set)$/;"	f	typeref:typename:int
-count_set	pdro/Libft/ft_strtrim.c	/^int	count_set(char const *s1, char const *set)$/;"	f	typeref:typename:int
-custom_deprep_term_function	pdro/readline/share/readline/rlptytest.c	/^custom_deprep_term_function ()$/;"	f	typeref:typename:void	file:
-custom_deprep_term_function	readline/share/readline/rlptytest.c	/^custom_deprep_term_function ()$/;"	f	typeref:typename:void	file:
-data	pdro/readline/include/readline/history.h	/^  histdata_t data;$/;"	m	struct:_hist_entry	typeref:typename:histdata_t
-data	readline/include/readline/history.h	/^  histdata_t data;$/;"	m	struct:_hist_entry	typeref:typename:histdata_t
-deftext	pdro/readline/share/readline/rl.c	/^static char *deftext;$/;"	v	typeref:typename:char *	file:
-deftext	pdro/readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	typeref:typename:char *	file:
-deftext	readline/share/readline/rl.c	/^static char *deftext;$/;"	v	typeref:typename:char *	file:
-deftext	readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	typeref:typename:char *	file:
-dir_path	structures.h	/^	const char			*dir_path;$/;"	m	struct:s_shell	typeref:typename:const char *
-doc	pdro/readline/share/readline/fileman.c	/^  char *doc;			\/* Documentation for this function.  *\/$/;"	m	struct:__anon2b43a43e0108	typeref:typename:char *	file:
-doc	readline/share/readline/fileman.c	/^  char *doc;			\/* Documentation for this function.  *\/$/;"	m	struct:__anona7270ada0108	typeref:typename:char *	file:
-done	pdro/readline/include/readline/readline.h	/^  int done;$/;"	m	struct:readline_state	typeref:typename:int
-done	pdro/readline/share/readline/fileman.c	/^int done;$/;"	v	typeref:typename:int
-done	readline/include/readline/readline.h	/^  int done;$/;"	m	struct:readline_state	typeref:typename:int
-done	readline/share/readline/fileman.c	/^int done;$/;"	v	typeref:typename:int
-duplicate	Libft/ft_split.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	typeref:typename:char *	file:
-duplicate	Libft/ft_split_slash.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	typeref:typename:char *	file:
-duplicate	pdro/Libft/ft_split.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	typeref:typename:char *	file:
+command_manager	commands.c	/^int	command_manager(t_shell *shell, char **envp)$/;"	f
+command_manager	pdro/commands.c	/^int	command_manager(t_shell *shell)$/;"	f
+commands	pdro/readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v
+commands	readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v
+content	Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+content	pdro/Libft/libft.h	/^	void			*content;$/;"	m	struct:s_list
+control_character_bit	pdro/readline/include/readline/chardefs.h	56;"	d
+control_character_bit	readline/include/readline/chardefs.h	56;"	d
+control_character_mask	pdro/readline/include/readline/chardefs.h	54;"	d
+control_character_mask	readline/include/readline/chardefs.h	54;"	d
+control_character_threshold	pdro/readline/include/readline/chardefs.h	53;"	d
+control_character_threshold	readline/include/readline/chardefs.h	53;"	d
+copystock	Libft/get_next_line.c	/^char	*copystock(char *stock, char *buffer)$/;"	f
+copystock	pdro/Libft/get_next_line.c	/^char	*copystock(char *stock, char *buffer)$/;"	f
+correct_path	structures.h	/^	char				*correct_path;$/;"	m	struct:s_shell
+count_set	Libft/ft_strtrim.c	/^int	count_set(char const *s1, char const *set)$/;"	f
+count_set	pdro/Libft/ft_strtrim.c	/^int	count_set(char const *s1, char const *set)$/;"	f
+custom_deprep_term_function	pdro/readline/share/readline/rlptytest.c	/^custom_deprep_term_function ()$/;"	f	file:
+custom_deprep_term_function	readline/share/readline/rlptytest.c	/^custom_deprep_term_function ()$/;"	f	file:
+data	pdro/readline/include/readline/history.h	/^  histdata_t data;$/;"	m	struct:_hist_entry
+data	readline/include/readline/history.h	/^  histdata_t data;$/;"	m	struct:_hist_entry
+deftext	pdro/readline/share/readline/rl.c	/^static char *deftext;$/;"	v	file:
+deftext	pdro/readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	file:
+deftext	readline/share/readline/rl.c	/^static char *deftext;$/;"	v	file:
+deftext	readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	file:
+dir_path	pdro/structures.h	/^	const char			*dir_path;$/;"	m	struct:s_shell
+dir_path	structures.h	/^	const char			*dir_path;$/;"	m	struct:s_shell
+doc	pdro/readline/share/readline/fileman.c	/^  char *doc;			\/* Documentation for this function.  *\/$/;"	m	struct:__anon4	file:
+doc	readline/share/readline/fileman.c	/^  char *doc;			\/* Documentation for this function.  *\/$/;"	m	struct:__anon2	file:
+done	pdro/readline/include/readline/readline.h	/^  int done;$/;"	m	struct:readline_state
+done	pdro/readline/share/readline/fileman.c	/^int done;$/;"	v
+done	readline/include/readline/readline.h	/^  int done;$/;"	m	struct:readline_state
+done	readline/share/readline/fileman.c	/^int done;$/;"	v
+dquotejumper	pdro/tokenisation.c	/^int	dquotejumper(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+dquoteparser	pdro/tokenisation.c	/^char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+duplicate	Libft/ft_split.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
+duplicate	Libft/ft_split_slash.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
+duplicate	pdro/Libft/ft_split.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
+duplicate	pdro/Libft/ft_split_slash.c	/^static char	*duplicate(char *src, int start, int end)$/;"	f	file:
 dupstr	pdro/readline/share/readline/fileman.c	/^dupstr (s)$/;"	f
 dupstr	readline/share/readline/fileman.c	/^dupstr (s)$/;"	f
-edmode	pdro/readline/include/readline/readline.h	/^  int edmode;$/;"	m	struct:readline_state	typeref:typename:int
-edmode	readline/include/readline/readline.h	/^  int edmode;$/;"	m	struct:readline_state	typeref:typename:int
-end	pdro/minishell.h	/^	struct s_node		*end;$/;"	m	struct:s_chained	typeref:struct:s_node *
-end	pdro/minishell.h	/^	struct s_tok		*end;$/;"	m	struct:s_toklst	typeref:struct:s_tok *
-end	pdro/readline/include/readline/readline.h	/^  int end;$/;"	m	struct:readline_state	typeref:typename:int
-end	pdro/readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list	typeref:typename:int
-end	readline/include/readline/readline.h	/^  int end;$/;"	m	struct:readline_state	typeref:typename:int
-end	readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list	typeref:typename:int
-end	structures.h	/^	struct s_node		*end;$/;"	m	struct:s_chained	typeref:struct:s_node *
-end	structures.h	/^	struct s_tok		*end;$/;"	m	struct:s_toklst	typeref:struct:s_tok *
-entries	pdro/readline/include/readline/history.h	/^  HIST_ENTRY **entries;		\/* Pointer to the entries themselves. *\/$/;"	m	struct:_hist_state	typeref:typename:HIST_ENTRY **
-entries	readline/include/readline/history.h	/^  HIST_ENTRY **entries;		\/* Pointer to the entries themselves. *\/$/;"	m	struct:_hist_state	typeref:typename:HIST_ENTRY **
-entryfunc	pdro/readline/include/readline/readline.h	/^  rl_compentry_func_t *entryfunc;$/;"	m	struct:readline_state	typeref:typename:rl_compentry_func_t *
-entryfunc	readline/include/readline/readline.h	/^  rl_compentry_func_t *entryfunc;$/;"	m	struct:readline_state	typeref:typename:rl_compentry_func_t *
-env_l	pdro/minishell.h	/^	struct s_chained	*env_l;$/;"	m	struct:s_shell	typeref:struct:s_chained *
-env_l	structures.h	/^	struct s_chained	*env_l;$/;"	m	struct:s_shell	typeref:struct:s_chained *
-envfinder	pdro/tokenisation.c	/^char	*envfinder(char *line, char *newvar, t_chained *env)$/;"	f	typeref:typename:char *
-envfinder	tokenisation.c	/^char	*envfinder(char *line, char *newvar, t_chained *env)$/;"	f	typeref:typename:char *
-envjumper	pdro/tokenisation.c	/^int	envjumper(char *line, char *newvar, t_chained *env)$/;"	f	typeref:typename:int
-envjumper	tokenisation.c	/^int	envjumper(char *line, char *newvar, t_chained *env)$/;"	f	typeref:typename:int
-errorintoken	parsing_utils.c	/^int	errorintoken(t_toklst *tokenlst, char *error)$/;"	f	typeref:typename:int
-errorintoken	pdro/parsing_utils.c	/^int	errorintoken(t_toklst *tokenlst, char *error)$/;"	f	typeref:typename:int
-event_hook	pdro/readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	typeref:typename:int	file:
-event_hook	readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	typeref:typename:int	file:
-execute_directory_cmd	dir_management.c	/^int	execute_directory_cmd(t_shell *shell)$/;"	f	typeref:typename:int
-execute_env_cmd	env_management.c	/^int	execute_env_cmd(t_shell *shell)$/;"	f	typeref:typename:int
+edmode	pdro/readline/include/readline/readline.h	/^  int edmode;$/;"	m	struct:readline_state
+edmode	readline/include/readline/readline.h	/^  int edmode;$/;"	m	struct:readline_state
+end	pdro/readline/include/readline/readline.h	/^  int end;$/;"	m	struct:readline_state
+end	pdro/readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list
+end	pdro/structures.h	/^	struct s_node		*end;$/;"	m	struct:s_chained	typeref:struct:s_chained::s_node
+end	pdro/structures.h	/^	struct s_tok		*end;$/;"	m	struct:s_toklst	typeref:struct:s_toklst::s_tok
+end	readline/include/readline/readline.h	/^  int end;$/;"	m	struct:readline_state
+end	readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list
+end	structures.h	/^	struct s_node		*end;$/;"	m	struct:s_chained	typeref:struct:s_chained::s_node
+end	structures.h	/^	struct s_tok		*end;$/;"	m	struct:s_toklst	typeref:struct:s_toklst::s_tok
+entries	pdro/readline/include/readline/history.h	/^  HIST_ENTRY **entries;		\/* Pointer to the entries themselves. *\/$/;"	m	struct:_hist_state
+entries	readline/include/readline/history.h	/^  HIST_ENTRY **entries;		\/* Pointer to the entries themselves. *\/$/;"	m	struct:_hist_state
+entryfunc	pdro/readline/include/readline/readline.h	/^  rl_compentry_func_t *entryfunc;$/;"	m	struct:readline_state
+entryfunc	readline/include/readline/readline.h	/^  rl_compentry_func_t *entryfunc;$/;"	m	struct:readline_state
+env_l	pdro/structures.h	/^	struct s_chained	*env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
+env_l	structures.h	/^	struct s_chained	*env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
+envfinder	pdro/tokenisation.c	/^char	*envfinder(char *line, char *newvar, t_chained *env)$/;"	f
+envfinder	tokenisation.c	/^char	*envfinder(char *line, char *newvar, t_chained *env)$/;"	f
+envjumper	tokenisation.c	/^int	envjumper(char *line, char *newvar, t_chained *env)$/;"	f
+envvarjumper	pdro/tokenisation.c	/^int    envvarjumper(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+envvarparser	pdro/tokenisation.c	/^char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+errorintoken	parsing_utils.c	/^int	errorintoken(t_toklst *tokenlst, char *error)$/;"	f
+errorintoken	pdro/parsing_utils.c	/^int	errorintoken(t_toklst *tokenlst, char *error)$/;"	f
+event_hook	pdro/readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	file:
+event_hook	readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	file:
+execute_command	commands.c	/^int	execute_command(t_shell *shell, char **envp)$/;"	f
+execute_directory_cmd	dir_management.c	/^int	execute_directory_cmd(t_shell *shell)$/;"	f
+execute_directory_cmd	pdro/dir_management.c	/^int	execute_directory_cmd(t_shell *shell)$/;"	f
+execute_env_cmd	env_management.c	/^int	execute_env_cmd(t_shell *shell)$/;"	f
+execute_env_cmd	pdro/env_management.c	/^int	execute_env_cmd(t_shell *shell)$/;"	f
 execute_line	pdro/readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
 execute_line	readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
-export_variable	env_management.c	/^int	export_variable(t_shell *shell)$/;"	f	typeref:typename:int
-fclean	Libft/Makefile	/^fclean : clean$/;"	t
-fclean	Makefile	/^fclean:	clean$/;"	t
-fclean	pdro/Libft/Makefile	/^fclean : clean$/;"	t
-fclean	pdro/Makefile	/^fclean:	clean$/;"	t
+export_variable	env_management.c	/^int	export_variable(t_shell *shell)$/;"	f
+export_variable	pdro/env_management.c	/^int	export_variable(t_shell *shell)$/;"	f
 fcopy	pdro/readline/share/readline/rlcat.c	/^fcopy(fp)$/;"	f	file:
 fcopy	readline/share/readline/rlcat.c	/^fcopy(fp)$/;"	f	file:
-fgets	pdro/readline/share/readline/rl-fgets.c	/^fgets ($/;"	f	typeref:typename:char *
-fgets	readline/share/readline/rl-fgets.c	/^fgets ($/;"	f	typeref:typename:char *
-fgets_t	pdro/readline/share/readline/rl-fgets.c	/^typedef char * ( * fgets_t ) ( char * s, int n, FILE * stream ) ;$/;"	t	typeref:typename:char * (*)(char * s,int n,FILE * stream)	file:
-fgets_t	readline/share/readline/rl-fgets.c	/^typedef char * ( * fgets_t ) ( char * s, int n, FILE * stream ) ;$/;"	t	typeref:typename:char * (*)(char * s,int n,FILE * stream)	file:
+fgets	pdro/readline/share/readline/rl-fgets.c	/^fgets ($/;"	f
+fgets	readline/share/readline/rl-fgets.c	/^fgets ($/;"	f
+fgets_t	pdro/readline/share/readline/rl-fgets.c	/^typedef char * ( * fgets_t ) ( char * s, int n, FILE * stream ) ;$/;"	t	file:
+fgets_t	readline/share/readline/rl-fgets.c	/^typedef char * ( * fgets_t ) ( char * s, int n, FILE * stream ) ;$/;"	t	file:
 fileman_completion	pdro/readline/share/readline/fileman.c	/^fileman_completion (text, start, end)$/;"	f
 fileman_completion	readline/share/readline/fileman.c	/^fileman_completion (text, start, end)$/;"	f
 find_command	pdro/readline/share/readline/fileman.c	/^find_command (name)$/;"	f
 find_command	readline/share/readline/fileman.c	/^find_command (name)$/;"	f
-firstparsing	parsing.c	/^static int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	typeref:typename:int	file:
-firstparsing	pdro/parsing.c	/^int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	typeref:typename:int
-flags	pdro/readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state	typeref:typename:int
-flags	readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state	typeref:typename:int
-freetab	Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	typeref:typename:void	file:
-freetab	Libft/ft_split_slash.c	/^static void	freetab(char **recipe, int i)$/;"	f	typeref:typename:void	file:
-freetab	pdro/Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	typeref:typename:void	file:
-ft_atoi	Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f	typeref:typename:int
-ft_atoi	pdro/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f	typeref:typename:int
-ft_bzero	Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
-ft_bzero	Libft/get_next_line_utils.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
-ft_bzero	pdro/Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
-ft_bzero	pdro/Libft/get_next_line_utils.c	/^void	ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void
-ft_callloc	Libft/get_next_line_utils.c	/^void	*ft_callloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
-ft_callloc	pdro/Libft/get_next_line_utils.c	/^void	*ft_callloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
-ft_calloc	Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
-ft_calloc	pdro/Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
-ft_intputchar_fd	Libft/ft_intputchar_fd.c	/^int	ft_intputchar_fd(char c, int fd)$/;"	f	typeref:typename:int
-ft_intputchar_fd	pdro/Libft/ft_intputchar_fd.c	/^int	ft_intputchar_fd(char c, int fd)$/;"	f	typeref:typename:int
-ft_intputstr_fd	Libft/ft_intputstr_fd.c	/^int	ft_intputstr_fd(char *s, int fd)$/;"	f	typeref:typename:int
-ft_intputstr_fd	pdro/Libft/ft_intputstr_fd.c	/^int	ft_intputstr_fd(char *s, int fd)$/;"	f	typeref:typename:int
-ft_intstrlen	Libft/get_next_line_utils.c	/^int	ft_intstrlen(char *str)$/;"	f	typeref:typename:int
-ft_intstrlen	pdro/Libft/get_next_line_utils.c	/^int	ft_intstrlen(char *str)$/;"	f	typeref:typename:int
-ft_isalnum	Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f	typeref:typename:int
-ft_isalnum	pdro/Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f	typeref:typename:int
-ft_isalpha	Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f	typeref:typename:int
-ft_isalpha	pdro/Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f	typeref:typename:int
-ft_isascii	Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f	typeref:typename:int
-ft_isascii	pdro/Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f	typeref:typename:int
-ft_isdigit	Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f	typeref:typename:int
-ft_isdigit	pdro/Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f	typeref:typename:int
-ft_isprint	Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f	typeref:typename:int
-ft_isprint	pdro/Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f	typeref:typename:int
-ft_itoa	Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f	typeref:typename:char *
-ft_itoa	pdro/Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f	typeref:typename:char *
-ft_join_nextline	Libft/get_next_line_utils.c	/^char	*ft_join_nextline(char *s1, char *s2)$/;"	f	typeref:typename:char *
-ft_join_nextline	pdro/Libft/get_next_line_utils.c	/^char	*ft_join_nextline(char *s1, char *s2)$/;"	f	typeref:typename:char *
-ft_lstadd_back	Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
-ft_lstadd_back	pdro/Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
-ft_lstadd_front	Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
-ft_lstadd_front	pdro/Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
-ft_lstclear	Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f	typeref:typename:void
-ft_lstclear	pdro/Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f	typeref:typename:void
-ft_lstdelone	Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f	typeref:typename:void
-ft_lstdelone	pdro/Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f	typeref:typename:void
-ft_lstiter	Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f	typeref:typename:void
-ft_lstiter	pdro/Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f	typeref:typename:void
-ft_lstlast	Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f	typeref:typename:t_list *
-ft_lstlast	pdro/Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f	typeref:typename:t_list *
-ft_lstmap	Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f	typeref:typename:t_list *
-ft_lstmap	pdro/Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f	typeref:typename:t_list *
-ft_lstnew	Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f	typeref:typename:t_list *
-ft_lstnew	pdro/Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f	typeref:typename:t_list *
-ft_lstsize	Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f	typeref:typename:int
-ft_lstsize	pdro/Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f	typeref:typename:int
-ft_memchr	Libft/ft_memchr.c	/^void	*ft_memchr(const void *memblock, int searched, size_t size)$/;"	f	typeref:typename:void *
-ft_memchr	pdro/Libft/ft_memchr.c	/^void	*ft_memchr(const void *memblock, int searched, size_t size)$/;"	f	typeref:typename:void *
-ft_memcmp	Libft/ft_memcmp.c	/^int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)$/;"	f	typeref:typename:int
-ft_memcmp	pdro/Libft/ft_memcmp.c	/^int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)$/;"	f	typeref:typename:int
-ft_memcpy	Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t size)$/;"	f	typeref:typename:void *
-ft_memcpy	pdro/Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t size)$/;"	f	typeref:typename:void *
-ft_memmove	Libft/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t size)$/;"	f	typeref:typename:void *
-ft_memmove	pdro/Libft/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t size)$/;"	f	typeref:typename:void *
-ft_memset	Libft/ft_memset.c	/^void	*ft_memset(void *ptr, int value, size_t count)$/;"	f	typeref:typename:void *
-ft_memset	pdro/Libft/ft_memset.c	/^void	*ft_memset(void *ptr, int value, size_t count)$/;"	f	typeref:typename:void *
-ft_printf	Libft/ft_printf.c	/^int	ft_printf(const char *param, ...)$/;"	f	typeref:typename:int
-ft_printf	pdro/Libft/ft_printf.c	/^int	ft_printf(const char *param, ...)$/;"	f	typeref:typename:int
-ft_putarg	Libft/ft_printf.c	/^static int	ft_putarg(char c, va_list ap)$/;"	f	typeref:typename:int	file:
-ft_putarg	pdro/Libft/ft_printf.c	/^static int	ft_putarg(char c, va_list ap)$/;"	f	typeref:typename:int	file:
-ft_putchar_fd	Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
-ft_putchar_fd	pdro/Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
-ft_putendl_fd	Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
-ft_putendl_fd	pdro/Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
-ft_putnbr_base_fd	Libft/ft_putnbr_base_fd.c	/^int	ft_putnbr_base_fd(long nbr, char *base, int fd)$/;"	f	typeref:typename:int
-ft_putnbr_base_fd	pdro/Libft/ft_putnbr_base_fd.c	/^int	ft_putnbr_base_fd(long nbr, char *base, int fd)$/;"	f	typeref:typename:int
-ft_putnbr_fd	Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
-ft_putnbr_fd	pdro/Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
-ft_putstr_fd	Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
-ft_putstr_fd	pdro/Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
-ft_sizebase_fd	Libft/ft_sizebase_fd.c	/^int	ft_sizebase_fd(size_t nbr, char *base, int fd)$/;"	f	typeref:typename:int
-ft_sizebase_fd	pdro/Libft/ft_sizebase_fd.c	/^int	ft_sizebase_fd(size_t nbr, char *base, int fd)$/;"	f	typeref:typename:int
-ft_split	Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
-ft_split	pdro/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
-ft_split_slash	Libft/ft_split_slash.c	/^char	**ft_split_slash(char const *s, char c)$/;"	f	typeref:typename:char **
-ft_strchr	Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f	typeref:typename:char *
-ft_strchr	pdro/Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f	typeref:typename:char *
-ft_strdup	Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f	typeref:typename:char *
-ft_strdup	pdro/Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f	typeref:typename:char *
-ft_striteri	Libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f	typeref:typename:void
-ft_striteri	pdro/Libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f	typeref:typename:void
-ft_strjoin	Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
-ft_strjoin	pdro/Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
-ft_strlcat	Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dest, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_strlcat	pdro/Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dest, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_strlcpy	Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dest, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_strlcpy	pdro/Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dest, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_strlen	Libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f	typeref:typename:size_t
-ft_strlen	pdro/Libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f	typeref:typename:size_t
-ft_strmapi	Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
-ft_strmapi	pdro/Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
-ft_strncmp	Libft/ft_strncmp.c	/^int	ft_strncmp(const char *str1, const char *str2, size_t length)$/;"	f	typeref:typename:int
-ft_strncmp	pdro/Libft/ft_strncmp.c	/^int	ft_strncmp(const char *str1, const char *str2, size_t length)$/;"	f	typeref:typename:int
-ft_strndup	pdro/utils.c	/^char	*ft_strndup(char *line, int start, int end)$/;"	f	typeref:typename:char *
-ft_strndup	utils.c	/^char	*ft_strndup(char *line, int start, int end)$/;"	f	typeref:typename:char *
-ft_strnstr	Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *little, size_t len)$/;"	f	typeref:typename:char *
-ft_strnstr	pdro/Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *little, size_t len)$/;"	f	typeref:typename:char *
-ft_strrchr	Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *str, int searched)$/;"	f	typeref:typename:char *
-ft_strrchr	pdro/Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *str, int searched)$/;"	f	typeref:typename:char *
-ft_strtrim	Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f	typeref:typename:char *
-ft_strtrim	pdro/Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f	typeref:typename:char *
-ft_substr	Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
-ft_substr	pdro/Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
-ft_tolower	Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f	typeref:typename:int
-ft_tolower	pdro/Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f	typeref:typename:int
-ft_toupper	Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
-ft_toupper	pdro/Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
-func	pdro/readline/share/readline/fileman.c	/^  rl_icpfunc_t *func;		\/* Function to call to do the job. *\/$/;"	m	struct:__anon2b43a43e0108	typeref:typename:rl_icpfunc_t *	file:
-func	readline/share/readline/fileman.c	/^  rl_icpfunc_t *func;		\/* Function to call to do the job. *\/$/;"	m	struct:__anona7270ada0108	typeref:typename:rl_icpfunc_t *	file:
-function	pdro/readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;"	m	struct:_keymap_entry	typeref:typename:rl_command_func_t *
-function	pdro/readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap	typeref:typename:rl_command_func_t *
-function	readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;"	m	struct:_keymap_entry	typeref:typename:rl_command_func_t *
-function	readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap	typeref:typename:rl_command_func_t *
-get_next_line	Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
-get_next_line	pdro/Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
-get_prompt	pdro/readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f	typeref:typename:char *
-get_prompt	readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f	typeref:typename:char *
-get_size	Libft/ft_itoa.c	/^static int	get_size(long n)$/;"	f	typeref:typename:int	file:
-get_size	pdro/Libft/ft_itoa.c	/^static int	get_size(long n)$/;"	f	typeref:typename:int	file:
-give_line	Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f	typeref:typename:char *
-give_line	pdro/Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f	typeref:typename:char *
-go_to_end	list_manip.c	/^t_node	*go_to_end(t_chained *list)$/;"	f	typeref:typename:t_node *
-go_to_end	pdro/list_manip.c	/^t_node	*go_to_end(t_chained *list)$/;"	f	typeref:typename:t_node *
-handler	pdro/signals.c	/^void	handler(int num)$/;"	f	typeref:typename:void
-handler	signals.c	/^void	handler(int num)$/;"	f	typeref:typename:void
-hist_erasedups	pdro/readline/share/readline/hist_erasedups.c	/^hist_erasedups ()$/;"	f	typeref:typename:int
-hist_erasedups	readline/share/readline/hist_erasedups.c	/^hist_erasedups ()$/;"	f	typeref:typename:int
+firstparsing	parsing.c	/^static int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	file:
+firstparsing	pdro/parsing.c	/^static int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	file:
+flags	pdro/readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state
+flags	readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state
+free_array	data.c	/^int	free_array(char **array)$/;"	f
+freetab	Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
+freetab	Libft/ft_split_slash.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
+freetab	pdro/Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
+freetab	pdro/Libft/ft_split_slash.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
+ft_atoi	Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_atoi	pdro/Libft/ft_atoi.c	/^int	ft_atoi(const char *str)$/;"	f
+ft_bzero	Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	Libft/get_next_line_utils.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	pdro/Libft/ft_bzero.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_bzero	pdro/Libft/get_next_line_utils.c	/^void	ft_bzero(void *s, size_t n)$/;"	f
+ft_callloc	Libft/get_next_line_utils.c	/^void	*ft_callloc(size_t count, size_t size)$/;"	f
+ft_callloc	pdro/Libft/get_next_line_utils.c	/^void	*ft_callloc(size_t count, size_t size)$/;"	f
+ft_calloc	Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_calloc	pdro/Libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f
+ft_intputchar_fd	Libft/ft_intputchar_fd.c	/^int	ft_intputchar_fd(char c, int fd)$/;"	f
+ft_intputchar_fd	pdro/Libft/ft_intputchar_fd.c	/^int	ft_intputchar_fd(char c, int fd)$/;"	f
+ft_intputstr_fd	Libft/ft_intputstr_fd.c	/^int	ft_intputstr_fd(char *s, int fd)$/;"	f
+ft_intputstr_fd	pdro/Libft/ft_intputstr_fd.c	/^int	ft_intputstr_fd(char *s, int fd)$/;"	f
+ft_intstrlen	Libft/get_next_line_utils.c	/^int	ft_intstrlen(char *str)$/;"	f
+ft_intstrlen	pdro/Libft/get_next_line_utils.c	/^int	ft_intstrlen(char *str)$/;"	f
+ft_isalnum	Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalnum	pdro/Libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f
+ft_isalpha	Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isalpha	pdro/Libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f
+ft_isascii	Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isascii	pdro/Libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f
+ft_isdigit	Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isdigit	pdro/Libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f
+ft_isprint	Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_isprint	pdro/Libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f
+ft_itoa	Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_itoa	pdro/Libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f
+ft_join_nextline	Libft/get_next_line_utils.c	/^char	*ft_join_nextline(char *s1, char *s2)$/;"	f
+ft_join_nextline	pdro/Libft/get_next_line_utils.c	/^char	*ft_join_nextline(char *s1, char *s2)$/;"	f
+ft_lstadd_back	Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_back	pdro/Libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstadd_front	pdro/Libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f
+ft_lstclear	Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstclear	pdro/Libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f
+ft_lstdelone	Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstdelone	pdro/Libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f
+ft_lstiter	Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstiter	pdro/Libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f
+ft_lstlast	Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstlast	pdro/Libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f
+ft_lstmap	Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstmap	pdro/Libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))$/;"	f
+ft_lstnew	Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstnew	pdro/Libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f
+ft_lstsize	Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_lstsize	pdro/Libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f
+ft_memchr	Libft/ft_memchr.c	/^void	*ft_memchr(const void *memblock, int searched, size_t size)$/;"	f
+ft_memchr	pdro/Libft/ft_memchr.c	/^void	*ft_memchr(const void *memblock, int searched, size_t size)$/;"	f
+ft_memcmp	Libft/ft_memcmp.c	/^int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)$/;"	f
+ft_memcmp	pdro/Libft/ft_memcmp.c	/^int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)$/;"	f
+ft_memcpy	Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t size)$/;"	f
+ft_memcpy	pdro/Libft/ft_memcpy.c	/^void	*ft_memcpy(void *dest, const void *src, size_t size)$/;"	f
+ft_memmove	Libft/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t size)$/;"	f
+ft_memmove	pdro/Libft/ft_memmove.c	/^void	*ft_memmove(void *dest, const void *src, size_t size)$/;"	f
+ft_memset	Libft/ft_memset.c	/^void	*ft_memset(void *ptr, int value, size_t count)$/;"	f
+ft_memset	pdro/Libft/ft_memset.c	/^void	*ft_memset(void *ptr, int value, size_t count)$/;"	f
+ft_printf	Libft/ft_printf.c	/^int	ft_printf(const char *param, ...)$/;"	f
+ft_printf	pdro/Libft/ft_printf.c	/^int	ft_printf(const char *param, ...)$/;"	f
+ft_putarg	Libft/ft_printf.c	/^static int	ft_putarg(char c, va_list ap)$/;"	f	file:
+ft_putarg	pdro/Libft/ft_printf.c	/^static int	ft_putarg(char c, va_list ap)$/;"	f	file:
+ft_putchar_fd	Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putchar_fd	pdro/Libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f
+ft_putendl_fd	Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putendl_fd	pdro/Libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f
+ft_putnbr_base_fd	Libft/ft_putnbr_base_fd.c	/^int	ft_putnbr_base_fd(long nbr, char *base, int fd)$/;"	f
+ft_putnbr_base_fd	pdro/Libft/ft_putnbr_base_fd.c	/^int	ft_putnbr_base_fd(long nbr, char *base, int fd)$/;"	f
+ft_putnbr_fd	Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putnbr_fd	pdro/Libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f
+ft_putstr_fd	Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_putstr_fd	pdro/Libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f
+ft_sizebase_fd	Libft/ft_sizebase_fd.c	/^int	ft_sizebase_fd(size_t nbr, char *base, int fd)$/;"	f
+ft_sizebase_fd	pdro/Libft/ft_sizebase_fd.c	/^int	ft_sizebase_fd(size_t nbr, char *base, int fd)$/;"	f
+ft_split	Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split	pdro/Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_split_slash	Libft/ft_split_slash.c	/^char	**ft_split_slash(char const *s, char c)$/;"	f
+ft_split_slash	pdro/Libft/ft_split_slash.c	/^char	**ft_split_slash(char const *s, char c)$/;"	f
+ft_strchr	Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f
+ft_strchr	pdro/Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f
+ft_strdup	Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f
+ft_strdup	pdro/Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f
+ft_striteri	Libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_striteri	pdro/Libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
+ft_strjoin	Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjoin	pdro/Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strlcat	Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dest, const char *src, size_t size)$/;"	f
+ft_strlcat	pdro/Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dest, const char *src, size_t size)$/;"	f
+ft_strlcpy	Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dest, const char *src, size_t size)$/;"	f
+ft_strlcpy	pdro/Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dest, const char *src, size_t size)$/;"	f
+ft_strlen	Libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f
+ft_strlen	pdro/Libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f
+ft_strmapi	Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strmapi	pdro/Libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f
+ft_strncmp	Libft/ft_strncmp.c	/^int	ft_strncmp(const char *str1, const char *str2, size_t length)$/;"	f
+ft_strncmp	pdro/Libft/ft_strncmp.c	/^int	ft_strncmp(const char *str1, const char *str2, size_t length)$/;"	f
+ft_strndup	pdro/utils.c	/^char	*ft_strndup(char *line, int start, int end)$/;"	f
+ft_strndup	utils.c	/^char	*ft_strndup(char *line, int start, int end)$/;"	f
+ft_strnstr	Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *little, size_t len)$/;"	f
+ft_strnstr	pdro/Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *little, size_t len)$/;"	f
+ft_strrchr	Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *str, int searched)$/;"	f
+ft_strrchr	pdro/Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *str, int searched)$/;"	f
+ft_strtrim	Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_strtrim	pdro/Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
+ft_substr	Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_substr	pdro/Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_tolower	Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_tolower	pdro/Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
+ft_toupper	Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+ft_toupper	pdro/Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
+func	pdro/readline/share/readline/fileman.c	/^  rl_icpfunc_t *func;		\/* Function to call to do the job. *\/$/;"	m	struct:__anon4	file:
+func	readline/share/readline/fileman.c	/^  rl_icpfunc_t *func;		\/* Function to call to do the job. *\/$/;"	m	struct:__anon2	file:
+function	pdro/readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;"	m	struct:_keymap_entry
+function	pdro/readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap
+function	readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;"	m	struct:_keymap_entry
+function	readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap
+get_array_command	commands.c	/^char	**get_array_command(t_shell *shell)$/;"	f
+get_correct_path	commands.c	/^char	*get_correct_path(t_shell *shell)$/;"	f
+get_next_line	Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_next_line	pdro/Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
+get_path	commands.c	/^char	*get_path(char **envp)$/;"	f
+get_prompt	pdro/readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f
+get_prompt	readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f
+get_size	Libft/ft_itoa.c	/^static int	get_size(long n)$/;"	f	file:
+get_size	pdro/Libft/ft_itoa.c	/^static int	get_size(long n)$/;"	f	file:
+give_line	Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f
+give_line	pdro/Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f
+go_to_end	list_manip.c	/^t_node	*go_to_end(t_chained *list)$/;"	f
+go_to_end	pdro/list_manip.c	/^t_node	*go_to_end(t_chained *list)$/;"	f
+handler	pdro/signals.c	/^void	handler(int num)$/;"	f
+handler	signals.c	/^void	handler(int num)$/;"	f
+hist_erasedups	pdro/readline/share/readline/hist_erasedups.c	/^hist_erasedups ()$/;"	f
+hist_erasedups	readline/share/readline/hist_erasedups.c	/^hist_erasedups ()$/;"	f
 hist_purgecmd	pdro/readline/share/readline/hist_purgecmd.c	/^hist_purgecmd (cmd, flags)$/;"	f
 hist_purgecmd	readline/share/readline/hist_purgecmd.c	/^hist_purgecmd (cmd, flags)$/;"	f
-histdata_t	pdro/readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t	typeref:typename:void *
-histdata_t	readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t	typeref:typename:void *
-ignorefunc	pdro/readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state	typeref:typename:rl_compignore_func_t *
-ignorefunc	readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state	typeref:typename:rl_compignore_func_t *
-inf	pdro/readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state	typeref:typename:FILE *
-inf	readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state	typeref:typename:FILE *
-init_readline	pdro/readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	typeref:typename:int	file:
-init_readline	readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	typeref:typename:int	file:
-initialize_readline	pdro/readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f	typeref:typename:void
-initialize_readline	readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f	typeref:typename:void
-insmode	pdro/readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state	typeref:typename:int
-insmode	readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state	typeref:typename:int
+histdata_t	pdro/readline/include/readline/history.h	/^typedef char *histdata_t;$/;"	t
+histdata_t	pdro/readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t
+histdata_t	readline/include/readline/history.h	/^typedef char *histdata_t;$/;"	t
+histdata_t	readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t
+ignorefunc	pdro/readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
+ignorefunc	readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
+inf	pdro/readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
+inf	readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
+init_readline	pdro/readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	file:
+init_readline	readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	file:
+initialize_readline	pdro/readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
+initialize_readline	readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
+insmode	pdro/readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state
+insmode	readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state
 invert_case_line	pdro/readline/share/readline/manexamp.c	/^invert_case_line (count, key)$/;"	f
 invert_case_line	readline/share/readline/manexamp.c	/^invert_case_line (count, key)$/;"	f
-is_empty	list_utils.c	/^int	is_empty(t_chained *list)$/;"	f	typeref:typename:int
-is_empty	pdro/list_utils.c	/^int	is_empty(t_chained *list)$/;"	f	typeref:typename:int
-is_emptytok	pdro/token_managment.c	/^int	is_emptytok(t_toklst *list)$/;"	f	typeref:typename:int
-is_emptytok	token_managment.c	/^int	is_emptytok(t_toklst *list)$/;"	f	typeref:typename:int
-is_sep	parsing_utils.c	/^int	is_sep(char c)$/;"	f	typeref:typename:int
-is_sep	pdro/parsing_utils.c	/^int	is_sep(char c)$/;"	f	typeref:typename:int
-is_set	Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	typeref:typename:int	file:
-is_set	pdro/Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	typeref:typename:int	file:
-is_wspace	parsing_utils.c	/^int	is_wspace(char c)$/;"	f	typeref:typename:int
-is_wspace	pdro/parsing_utils.c	/^int	is_wspace(char c)$/;"	f	typeref:typename:int
-isxdigit	pdro/readline/include/readline/chardefs.h	/^#  define isxdigit(/;"	d
-isxdigit	readline/include/readline/chardefs.h	/^#  define isxdigit(/;"	d
-itoa_is_neg	Libft/ft_itoa.c	/^static char	*itoa_is_neg(long n)$/;"	f	typeref:typename:char *	file:
-itoa_is_neg	pdro/Libft/ft_itoa.c	/^static char	*itoa_is_neg(long n)$/;"	f	typeref:typename:char *	file:
-itoa_is_pos	Libft/ft_itoa.c	/^static char	*itoa_is_pos(long n)$/;"	f	typeref:typename:char *	file:
-itoa_is_pos	pdro/Libft/ft_itoa.c	/^static char	*itoa_is_pos(long n)$/;"	f	typeref:typename:char *	file:
-jump_text	parsing.c	/^static int	jump_text(char *line, int i)$/;"	f	typeref:typename:int	file:
-jump_text	pdro/parsing.c	/^static int	jump_text(char *line, int i)$/;"	f	typeref:typename:int	file:
-jump_wspace	parsing_utils.c	/^int	jump_wspace(char *line, int i)$/;"	f	typeref:typename:int
-jump_wspace	pdro/parsing_utils.c	/^int	jump_wspace(char *line, int i)$/;"	f	typeref:typename:int
-kmap	pdro/readline/include/readline/readline.h	/^  Keymap kmap;$/;"	m	struct:readline_state	typeref:typename:Keymap
-kmap	readline/include/readline/readline.h	/^  Keymap kmap;$/;"	m	struct:readline_state	typeref:typename:Keymap
-kseq	pdro/readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_state	typeref:typename:char *
-kseq	readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_state	typeref:typename:char *
-kseqlen	pdro/readline/include/readline/readline.h	/^  int kseqlen;$/;"	m	struct:readline_state	typeref:typename:int
-kseqlen	readline/include/readline/readline.h	/^  int kseqlen;$/;"	m	struct:readline_state	typeref:typename:int
-largest_char	pdro/readline/include/readline/chardefs.h	/^#define largest_char /;"	d
-largest_char	readline/include/readline/chardefs.h	/^#define largest_char /;"	d
-lastfunc	pdro/readline/include/readline/readline.h	/^  rl_command_func_t *lastfunc;$/;"	m	struct:readline_state	typeref:typename:rl_command_func_t *
-lastfunc	readline/include/readline/readline.h	/^  rl_command_func_t *lastfunc;$/;"	m	struct:readline_state	typeref:typename:rl_command_func_t *
-length	pdro/readline/include/readline/history.h	/^  int length;			\/* Number of elements within this array. *\/$/;"	m	struct:_hist_state	typeref:typename:int
-length	readline/include/readline/history.h	/^  int length;			\/* Number of elements within this array. *\/$/;"	m	struct:_hist_state	typeref:typename:int
-line	pdro/readline/include/readline/history.h	/^  char *line;$/;"	m	struct:_hist_entry	typeref:typename:char *
-line	readline/include/readline/history.h	/^  char *line;$/;"	m	struct:_hist_entry	typeref:typename:char *
-line_buf	pdro/readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v	typeref:typename:char[256]
-line_buf	readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v	typeref:typename:char[256]
-line_in_stock	Libft/get_next_line_utils.c	/^int	line_in_stock(char *str)$/;"	f	typeref:typename:int
-line_in_stock	pdro/Libft/get_next_line_utils.c	/^int	line_in_stock(char *str)$/;"	f	typeref:typename:int
-line_read	pdro/readline/share/readline/manexamp.c	/^static char *line_read = (char *)NULL;$/;"	v	typeref:typename:char *	file:
-line_read	readline/share/readline/manexamp.c	/^static char *line_read = (char *)NULL;$/;"	v	typeref:typename:char *	file:
-line_readed	pdro/minishell.h	/^	char				*line_readed;$/;"	m	struct:s_shell	typeref:typename:char *
-line_readed	structures.h	/^	char				*line_readed;$/;"	m	struct:s_shell	typeref:typename:char *
-list_copy	list_utils.c	/^t_chained	*list_copy(t_chained *list)$/;"	f	typeref:typename:t_chained *
-macro	pdro/readline/include/readline/readline.h	/^  char *macro;$/;"	m	struct:readline_state	typeref:typename:char *
-macro	readline/include/readline/readline.h	/^  char *macro;$/;"	m	struct:readline_state	typeref:typename:char *
-main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f	typeref:typename:int
-main	pdro/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f	typeref:typename:int
-main	pdro/readline/share/readline/excallback.c	/^main()$/;"	f	typeref:typename:int
+is_builtin_command	main.c	/^int	is_builtin_command(t_shell *shell)$/;"	f
+is_empty	list_utils.c	/^int	is_empty(t_chained *list)$/;"	f
+is_empty	pdro/list_utils.c	/^int	is_empty(t_chained *list)$/;"	f
+is_emptytok	pdro/token_managment.c	/^int	is_emptytok(t_toklst *list)$/;"	f
+is_emptytok	token_management.c	/^int     is_emptytok(t_toklst *list)$/;"	f
+is_emptytok	token_managment.c	/^int	is_emptytok(t_toklst *list)$/;"	f
+is_sep	parsing_utils.c	/^int	is_sep(char c)$/;"	f
+is_sep	pdro/parsing_utils.c	/^int	is_sep(char c)$/;"	f
+is_set	Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	file:
+is_set	pdro/Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	file:
+is_wspace	parsing_utils.c	/^int	is_wspace(char c)$/;"	f
+is_wspace	pdro/parsing_utils.c	/^int	is_wspace(char c)$/;"	f
+isxdigit	pdro/readline/include/readline/chardefs.h	76;"	d
+isxdigit	readline/include/readline/chardefs.h	76;"	d
+itoa_is_neg	Libft/ft_itoa.c	/^static char	*itoa_is_neg(long n)$/;"	f	file:
+itoa_is_neg	pdro/Libft/ft_itoa.c	/^static char	*itoa_is_neg(long n)$/;"	f	file:
+itoa_is_pos	Libft/ft_itoa.c	/^static char	*itoa_is_pos(long n)$/;"	f	file:
+itoa_is_pos	pdro/Libft/ft_itoa.c	/^static char	*itoa_is_pos(long n)$/;"	f	file:
+jump_text	parsing.c	/^static int	jump_text(char *line, int i)$/;"	f	file:
+jump_text	pdro/parsing.c	/^static int	jump_text(char *line, int i)$/;"	f	file:
+jump_wspace	parsing_utils.c	/^int	jump_wspace(char *line, int i)$/;"	f
+jump_wspace	pdro/parsing_utils.c	/^int	jump_wspace(char *line, int i)$/;"	f
+kmap	pdro/readline/include/readline/readline.h	/^  Keymap kmap;$/;"	m	struct:readline_state
+kmap	readline/include/readline/readline.h	/^  Keymap kmap;$/;"	m	struct:readline_state
+kseq	pdro/readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_state
+kseq	readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_state
+kseqlen	pdro/readline/include/readline/readline.h	/^  int kseqlen;$/;"	m	struct:readline_state
+kseqlen	readline/include/readline/readline.h	/^  int kseqlen;$/;"	m	struct:readline_state
+largest_char	pdro/readline/include/readline/chardefs.h	58;"	d
+largest_char	readline/include/readline/chardefs.h	58;"	d
+lastfunc	pdro/readline/include/readline/readline.h	/^  rl_command_func_t *lastfunc;$/;"	m	struct:readline_state
+lastfunc	readline/include/readline/readline.h	/^  rl_command_func_t *lastfunc;$/;"	m	struct:readline_state
+length	pdro/readline/include/readline/history.h	/^  int length;			\/* Number of elements within this array. *\/$/;"	m	struct:_hist_state
+length	readline/include/readline/history.h	/^  int length;			\/* Number of elements within this array. *\/$/;"	m	struct:_hist_state
+line	pdro/readline/include/readline/history.h	/^  char *line;$/;"	m	struct:_hist_entry
+line	readline/include/readline/history.h	/^  char *line;$/;"	m	struct:_hist_entry
+line_buf	pdro/readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
+line_buf	readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
+line_in_stock	Libft/get_next_line_utils.c	/^int	line_in_stock(char *str)$/;"	f
+line_in_stock	pdro/Libft/get_next_line_utils.c	/^int	line_in_stock(char *str)$/;"	f
+line_read	pdro/readline/share/readline/manexamp.c	/^static char *line_read = (char *)NULL;$/;"	v	file:
+line_read	readline/share/readline/manexamp.c	/^static char *line_read = (char *)NULL;$/;"	v	file:
+line_readed	pdro/structures.h	/^	char				*line_readed;$/;"	m	struct:s_shell
+line_readed	structures.h	/^	char				*line_readed;$/;"	m	struct:s_shell
+list_copy	list_utils.c	/^t_chained	*list_copy(t_chained *list)$/;"	f
+list_copy	pdro/list_utils.c	/^t_chained	*list_copy(t_chained *list)$/;"	f
+macro	pdro/readline/include/readline/readline.h	/^  char *macro;$/;"	m	struct:readline_state
+macro	readline/include/readline/readline.h	/^  char *macro;$/;"	m	struct:readline_state
+main	main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	pdro/main.c	/^int	main(int ac, char **av, char **envp)$/;"	f
+main	pdro/readline/share/readline/excallback.c	/^main()$/;"	f
 main	pdro/readline/share/readline/fileman.c	/^main (argc, argv)$/;"	f
 main	pdro/readline/share/readline/hist_erasedups.c	/^main (argc, argv)$/;"	f
 main	pdro/readline/share/readline/hist_purgecmd.c	/^main (argc, argv)$/;"	f
 main	pdro/readline/share/readline/histexamp.c	/^main (argc, argv)$/;"	f
-main	pdro/readline/share/readline/rl-callbacktest.c	/^main (int c, char **v)$/;"	f	typeref:typename:int
+main	pdro/readline/share/readline/rl-callbacktest.c	/^main (int c, char **v)$/;"	f
 main	pdro/readline/share/readline/rl.c	/^main (argc, argv)$/;"	f
-main	pdro/readline/share/readline/rlbasic.c	/^main (int c, char **v)$/;"	f	typeref:typename:int
+main	pdro/readline/share/readline/rlbasic.c	/^main (int c, char **v)$/;"	f
 main	pdro/readline/share/readline/rlcat.c	/^main (argc, argv)$/;"	f
 main	pdro/readline/share/readline/rlevent.c	/^main (argc, argv)$/;"	f
-main	pdro/readline/share/readline/rlkeymaps.c	/^main (int c, char **v)$/;"	f	typeref:typename:int
-main	pdro/readline/share/readline/rlptytest.c	/^main()$/;"	f	typeref:typename:int
-main	pdro/readline/share/readline/rltest.c	/^main ()$/;"	f	typeref:typename:int
-main	pdro/readline/share/readline/rlversion.c	/^main()$/;"	f	typeref:typename:int
-main	readline/share/readline/excallback.c	/^main()$/;"	f	typeref:typename:int
+main	pdro/readline/share/readline/rlkeymaps.c	/^main (int c, char **v)$/;"	f
+main	pdro/readline/share/readline/rlptytest.c	/^main()$/;"	f
+main	pdro/readline/share/readline/rltest.c	/^main ()$/;"	f
+main	pdro/readline/share/readline/rlversion.c	/^main()$/;"	f
+main	readline/share/readline/excallback.c	/^main()$/;"	f
 main	readline/share/readline/fileman.c	/^main (argc, argv)$/;"	f
 main	readline/share/readline/hist_erasedups.c	/^main (argc, argv)$/;"	f
 main	readline/share/readline/hist_purgecmd.c	/^main (argc, argv)$/;"	f
 main	readline/share/readline/histexamp.c	/^main (argc, argv)$/;"	f
-main	readline/share/readline/rl-callbacktest.c	/^main (int c, char **v)$/;"	f	typeref:typename:int
+main	readline/share/readline/rl-callbacktest.c	/^main (int c, char **v)$/;"	f
 main	readline/share/readline/rl.c	/^main (argc, argv)$/;"	f
-main	readline/share/readline/rlbasic.c	/^main (int c, char **v)$/;"	f	typeref:typename:int
+main	readline/share/readline/rlbasic.c	/^main (int c, char **v)$/;"	f
 main	readline/share/readline/rlcat.c	/^main (argc, argv)$/;"	f
 main	readline/share/readline/rlevent.c	/^main (argc, argv)$/;"	f
-main	readline/share/readline/rlkeymaps.c	/^main (int c, char **v)$/;"	f	typeref:typename:int
-main	readline/share/readline/rlptytest.c	/^main()$/;"	f	typeref:typename:int
-main	readline/share/readline/rltest.c	/^main ()$/;"	f	typeref:typename:int
-main	readline/share/readline/rlversion.c	/^main()$/;"	f	typeref:typename:int
-main_loop	pdro/readline/share/readline/rlptytest.c	/^main_loop(void)$/;"	f	typeref:typename:int	file:
-main_loop	readline/share/readline/rlptytest.c	/^main_loop(void)$/;"	f	typeref:typename:int	file:
-mark	pdro/readline/include/readline/readline.h	/^  int mark;$/;"	m	struct:readline_state	typeref:typename:int
-mark	readline/include/readline/readline.h	/^  int mark;$/;"	m	struct:readline_state	typeref:typename:int
-masterfd	pdro/readline/share/readline/rlptytest.c	/^static int masterfd = -1;$/;"	v	typeref:typename:int	file:
-masterfd	readline/share/readline/rlptytest.c	/^static int masterfd = -1;$/;"	v	typeref:typename:int	file:
-menuentryfunc	pdro/readline/include/readline/readline.h	/^  rl_compentry_func_t *menuentryfunc;$/;"	m	struct:readline_state	typeref:typename:rl_compentry_func_t *
-menuentryfunc	readline/include/readline/readline.h	/^  rl_compentry_func_t *menuentryfunc;$/;"	m	struct:readline_state	typeref:typename:rl_compentry_func_t *
-meta_character_bit	pdro/readline/include/readline/chardefs.h	/^#define meta_character_bit /;"	d
-meta_character_bit	readline/include/readline/chardefs.h	/^#define meta_character_bit /;"	d
-meta_character_threshold	pdro/readline/include/readline/chardefs.h	/^#define meta_character_threshold /;"	d
-meta_character_threshold	readline/include/readline/chardefs.h	/^#define meta_character_threshold /;"	d
-my_fgets_completion	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_completion ($/;"	f	typeref:typename:char **	file:
-my_fgets_completion	readline/share/readline/rl-fgets.c	/^my_fgets_completion ($/;"	f	typeref:typename:char **	file:
-my_fgets_debug_flag	pdro/readline/share/readline/rl-fgets.c	/^static int     my_fgets_debug_flag      = 0    ;$/;"	v	typeref:typename:int	file:
-my_fgets_debug_flag	readline/share/readline/rl-fgets.c	/^static int     my_fgets_debug_flag      = 0    ;$/;"	v	typeref:typename:int	file:
-my_fgets_debug_toggle	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_debug_toggle ($/;"	f	typeref:typename:void	file:
-my_fgets_debug_toggle	readline/share/readline/rl-fgets.c	/^my_fgets_debug_toggle ($/;"	f	typeref:typename:void	file:
-my_fgets_dump	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_dump ($/;"	f	typeref:typename:void	file:
-my_fgets_dump	readline/share/readline/rl-fgets.c	/^my_fgets_dump ($/;"	f	typeref:typename:void	file:
-my_fgets_generator	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_generator ($/;"	f	typeref:typename:char *	file:
-my_fgets_generator	readline/share/readline/rl-fgets.c	/^my_fgets_generator ($/;"	f	typeref:typename:char *	file:
-my_fgets_lookup	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_lookup ($/;"	f	typeref:typename:char *	file:
-my_fgets_lookup	readline/share/readline/rl-fgets.c	/^my_fgets_lookup ($/;"	f	typeref:typename:char *	file:
-my_fgets_names	pdro/readline/share/readline/rl-fgets.c	/^static char ** my_fgets_names           = NULL ;$/;"	v	typeref:typename:char **	file:
-my_fgets_names	readline/share/readline/rl-fgets.c	/^static char ** my_fgets_names           = NULL ;$/;"	v	typeref:typename:char **	file:
-my_fgets_number_of_names	pdro/readline/share/readline/rl-fgets.c	/^static int     my_fgets_number_of_names = 0    ;$/;"	v	typeref:typename:int	file:
-my_fgets_number_of_names	readline/share/readline/rl-fgets.c	/^static int     my_fgets_number_of_names = 0    ;$/;"	v	typeref:typename:int	file:
-my_fgets_reset	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_reset ($/;"	f	typeref:typename:void	file:
-my_fgets_reset	readline/share/readline/rl-fgets.c	/^my_fgets_reset ($/;"	f	typeref:typename:void	file:
-name	pdro/readline/include/readline/readline.h	/^  const char *name;$/;"	m	struct:_funmap	typeref:typename:const char *
-name	pdro/readline/share/readline/fileman.c	/^  char *name;			\/* User printable name of the function. *\/$/;"	m	struct:__anon2b43a43e0108	typeref:typename:char *	file:
-name	readline/include/readline/readline.h	/^  const char *name;$/;"	m	struct:_funmap	typeref:typename:const char *
-name	readline/share/readline/fileman.c	/^  char *name;			\/* User printable name of the function. *\/$/;"	m	struct:__anona7270ada0108	typeref:typename:char *	file:
-nb_elem	pdro/minishell.h	/^	int					nb_elem;$/;"	m	struct:s_chained	typeref:typename:int
-nb_elem	pdro/minishell.h	/^	int					nb_elem;$/;"	m	struct:s_toklst	typeref:typename:int
-nb_elem	structures.h	/^	int					nb_elem;$/;"	m	struct:s_chained	typeref:typename:int
-nb_elem	structures.h	/^	int					nb_elem;$/;"	m	struct:s_toklst	typeref:typename:int
-new_back_node	list_manip.c	/^t_chained	*new_back_node(t_chained *list, char *line)$/;"	f	typeref:typename:t_chained *
-new_back_node	pdro/list_manip.c	/^t_chained	*new_back_node(t_chained *list, char *line)$/;"	f	typeref:typename:t_chained *
-new_back_tok	pdro/token_managment.c	/^t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)$/;"	f	typeref:typename:t_toklst *
-new_back_tok	token_managment.c	/^t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)$/;"	f	typeref:typename:t_toklst *
-new_front_node	list_manip.c	/^t_chained	*new_front_node(t_chained *list, char *line)$/;"	f	typeref:typename:t_chained *
-new_front_node	pdro/list_manip.c	/^t_chained	*new_front_node(t_chained *list, char *line)$/;"	f	typeref:typename:t_chained *
-next	Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
-next	pdro/Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
-next	pdro/minishell.h	/^	struct s_node		*next;$/;"	m	struct:s_node	typeref:struct:s_node *
-next	pdro/minishell.h	/^	struct s_tok		*next;$/;"	m	struct:s_tok	typeref:struct:s_tok *
-next	pdro/readline/include/readline/readline.h	/^  struct undo_list *next;$/;"	m	struct:undo_list	typeref:struct:undo_list *
-next	readline/include/readline/readline.h	/^  struct undo_list *next;$/;"	m	struct:undo_list	typeref:struct:undo_list *
-next	structures.h	/^	struct s_node		*next;$/;"	m	struct:s_node	typeref:struct:s_node *
-next	structures.h	/^	struct s_tok		*next;$/;"	m	struct:s_tok	typeref:struct:s_tok *
-null_list	list_utils.c	/^t_chained	*null_list(void)$/;"	f	typeref:typename:t_chained *
-null_list	pdro/list_utils.c	/^t_chained	*null_list(void)$/;"	f	typeref:typename:t_chained *
-offset	pdro/readline/include/readline/history.h	/^  int offset;			\/* The location pointer within this array. *\/$/;"	m	struct:_hist_state	typeref:typename:int
-offset	readline/include/readline/history.h	/^  int offset;			\/* The location pointer within this array. *\/$/;"	m	struct:_hist_state	typeref:typename:int
-old_lflag	pdro/readline/share/readline/excallback.c	/^tcflag_t old_lflag;$/;"	v	typeref:typename:tcflag_t
-old_lflag	readline/share/readline/excallback.c	/^tcflag_t old_lflag;$/;"	v	typeref:typename:tcflag_t
-old_vtime	pdro/readline/share/readline/excallback.c	/^cc_t     old_vtime;$/;"	v	typeref:typename:cc_t
-old_vtime	readline/share/readline/excallback.c	/^cc_t     old_vtime;$/;"	v	typeref:typename:cc_t
-option_n	env_management.c	/^int	option_n(t_shell *shell)$/;"	f	typeref:typename:int
-outf	pdro/readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:readline_state	typeref:typename:FILE *
-outf	readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:readline_state	typeref:typename:FILE *
-parsing	pdro/parsing.c	/^void	parsing(t_toklst *tokenlst, char *line)$/;"	f	typeref:typename:void
-pendingin	pdro/readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state	typeref:typename:int
-pendingin	readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state	typeref:typename:int
-plusminus	Libft/ft_putnbr_base_fd.c	/^static int	plusminus(char *str)$/;"	f	typeref:typename:int	file:
-plusminus	Libft/ft_sizebase_fd.c	/^static int	plusminus(char *str)$/;"	f	typeref:typename:int	file:
-plusminus	pdro/Libft/ft_putnbr_base_fd.c	/^static int	plusminus(char *str)$/;"	f	typeref:typename:int	file:
-plusminus	pdro/Libft/ft_sizebase_fd.c	/^static int	plusminus(char *str)$/;"	f	typeref:typename:int	file:
-point	pdro/readline/include/readline/readline.h	/^  int point;$/;"	m	struct:readline_state	typeref:typename:int
-point	readline/include/readline/readline.h	/^  int point;$/;"	m	struct:readline_state	typeref:typename:int
-prev	pdro/minishell.h	/^	struct s_node		*prev;$/;"	m	struct:s_node	typeref:struct:s_node *
-prev	pdro/minishell.h	/^	struct s_tok		*prev;$/;"	m	struct:s_tok	typeref:struct:s_tok *
-prev	structures.h	/^	struct s_node		*prev;$/;"	m	struct:s_node	typeref:struct:s_node *
-prev	structures.h	/^	struct s_tok		*prev;$/;"	m	struct:s_tok	typeref:struct:s_tok *
-print_echo	env_management.c	/^int	print_echo(t_shell *shell)$/;"	f	typeref:typename:int
-print_export	env_management.c	/^int	print_export(t_shell *shell)$/;"	f	typeref:typename:int
-print_list	list_utils.c	/^void	print_list(t_chained *list)$/;"	f	typeref:typename:void
-print_list	pdro/list_utils.c	/^void	print_list(t_chained *list)$/;"	f	typeref:typename:void
-print_pwd_linux	dir_management.c	/^int	print_pwd_linux(void)$/;"	f	typeref:typename:int
-print_pwd_linux	pdro/dirmanagement.c	/^void	print_pwd_linux(void)$/;"	f	typeref:typename:void
-print_toklst	pdro/token_managment.c	/^void	print_toklst(t_toklst *list)$/;"	f	typeref:typename:void
-print_toklst	token_managment.c	/^void	print_toklst(t_toklst *list)$/;"	f	typeref:typename:void
-process_line	pdro/readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f	typeref:typename:void
-process_line	readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f	typeref:typename:void
-progname	pdro/readline/share/readline/fileman.c	/^char *progname;$/;"	v	typeref:typename:char *
-progname	pdro/readline/share/readline/rl.c	/^static char *progname;$/;"	v	typeref:typename:char *	file:
-progname	pdro/readline/share/readline/rlcat.c	/^static char *progname;$/;"	v	typeref:typename:char *	file:
-progname	pdro/readline/share/readline/rlevent.c	/^static char *progname;$/;"	v	typeref:typename:char *	file:
-progname	readline/share/readline/fileman.c	/^char *progname;$/;"	v	typeref:typename:char *
-progname	readline/share/readline/rl.c	/^static char *progname;$/;"	v	typeref:typename:char *	file:
-progname	readline/share/readline/rlcat.c	/^static char *progname;$/;"	v	typeref:typename:char *	file:
-progname	readline/share/readline/rlevent.c	/^static char *progname;$/;"	v	typeref:typename:char *	file:
-prompt	pdro/minishell.h	/^	const char			*prompt;$/;"	m	struct:s_shell	typeref:typename:const char *
-prompt	pdro/readline/include/readline/readline.h	/^  char *prompt;$/;"	m	struct:readline_state	typeref:typename:char *
-prompt	pdro/readline/share/readline/excallback.c	/^int prompt = 1;$/;"	v	typeref:typename:int
-prompt	pdro/readline/share/readline/rl-callbacktest.c	/^const char *prompt = "rltest$ ";$/;"	v	typeref:typename:const char *
-prompt	readline/include/readline/readline.h	/^  char *prompt;$/;"	m	struct:readline_state	typeref:typename:char *
-prompt	readline/share/readline/excallback.c	/^int prompt = 1;$/;"	v	typeref:typename:int
-prompt	readline/share/readline/rl-callbacktest.c	/^const char *prompt = "rltest$ ";$/;"	v	typeref:typename:const char *
-prompt	structures.h	/^	const char			*prompt;$/;"	m	struct:s_shell	typeref:typename:const char *
-prompt_buf	pdro/readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v	typeref:typename:char[40]
-prompt_buf	readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v	typeref:typename:char[40]
-quote	pdro/minishell.h	/^	int					quote;$/;"	m	struct:s_tok	typeref:typename:int
-quote	structures.h	/^	int			quote;$/;"	m	struct:s_tok	typeref:typename:int
-quotejumper	pdro/tokenisation.c	/^int	quotejumper(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f	typeref:typename:int
-quotejumper	tokenisation.c	/^int	quotejumper(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f	typeref:typename:int
-quoteparser	pdro/tokenisation.c	/^char	*quoteparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f	typeref:typename:char *
-quoteparser	tokenisation.c	/^char	*quoteparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f	typeref:typename:char *
-re	Libft/Makefile	/^re : fclean all$/;"	t
-re	Makefile	/^re:	fclean all$/;"	t
-re	pdro/Libft/Makefile	/^re : fclean all$/;"	t
-re	pdro/Makefile	/^re:	fclean all$/;"	t
-readbuff_copystock	Libft/get_next_line.c	/^char	*readbuff_copystock(int fd, char *stock)$/;"	f	typeref:typename:char *
-readbuff_copystock	pdro/Libft/get_next_line.c	/^char	*readbuff_copystock(int fd, char *stock)$/;"	f	typeref:typename:char *
-readline_input	pdro/readline/share/readline/rlptytest.c	/^readline_input()$/;"	f	typeref:typename:int	file:
-readline_input	readline/share/readline/rlptytest.c	/^readline_input()$/;"	f	typeref:typename:int	file:
-readline_manager	main.c	/^int	readline_manager(t_shell *shell)$/;"	f	typeref:typename:int
+main	readline/share/readline/rlkeymaps.c	/^main (int c, char **v)$/;"	f
+main	readline/share/readline/rlptytest.c	/^main()$/;"	f
+main	readline/share/readline/rltest.c	/^main ()$/;"	f
+main	readline/share/readline/rlversion.c	/^main()$/;"	f
+main_loop	pdro/readline/share/readline/rlptytest.c	/^main_loop(void)$/;"	f	file:
+main_loop	readline/share/readline/rlptytest.c	/^main_loop(void)$/;"	f	file:
+mark	pdro/readline/include/readline/readline.h	/^  int mark;$/;"	m	struct:readline_state
+mark	readline/include/readline/readline.h	/^  int mark;$/;"	m	struct:readline_state
+masterfd	pdro/readline/share/readline/rlptytest.c	/^static int masterfd = -1;$/;"	v	file:
+masterfd	readline/share/readline/rlptytest.c	/^static int masterfd = -1;$/;"	v	file:
+menuentryfunc	pdro/readline/include/readline/readline.h	/^  rl_compentry_func_t *menuentryfunc;$/;"	m	struct:readline_state
+menuentryfunc	readline/include/readline/readline.h	/^  rl_compentry_func_t *menuentryfunc;$/;"	m	struct:readline_state
+meta_character_bit	pdro/readline/include/readline/chardefs.h	57;"	d
+meta_character_bit	readline/include/readline/chardefs.h	57;"	d
+meta_character_threshold	pdro/readline/include/readline/chardefs.h	55;"	d
+meta_character_threshold	readline/include/readline/chardefs.h	55;"	d
+my_fgets_completion	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_completion ($/;"	f	file:
+my_fgets_completion	readline/share/readline/rl-fgets.c	/^my_fgets_completion ($/;"	f	file:
+my_fgets_debug_flag	pdro/readline/share/readline/rl-fgets.c	/^static int     my_fgets_debug_flag      = 0    ;$/;"	v	file:
+my_fgets_debug_flag	readline/share/readline/rl-fgets.c	/^static int     my_fgets_debug_flag      = 0    ;$/;"	v	file:
+my_fgets_debug_toggle	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_debug_toggle ($/;"	f	file:
+my_fgets_debug_toggle	readline/share/readline/rl-fgets.c	/^my_fgets_debug_toggle ($/;"	f	file:
+my_fgets_dump	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_dump ($/;"	f	file:
+my_fgets_dump	readline/share/readline/rl-fgets.c	/^my_fgets_dump ($/;"	f	file:
+my_fgets_generator	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_generator ($/;"	f	file:
+my_fgets_generator	readline/share/readline/rl-fgets.c	/^my_fgets_generator ($/;"	f	file:
+my_fgets_lookup	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_lookup ($/;"	f	file:
+my_fgets_lookup	readline/share/readline/rl-fgets.c	/^my_fgets_lookup ($/;"	f	file:
+my_fgets_names	pdro/readline/share/readline/rl-fgets.c	/^static char ** my_fgets_names           = NULL ;$/;"	v	file:
+my_fgets_names	readline/share/readline/rl-fgets.c	/^static char ** my_fgets_names           = NULL ;$/;"	v	file:
+my_fgets_number_of_names	pdro/readline/share/readline/rl-fgets.c	/^static int     my_fgets_number_of_names = 0    ;$/;"	v	file:
+my_fgets_number_of_names	readline/share/readline/rl-fgets.c	/^static int     my_fgets_number_of_names = 0    ;$/;"	v	file:
+my_fgets_reset	pdro/readline/share/readline/rl-fgets.c	/^my_fgets_reset ($/;"	f	file:
+my_fgets_reset	readline/share/readline/rl-fgets.c	/^my_fgets_reset ($/;"	f	file:
+name	pdro/readline/include/readline/readline.h	/^  const char *name;$/;"	m	struct:_funmap
+name	pdro/readline/share/readline/fileman.c	/^  char *name;			\/* User printable name of the function. *\/$/;"	m	struct:__anon4	file:
+name	readline/include/readline/readline.h	/^  const char *name;$/;"	m	struct:_funmap
+name	readline/share/readline/fileman.c	/^  char *name;			\/* User printable name of the function. *\/$/;"	m	struct:__anon2	file:
+nb_elem	pdro/structures.h	/^	int					nb_elem;$/;"	m	struct:s_chained
+nb_elem	pdro/structures.h	/^	int					nb_elem;$/;"	m	struct:s_toklst
+nb_elem	structures.h	/^	int					nb_elem;$/;"	m	struct:s_chained
+nb_elem	structures.h	/^	int					nb_elem;$/;"	m	struct:s_toklst
+new_back_node	list_manip.c	/^t_chained	*new_back_node(t_chained *list, char *line)$/;"	f
+new_back_node	pdro/list_manip.c	/^t_chained	*new_back_node(t_chained *list, char *line)$/;"	f
+new_back_tok	pdro/token_managment.c	/^t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)$/;"	f
+new_back_tok	token_management.c	/^t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)$/;"	f
+new_back_tok	token_managment.c	/^t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)$/;"	f
+new_front_node	list_manip.c	/^t_chained	*new_front_node(t_chained *list, char *line)$/;"	f
+new_front_node	pdro/list_manip.c	/^t_chained	*new_front_node(t_chained *list, char *line)$/;"	f
+next	Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	pdro/Libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list::s_list
+next	pdro/readline/include/readline/readline.h	/^  struct undo_list *next;$/;"	m	struct:undo_list	typeref:struct:undo_list::undo_list
+next	pdro/structures.h	/^	struct s_node		*next;$/;"	m	struct:s_node	typeref:struct:s_node::s_node
+next	pdro/structures.h	/^	struct s_tok		*next;$/;"	m	struct:s_tok	typeref:struct:s_tok::s_tok
+next	readline/include/readline/readline.h	/^  struct undo_list *next;$/;"	m	struct:undo_list	typeref:struct:undo_list::undo_list
+next	structures.h	/^	struct s_node		*next;$/;"	m	struct:s_node	typeref:struct:s_node::s_node
+next	structures.h	/^	struct s_tok		*next;$/;"	m	struct:s_tok	typeref:struct:s_tok::s_tok
+null_list	list_utils.c	/^t_chained	*null_list(void)$/;"	f
+null_list	pdro/list_utils.c	/^t_chained	*null_list(void)$/;"	f
+offset	pdro/readline/include/readline/history.h	/^  int offset;			\/* The location pointer within this array. *\/$/;"	m	struct:_hist_state
+offset	readline/include/readline/history.h	/^  int offset;			\/* The location pointer within this array. *\/$/;"	m	struct:_hist_state
+old_lflag	pdro/readline/share/readline/excallback.c	/^tcflag_t old_lflag;$/;"	v
+old_lflag	readline/share/readline/excallback.c	/^tcflag_t old_lflag;$/;"	v
+old_vtime	pdro/readline/share/readline/excallback.c	/^cc_t     old_vtime;$/;"	v
+old_vtime	readline/share/readline/excallback.c	/^cc_t     old_vtime;$/;"	v
+option_n	env_management.c	/^int	option_n(t_shell *shell)$/;"	f
+option_n	pdro/env_management.c	/^int	option_n(t_shell *shell)$/;"	f
+outf	pdro/readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:readline_state
+outf	readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:readline_state
+pendingin	pdro/readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state
+pendingin	readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state
+plusminus	Libft/ft_putnbr_base_fd.c	/^static int	plusminus(char *str)$/;"	f	file:
+plusminus	Libft/ft_sizebase_fd.c	/^static int	plusminus(char *str)$/;"	f	file:
+plusminus	pdro/Libft/ft_putnbr_base_fd.c	/^static int	plusminus(char *str)$/;"	f	file:
+plusminus	pdro/Libft/ft_sizebase_fd.c	/^static int	plusminus(char *str)$/;"	f	file:
+point	pdro/readline/include/readline/readline.h	/^  int point;$/;"	m	struct:readline_state
+point	readline/include/readline/readline.h	/^  int point;$/;"	m	struct:readline_state
+prev	pdro/structures.h	/^	struct s_node		*prev;$/;"	m	struct:s_node	typeref:struct:s_node::s_node
+prev	pdro/structures.h	/^	struct s_tok		*prev;$/;"	m	struct:s_tok	typeref:struct:s_tok::s_tok
+prev	structures.h	/^	struct s_node		*prev;$/;"	m	struct:s_node	typeref:struct:s_node::s_node
+prev	structures.h	/^	struct s_tok		*prev;$/;"	m	struct:s_tok	typeref:struct:s_tok::s_tok
+print_echo	env_management.c	/^int	print_echo(t_shell *shell)$/;"	f
+print_echo	pdro/env_management.c	/^int	print_echo(t_shell *shell)$/;"	f
+print_export	env_management.c	/^int	print_export(t_shell *shell)$/;"	f
+print_export	pdro/env_management.c	/^int	print_export(t_shell *shell)$/;"	f
+print_list	list_utils.c	/^void	print_list(t_chained *list)$/;"	f
+print_list	pdro/list_utils.c	/^void	print_list(t_chained *list)$/;"	f
+print_pwd_linux	dir_management.c	/^int	print_pwd_linux(void)$/;"	f
+print_pwd_linux	pdro/dir_management.c	/^int	print_pwd_linux(void)$/;"	f
+print_toklst	pdro/token_managment.c	/^void	print_toklst(t_toklst *list)$/;"	f
+print_toklst	token_management.c	/^void    print_toklst(t_toklst *list)$/;"	f
+print_toklst	token_managment.c	/^void	print_toklst(t_toklst *list)$/;"	f
+process_line	pdro/readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f
+process_line	readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f
+progname	pdro/readline/share/readline/fileman.c	/^char *progname;$/;"	v
+progname	pdro/readline/share/readline/rl.c	/^static char *progname;$/;"	v	file:
+progname	pdro/readline/share/readline/rlcat.c	/^static char *progname;$/;"	v	file:
+progname	pdro/readline/share/readline/rlevent.c	/^static char *progname;$/;"	v	file:
+progname	readline/share/readline/fileman.c	/^char *progname;$/;"	v
+progname	readline/share/readline/rl.c	/^static char *progname;$/;"	v	file:
+progname	readline/share/readline/rlcat.c	/^static char *progname;$/;"	v	file:
+progname	readline/share/readline/rlevent.c	/^static char *progname;$/;"	v	file:
+prompt	pdro/readline/include/readline/readline.h	/^  char *prompt;$/;"	m	struct:readline_state
+prompt	pdro/readline/share/readline/excallback.c	/^int prompt = 1;$/;"	v
+prompt	pdro/readline/share/readline/rl-callbacktest.c	/^const char *prompt = "rltest$ ";$/;"	v
+prompt	pdro/structures.h	/^	const char			*prompt;$/;"	m	struct:s_shell
+prompt	readline/include/readline/readline.h	/^  char *prompt;$/;"	m	struct:readline_state
+prompt	readline/share/readline/excallback.c	/^int prompt = 1;$/;"	v
+prompt	readline/share/readline/rl-callbacktest.c	/^const char *prompt = "rltest$ ";$/;"	v
+prompt	structures.h	/^	const char			*prompt;$/;"	m	struct:s_shell
+prompt_buf	pdro/readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
+prompt_buf	readline/share/readline/excallback.c	/^char prompt_buf[40], line_buf[256];$/;"	v
+quote	pdro/structures.h	/^	int			quote;$/;"	m	struct:s_tok
+quote	structures.h	/^	int			quote;$/;"	m	struct:s_tok
+quotejumper	tokenisation.c	/^int	quotejumper(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+quoteparser	tokenisation.c	/^char	*quoteparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+readbuff_copystock	Libft/get_next_line.c	/^char	*readbuff_copystock(int fd, char *stock)$/;"	f
+readbuff_copystock	pdro/Libft/get_next_line.c	/^char	*readbuff_copystock(int fd, char *stock)$/;"	f
+readline_input	pdro/readline/share/readline/rlptytest.c	/^readline_input()$/;"	f	file:
+readline_input	readline/share/readline/rlptytest.c	/^readline_input()$/;"	f	file:
+readline_manager	main.c	/^int	readline_manager(t_shell *shell)$/;"	f
+readline_manager	pdro/main.c	/^int	readline_manager(t_shell *shell)$/;"	f
 readline_state	pdro/readline/include/readline/readline.h	/^struct readline_state {$/;"	s
 readline_state	readline/include/readline/readline.h	/^struct readline_state {$/;"	s
-remove_back_node	list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f	typeref:typename:t_chained *
-remove_back_node	pdro/list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f	typeref:typename:t_chained *
-remove_back_tok	pdro/token_managment.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f	typeref:typename:t_toklst *
-remove_back_tok	token_managment.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f	typeref:typename:t_toklst *
-remove_current_node	env_management.c	/^t_node	*remove_current_node(t_node *node, t_chained *lst)$/;"	f	typeref:typename:t_node *
-remove_front_node	list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f	typeref:typename:t_chained *
-remove_front_node	pdro/list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f	typeref:typename:t_chained *
-reserved	pdro/readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state	typeref:typename:char[64]
-reserved	readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state	typeref:typename:char[64]
-rl_gets	pdro/readline/share/readline/manexamp.c	/^rl_gets ()$/;"	f	typeref:typename:char *
-rl_gets	readline/share/readline/manexamp.c	/^rl_gets ()$/;"	f	typeref:typename:char *
-rl_ivoidfunc_t	pdro/readline/include/readline/rltypedefs.h	/^#define rl_ivoidfunc_t /;"	d
-rl_ivoidfunc_t	readline/include/readline/rltypedefs.h	/^#define rl_ivoidfunc_t /;"	d
-rl_symbolic_link_hook	pdro/readline/include/readline/readline.h	/^#define rl_symbolic_link_hook /;"	d
-rl_symbolic_link_hook	readline/include/readline/readline.h	/^#define rl_symbolic_link_hook /;"	d
-rlctx_send_user_command	pdro/readline/share/readline/rlptytest.c	/^rlctx_send_user_command(char *line)$/;"	f	typeref:typename:void	file:
-rlctx_send_user_command	readline/share/readline/rlptytest.c	/^rlctx_send_user_command(char *line)$/;"	f	typeref:typename:void	file:
-rlstate	pdro/readline/include/readline/readline.h	/^  int rlstate;$/;"	m	struct:readline_state	typeref:typename:int
-rlstate	readline/include/readline/readline.h	/^  int rlstate;$/;"	m	struct:readline_state	typeref:typename:int
-running	pdro/readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v	typeref:typename:int
-running	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v	typeref:typename:int
-s_chained	pdro/minishell.h	/^typedef struct s_chained$/;"	s
+remove_back_node	list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f
+remove_back_node	pdro/list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f
+remove_back_tok	pdro/token_managment.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
+remove_back_tok	token_management.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
+remove_back_tok	token_managment.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
+remove_current_node	env_management.c	/^t_node	*remove_current_node(t_node *node, t_chained *lst)$/;"	f
+remove_current_node	pdro/env_management.c	/^t_node	*remove_current_node(t_node *node, t_chained *lst)$/;"	f
+remove_front_node	list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f
+remove_front_node	pdro/list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f
+reserved	pdro/readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
+reserved	readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
+rl_command_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t
+rl_command_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t
+rl_compdisp_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_compdisp_func_t PARAMS((char **, int, int));$/;"	t
+rl_compdisp_func_t	readline/include/readline/rltypedefs.h	/^typedef void rl_compdisp_func_t PARAMS((char **, int, int));$/;"	t
+rl_compentry_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_compentry_func_t PARAMS((const char *, int));$/;"	t
+rl_compentry_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_compentry_func_t PARAMS((const char *, int));$/;"	t
+rl_compignore_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_compignore_func_t PARAMS((char **));$/;"	t
+rl_compignore_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_compignore_func_t PARAMS((char **));$/;"	t
+rl_completion_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char **rl_completion_func_t PARAMS((const char *, int, int));$/;"	t
+rl_completion_func_t	readline/include/readline/rltypedefs.h	/^typedef char **rl_completion_func_t PARAMS((const char *, int, int));$/;"	t
+rl_cpcpfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcpfunc_t PARAMS((char  *));$/;"	t
+rl_cpcpfunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcpfunc_t PARAMS((char  *));$/;"	t
+rl_cpcppfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcppfunc_t PARAMS((char  **));$/;"	t
+rl_cpcppfunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpcppfunc_t PARAMS((char  **));$/;"	t
+rl_cpifunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpifunc_t PARAMS((int));$/;"	t
+rl_cpifunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpifunc_t PARAMS((int));$/;"	t
+rl_cpvfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_cpvfunc_t PARAMS((void));$/;"	t
+rl_cpvfunc_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_cpvfunc_t PARAMS((void));$/;"	t
+rl_dequote_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_dequote_func_t PARAMS((char *, int));$/;"	t
+rl_dequote_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_dequote_func_t PARAMS((char *, int));$/;"	t
+rl_getc_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_getc_func_t PARAMS((FILE *));$/;"	t
+rl_getc_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_getc_func_t PARAMS((FILE *));$/;"	t
+rl_gets	pdro/readline/share/readline/manexamp.c	/^rl_gets ()$/;"	f
+rl_gets	readline/share/readline/manexamp.c	/^rl_gets ()$/;"	f
+rl_hook_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_hook_func_t PARAMS((void));$/;"	t
+rl_hook_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_hook_func_t PARAMS((void));$/;"	t
+rl_icpfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_icpfunc_t PARAMS((char *));$/;"	t
+rl_icpfunc_t	readline/include/readline/rltypedefs.h	/^typedef int rl_icpfunc_t PARAMS((char *));$/;"	t
+rl_icppfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_icppfunc_t PARAMS((char **));$/;"	t
+rl_icppfunc_t	readline/include/readline/rltypedefs.h	/^typedef int rl_icppfunc_t PARAMS((char **));$/;"	t
+rl_intfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_intfunc_t PARAMS((int));$/;"	t
+rl_intfunc_t	readline/include/readline/rltypedefs.h	/^typedef int rl_intfunc_t PARAMS((int));$/;"	t
+rl_ivoidfunc_t	pdro/readline/include/readline/rltypedefs.h	80;"	d
+rl_ivoidfunc_t	readline/include/readline/rltypedefs.h	80;"	d
+rl_linebuf_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_linebuf_func_t PARAMS((char *, int));$/;"	t
+rl_linebuf_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_linebuf_func_t PARAMS((char *, int));$/;"	t
+rl_quote_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef char *rl_quote_func_t PARAMS((char *, int, char *));$/;"	t
+rl_quote_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_quote_func_t PARAMS((char *, int, char *));$/;"	t
+rl_symbolic_link_hook	pdro/readline/include/readline/readline.h	759;"	d
+rl_symbolic_link_hook	readline/include/readline/readline.h	759;"	d
+rl_vcpfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_vcpfunc_t PARAMS((char *));$/;"	t
+rl_vcpfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_vcpfunc_t PARAMS((char *));$/;"	t
+rl_vcppfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_vcppfunc_t PARAMS((char **));$/;"	t
+rl_vcppfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_vcppfunc_t PARAMS((char **));$/;"	t
+rl_vintfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_vintfunc_t PARAMS((int));$/;"	t
+rl_vintfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_vintfunc_t PARAMS((int));$/;"	t
+rl_voidfunc_t	pdro/readline/include/readline/rltypedefs.h	/^typedef void rl_voidfunc_t PARAMS((void));$/;"	t
+rl_voidfunc_t	readline/include/readline/rltypedefs.h	/^typedef void rl_voidfunc_t PARAMS((void));$/;"	t
+rlctx_send_user_command	pdro/readline/share/readline/rlptytest.c	/^rlctx_send_user_command(char *line)$/;"	f	file:
+rlctx_send_user_command	readline/share/readline/rlptytest.c	/^rlctx_send_user_command(char *line)$/;"	f	file:
+rlstate	pdro/readline/include/readline/readline.h	/^  int rlstate;$/;"	m	struct:readline_state
+rlstate	readline/include/readline/readline.h	/^  int rlstate;$/;"	m	struct:readline_state
+running	pdro/readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
+running	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
+s:l	Session.vim	/^let s:l = 29 - ((28 * winheight(0) + 25) \/ 50)$/;"	v
+s:l	Session.vim	/^let s:l = 93 - ((16 * winheight(0) + 25) \/ 50)$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+s_chained	pdro/structures.h	/^typedef struct s_chained$/;"	s
 s_chained	structures.h	/^typedef struct s_chained$/;"	s
 s_list	Libft/libft.h	/^typedef struct s_list$/;"	s
 s_list	pdro/Libft/libft.h	/^typedef struct s_list$/;"	s
-s_node	pdro/minishell.h	/^typedef struct s_node$/;"	s
+s_node	pdro/structures.h	/^typedef struct s_node$/;"	s
 s_node	structures.h	/^typedef struct s_node$/;"	s
-s_shell	pdro/minishell.h	/^typedef struct s_shell$/;"	s
+s_shell	pdro/structures.h	/^typedef struct s_shell$/;"	s
 s_shell	structures.h	/^typedef struct s_shell$/;"	s
-s_tok	pdro/minishell.h	/^typedef struct s_tok$/;"	s
+s_tok	pdro/structures.h	/^typedef struct s_tok$/;"	s
 s_tok	structures.h	/^typedef struct s_tok$/;"	s
-s_toklst	pdro/minishell.h	/^typedef struct s_toklst$/;"	s
+s_toklst	pdro/structures.h	/^typedef struct s_toklst$/;"	s
 s_toklst	structures.h	/^typedef struct s_toklst$/;"	s
 save_termios	pdro/readline/share/readline/rlptytest.c	/^static struct termios save_termios;$/;"	v	typeref:struct:termios	file:
 save_termios	readline/share/readline/rlptytest.c	/^static struct termios save_termios;$/;"	v	typeref:struct:termios	file:
-secondparsing	parsing.c	/^static int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	typeref:typename:int	file:
-secondparsing	pdro/parsing.c	/^int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	typeref:typename:int
-set_deftext	pdro/readline/share/readline/rl.c	/^set_deftext ()$/;"	f	typeref:typename:int	file:
-set_deftext	pdro/readline/share/readline/rlevent.c	/^set_deftext ()$/;"	f	typeref:typename:int	file:
-set_deftext	readline/share/readline/rl.c	/^set_deftext ()$/;"	f	typeref:typename:int	file:
-set_deftext	readline/share/readline/rlevent.c	/^set_deftext ()$/;"	f	typeref:typename:int	file:
-sighandler	pdro/readline/share/readline/rl-callbacktest.c	/^sighandler (int sig)$/;"	f	typeref:typename:void	file:
-sighandler	readline/share/readline/rl-callbacktest.c	/^sighandler (int sig)$/;"	f	typeref:typename:void	file:
+secondparsing	parsing.c	/^static int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	file:
+secondparsing	pdro/parsing.c	/^static int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	file:
+set_deftext	pdro/readline/share/readline/rl.c	/^set_deftext ()$/;"	f	file:
+set_deftext	pdro/readline/share/readline/rlevent.c	/^set_deftext ()$/;"	f	file:
+set_deftext	readline/share/readline/rl.c	/^set_deftext ()$/;"	f	file:
+set_deftext	readline/share/readline/rlevent.c	/^set_deftext ()$/;"	f	file:
+sighandler	pdro/readline/share/readline/rl-callbacktest.c	/^sighandler (int sig)$/;"	f	file:
+sighandler	readline/share/readline/rl-callbacktest.c	/^sighandler (int sig)$/;"	f	file:
 sigint	pdro/readline/share/readline/rlptytest.c	/^sigint (s)$/;"	f
 sigint	readline/share/readline/rlptytest.c	/^sigint (s)$/;"	f
 sigwinch	pdro/readline/share/readline/rlptytest.c	/^sigwinch (s)$/;"	f
 sigwinch	readline/share/readline/rlptytest.c	/^sigwinch (s)$/;"	f
-sigwinch_received	pdro/readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v	typeref:typename:int
-sigwinch_received	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v	typeref:typename:int
-size	pdro/readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state	typeref:typename:int
+sigwinch_received	pdro/readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
+sigwinch_received	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
+size	pdro/readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state
 size	pdro/readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typeref:struct:winsize	file:
-size	readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state	typeref:typename:int
+size	readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state
 size	readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typeref:struct:winsize	file:
-slavefd	pdro/readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	typeref:typename:int	file:
-slavefd	readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	typeref:typename:int	file:
-sort_list	list_utils.c	/^t_chained	*sort_list(t_chained *list)$/;"	f	typeref:typename:t_chained *
-sorted_env_l	structures.h	/^	struct s_chained	*sorted_env_l;$/;"	m	struct:s_shell	typeref:struct:s_chained *
-splitcount	Libft/ft_split.c	/^static int	splitcount(const char *str, char c)$/;"	f	typeref:typename:int	file:
-splitcount	Libft/ft_split_slash.c	/^static int	splitcount(const char *str, char c)$/;"	f	typeref:typename:int	file:
-splitcount	pdro/Libft/ft_split.c	/^static int	splitcount(const char *str, char c)$/;"	f	typeref:typename:int	file:
-splitter	Libft/ft_split.c	/^char	**splitter(char const *s, char c, char **recipe)$/;"	f	typeref:typename:char **
-splitter	Libft/ft_split_slash.c	/^static char	**splitter(char const *s, char c, char **recipe)$/;"	f	typeref:typename:char **	file:
-splitter	pdro/Libft/ft_split.c	/^char	**splitter(char const *s, char c, char **recipe)$/;"	f	typeref:typename:char **
-start	pdro/minishell.h	/^	struct s_node		*start;$/;"	m	struct:s_chained	typeref:struct:s_node *
-start	pdro/minishell.h	/^	struct s_tok		*start;$/;"	m	struct:s_toklst	typeref:struct:s_tok *
-start	pdro/readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list	typeref:typename:int
-start	readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list	typeref:typename:int
-start	structures.h	/^	struct s_node		*start;$/;"	m	struct:s_chained	typeref:struct:s_node *
-start	structures.h	/^	struct s_tok		*start;$/;"	m	struct:s_toklst	typeref:struct:s_tok *
+slavefd	pdro/readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
+slavefd	readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
+sort_list	list_utils.c	/^t_chained	*sort_list(t_chained *list)$/;"	f
+sort_list	pdro/list_utils.c	/^t_chained	*sort_list(t_chained *list)$/;"	f
+sorted_env_l	pdro/structures.h	/^	struct s_chained	*sorted_env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
+sorted_env_l	structures.h	/^	struct s_chained	*sorted_env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
+splitcount	Libft/ft_split.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
+splitcount	Libft/ft_split_slash.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
+splitcount	pdro/Libft/ft_split.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
+splitcount	pdro/Libft/ft_split_slash.c	/^static int	splitcount(const char *str, char c)$/;"	f	file:
+splitter	Libft/ft_split.c	/^char	**splitter(char const *s, char c, char **recipe)$/;"	f
+splitter	Libft/ft_split_slash.c	/^static char	**splitter(char const *s, char c, char **recipe)$/;"	f	file:
+splitter	pdro/Libft/ft_split.c	/^char	**splitter(char const *s, char c, char **recipe)$/;"	f
+splitter	pdro/Libft/ft_split_slash.c	/^static char	**splitter(char const *s, char c, char **recipe)$/;"	f	file:
+squotejumper	pdro/tokenisation.c	/^int     squotejumper(t_tok *token, int i)$/;"	f
+squoteparser	pdro/tokenisation.c	/^char    *squoteparser(t_tok *token, int i, char *newvar)$/;"	f
+start	pdro/readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list
+start	pdro/structures.h	/^	struct s_node		*start;$/;"	m	struct:s_chained	typeref:struct:s_chained::s_node
+start	pdro/structures.h	/^	struct s_tok		*start;$/;"	m	struct:s_toklst	typeref:struct:s_toklst::s_tok
+start	readline/include/readline/readline.h	/^  int start, end;		\/* Where the change took place. *\/$/;"	m	struct:undo_list
+start	structures.h	/^	struct s_node		*start;$/;"	m	struct:s_chained	typeref:struct:s_chained::s_node
+start	structures.h	/^	struct s_tok		*start;$/;"	m	struct:s_toklst	typeref:struct:s_toklst::s_tok
 stdcat	pdro/readline/share/readline/rlcat.c	/^stdcat (argc, argv)$/;"	f
 stdcat	readline/share/readline/rlcat.c	/^stdcat (argc, argv)$/;"	f
 stripwhite	pdro/readline/share/readline/fileman.c	/^stripwhite (string)$/;"	f
 stripwhite	readline/share/readline/fileman.c	/^stripwhite (string)$/;"	f
-syscom	pdro/readline/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	typeref:typename:char[1024]	file:
-syscom	readline/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	typeref:typename:char[1024]	file:
-t_chained	pdro/minishell.h	/^}				t_chained;$/;"	t	typeref:struct:s_chained
+syscom	pdro/readline/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	file:
+syscom	readline/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	file:
+t_chained	pdro/structures.h	/^}				t_chained;$/;"	t	typeref:struct:s_chained
 t_chained	structures.h	/^}				t_chained;$/;"	t	typeref:struct:s_chained
 t_list	Libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
 t_list	pdro/Libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list
-t_node	pdro/minishell.h	/^}				t_node;$/;"	t	typeref:struct:s_node
+t_node	pdro/structures.h	/^}				t_node;$/;"	t	typeref:struct:s_node
 t_node	structures.h	/^}				t_node;$/;"	t	typeref:struct:s_node
-t_shell	pdro/minishell.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
+t_shell	pdro/structures.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
 t_shell	structures.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
-t_tok	pdro/minishell.h	/^}				t_tok;$/;"	t	typeref:struct:s_tok
+t_tok	pdro/structures.h	/^}				t_tok;$/;"	t	typeref:struct:s_tok
 t_tok	structures.h	/^}				t_tok;$/;"	t	typeref:struct:s_tok
-t_toklst	pdro/minishell.h	/^}				t_toklst;$/;"	t	typeref:struct:s_toklst
+t_toklst	pdro/structures.h	/^}				t_toklst;$/;"	t	typeref:struct:s_toklst
 t_toklst	structures.h	/^}				t_toklst;$/;"	t	typeref:struct:s_toklst
 term	pdro/readline/share/readline/excallback.c	/^struct termios term;$/;"	v	typeref:struct:termios
 term	readline/share/readline/excallback.c	/^struct termios term;$/;"	v	typeref:struct:termios
-text	pdro/readline/include/readline/readline.h	/^  char *text;			\/* The text to insert, if undoing a delete. *\/$/;"	m	struct:undo_list	typeref:typename:char *
-text	readline/include/readline/readline.h	/^  char *text;			\/* The text to insert, if undoing a delete. *\/$/;"	m	struct:undo_list	typeref:typename:char *
-timestamp	pdro/readline/include/readline/history.h	/^  char *timestamp;		\/* char * rather than time_t for read\/write *\/$/;"	m	struct:_hist_entry	typeref:typename:char *
-timestamp	readline/include/readline/history.h	/^  char *timestamp;		\/* char * rather than time_t for read\/write *\/$/;"	m	struct:_hist_entry	typeref:typename:char *
-token_parsing	parsing.c	/^void	token_parsing(t_toklst *tokenlst, char *line)$/;"	f	typeref:typename:void
-tokenisation	pdro/tokenisation.c	/^void	tokenisation(t_toklst *tokenlst, t_chained *env)$/;"	f	typeref:typename:void
-tokenisation	tokenisation.c	/^void	tokenisation(t_toklst *tokenlst, t_chained *env)$/;"	f	typeref:typename:void
+text	pdro/readline/include/readline/readline.h	/^  char *text;			\/* The text to insert, if undoing a delete. *\/$/;"	m	struct:undo_list
+text	readline/include/readline/readline.h	/^  char *text;			\/* The text to insert, if undoing a delete. *\/$/;"	m	struct:undo_list
+tilde_hook_func_t	pdro/readline/include/readline/tilde.h	/^typedef char *tilde_hook_func_t PARAMS((char *));$/;"	t
+tilde_hook_func_t	readline/include/readline/tilde.h	/^typedef char *tilde_hook_func_t PARAMS((char *));$/;"	t
+timestamp	pdro/readline/include/readline/history.h	/^  char *timestamp;		\/* char * rather than time_t for read\/write *\/$/;"	m	struct:_hist_entry
+timestamp	readline/include/readline/history.h	/^  char *timestamp;		\/* char * rather than time_t for read\/write *\/$/;"	m	struct:_hist_entry
+token_parsing	parsing.c	/^void	token_parsing(t_toklst *tokenlst, char *line)$/;"	f
+token_parsing	pdro/parsing.c	/^void	token_parsing(t_toklst *tokenlst, char *line)$/;"	f
+tokenisation	pdro/tokenisation.c	/^void    tokenisation(t_toklst *tokenlst, t_chained *env)$/;"	f
+tokenisation	tokenisation.c	/^void	tokenisation(t_toklst *tokenlst, t_chained *env)$/;"	f
 too_dangerous	pdro/readline/share/readline/fileman.c	/^too_dangerous (caller)$/;"	f
 too_dangerous	readline/share/readline/fileman.c	/^too_dangerous (caller)$/;"	f
-tty_cbreak	pdro/readline/share/readline/rlptytest.c	/^int tty_cbreak(int fd){$/;"	f	typeref:typename:int
-tty_cbreak	readline/share/readline/rlptytest.c	/^int tty_cbreak(int fd){$/;"	f	typeref:typename:int
-tty_off_xon_xoff	pdro/readline/share/readline/rlptytest.c	/^tty_off_xon_xoff (int fd)$/;"	f	typeref:typename:int
-tty_off_xon_xoff	readline/share/readline/rlptytest.c	/^tty_off_xon_xoff (int fd)$/;"	f	typeref:typename:int
-tty_reset	pdro/readline/share/readline/rlptytest.c	/^int tty_reset(int fd)$/;"	f	typeref:typename:int
-tty_reset	readline/share/readline/rlptytest.c	/^int tty_reset(int fd)$/;"	f	typeref:typename:int
-ttystate	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	v	typeref:enum:__anonc893409d0103	file:
-ttystate	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	v	typeref:enum:__anoncaeabe390103	file:
-type	pdro/readline/include/readline/keymaps.h	/^  char type;$/;"	m	struct:_keymap_entry	typeref:typename:char
-type	readline/include/readline/keymaps.h	/^  char type;$/;"	m	struct:_keymap_entry	typeref:typename:char
-ul	pdro/readline/include/readline/readline.h	/^  UNDO_LIST *ul;$/;"	m	struct:readline_state	typeref:typename:UNDO_LIST *
-ul	readline/include/readline/readline.h	/^  UNDO_LIST *ul;$/;"	m	struct:readline_state	typeref:typename:UNDO_LIST *
+tty_cbreak	pdro/readline/share/readline/rlptytest.c	/^int tty_cbreak(int fd){$/;"	f
+tty_cbreak	readline/share/readline/rlptytest.c	/^int tty_cbreak(int fd){$/;"	f
+tty_off_xon_xoff	pdro/readline/share/readline/rlptytest.c	/^tty_off_xon_xoff (int fd)$/;"	f
+tty_off_xon_xoff	readline/share/readline/rlptytest.c	/^tty_off_xon_xoff (int fd)$/;"	f
+tty_reset	pdro/readline/share/readline/rlptytest.c	/^int tty_reset(int fd)$/;"	f
+tty_reset	readline/share/readline/rlptytest.c	/^int tty_reset(int fd)$/;"	f
+ttystate	pdro/readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	v	typeref:enum:__anon3	file:
+ttystate	readline/share/readline/rlptytest.c	/^static enum { RESET, TCBREAK } ttystate = RESET;$/;"	v	typeref:enum:__anon1	file:
+type	pdro/readline/include/readline/keymaps.h	/^  char type;$/;"	m	struct:_keymap_entry
+type	readline/include/readline/keymaps.h	/^  char type;$/;"	m	struct:_keymap_entry
+ul	pdro/readline/include/readline/readline.h	/^  UNDO_LIST *ul;$/;"	m	struct:readline_state
+ul	readline/include/readline/readline.h	/^  UNDO_LIST *ul;$/;"	m	struct:readline_state
 undo_code	pdro/readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	g
 undo_code	readline/include/readline/readline.h	/^enum undo_code { UNDO_DELETE, UNDO_INSERT, UNDO_BEGIN, UNDO_END };$/;"	g
 undo_list	pdro/readline/include/readline/readline.h	/^typedef struct undo_list {$/;"	s
 undo_list	readline/include/readline/readline.h	/^typedef struct undo_list {$/;"	s
-unset_variable	env_management.c	/^int	unset_variable(t_shell *shell)$/;"	f	typeref:typename:int
-usage	pdro/readline/share/readline/hist_erasedups.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	pdro/readline/share/readline/hist_purgecmd.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	pdro/readline/share/readline/rl.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	pdro/readline/share/readline/rlcat.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	pdro/readline/share/readline/rlevent.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	readline/share/readline/hist_erasedups.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	readline/share/readline/hist_purgecmd.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	readline/share/readline/rl.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	readline/share/readline/rlcat.c	/^usage()$/;"	f	typeref:typename:void	file:
-usage	readline/share/readline/rlevent.c	/^usage()$/;"	f	typeref:typename:void	file:
-user_command	structures.h	/^	struct s_toklst		*user_command;$/;"	m	struct:s_shell	typeref:struct:s_toklst *
-user_input	pdro/readline/share/readline/rlptytest.c	/^user_input()$/;"	f	typeref:typename:int	file:
-user_input	readline/share/readline/rlptytest.c	/^user_input()$/;"	f	typeref:typename:int	file:
+unset_variable	env_management.c	/^int	unset_variable(t_shell *shell)$/;"	f
+unset_variable	pdro/env_management.c	/^int	unset_variable(t_shell *shell)$/;"	f
+usage	pdro/readline/share/readline/hist_erasedups.c	/^usage()$/;"	f	file:
+usage	pdro/readline/share/readline/hist_purgecmd.c	/^usage()$/;"	f	file:
+usage	pdro/readline/share/readline/rl.c	/^usage()$/;"	f	file:
+usage	pdro/readline/share/readline/rlcat.c	/^usage()$/;"	f	file:
+usage	pdro/readline/share/readline/rlevent.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/hist_erasedups.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/hist_purgecmd.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/rl.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/rlcat.c	/^usage()$/;"	f	file:
+usage	readline/share/readline/rlevent.c	/^usage()$/;"	f	file:
+user_command	pdro/structures.h	/^	struct s_toklst		*user_command;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_toklst
+user_command	structures.h	/^	struct s_toklst		*user_command;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_toklst
+user_input	pdro/readline/share/readline/rlptytest.c	/^user_input()$/;"	f	file:
+user_input	readline/share/readline/rlptytest.c	/^user_input()$/;"	f	file:
 valid_argument	pdro/readline/share/readline/fileman.c	/^valid_argument (caller, arg)$/;"	f
 valid_argument	readline/share/readline/fileman.c	/^valid_argument (caller, arg)$/;"	f
-var	pdro/minishell.h	/^	char				*var;$/;"	m	struct:s_tok	typeref:typename:char *
-var	structures.h	/^	char				*var;$/;"	m	struct:s_tok	typeref:typename:char *
-variable	pdro/minishell.h	/^	char				*variable;$/;"	m	struct:s_node	typeref:typename:char *
-variable	structures.h	/^	char				*variable;$/;"	m	struct:s_node	typeref:typename:char *
-vflag	pdro/readline/share/readline/rlcat.c	/^static int vflag;$/;"	v	typeref:typename:int	file:
-vflag	readline/share/readline/rlcat.c	/^static int vflag;$/;"	v	typeref:typename:int	file:
-what	pdro/readline/include/readline/readline.h	/^  enum undo_code what;		\/* Delete, Insert, Begin, End. *\/$/;"	m	struct:undo_list	typeref:enum:undo_code
-what	readline/include/readline/readline.h	/^  enum undo_code what;		\/* Delete, Insert, Begin, End. *\/$/;"	m	struct:undo_list	typeref:enum:undo_code
-whitespace	pdro/readline/include/readline/chardefs.h	/^#define whitespace(/;"	d
-whitespace	readline/include/readline/chardefs.h	/^#define whitespace(/;"	d
-wordbreakchars	pdro/readline/include/readline/readline.h	/^  char *wordbreakchars;$/;"	m	struct:readline_state	typeref:typename:char *
-wordbreakchars	readline/include/readline/readline.h	/^  char *wordbreakchars;$/;"	m	struct:readline_state	typeref:typename:char *
+var	pdro/structures.h	/^	char				*var;$/;"	m	struct:s_tok
+var	structures.h	/^	char				*var;$/;"	m	struct:s_tok
+variable	pdro/structures.h	/^	char				*variable;$/;"	m	struct:s_node
+variable	structures.h	/^	char				*variable;$/;"	m	struct:s_node
+vflag	pdro/readline/share/readline/rlcat.c	/^static int vflag;$/;"	v	file:
+vflag	readline/share/readline/rlcat.c	/^static int vflag;$/;"	v	file:
+what	pdro/readline/include/readline/readline.h	/^  enum undo_code what;		\/* Delete, Insert, Begin, End. *\/$/;"	m	struct:undo_list	typeref:enum:undo_list::undo_code
+what	readline/include/readline/readline.h	/^  enum undo_code what;		\/* Delete, Insert, Begin, End. *\/$/;"	m	struct:undo_list	typeref:enum:undo_list::undo_code
+whitespace	pdro/readline/include/readline/chardefs.h	42;"	d
+whitespace	readline/include/readline/chardefs.h	42;"	d
+wordbreakchars	pdro/readline/include/readline/readline.h	/^  char *wordbreakchars;$/;"	m	struct:readline_state
+wordbreakchars	readline/include/readline/readline.h	/^  char *wordbreakchars;$/;"	m	struct:readline_state
+zt	Session.vim	/^normal! zt$/;"	m

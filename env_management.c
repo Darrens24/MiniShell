@@ -109,10 +109,12 @@ int	unset_variable(t_shell *shell)
 }
 
 
-int	execute_env_cmd(t_shell *shell)
+int	execute_builtin_cmd(t_shell *shell)
 {
 	execute_directory_cmd(shell);
-	if (ft_strncmp(shell->user_command->start->var, "env", 4) == 0)
+	if  (ft_strncmp(shell->user_command->start->var, "exit", 5) == 0)
+		return (printf(YEL "Exit Minishell\n" WHT));
+	else if (ft_strncmp(shell->user_command->start->var, "env", 4) == 0)
 	{
 		if (argument_after_cmd(shell) == TRUE)
 			return (printf("Env command won't take arguments or options\n"));

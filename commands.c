@@ -30,11 +30,8 @@ char	*get_correct_path(t_shell *shell)
 int	execute_command(t_shell *shell, char **envp)
 {
 	int	pid;
-	//int	fd[2];
 	char	**command;
 
-	//if (pipe(fd) < 0)
-	//	return (printf("Pipe failed\n"));
 	command = get_array_command(shell);
 	pid = fork();
 	if (pid == 0)
@@ -64,9 +61,7 @@ char	**get_array_command(t_shell *shell)
 
 int	command_manager(t_shell *shell, char **envp)
 {
-	get_correct_path(shell);
-	if (shell->correct_path == NULL)
-		return (EXIT_FAILURE);
+//	get_correct_path(shell);
 	/*int	i = 0;
 	char **res = get_array_command(shell);
 	while (res[i])
@@ -74,6 +69,9 @@ int	command_manager(t_shell *shell, char **envp)
 		printf("arraycommand %d is %s\n",i, res[i]);
 		i++;
 	}*/
-	execute_command(shell, envp);
+	if (pipe_case)
+		execupe_pipe_command(shell, envp);
+	else if (get_correct_path(shell))
+		execute_command(shell, envp);
 	return (EXIT_SUCCESS);
 }

@@ -49,7 +49,7 @@ int					change_directory(const char *path);
 
 //************* Env
 
-int					execute_env_cmd(t_shell *shell, char **envp);
+int					execute_builtin_cmd(t_shell *shell);
 int					print_export(t_shell *shell);
 int					add_env_variable(t_shell *shell);
 
@@ -68,6 +68,10 @@ char		**get_array_command(t_shell *shell);
 
 char		*get_path(char **envp);
 char		*get_correct_path(t_shell *shell);
+
+//********>> Pipe
+
+int			execupe_pipe_command(t_shell *shell, char **envp);
 
 /***\	LISTS	\***/
 

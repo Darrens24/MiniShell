@@ -29,7 +29,7 @@ int	clean_memory(t_shell *shell)
 	free(shell->env_l);
 	free(shell->sorted_env_l);
 	free(shell->user_command);
-	free(shell->correct_path);
+	//free(shell->correct_path); A FREE UNIQUEMENT SI COMMANDE
 	free_array(shell->all_path);
 	return (EXIT_SUCCESS);
 }
