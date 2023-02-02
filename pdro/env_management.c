@@ -35,6 +35,7 @@ int	print_export(t_shell *shell)
 int	option_n(t_shell *shell)
 {
 	if (shell->user_command->start->next
+		&& shell->user_command->start->next->var
 		&& !ft_strncmp(shell->user_command->start->next->var, "-n", 3))
 			return (1);
 	return (0);
@@ -59,10 +60,13 @@ int	print_echo(t_shell *shell)
 		ft_putchar_fd(' ', STDOUT_FILENO);
 		temp = temp->next;
 	}
-	if (option_n(shell))
-		ft_putstr_fd(temp->var, STDOUT_FILENO);
-	else
-		ft_putendl_fd(temp->var, STDOUT_FILENO);
+	if (temp->var)
+	{
+		if (option_n(shell))
+			ft_putstr_fd(temp->var, STDOUT_FILENO);
+		else
+			ft_putendl_fd(temp->var, STDOUT_FILENO);
+	}
 	return (EXIT_SUCCESS);		
 }
 
