@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/30 17:04:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/02 09:38:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 typedef struct s_shell
 {
 	struct s_chained	*env_l;
+	char				**array_env;
 	struct s_chained	*sorted_env_l;
 	const char			*prompt;
 	const char			*dir_path;
@@ -24,6 +25,7 @@ typedef struct s_shell
 	char				**all_path;
 	char				*correct_path;
 	char				**array_command;
+	char				***multi_cmd;
 
 }				t_shell;
 

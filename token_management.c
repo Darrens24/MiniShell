@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_managment.c                                  :+:      :+:    :+:   */
+/*   token_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 14:51:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:13:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int     is_emptytok(t_toklst *list)
+int	is_emptytok(t_toklst *list)
 {
-        if (list->nb_elem == 0)
-                return (1);
-        return (0);
+	if (list->nb_elem == 0)
+		return (1);
+	return (0);
 }
 
-void    print_toklst(t_toklst *list)
+void	print_toklst(t_toklst *list)
 {
-        t_tok *temp;
+	t_tok	*temp;
 
-        temp = list->start;
-        while (temp)
-        {
-                printf("%s\n", temp->variable);
-                temp = temp->next;
-        }
+	temp = list->start;
+	while (temp)
+	{
+		printf("%s\n", temp->var);
+		temp = temp->next;
+	}
 }
 
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
@@ -41,7 +41,7 @@ t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
 		printf("Node: Dynamic allocation failed\n");
 		return (NULL);
 	}
-	elem->variable = ft_strndup(line, start, end);
+	elem->var = ft_strndup(line, start, end);
 	elem->next = NULL;
 	elem->prev = NULL;
 	elem->quote = 0;
@@ -91,4 +91,10 @@ void	clear_toklst(t_toklst *lst)
 {
 	while (lst->nb_elem)
 		remove_back_tok(lst);
+}
+
+void	clear_chained_lst(t_chained *lst)
+{
+	while (lst->nb_elem)
+		remove_back_node(lst);
 }

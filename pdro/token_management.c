@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_managment.c                                  :+:      :+:    :+:   */
+/*   token_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 14:51:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:51:51 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,10 @@ void	clear_toklst(t_toklst *lst)
 {
 	while (lst->nb_elem)
 		remove_back_tok(lst);
+}
+
+void	clear_chained(t_chained *lst)
+{
+	while (lst->nb_elem)
+		remove_back_node(lst);
 }

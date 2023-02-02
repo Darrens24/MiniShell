@@ -36,6 +36,9 @@
 int			allocate_shell(t_shell *shell, char **envp);
 int			clean_memory(t_shell *shell);
 int			free_array(char **array);
+char		**get_array_env(t_shell *shell);
+void		clear_chained_lst(t_chained *lst);
+int			clean_between_cmds(t_shell *shell);
 
 /***\	BUILTINS	\***/
 
@@ -64,16 +67,27 @@ int					echo_parsing(t_shell *shell);
 int			command_manager(t_shell *shell, char **envp);
 int			execute_command(t_shell *shell, char **envp);
 char		**get_array_command(t_shell *shell);
+int			get_number_of_commands(t_shell *shell);
+char		**get_command_in_tok(t_shell *shell, int index);
 
 //************* Path
 
-char		*get_path(char **envp);
-char		*get_correct_path(t_shell *shell);
+char				*get_path(char **envp);
+char				*get_correct_path(t_shell *shell, int index);
 
 //************* Pipe
 
-int			execupe_pipe_command(t_shell *shell, char **envp);
-char		**get_command_in_tok(t_shell *shell, int index);
+int					get_pipe_commands(t_shell *shell);
+int					pipe_command(t_shell *shell);
+int					redirect_pipe_execute_cmd(int *pid, int **fd, t_shell *shell, int index);
+
+//************************** Pipe Utils
+
+int							close_fds(int **fd);
+int							wait_pids(int *pid);
+t_tok						*go_to_next_pipe(t_shell *shell, t_tok *tok, int index);
+int							first_out_redirection(int *fd);
+int							inside_redirection(int *fd);
 
 /***\	LISTS	\***/
 
