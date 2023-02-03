@@ -9,7 +9,6 @@ int	allocate_shell(t_shell *shell, char **envp)
 	shell->env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->env_l)
 		return (printf("Malloc: Env failed\n"));
-	shell->array_env = get_array_env(shell);
 	shell->user_command = malloc(sizeof(*(shell->user_command)));
 	if (!shell->user_command)
 		return (printf("Malloc: UserCommand failed\n"));
@@ -17,6 +16,7 @@ int	allocate_shell(t_shell *shell, char **envp)
 	i = -1;
 	while (envp[++i])
 		new_back_node(shell->env_l, envp[i]);
+	shell->array_env = get_array_env(shell);
 	shell->sorted_env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->sorted_env_l)
 		return (printf("Malloc: Sorted Env failed\n"));
@@ -31,7 +31,7 @@ char	**get_array_env(t_shell *shell)
 	int		i;
 
 	temp = shell->user_command->start;
-	array = malloc(sizeof(char *) * (shell->user_command->nb_elem + 1));
+	array = malloc(sizeof(char *) * (shell->env_l->nb_elem + 1));
 	if (!array)
 		return (NULL);
 	i = -1;
@@ -72,17 +72,12 @@ int	clean_between_cmds(t_shell *shell)
 
 int	clean_memory(t_shell *shell)
 {
-	////int	i;
-
-	//i = -1;
-	//while (++i < get_number_of_commands(shell))
-	//	free_array(shell->multi_cmd[i]);
-	//free(shell->multi_cmd);
 	free(shell->line_readed);
 	clear_chained_lst(shell->env_l);
 	clear_chained_lst(shell->sorted_env_l);
-	//free(shell->env_l);
-	//free(shell->sorted_env_l);
+	free(shell->env_l);
+	free(shell->sorted_env_l);
+	free(shell->user_command);
 	//free(shell->correct_path); A FREE UNIQUEMENT SI COMMANDE
 	free_array(shell->all_path);
 	return (EXIT_SUCCESS);

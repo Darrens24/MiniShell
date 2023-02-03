@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/02 13:55:07 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/03 10:54:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	redirect_pipe_execute_cmd(pid_t *pid, int **fd, t_shell *shell, int index)
 	printf("nb of cmd = %d\n", get_number_of_commands(shell));*/
 	
 	pid[index] = fork();
-	if (pid[index] == 0)
+	if (pid[index] == 0)//on est dans le process fils
 	{
 		if (index < (get_number_of_commands(shell) - 1))
 			first_out_redirection(fd[index]);
@@ -66,6 +66,9 @@ int	pipe_command(t_shell *shell)
 	if (!pid)
 		return (EXIT_FAILURE);
 	fd = malloc(sizeof(int *) * (get_number_of_commands(shell) - 1));
+	if (!fd)
+		return (printf("hehe\n"));
+//	redirection_parsing(shell);
 	i = 0;
 	while (i < (get_number_of_commands(shell) - 1))
 	{
@@ -74,8 +77,6 @@ int	pipe_command(t_shell *shell)
 			return (printf("Pipe failed\n"));
 		i++;
 	}
-	//if (redirection case)
-		//change_input;
 	i = -1;
 	while (++i < get_number_of_commands(shell))
 		redirect_pipe_execute_cmd(pid, fd, shell, i);

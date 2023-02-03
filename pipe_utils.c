@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/02 11:24:41 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/03 10:48:53 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	inside_redirection(int *fd)
 {
 	close(fd[1]);
 	dup2(fd[0], STDIN_FILENO);
-	close(fd[1]);
+	close(fd[0]);
 	return (EXIT_SUCCESS);
 }
 

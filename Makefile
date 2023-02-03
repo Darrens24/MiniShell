@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/02 13:12:00 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/02 15:50:16 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ SRC = main.c \
 		commands.c \
 		pipe.c \
 		pipe_utils.c \
+		redirections.c \
+		redirection_utils.c \
 
 
 OBJ = $(SRC:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/02 09:38:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:06:01 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ typedef struct s_shell
 	char				*correct_path;
 	char				**array_command;
 	char				***multi_cmd;
-
+	int					infile;
+	int					doc_fd[2];
+	int					outfile;
+	int					append;
 }				t_shell;
 
 typedef struct s_node
