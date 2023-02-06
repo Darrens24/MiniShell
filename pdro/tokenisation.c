@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/01 14:25:10 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:39:08 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int    envvarjumper(t_tok *token, int i)
 		i++;
 	}
 	else if (!token->var[i] || is_wspace(token->var[i]) || token->var[i] == '\"' || token->var[i] == '\'')
-		i = i;
+		i += 0;
 	else
 	{
 		while (token->var[i] && token->var[i] != '\'' && token->var[i] != '\"')
