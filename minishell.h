@@ -86,7 +86,7 @@ int					redirect_and_execute_cmd(t_shell *shell, int index);
 int							close_fds(int **fd);
 int							wait_pids(int *pid);
 t_tok						*go_to_next_pipe(t_shell *shell, t_tok *tok, int index);
-int							first_out_redirection(int *fd);
+int							early_out_redirection(int *fd);
 int							inside_redirection(int *fd);
 
 /***\	REDIRECTION	\***/

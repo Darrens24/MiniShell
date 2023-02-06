@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/06 16:26:33 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/06 19:39:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 	if (temp == NULL)
 		return (EXIT_FAILURE);
 	shell->pid[index] = fork();
-	if (shell->pid[index] == 0)//on est dans le process fils
+	if (shell->pid[index] == 0)
 	{
 		if (index < (get_number_of_commands(shell) - 1))
-			first_out_redirection(shell->fd[index]);
+			early_out_redirection(shell->fd[index]);
 		if (index != 0)
 			inside_redirection(shell->fd[index - 1]);
 		//if (is_outfile_redirection(shell->user_command) && index == get_number_of_commands(shell) - 1)
@@ -57,7 +57,7 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 
 int	pipe_command(t_shell *shell)
 {
-	int		i = 0;
+	int	i;
 
 	if (infile_redirection_parsing(shell) != 0)
 		return (EXIT_FAILURE);
@@ -67,13 +67,19 @@ int	pipe_command(t_shell *shell)
 		redirect_and_execute_cmd(shell, i);
 	wait_pids(shell->pid);
 	close_fds(shell->fd);
-	free(shell->pid);
+	dup2(shell->saved_stdin, STDIN_FILENO);
+	return (EXIT_SUCCESS);
+}
+
+void	free_pids_fds(t_shell *shell)
+{
+	int	i;
+
 	i = -1;
 	while (++i < (get_number_of_commands(shell) - 1))
 		free(shell->fd[i]);
 	free(shell->fd);
-	dup2(shell->saved_stdin, STDIN_FILENO);
-	return (EXIT_SUCCESS);
+	free(shell->pid);
 }
 
 int	get_array_cmd_and_pipe_fds(t_shell *shell)

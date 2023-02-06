@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/06 11:41:07 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/06 19:39:50 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_tok	*go_to_next_pipe(t_shell *shell, t_tok *tok, int index) // A Remplacer par
 	return (tok);
 }
 
-int	first_out_redirection(int *fd)
+int	early_out_redirection(int *fd)
 {
 	close(fd[0]);
 	dup2(fd[1], STDOUT_FILENO);

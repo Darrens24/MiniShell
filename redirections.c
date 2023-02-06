@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/06 15:50:53 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/06 19:31:07 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,26 +68,28 @@ int	infile_redirection(t_shell *shell)
 
 int	heredoc_redirection(t_shell *shell)
 {
-	char	*buffer;
-	char	*limiter;
-	
-
-	limiter = append_newline(shell->user_command->start->next->var);
+	shell->limiter_doc = ft_strdup(shell->user_command->start->next->var);
 	if (pipe(shell->doc_fd) < 0)
 		return (printf("DocPipe failed\n"));
-	close(shell->doc_fd[0]);
+	delete_operator_and_infile(shell);
 	while (1)
 	{
-		buffer = readline("here_doc >> ");
-		if (!buffer || !ft_strncmp(buffer, limiter, ft_strlen(limiter) + 1))
+		shell->buffer_doc = readline(CYN "here_doc >> " WHT);
+		if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc, shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
+		{
+			if (!shell->buffer_doc)
+				ft_putchar_fd('\n', STDOUT_FILENO);
 			break ;
-		ft_putstr_fd(buffer, shell->doc_fd[1]);
+		}
+		ft_putstr_fd(shell->buffer_doc, shell->doc_fd[1]);
 		ft_putchar_fd('\n', shell->doc_fd[1]);
-		free(buffer);
+		free(shell->buffer_doc);
 	}
+	free(shell->buffer_doc);
+	free(shell->limiter_doc);
 	close(shell->doc_fd[1]);
-	free(buffer);
-	free(limiter);
-	delete_operator_and_infile(shell);
-	return (shell->doc_fd[0]);
+	shell->saved_stdin = dup(STDIN_FILENO);
+	dup2(shell->doc_fd[0], STDIN_FILENO);
+	close(shell->doc_fd[0]);
+	return (EXIT_SUCCESS);
 }
