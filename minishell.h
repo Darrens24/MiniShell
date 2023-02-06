@@ -77,9 +77,9 @@ char				*get_correct_path(t_shell *shell, int index);
 
 //************* Pipe
 
-int					get_pipe_commands(t_shell *shell);
+int					get_array_cmd_and_pipe_fds(t_shell *shell);
 int					pipe_command(t_shell *shell);
-int					redirect_pipe_execute_cmd(int *pid, int **fd, t_shell *shell, int index);
+int					redirect_and_execute_cmd(t_shell *shell, int index);
 
 //************************** Pipe Utils
 
@@ -90,18 +90,21 @@ int							first_out_redirection(int *fd);
 int							inside_redirection(int *fd);
 
 /***\	REDIRECTION	\***/
-/*
-int					infile_redirection(t_shell *shell)
-int					heredoc_redirection(t_shell *shell)
-int					outfile_redirection(t_shell *shell)
-int					append_redirection(t_shell *shell)*/
+
+int					infile_redirection(t_shell *shell);
+int					heredoc_redirection(t_shell *shell);
+int					outfile_redirection(t_shell *shell);
+int					append_redirection(t_shell *shell);
 
 //************************** Redirection Utils
 
-int							is_redirection(char *str);
-int							redirection_parsing(t_shell *shell);
+int							is_infile_redirection(t_toklst *user_command);
+int							is_outfile_redirection(t_toklst *user_command);
+int							infile_redirection_parsing(t_shell *shell);
+int							outfile_redirection_parsing(t_shell *shell);
 char						*append_newline(char *limiter);
 int							delete_operator_and_infile(t_shell *shell);
+int							delete_operator_and_outfile(t_shell *shell);
 
 /***\	LISTS	\***/
 
@@ -128,7 +131,7 @@ void		handler(int num);
 int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
-t_chained	*remove_front_tok(t_toklst *list);
+t_toklst	*remove_front_tok(t_toklst *list);
 void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
 

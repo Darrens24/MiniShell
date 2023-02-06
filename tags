@@ -542,6 +542,7 @@ deftext	pdro/readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	fil
 deftext	readline/share/readline/rl.c	/^static char *deftext;$/;"	v	file:
 deftext	readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	file:
 delete_operator_and_infile	redirections.c	/^int	delete_operator_and_infile(t_shell *shell)$/;"	f
+delete_operator_and_outfile	redirections.c	/^int	delete_operator_and_outfile(t_shell *shell)$/;"	f
 dir_path	pdro/structures.h	/^	const char			*dir_path;$/;"	m	struct:s_shell
 dir_path	structures.h	/^	const char			*dir_path;$/;"	m	struct:s_shell
 doc	pdro/readline/share/readline/fileman.c	/^  char *doc;			\/* Documentation for this function.  *\/$/;"	m	struct:__anon4	file:
@@ -738,6 +739,7 @@ get_array_command	commands.c	/^char	**get_array_command(t_shell *shell)$/;"	f
 get_array_command	pdro/commands.c	/^char	**get_array_command(t_shell *shell)$/;"	f
 get_array_env	data.c	/^char	**get_array_env(t_shell *shell)$/;"	f
 get_command_in_tok	commands.c	/^char	**get_command_in_tok(t_shell *shell, int index)$/;"	f
+get_commands_in_array	pipe.c	/^int	get_commands_in_array(t_shell *shell)$/;"	f
 get_correct_path	commands.c	/^char	*get_correct_path(t_shell *shell, int index)$/;"	f
 get_correct_path	pdro/commands.c	/^char	*get_correct_path(t_shell *shell)$/;"	f
 get_next_line	Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
@@ -745,7 +747,6 @@ get_next_line	pdro/Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_number_of_commands	pipe.c	/^int	get_number_of_commands(t_shell *shell)$/;"	f
 get_path	commands.c	/^char	*get_path(char **envp)$/;"	f
 get_path	pdro/commands.c	/^char	*get_path(char **envp)$/;"	f
-get_pipe_commands	pipe.c	/^int	get_pipe_commands(t_shell *shell)$/;"	f
 get_prompt	pdro/readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f
 get_prompt	readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f
 get_size	Libft/ft_itoa.c	/^static int	get_size(long n)$/;"	f	file:
@@ -772,6 +773,7 @@ inf	pdro/readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readli
 inf	readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
 infile	structures.h	/^	int					infile;$/;"	m	struct:s_shell
 infile_redirection	redirections.c	/^int	infile_redirection(t_shell *shell)$/;"	f
+infile_redirection_parsing	redirections.c	/^int	infile_redirection_parsing(t_shell *shell)$/;"	f
 init_readline	pdro/readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	file:
 init_readline	readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	file:
 initialize_readline	pdro/readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
@@ -788,7 +790,8 @@ is_empty	pdro/list_utils.c	/^int	is_empty(t_chained *list)$/;"	f
 is_emptytok	pdro/token_management.c	/^int     is_emptytok(t_toklst *list)$/;"	f
 is_emptytok	pdro/token_managment.c	/^int	is_emptytok(t_toklst *list)$/;"	f
 is_emptytok	token_management.c	/^int	is_emptytok(t_toklst *list)$/;"	f
-is_redirection	redirections.c	/^int	is_redirection(t_toklst *user_command)$/;"	f
+is_infile_redirection	redirections.c	/^int	is_infile_redirection(t_toklst *user_command)$/;"	f
+is_outfile_redirection	redirections.c	/^int	is_outfile_redirection(t_toklst *user_command)$/;"	f
 is_sep	parsing_utils.c	/^int	is_sep(char c)$/;"	f
 is_sep	pdro/parsing_utils.c	/^int	is_sep(char c)$/;"	f
 is_set	Libft/ft_strtrim.c	/^static int	is_set(char c, char const *set)$/;"	f	file:
@@ -929,6 +932,7 @@ outf	pdro/readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:read
 outf	readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:readline_state
 outfile	structures.h	/^	int					outfile;$/;"	m	struct:s_shell
 outfile_redirection	redirections.c	/^int	outfile_redirection(t_shell *shell)$/;"	f
+outfile_redirection_parsing	redirections.c	/^int	outfile_redirection_parsing(t_shell *shell)$/;"	f
 pendingin	pdro/readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state
 pendingin	readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state
 pipe_command	pipe.c	/^int	pipe_command(t_shell *shell)$/;"	f
@@ -984,7 +988,6 @@ readline_manager	pdro/main.c	/^int	readline_manager(t_shell *shell)$/;"	f
 readline_state	pdro/readline/include/readline/readline.h	/^struct readline_state {$/;"	s
 readline_state	readline/include/readline/readline.h	/^struct readline_state {$/;"	s
 redirect_pipe_execute_cmd	pipe.c	/^int	redirect_pipe_execute_cmd(pid_t *pid, int **fd, t_shell *shell, int index)$/;"	f
-redirection_parsing	redirections.c	/^int	redirection_parsing(t_shell *shell)$/;"	f
 remove_back_node	list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f
 remove_back_node	pdro/list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f
 remove_back_tok	pdro/token_management.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
@@ -994,7 +997,7 @@ remove_current_node	env_management.c	/^t_node	*remove_current_node(t_node *node,
 remove_current_node	pdro/env_management.c	/^t_node	*remove_current_node(t_node *node, t_chained *lst)$/;"	f
 remove_front_node	list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f
 remove_front_node	pdro/list_manip.c	/^t_chained	*remove_front_node(t_chained *list)$/;"	f
-remove_front_tok	token_management.c	/^t_chained	*remove_front_tok(t_toklst *list)$/;"	f
+remove_front_tok	token_management.c	/^t_toklst	*remove_front_tok(t_toklst *list)$/;"	f
 reserved	pdro/readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
 reserved	readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
 rl_command_func_t	pdro/readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t

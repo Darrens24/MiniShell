@@ -18,7 +18,10 @@ char	*get_correct_path(t_shell *shell, int index)
 	shell->correct_path = NULL;
 	while (shell->all_path[++i])
 	{
-		shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][0]);
+		if (ft_strncmp(shell->multi_cmd[0][0], "<", 2) == 0 && index == 0)
+			shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][2]);
+		else
+			shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][0]);
 		if (access(shell->correct_path, F_OK) == 0)
 			return (shell->correct_path);
 		free(shell->correct_path);

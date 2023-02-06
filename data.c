@@ -21,6 +21,7 @@ int	allocate_shell(t_shell *shell, char **envp)
 	if (!shell->sorted_env_l)
 		return (printf("Malloc: Sorted Env failed\n"));
 	shell->sorted_env_l = sort_list(shell->env_l);
+	shell->multi_cmd = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -62,10 +63,17 @@ int	clean_between_cmds(t_shell *shell)
 {
 	int	i;
 
-	i = -1;
-	while (++i < get_number_of_commands(shell))
-		free_array(shell->multi_cmd[i]);
-	free(shell->multi_cmd);
+	i = 0;
+	if (shell->multi_cmd)
+	{
+		while (i < get_number_of_commands(shell))
+		{
+			free_array(shell->multi_cmd[i]);
+			i++;
+		}
+		free(shell->multi_cmd);
+		shell->multi_cmd = NULL;
+	}
 	clear_toklst(shell->user_command);
 	return (EXIT_SUCCESS);
 }

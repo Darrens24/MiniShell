@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
@@ -6,28 +6,23 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/03 10:55:21 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/06 15:50:53 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
-int	is_redirection(t_toklst *user_command)
-{
-	if ((ft_strncmp(user_command->start->var, "<", 2) == 0)
-		|| (ft_strncmp(user_command->start->var, "<<", 3) == 0)
-		|| (ft_strncmp(user_command->end->prev->var, ">", 2) == 0)
-		|| (ft_strncmp(user_command->end->prev->var, ">>", 2) == 0))
-			return (TRUE);
-	return (FALSE);
-}
 
-int	redirection_parsing(t_shell *shell)
+int	infile_redirection_parsing(t_shell *shell)
 {
 	if (ft_strncmp(shell->user_command->start->var, "<", 2) == 0)
-		infile_redirection(shell);
+		return (infile_redirection(shell));
 	else if (ft_strncmp(shell->user_command->start->var, "<<", 3) == 0)
-		heredoc_redirection(shell);
+		return (heredoc_redirection(shell));
+	return (EXIT_SUCCESS);
+}
+
+int	outfile_redirection_parsing(t_shell *shell)
+{
 	if (ft_strncmp(shell->user_command->end->prev->var, ">", 2) == 0)
 		outfile_redirection(shell);
 	else if (ft_strncmp(shell->user_command->end->prev->var, ">>", 3) == 0)
@@ -37,49 +32,38 @@ int	redirection_parsing(t_shell *shell)
 
 int	outfile_redirection(t_shell *shell)
 {
-	
+	shell->outfile = open(shell->user_command->end->var, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	if (shell->outfile < 0)
+		return (printf("Outfile opening failed\n"));
+	if (access(shell->user_command->end->var, R_OK | W_OK) < 0)
+		return (printf("Outfile permissions denied\n"));
+	delete_operator_and_outfile(shell);
+	dup2(shell->outfile, STDOUT_FILENO);
+	return (shell->outfile);
 }
 
-int	delete_operator_and_infile(t_shell *shell)
+int	append_redirection(t_shell *shell)
 {
-	int	i;
-
-	i = -1;
-	while (++i < 2)
-		remove_front_tok(shell->user_command);
-	return (EXIT_SUCCESS);
+	shell->outfile = open(shell->user_command->end->var, O_CREAT | O_RDWR | O_APPEND, 0644);
+	if (shell->outfile < 0)
+		return (printf("Outfile opening failed\n"));
+	if (access(shell->user_command->end->var, R_OK | W_OK) < 0)
+		return (printf("Outfile permissions denied\n"));
+	delete_operator_and_outfile(shell);
+	dup2(shell->outfile, STDOUT_FILENO);
+	return (shell->outfile);
 }
 
 int	infile_redirection(t_shell *shell)
 {
-	shell->infile = open(shell->user_command->start->var, O_RDONLY);
+	close(shell->infile);
+	shell->infile = open(shell->user_command->start->next->var, O_RDONLY);
+	delete_operator_and_infile(shell);
 	if (shell->infile < 0)
 		return (printf("Infile opening failed\n"));
-	if (access(shell->user_command->start->var, F_OK, R_OK) < 0)
-		return (perror("Infile permissions denied\n"));
-	delete_operator_and_infile(shell);
+	shell->saved_stdin = dup(STDIN_FILENO);
 	dup2(shell->infile, STDIN_FILENO);
-	//close(shell->infile);
-	
-}
-
-char	*append_newline(char *limiter)
-{
-	char	*result;
-	int		i;
-
-	result = malloc(sizeof(char) * (ft_strlen(limiter) + 2));
-	if (!result)
-		return (NULL);
-	i = 0;
-	while (limiter[i])
-	{
-		result[i] = limiter[i];
-		i++;
-	}
-	result[i] = '\n';
-	result[i + 1] = '\0';
-	return (result);
+	return (EXIT_SUCCESS);
 }
 
 int	heredoc_redirection(t_shell *shell)
@@ -107,12 +91,3 @@ int	heredoc_redirection(t_shell *shell)
 	delete_operator_and_infile(shell);
 	return (shell->doc_fd[0]);
 }
-
-int	outfile_redirection(t_shell *shell)
-{
-
-}
-
-int	append_redirection(t_shell *shell)
-{
-}*/
