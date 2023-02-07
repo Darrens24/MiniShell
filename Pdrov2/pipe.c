@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/07 12:05:47 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/07 14:24:29 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 	char	*temp;
 
 	temp = get_correct_path(shell, index);
-	if (temp == NULL)
-		return (EXIT_FAILURE);
 	shell->pid[index] = fork();
 	if (shell->pid[index] == 0)
 	{
@@ -44,7 +42,13 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 			inside_redirection(shell->fd[index - 1]);
 		if (shell->out == TRUE && index == get_number_of_commands(shell) - 1)
 			dup2(shell->outfile, STDOUT_FILENO);
-		execve(temp, shell->multi_cmd[index], shell->array_env);
+		if (is_builtin_command(shell, index))
+		{
+			execute_builtin_cmd(shell, index);
+			exit(1);
+		}
+		else
+			execve(temp, shell->multi_cmd[index], shell->array_env);
 	}
 	if (index != 0)
 	{
@@ -59,10 +63,6 @@ int	pipe_command(t_shell *shell)
 {
 	int	i;
 
-	if (infile_redirection_parsing(shell) != 0)
-		return (EXIT_FAILURE);
-	if (outfile_redirection_parsing(shell) != 0)
-		return (EXIT_FAILURE);
 	get_array_cmd_and_pipe_fds(shell);
 	i = -1;
 	while (shell->user_command->nb_elem != 0 && ++i < get_number_of_commands(shell))
@@ -75,6 +75,7 @@ int	pipe_command(t_shell *shell)
 		dup2(shell->saved_stdout, STDOUT_FILENO);
 		shell->out = FALSE;
 	}
+	free_pids_fds(shell);
 	return (EXIT_SUCCESS);
 }
 

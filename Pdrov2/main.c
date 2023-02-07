@@ -1,17 +1,16 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
+	/* ************************************************************************** */
+	/*                                                                            */
+	/*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/07 11:57:18 by eleleux          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+	/*                                                    +:+ +:+         +:+     */
+	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+	/*                                                +#+#+#+#+#+   +#+           */
+	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
+/*   Updated: 2023/02/07 13:47:48 by pfaria-d         ###   ########.fr       */
+	/*                                                                            */
+	/* ************************************************************************** */
 
 #include "minishell.h"
-
 
 int	readline_manager(t_shell *shell)
 {
@@ -24,16 +23,16 @@ int	readline_manager(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	is_builtin_command(t_shell *shell)
+int	is_builtin_command(t_shell *shell, int i)
 {
 		
-	if (ft_strncmp(shell->user_command->start->var, "pwd", 4) == 0
-		|| ft_strncmp(shell->user_command->start->var, "cd", 3) == 0
-		|| ft_strncmp(shell->user_command->start->var, "export", 7) == 0
-		|| ft_strncmp(shell->user_command->start->var, "env", 4) == 0
-		|| ft_strncmp(shell->user_command->start->var, "unset", 6) == 0
-		|| ft_strncmp(shell->user_command->start->var, "exit", 5) == 0
-		|| ft_strncmp(shell->user_command->start->var, "echo", 5) == 0)
+	if (ft_strncmp(shell->multi_cmd[i][0], "pwd", 4) == 0
+		|| ft_strncmp(shell->multi_cmd[i][0], "cd", 3) == 0
+		|| ft_strncmp(shell->multi_cmd[i][0], "export", 7) == 0
+		|| ft_strncmp(shell->multi_cmd[i][0], "env", 4) == 0
+		|| ft_strncmp(shell->multi_cmd[i][0], "unset", 6) == 0
+		|| ft_strncmp(shell->multi_cmd[i][0], "exit", 5) == 0
+		|| ft_strncmp(shell->multi_cmd[i][0], "echo", 5) == 0)
 			return (TRUE);
 	return (FALSE);
 }
@@ -41,6 +40,7 @@ int	is_builtin_command(t_shell *shell)
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
+	int	good;
 	t_shell	shell;
 
 	if (ac != 1)
@@ -49,6 +49,7 @@ int	main(int ac, char **av, char **envp)
 	printf(YEL "Open Minishell\n" WHT);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
+		good = TRUE;
 		readline_manager(&shell);
 		if (!shell.line_readed)
 			break ;
@@ -56,14 +57,13 @@ int	main(int ac, char **av, char **envp)
 		{
 			token_parsing(shell.user_command, shell.line_readed);
 			tokenisation(shell.user_command, shell.sorted_env_l);
-			if (is_builtin_command(&shell))
-				execute_builtin_cmd(&shell);
-			else
-			{
+			if (infile_redirection_parsing(&shell) != 0)
+				good = FALSE;
+			if (outfile_redirection_parsing(&shell) != 0)
+				good = FALSE;
+			if (good == TRUE)
 				pipe_command(&shell);
-				//printf("%d\n", shell.user_command->nb_elem);
-				clean_between_cmds(&shell);
-			}
+			clean_between_cmds(&shell);
 		}
 	}
 	clean_memory(&shell);
