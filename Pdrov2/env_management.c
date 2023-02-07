@@ -142,7 +142,7 @@ int	export_variable(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	execute_env_cmd(t_shell *shell)
+int	execute_builtin_cmd(t_shell *shell)
 {
 	execute_directory_cmd(shell);
 	if (ft_strncmp(shell->user_command->start->var, "env", 4) == 0)

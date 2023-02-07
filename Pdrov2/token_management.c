@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_managment.c                                  :+:      :+:    :+:   */
+/*   token_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/30 09:53:47 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:15:16 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,33 @@ t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
 	return (tokenlst);
 }
 
+t_toklst	*remove_front_tok(t_toklst *list)
+{
+	t_tok	*temp;
+
+	if (is_emptytok(list))
+	{
+		printf("ListRemove: Nothing to free\n");
+		return (list);
+	}
+	if (list->nb_elem == 1)
+	{
+		list->nb_elem--;
+		free(list->start);
+		list->start = NULL;
+		return (list);
+	}
+	temp = list->start;
+	list->start = list->start->next;
+	list->start->prev = NULL;
+	temp->prev = NULL;
+	temp->next = NULL;
+	free(temp);
+	temp = NULL;
+	list->nb_elem--;
+	return (list);
+}
+
 t_toklst	*remove_back_tok(t_toklst *list)
 {
 	t_tok	*temp;
@@ -91,4 +118,10 @@ void	clear_toklst(t_toklst *lst)
 {
 	while (lst->nb_elem)
 		remove_back_tok(lst);
+}
+
+void	clear_chained_lst(t_chained *lst)
+{
+	while (lst->nb_elem)
+		remove_back_node(lst);
 }

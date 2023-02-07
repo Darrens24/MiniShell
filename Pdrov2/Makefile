@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/01/30 15:48:13 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/06 10:37:37 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,11 +40,15 @@ SRC = main.c \
 		dir_management.c \
 		env_management.c \
 		signals.c \
-		token_managment.c \
+		token_management.c \
 		parsing_utils.c \
 		tokenisation.c \
 		parsing.c \
 		commands.c \
+		pipe.c \
+		pipe_utils.c \
+		redirections.c \
+		redirection_utils.c \
 
 
 OBJ = $(SRC:.c=.o)

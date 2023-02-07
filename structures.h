@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/06 19:27:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/07 10:28:33 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_shell
 	int					outfile;
 	int					append;
 	int					saved_stdin;
+	int					saved_stdout;
+	int					out;
 }				t_shell;
 
 typedef struct s_node

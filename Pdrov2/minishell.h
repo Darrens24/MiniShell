@@ -36,6 +36,9 @@
 int			allocate_shell(t_shell *shell, char **envp);
 int			clean_memory(t_shell *shell);
 int			free_array(char **array);
+char		**get_array_env(t_shell *shell);
+void		clear_chained_lst(t_chained *lst);
+int			clean_between_cmds(t_shell *shell);
 
 /***\	BUILTINS	\***/
 
@@ -49,7 +52,7 @@ int					change_directory(const char *path);
 
 //************* Env
 
-int					execute_env_cmd(t_shell *shell);
+int					execute_builtin_cmd(t_shell *shell);
 int					print_export(t_shell *shell);
 int					add_env_variable(t_shell *shell);
 
@@ -63,11 +66,44 @@ int					echo_parsing(t_shell *shell);
 int			command_manager(t_shell *shell, char **envp);
 int			execute_command(t_shell *shell, char **envp);
 char		**get_array_command(t_shell *shell);
+int			get_number_of_commands(t_shell *shell);
+char		**get_command_in_tok(t_shell *shell, int index);
 
-//********>> Path
+//************* Path
 
-char		*get_path(char **envp);
-char		*get_correct_path(t_shell *shell);
+char				*get_path(char **envp);
+char				*get_correct_path(t_shell *shell, int index);
+
+//************* Pipe
+
+int					get_array_cmd_and_pipe_fds(t_shell *shell);
+int					pipe_command(t_shell *shell);
+int					redirect_and_execute_cmd(t_shell *shell, int index);
+
+//************************** Pipe Utils
+
+int							close_fds(int **fd);
+int							wait_pids(int *pid);
+t_tok						*go_to_next_pipe(t_shell *shell, t_tok *tok, int index);
+int							early_out_redirection(int *fd);
+int							inside_redirection(int *fd);
+
+/***\	REDIRECTION	\***/
+
+int					infile_redirection(t_shell *shell);
+int					heredoc_redirection(t_shell *shell);
+int					outfile_redirection(t_shell *shell);
+int					append_redirection(t_shell *shell);
+
+//************************** Redirection Utils
+
+int							is_infile_redirection(t_toklst *user_command);
+int							is_outfile_redirection(t_toklst *user_command);
+int							infile_redirection_parsing(t_shell *shell);
+int							outfile_redirection_parsing(t_shell *shell);
+char						*append_newline(char *limiter);
+int							delete_operator_and_infile(t_shell *shell);
+int							delete_operator_and_outfile(t_shell *shell);
 
 /***\	LISTS	\***/
 
@@ -78,16 +114,12 @@ t_chained	*remove_back_node(t_chained *list);
 t_node		*go_to_end(t_chained *list);
 t_node		*remove_current_node(t_node *node, t_chained *lst);
 
-/***\	LIST UTILS	\***/
+//************************** Redirection Utils
 
-int			is_empty(t_chained *list);
-t_chained	*null_list(void);
-void		print_list(t_chained *list);
-t_chained	*sort_list(t_chained *list);
-
-/***\	UTILS	\***/
-
-char		*ft_strndup(char *line, int start, int end);
+int							is_empty(t_chained *list);
+t_chained					*null_list(void);
+void						print_list(t_chained *list);
+t_chained					*sort_list(t_chained *list);
 
 /***\	SIGNALS UTILS   \***/
 
@@ -98,6 +130,7 @@ void		handler(int num);
 int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
+t_toklst	*remove_front_tok(t_toklst *list);
 void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
 

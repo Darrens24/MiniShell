@@ -53,7 +53,6 @@ int					change_directory(const char *path);
 //************* Env
 
 int					execute_builtin_cmd(t_shell *shell);
-int					execute_env_cmd(t_shell *shell);
 int					print_export(t_shell *shell);
 int					add_env_variable(t_shell *shell);
 

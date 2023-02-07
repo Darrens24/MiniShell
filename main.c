@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/06 19:30:53 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/07 11:57:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int	main(int ac, char **av, char **envp)
 				//printf("%d\n", shell.user_command->nb_elem);
 				clean_between_cmds(&shell);
 			}
-			//	command_manager(&shell, envp);
 		}
 	}
 	clean_memory(&shell);

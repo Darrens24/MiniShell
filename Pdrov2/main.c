@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/31 08:59:17 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/07 11:57:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ int	readline_manager(t_shell *shell)
 int	is_builtin_command(t_shell *shell)
 {
 		
-	if (ft_strncmp(shell->line_readed, "pwd", 4) == 0
-		|| ft_strncmp(shell->line_readed, "cd", 4) == 0
+	if (ft_strncmp(shell->user_command->start->var, "pwd", 4) == 0
+		|| ft_strncmp(shell->user_command->start->var, "cd", 3) == 0
 		|| ft_strncmp(shell->user_command->start->var, "export", 7) == 0
 		|| ft_strncmp(shell->user_command->start->var, "env", 4) == 0
 		|| ft_strncmp(shell->user_command->start->var, "unset", 6) == 0
+		|| ft_strncmp(shell->user_command->start->var, "exit", 5) == 0
 		|| ft_strncmp(shell->user_command->start->var, "echo", 5) == 0)
 			return (TRUE);
 	return (FALSE);
@@ -45,19 +46,25 @@ int	main(int ac, char **av, char **envp)
 	if (ac != 1)
 		return (printf("Minishell is pure, no arguments please\n"));
 	allocate_shell(&shell, envp);
+	printf(YEL "Open Minishell\n" WHT);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
 		readline_manager(&shell);
 		if (!shell.line_readed)
 			break ;
-		token_parsing(shell.user_command, shell.line_readed);
-		tokenisation(shell.user_command, shell.sorted_env_l);
-		if (is_builtin_command(&shell))
-			execute_env_cmd(&shell);
-		else
-			command_manager(&shell, envp);
-		if (shell.user_command->nb_elem != 0)
-			clear_toklst(shell.user_command);
+		if (shell.line_readed[0] != '\0')
+		{
+			token_parsing(shell.user_command, shell.line_readed);
+			tokenisation(shell.user_command, shell.sorted_env_l);
+			if (is_builtin_command(&shell))
+				execute_builtin_cmd(&shell);
+			else
+			{
+				pipe_command(&shell);
+				//printf("%d\n", shell.user_command->nb_elem);
+				clean_between_cmds(&shell);
+			}
+		}
 	}
 	clean_memory(&shell);
 	return (0);
