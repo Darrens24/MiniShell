@@ -42,17 +42,17 @@ int			clean_between_cmds(t_shell *shell);
 
 /***\	BUILTINS	\***/
 
-int			is_builtin_command(t_shell *shell);
+int			is_builtin_command(t_shell *shell, int i);
 
 //************* Directory
 
-int					execute_directory_cmd(t_shell *shell);
+int					execute_directory_cmd(t_shell *shell, int i);
 int	    			print_pwd_linux(void);
 int					change_directory(const char *path);
 
 //************* Env
 
-int					execute_builtin_cmd(t_shell *shell);
+int					execute_builtin_cmd(t_shell *shell, int i);
 int					print_export(t_shell *shell);
 int					add_env_variable(t_shell *shell);
 
@@ -87,6 +87,7 @@ int							wait_pids(int *pid);
 t_tok						*go_to_next_pipe(t_shell *shell, t_tok *tok, int index);
 int							early_out_redirection(int *fd);
 int							inside_redirection(int *fd);
+void						free_pids_fds(t_shell *shell);
 
 /***\	REDIRECTION	\***/
 
@@ -114,7 +115,7 @@ t_chained	*remove_back_node(t_chained *list);
 t_node		*go_to_end(t_chained *list);
 t_node		*remove_current_node(t_node *node, t_chained *lst);
 
-//************************** Redirection Utils
+//************************** Lists Utils
 
 int							is_empty(t_chained *list);
 t_chained					*null_list(void);

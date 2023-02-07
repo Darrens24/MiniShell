@@ -77,6 +77,7 @@ int	clean_between_cmds(t_shell *shell)
 		shell->multi_cmd = NULL;
 	}
 	clear_toklst(shell->user_command);
+	//free_pids_fds(shell);
 	return (EXIT_SUCCESS);
 }
 

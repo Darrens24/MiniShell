@@ -132,8 +132,12 @@ int	unset_variable(t_shell *shell)
 
 int	export_variable(t_shell *shell)
 {
+	printf("EXPOOOOOORRT\n");
 	if (!envchecker(ft_strndup(shell->user_command->start->next->var, 0, ft_strlenequal(shell->user_command->start->next->var)) , shell->sorted_env_l))
+	{
+		printf("J'essaie d'export %s\n", shell->user_command->start->next->var);
 		new_back_node(shell->sorted_env_l, shell->user_command->start->next->var);
+	}
 	else
 	{
 		unset_variable(shell);
@@ -142,30 +146,30 @@ int	export_variable(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	execute_builtin_cmd(t_shell *shell)
+int	execute_builtin_cmd(t_shell *shell, int i)
 {
-	execute_directory_cmd(shell);
-	if (ft_strncmp(shell->user_command->start->var, "env", 4) == 0)
+	execute_directory_cmd(shell, i);
+	if (ft_strncmp(shell->multi_cmd[i][0], "env", 4) == 0)
 	{
 		if (argument_after_cmd(shell) == TRUE)
 			return (printf("Env command won't take arguments or options\n"));
 		return (print_list(shell->env_l), EXIT_SUCCESS);
 	}
-	else if (ft_strncmp(shell->user_command->start->var, "export", 7) == 0)
+	else if (ft_strncmp(shell->multi_cmd[i][0], "export", 7) == 0)
 	{
 		if (argument_after_cmd(shell) == FALSE)
 			return (print_export(shell));
 		else
 			return (export_variable(shell));
 	}
-	else if (ft_strncmp(shell->user_command->start->var, "unset", 6) == 0)
+	else if (ft_strncmp(shell->multi_cmd[i][0], "unset", 6) == 0)
 	{
 		if (argument_after_cmd(shell) == FALSE)
 			return (EXIT_SUCCESS);
 		else
 			return (unset_variable(shell));
 	}
-	else if (ft_strncmp(shell->user_command->start->var, "echo", 5) == 0)
+	else if (ft_strncmp(shell->multi_cmd[i][0], "echo", 5) == 0)
 		print_echo(shell);
 	return (EXIT_SUCCESS);
 }
