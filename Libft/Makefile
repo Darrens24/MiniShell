@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 17:50:06 by eleleux           #+#    #+#              #
-#    Updated: 2023/01/30 09:11:00 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/08 16:38:57 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,14 +97,13 @@ $(NAME) : $(OBJ)
 	@ar rcs $@ $(OBJ)
 	@echo ${LIGHTGREEN}Libft Compiled !${NOCOLOR}
 
+clean :
+	@rm -f $(OBJ)
+
 fclean : clean
 	@rm -f libft.a
 	@echo ${LIGHTRED}Libft Removed !${NOCOLOR}
 
-clean :
-	@rm -f $(OBJ) $(OBJBONUS)
-	@echo ${LIGHTRED}Libft Objects Removed !${NOCOLOR}
-
 re : fclean all
 
-.PHONY : all clean fclean bonus re
+.PHONY : all clean fclean re

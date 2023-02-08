@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 11:20:57 by eleleux           #+#    #+#             */
-/*   Updated: 2022/11/09 11:26:13 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/08 18:03:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(const char *str)
 	if (!recipe)
 		return (NULL);
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		recipe[i] = str[i];
 		i++;

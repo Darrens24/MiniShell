@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/07 17:01:31 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/08 19:00:13 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -52,15 +52,19 @@ int	main(int ac, char **av, char **envp)
 		good = TRUE;
 		readline_manager(&shell);
 		if (!shell.line_readed)
+		{
+			ft_putchar_fd('\n', STDOUT_FILENO);
 			break ;
+		}
 		if (shell.line_readed[0] != '\0')
 		{
 			token_parsing(shell.user_command, shell.line_readed);
 			tokenisation(shell.user_command, shell.sorted_env_l);
-			if (infile_redirection_parsing(&shell) != 0)
+			if (shell.user_command->nb_elem != 0 && infile_redirection_parsing(&shell) != 0)
 				good = FALSE;
-			if (outfile_redirection_parsing(&shell) != 0)
+			if (shell.user_command->nb_elem != 0 && outfile_redirection_parsing(&shell) != 0)
 				good = FALSE;
+			//printf("tok = %s\n", shell.user_command->start->var);
 			if (good == TRUE)
 				pipe_command(&shell);
 			clean_between_cmds(&shell);

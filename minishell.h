@@ -58,8 +58,7 @@ int					add_env_variable(t_shell *shell);
 
 //************* Echo
 
-int					print_echo(t_shell *shell);
-int					echo_parsing(t_shell *shell);
+int					print_echo(char **command);
 
 /***\	COMMANDS	\***/
 
@@ -91,10 +90,11 @@ void						free_pids_fds(t_shell *shell);
 
 /***\	REDIRECTION	\***/
 
-int					infile_redirection(t_shell *shell);
-int					heredoc_redirection(t_shell *shell);
-int					outfile_redirection(t_shell *shell);
-int					append_redirection(t_shell *shell);
+int					infile_redirection(t_shell *shell, t_tok *temp);
+int					heredoc_redirection(t_shell *shell, t_tok *temp);
+int					outfile_redirection(t_shell *shell, t_tok *temp);
+int					append_redirection(t_shell *shell, t_tok *temp);
+int					heredoc_dup(t_shell *shell);
 
 //************************** Redirection Utils
 
@@ -112,7 +112,6 @@ t_chained	*new_front_node(t_chained *list, char *line);
 t_chained	*new_back_node(t_chained *list, char *line);
 t_chained	*remove_front_node(t_chained *list);
 t_chained	*remove_back_node(t_chained *list);
-t_node		*go_to_end(t_chained *list);
 t_node		*remove_current_node(t_node *node, t_chained *lst);
 
 //************************** Lists Utils
@@ -121,6 +120,7 @@ int							is_empty(t_chained *list);
 t_chained					*null_list(void);
 void						print_list(t_chained *list);
 t_chained					*sort_list(t_chained *list);
+t_node						*go_to_end(t_chained *list);
 
 /***\	SIGNALS UTILS   \***/
 
@@ -132,6 +132,7 @@ int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
 t_toklst	*remove_front_tok(t_toklst *list);
+t_tok		*remove_current_tok(t_tok *tok, t_toklst *list);
 void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
 

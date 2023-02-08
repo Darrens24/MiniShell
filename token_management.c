@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/03 12:15:16 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/08 11:40:26 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,33 @@ void	print_toklst(t_toklst *list)
 		printf("%s\n", temp->var);
 		temp = temp->next;
 	}
+}
+
+t_tok	*remove_current_tok(t_tok *tok, t_toklst *list)
+{
+	if (tok->prev && tok->next)
+	{
+		tok->prev->next = tok->next;
+		tok->next->prev = tok->prev;
+	}
+	if (!tok->prev)
+	{
+		remove_front_tok(list);
+		return (tok);
+	}
+	if (!tok->next)
+	{
+		remove_back_tok(list);
+		return (tok);
+	}
+	free(tok->var);
+	list->nb_elem--;
+	tok->var = NULL;
+	tok->prev = NULL;
+	tok->next = NULL;
+	free(tok);
+	tok = NULL;
+	return (tok);
 }
 
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
