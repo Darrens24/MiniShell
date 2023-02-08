@@ -56,41 +56,63 @@ int	print_export(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	option_n(t_shell *shell)
+int	option_n(char **command, int i)
 {
-	if (shell->user_command->start->next
-		&& shell->user_command->start->next->var
-		&& !ft_strncmp(shell->user_command->start->next->var, "-n", 3))
-			return (1);
-	return (0);
+	int	returnval;
+	size_t	x;
+
+	returnval = 0;
+	x = 1;
+	i++;
+	if (command[i] && command[i][0] && command[i][0] == '-')
+	{
+		while (command[i][x] && command[i][x] == 'n')
+			x++;
+		if (x == ft_strlen(command[i]) && x != 1)
+			returnval = 1;
+	}
+	return (returnval);
 }
 
-int	print_echo(t_shell *shell)
+int	option_njump(char **command, int i)
 {
+	size_t	x;
 
-	t_tok	*temp;
+	i++;
+	while (command[i] && command[i][0] && command[i][0] == '-')
+	{
+		x = 1;
+		while (command[i][x] && command[i][x] == 'n')
+			x++;
+		if (x != ft_strlen(command[i]))
+			break;
+		i++;
+	}
+	return (i);
+}
+int	print_echo(char **command, int i)
+{
+	int	tmp;
 
-	if (option_n(shell) && shell->user_command->nb_elem == 2)
+	tmp = option_n(command, i);
+	if (tmp && !command[option_njump(command, i)])
 		return (EXIT_SUCCESS);
-	else if (shell->user_command->nb_elem == 1)
+	else if (!command[i + 1])
 		return (ft_putchar_fd('\n', STDOUT_FILENO), 1);
-	if (option_n(shell))
-		temp = shell->user_command->start->next->next;
+	if (tmp)
+		i = option_njump(command, i);
 	else
-		temp = shell->user_command->start->next;
-	while (temp->next)
+		i++;
+	while (command[i])
 	{
-		ft_putstr_fd(temp->var, STDOUT_FILENO);
+		ft_putstr_fd(command[i], STDOUT_FILENO);
 		ft_putchar_fd(' ', STDOUT_FILENO);
-		temp = temp->next;
+		i++;
 	}
-	if (temp->var)
-	{
-		if (option_n(shell))
-			ft_putstr_fd(temp->var, STDOUT_FILENO);
-		else
-			ft_putendl_fd(temp->var, STDOUT_FILENO);
-	}
+	if (tmp)
+		ft_putstr_fd("", STDOUT_FILENO);
+	else
+		ft_putendl_fd("", STDOUT_FILENO);
 	return (EXIT_SUCCESS);		
 }
 
@@ -125,7 +147,7 @@ int	unset_variable(t_shell *shell)
 		temp = temp->prev;
 	if (shell->sorted_env_l->nb_elem == 1)
 		remove_back_node(shell->sorted_env_l);
-	else		
+	else if (temp)
 		remove_current_node(temp, shell->sorted_env_l);
 	return (EXIT_SUCCESS);
 }
@@ -166,6 +188,6 @@ int	execute_builtin_cmd(t_shell *shell, int i)
 			return (unset_variable(shell));
 	}
 	else if (ft_strncmp(shell->multi_cmd[i][0], "echo", 5) == 0)
-		print_echo(shell);
+		print_echo(shell->multi_cmd[i], i);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/06 19:39:50 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/07 17:25:00 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,12 @@ int	close_fds(int **fd)
 {
 	int	i;
 
-	i = -1;
-	while (fd[++i])
+	i = 0;
+	while (fd[i])
 	{
 		close(fd[i][0]);
 		close(fd[i][1]);
+		i++;
 	}
 	return (EXIT_SUCCESS);
 }

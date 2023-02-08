@@ -58,7 +58,7 @@ int					add_env_variable(t_shell *shell);
 
 //************* Echo
 
-int					print_echo(t_shell *shell);
+int					print_echo(char **command, int i);
 int					echo_parsing(t_shell *shell);
 
 /***\	COMMANDS	\***/
