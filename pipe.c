@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/08 19:16:28 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:37:08 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,26 @@ int	redirection_parsing(t_shell *shell, int index)
 	return (EXIT_SUCCESS);
 }
 
+int	builtin_manager(t_shell *shell, int index)
+{
+	if (get_number_of_commands(shell) == 1)
+	{
+		redirection_parsing(shell, index);
+		execute_builtin_cmd(shell, index);
+	}
+	else if (get_number_of_commands(shell) > 1)
+	{
+		shell->pid[index] = fork();
+		if (shell->pid[index] == 0)
+		{
+			redirection_parsing(shell, index);
+			execute_builtin_cmd(shell, index);
+			exit(1);
+		}
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	redirect_and_execute_cmd(t_shell *shell, int index)
 {
 	char	*temp;
@@ -55,20 +75,9 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 		}
 	}
 	else
-	{
-		shell->pid[index] = fork();
-		if (shell->pid[index] == 0)
-		{
-			redirection_parsing(shell, index);
-			execute_builtin_cmd(shell, index);
-			exit(1);
-		}
-	}
+		builtin_manager(shell, index);
 	if (index > 0)
-	{
-		close(shell->fd[index - 1][1]);
-		close(shell->fd[index - 1][0]);
-	}
+		close_fds(shell->fd[index - 1]);
 	//if (!is_builtin_command(shell, index))
 	//	free(temp);
 	return (EXIT_SUCCESS);
@@ -97,7 +106,6 @@ int	pipe_command(t_shell *shell)
 	}
 	dup2(shell->saved_stdin, STDIN_FILENO);
 	wait_pids(shell->pid);
-	free_pids_fds(shell);
 	return (EXIT_SUCCESS);
 }
 

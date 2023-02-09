@@ -17,6 +17,7 @@ int	allocate_shell(t_shell *shell, char **envp)
 	i = -1;
 	while (envp[++i])
 		new_back_node(shell->env_l, envp[i]);
+	shell->home = ft_strdup(get_home(envp));
 	shell->array_env = get_array_env(shell);
 	shell->sorted_env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->sorted_env_l)
@@ -77,19 +78,20 @@ int	clean_between_cmds(t_shell *shell)
 		shell->multi_cmd = NULL;
 	}
 	clear_toklst(shell->user_command);
-	//free_pids_fds(shell);
+	free_pids_fds(shell);
 	return (EXIT_SUCCESS);
 }
 
 int	clean_memory(t_shell *shell)
 {
+	free(shell->home);
 	free(shell->line_readed);
 	clear_chained_lst(shell->env_l);
 	clear_chained_lst(shell->sorted_env_l);
 	free(shell->env_l);
 	free(shell->sorted_env_l);
 	free(shell->user_command);
-	//free(shell->correct_path); A FREE UNIQUEMENT SI COMMANDE
+	free(shell->correct_path);
 	free_array(shell->all_path);
 	return (EXIT_SUCCESS);
 }

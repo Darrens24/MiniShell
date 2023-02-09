@@ -43,9 +43,12 @@ int			clean_between_cmds(t_shell *shell);
 /***\	BUILTINS	\***/
 
 int			is_builtin_command(t_shell *shell, int i);
+int			builtin_manager(t_shell *shell, int index);
 
 //************* Directory
 
+char				*get_home(char **envp);
+int					go_to_home_directory(t_shell *shell);
 int					execute_directory_cmd(t_shell *shell, int i);
 int	    			print_pwd_linux(void);
 int					change_directory(const char *path);
@@ -81,7 +84,7 @@ int					redirect_and_execute_cmd(t_shell *shell, int index);
 
 //************************** Pipe Utils
 
-int							close_fds(int **fd);
+int							close_fds(int *fd);
 int							wait_pids(int *pid);
 t_tok						*go_to_next_pipe(t_shell *shell, t_tok *tok, int index);
 int							early_out_redirection(int *fd);

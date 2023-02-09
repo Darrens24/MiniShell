@@ -19,6 +19,7 @@ int	ft_strlenequal(char *line)
 		i++;
 	return (i);
 }
+
 int	envchecker(char *line, t_chained *env)
 {
 	t_node	*elem;
@@ -49,7 +50,7 @@ int	print_export(t_shell *shell)
 	temp = shell->sorted_env_l->start;
 	while (temp)
 	{
-		ft_putstr_fd("declare -x ", 1);
+		ft_putstr_fd("declare -x ", STDOUT_FILENO);
 		printf("%s\n", temp->variable);
 		temp = temp->next;
 	}
