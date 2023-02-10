@@ -9,11 +9,9 @@ int	allocate_shell(t_shell *shell, char **envp)
 	shell->env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->env_l)
 		return (printf("Malloc: Env failed\n"));
-	shell->env_l->nb_elem = 0;
 	shell->user_command = malloc(sizeof(*(shell->user_command)));
 	if (!shell->user_command)
 		return (printf("Malloc: UserCommand failed\n"));
-	shell->user_command->nb_elem = 0;
 	i = -1;
 	while (envp[++i])
 		new_back_node(shell->env_l, envp[i]);
@@ -23,8 +21,18 @@ int	allocate_shell(t_shell *shell, char **envp)
 	if (!shell->sorted_env_l)
 		return (printf("Malloc: Sorted Env failed\n"));
 	shell->sorted_env_l = sort_list(shell->env_l);
+	initialize_variables(shell);
+	return (EXIT_SUCCESS);
+}
+
+int	initialize_variables(t_shell *shell)
+{
+	shell->user_command->nb_elem = 0;
+	shell->env_l->nb_elem = 0;
 	shell->multi_cmd = NULL;
 	shell->out = FALSE;
+	shell->current_dir_path = getcwd(NULL, 0);
+	shell->previous_dir_path = getcwd(NULL, 0);
 	return (EXIT_SUCCESS);
 }
 

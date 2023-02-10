@@ -476,6 +476,7 @@ buffer_doc	Pdrov2/structures.h	/^	char				*buffer_doc;$/;"	m	struct:s_shell
 buffer_doc	structures.h	/^	char				*buffer_doc;$/;"	m	struct:s_shell
 buflen	Pdrov2/readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state
 buflen	readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state
+builtin_manager	pipe.c	/^int	builtin_manager(t_shell *shell, int index)$/;"	f
 catchsigs	Pdrov2/readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state
 catchsigs	readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state
 catchsigwinch	Pdrov2/readline/include/readline/readline.h	/^  int catchsigwinch;$/;"	m	struct:readline_state
@@ -499,7 +500,7 @@ clear_chained_lst	token_management.c	/^void	clear_chained_lst(t_chained *lst)$/;
 clear_toklst	Pdrov2/token_management.c	/^void	clear_toklst(t_toklst *lst)$/;"	f
 clear_toklst	token_management.c	/^void	clear_toklst(t_toklst *lst)$/;"	f
 close_fds	Pdrov2/pipe_utils.c	/^int	close_fds(int **fd)$/;"	f
-close_fds	pipe_utils.c	/^int	close_fds(int **fd)$/;"	f
+close_fds	pipe_utils.c	/^int	close_fds(int *fd)$/;"	f
 com_cd	Pdrov2/readline/share/readline/fileman.c	/^com_cd (arg)$/;"	f
 com_cd	readline/share/readline/fileman.c	/^com_cd (arg)$/;"	f
 com_delete	Pdrov2/readline/share/readline/fileman.c	/^com_delete (arg)$/;"	f
@@ -760,6 +761,7 @@ get_command_in_tok	Pdrov2/commands.c	/^char	**get_command_in_tok(t_shell *shell,
 get_command_in_tok	commands.c	/^char	**get_command_in_tok(t_shell *shell, int index)$/;"	f
 get_correct_path	Pdrov2/commands.c	/^char	*get_correct_path(t_shell *shell, int index)$/;"	f
 get_correct_path	commands.c	/^char	*get_correct_path(t_shell *shell, int index)$/;"	f
+get_home	dir_management.c	/^char	*get_home(char **envp)$/;"	f
 get_next_line	Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_next_line	Pdrov2/Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
 get_number_of_commands	Pdrov2/pipe.c	/^int	get_number_of_commands(t_shell *shell)$/;"	f
@@ -774,6 +776,7 @@ give_line	Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f
 give_line	Pdrov2/Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f
 go_to_end	Pdrov2/list_manip.c	/^t_node	*go_to_end(t_chained *list)$/;"	f
 go_to_end	list_manip.c	/^t_node	*go_to_end(t_chained *list)$/;"	f
+go_to_home_directory	dir_management.c	/^int	go_to_home_directory(t_shell *shell)$/;"	f
 go_to_next_pipe	Pdrov2/pipe_utils.c	/^t_tok	*go_to_next_pipe(t_shell *shell, t_tok *tok, int index) \/\/ A Remplacer par go_to_next delimiter avec tous les cas de separation de commande$/;"	f
 go_to_next_pipe	pipe_utils.c	/^t_tok	*go_to_next_pipe(t_shell *shell, t_tok *tok, int index) \/\/ A Remplacer par go_to_next delimiter avec tous les cas de separation de commande$/;"	f
 handler	Pdrov2/signals.c	/^void	handler(int num)$/;"	f
@@ -789,6 +792,7 @@ histdata_t	Pdrov2/readline/include/readline/history.h	/^typedef char *histdata_t
 histdata_t	Pdrov2/readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t
 histdata_t	readline/include/readline/history.h	/^typedef char *histdata_t;$/;"	t
 histdata_t	readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t
+home	structures.h	/^	char				*home;$/;"	m	struct:s_shell
 ignorefunc	Pdrov2/readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
 ignorefunc	readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
 inf	Pdrov2/readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
@@ -986,7 +990,7 @@ prev	Pdrov2/structures.h	/^	struct s_tok		*prev;$/;"	m	struct:s_tok	typeref:stru
 prev	structures.h	/^	struct s_node		*prev;$/;"	m	struct:s_node	typeref:struct:s_node::s_node
 prev	structures.h	/^	struct s_tok		*prev;$/;"	m	struct:s_tok	typeref:struct:s_tok::s_tok
 print_echo	Pdrov2/env_management.c	/^int	print_echo(char **command, int i)$/;"	f
-print_echo	env_management.c	/^int	print_echo(t_shell *shell, char **command, int i)$/;"	f
+print_echo	env_management.c	/^int	print_echo(char **command)$/;"	f
 print_export	Pdrov2/env_management.c	/^int	print_export(t_shell *shell)$/;"	f
 print_export	env_management.c	/^int	print_export(t_shell *shell)$/;"	f
 print_list	Pdrov2/list_utils.c	/^void	print_list(t_chained *list)$/;"	f

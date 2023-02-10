@@ -34,6 +34,7 @@
 /***\	DATA	\***/
 
 int			allocate_shell(t_shell *shell, char **envp);
+int			initialize_variables(t_shell *shell);
 int			clean_memory(t_shell *shell);
 int			free_array(char **array);
 char		**get_array_env(t_shell *shell);
@@ -49,9 +50,10 @@ int			builtin_manager(t_shell *shell, int index);
 
 char				*get_home(char **envp);
 int					go_to_home_directory(t_shell *shell);
+int					go_to_previous_directory(t_shell *shell);
 int					execute_directory_cmd(t_shell *shell, int i);
-int	    			print_pwd_linux(void);
-int					change_directory(const char *path);
+int	    			print_pwd_linux(t_shell *shell);
+int					change_directory(t_shell *shell, const char *path);
 
 //************* Env
 

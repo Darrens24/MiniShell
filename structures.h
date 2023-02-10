@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/09 14:47:12 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/10 10:13:59 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ typedef struct s_shell
 	struct s_chained	*sorted_env_l;
 	char				*home;
 	const char			*prompt;
-	const char			*dir_path;
+	char				*current_dir_path;
+	char				*previous_dir_path;
 	char				*line_readed;
 	struct s_toklst		*user_command;
 	char				**all_path;
