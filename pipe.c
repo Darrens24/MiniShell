@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/09 19:19:37 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/13 10:46:45 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,12 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 
 	if (!is_builtin_command(shell, index))
 	{
+		temp = get_correct_path(shell, index);
+		if (!temp)
+			return (EXIT_FAILURE);
 		shell->pid[index] = fork();
 		if (shell->pid[index] == 0)
 		{
-			temp = get_correct_path(shell, index);
 			redirection_parsing(shell, index);
 			execve(temp, shell->multi_cmd[index], shell->array_env);
 		}
@@ -78,8 +80,8 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 		builtin_manager(shell, index);
 	if (index > 0)
 		close_fds(shell->fd[index - 1]);
-	//if (!is_builtin_command(shell, index))
-	//	free(temp);
+	if (temp && !is_builtin_command(shell, index))
+		free(temp);
 	return (EXIT_SUCCESS);
 }
 

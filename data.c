@@ -5,7 +5,6 @@ int	allocate_shell(t_shell *shell, char **envp)
 	int	i;
 
 	shell->line_readed = ft_calloc(1, 1);
-	shell->all_path = ft_split_slash(get_path(envp), ':');
 	shell->env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->env_l)
 		return (printf("Malloc: Env failed\n"));
@@ -16,7 +15,6 @@ int	allocate_shell(t_shell *shell, char **envp)
 	while (envp[++i])
 		new_back_node(shell->env_l, envp[i]);
 	shell->home = ft_strdup(get_home(envp));
-	shell->array_env = get_array_env(shell);
 	shell->sorted_env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->sorted_env_l)
 		return (printf("Malloc: Sorted Env failed\n"));
@@ -27,6 +25,7 @@ int	allocate_shell(t_shell *shell, char **envp)
 
 int	initialize_variables(t_shell *shell)
 {
+	shell->array_env = NULL;
 	shell->user_command->nb_elem = 0;
 	shell->env_l->nb_elem = 0;
 	shell->multi_cmd = NULL;
@@ -38,18 +37,18 @@ int	initialize_variables(t_shell *shell)
 
 char	**get_array_env(t_shell *shell)
 {
-	t_tok	*temp;
+	t_node	*temp;
 	char	**array;
 	int		i;
 
-	temp = shell->user_command->start;
-	array = malloc(sizeof(char *) * (shell->env_l->nb_elem + 1));
+	temp = shell->sorted_env_l->start;
+	array = malloc(sizeof(char *) * (shell->sorted_env_l->nb_elem + 1));
 	if (!array)
 		return (NULL);
 	i = -1;
 	while (temp)
 	{
-		array[++i] = ft_strdup(temp->var);
+		array[++i] = ft_strdup(temp->variable);
 		temp = temp->next;
 	}
 	array[i] = NULL;
@@ -64,9 +63,11 @@ int	free_array(char **array)
 	while (array[i])
 	{
 		free(array[i]);
+		array[i] = NULL;
 		i++;
 	}
 	free(array);
+	array = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -74,6 +75,8 @@ int	clean_between_cmds(t_shell *shell)
 {
 	int	i;
 
+	//free_array(shell->array_env);
+	//free_array(shell->all_path);
 	i = 0;
 	if (shell->multi_cmd)
 	{
@@ -86,6 +89,7 @@ int	clean_between_cmds(t_shell *shell)
 		shell->multi_cmd = NULL;
 	}
 	clear_toklst(shell->user_command);
+	//free(shell->correct_path);
 	free_pids_fds(shell);
 	return (EXIT_SUCCESS);
 }
@@ -99,8 +103,6 @@ int	clean_memory(t_shell *shell)
 	free(shell->env_l);
 	free(shell->sorted_env_l);
 	free(shell->user_command);
-	free(shell->correct_path);
-	free_array(shell->all_path);
 	return (EXIT_SUCCESS);
 }
 

@@ -1,27 +1,43 @@
 #include "minishell.h"
 
-char	*get_path(char **envp)
+char	*get_path(char **array_env)
 {
 	int	i;
 
 	i = 0;
-	while (envp && ft_strncmp(envp[i], "PATH=", 5))
+	while (array_env && array_env[i])
+	{
+		//printf("%d -> %s\n", i, array_env[i]);
+		if (ft_strncmp(array_env[i], "PATH=", 5) == 0)
+			return (array_env[i] + 5);
 		i++;
-	return (envp[i] + 5);
+	}
+	printf("Can't find path if you unset it...\n");
+	return (NULL);
 }
 
 char	*get_correct_path(t_shell *shell, int index)
 {
 	int	i;
 
-	i = -1;
+	shell->array_env = get_array_env(shell);
+	if (!shell->array_env)
+		return (NULL);
+	if (get_path(shell->array_env))
+		shell->all_path = ft_split_slash(get_path(shell->array_env), ':');
+	/*i = -1;
+	while (shell->all_path && shell->all_path[++i])
+		printf("arrayenv[%d] = %s\n",i, shell->all_path[i]);*/
+	if (!shell->all_path)
+		return (NULL);
 	shell->correct_path = NULL;
+	i = -1;
 	while (shell->all_path[++i])
 	{
 		shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][0]);
-		if (access(shell->correct_path, X_OK) == 0)
+		if (access(shell->correct_path, F_OK) == 0)
 			return (shell->correct_path);
-		else if (access(shell->multi_cmd[index][0], X_OK) == 0)// && access(shell->multi_cmd[index][0], X_OK) == ENOTDIR)
+		else if (access(shell->multi_cmd[index][0], F_OK) == 0)// && access(shell->multi_cmd[index][0], X_OK) == ENOTDIR)
 			return (shell->multi_cmd[index][0]);
 		free(shell->correct_path);
 	}
