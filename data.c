@@ -11,6 +11,7 @@ int	allocate_shell(t_shell *shell, char **envp)
 	shell->user_command = malloc(sizeof(*(shell->user_command)));
 	if (!shell->user_command)
 		return (printf("Malloc: UserCommand failed\n"));
+	shell->env_l->nb_elem = 0;
 	i = -1;
 	while (envp[++i])
 		new_back_node(shell->env_l, envp[i]);
@@ -25,9 +26,9 @@ int	allocate_shell(t_shell *shell, char **envp)
 
 int	initialize_variables(t_shell *shell)
 {
+	shell->all_path = NULL;
 	shell->array_env = NULL;
 	shell->user_command->nb_elem = 0;
-	shell->env_l->nb_elem = 0;
 	shell->multi_cmd = NULL;
 	shell->out = FALSE;
 	shell->current_dir_path = getcwd(NULL, 0);
@@ -45,12 +46,12 @@ char	**get_array_env(t_shell *shell)
 	array = malloc(sizeof(char *) * (shell->sorted_env_l->nb_elem + 1));
 	if (!array)
 		return (NULL);
-	i = -1;
+	i = 0;
 	while (temp)
 	{
-		array[++i] = ft_strdup(temp->variable);
-		//printf("%d -> %s\n", i, array[i]);
+		array[i] = ft_strdup(temp->variable);
 		temp = temp->next;
+		i++;
 	}
 	array[i] = NULL;
 	return (array);
@@ -78,7 +79,14 @@ int	clean_between_cmds(t_shell *shell)
 
 	i = 0;
 	if (!is_builtin_command(shell, i))
+	{
 		free_array(shell->array_env);
+		shell->array_env = NULL;
+		//if (shell->all_path[0])
+			//free_array(shell->all_path);
+
+	}
+
 	if (shell->multi_cmd)
 	{
 		while (i < get_number_of_commands(shell))
@@ -92,7 +100,6 @@ int	clean_between_cmds(t_shell *shell)
 	clear_toklst(shell->user_command);
 	//free(shell->correct_path);
 	free_pids_fds(shell);
-		//free_array(shell->all_path);
 	return (EXIT_SUCCESS);
 }
 

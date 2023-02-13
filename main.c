@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/13 11:19:35 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/13 12:30:41 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -66,7 +66,10 @@ int	main(int ac, char **av, char **envp)
 				good = FALSE;
 			//printf("tok = %s\n", shell.user_command->start->var);
 			if (good == TRUE)
-				pipe_command(&shell);
+			{
+				if (pipe_command(&shell) != 0)
+					printf("Error\n");
+			}
 			clean_between_cmds(&shell);
 		}
 	}

@@ -5,9 +5,8 @@ char	*get_path(char **array_env)
 	int	i;
 
 	i = 0;
-	while (array_env && array_env[i])
+	while (array_env[i])
 	{
-		//printf("%d -> %s\n", i, array_env[i]);
 		if (ft_strncmp(array_env[i], "PATH=", 5) == 0)
 			return (array_env[i] + 5);
 		i++;

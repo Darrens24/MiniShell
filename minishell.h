@@ -75,7 +75,7 @@ char		**get_command_in_tok(t_shell *shell, int index);
 
 //************* Path
 
-char				*get_path(char **envp);
+char				*get_path(char **array_env);
 char				*get_correct_path(t_shell *shell, int index);
 
 //************* Pipe

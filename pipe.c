@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/13 11:37:52 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/13 13:02:24 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 		close_fds(shell->fd[index - 1]);
 	if (temp && !is_builtin_command(shell, index))
 	{
+		free_array(shell->all_path);
 		free(temp);
 	}
 	return (EXIT_SUCCESS);
@@ -109,7 +110,8 @@ int	pipe_command(t_shell *shell)
 			if (pipe(shell->fd[i]) < 0)
 				return (printf("Pipe failed\n"));
 		}
-		redirect_and_execute_cmd(shell, i);
+		if (redirect_and_execute_cmd(shell, i) != 0)
+			return (EXIT_FAILURE);
 	}
 	if (shell->out == TRUE)
 	{
