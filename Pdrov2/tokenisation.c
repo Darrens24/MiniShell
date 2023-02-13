@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/08 13:31:29 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:16:39 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,14 @@ int     squotejumper(t_tok *token, int i)
 	return (i);
 }
 
+char	*vagueparser(int i, char *newvar, t_chained	*envp)
+{
+	if (i != 1)
+		return (newvar = ft_strjoin(newvar, "~"));
+	newvar = envfinder("HOME", newvar, envp);
+	return (newvar);
+}
+
 void    tokenisation(t_toklst *tokenlst, t_chained *env)
 {
 	t_tok   *elem;
@@ -170,42 +178,51 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
 	int             start;
 
 	elem = malloc(sizeof(*elem));
-        elem = tokenlst->start;
-        while(elem)
-        {
-                newvar = 0;
-                i = 0;
-                while(elem->var[i])
-                {
-                        start = i;
-                        if (elem->var[i] == '\"')
-                        {
-                                newvar = dquoteparser(elem, i, newvar, env);
-                                i = dquotejumper(elem, i, newvar, env);
-                        }
-                        else if (elem->var[i] == '\'')
-                        {
-                                newvar = squoteparser(elem, i, newvar);
-                                i = squotejumper(elem, i);
-                        }
-                        else if (elem->var[i] == '$')
-                        {
-							i++;
-							newvar = envvarparser(elem, i, newvar, env);
-							i = envvarjumper(elem, i);
-                        }
-                        else
-                                newvar = ft_strjoin(newvar, ft_strndup(elem->var, start, ++i));
-                        if (i == -1)
-                        {
-                                if (ft_strlen(newvar) > 0)
-                                        free(newvar);
-                                errorintoken(tokenlst, "no ending bracket");
-                                return ;
-                        }
-                }
-                elem->var = newvar;
-                elem = elem->next;
-        }
-        newvar = 0;
+	elem = tokenlst->start;
+	while(elem)
+	{
+			newvar = 0;
+			i = 0;
+			while(elem->var[i])
+			{
+					start = i;
+					if (elem->var[i] == '\"')
+					{
+							newvar = dquoteparser(elem, i, newvar, env);
+							i = dquotejumper(elem, i, newvar, env);
+					}
+					else if (elem->var[i] == '\'')
+					{
+							newvar = squoteparser(elem, i, newvar);
+							i = squotejumper(elem, i);
+					}
+					else if (elem->var[i] == '$')
+					{
+						i++;
+						newvar = envvarparser(elem, i, newvar, env);
+						i = envvarjumper(elem, i);
+					}
+					else if (elem->var && elem->var[i] == '~')
+					{
+						i++;
+						newvar = vagueparser(i, newvar, env);
+					}
+					else if (elem->var && elem->var[i])
+							newvar = ft_strjoin(newvar, ft_strndup(elem->var, start, ++i));
+					if (i == -1 || i == -2)
+					{
+						if (ft_strlen(newvar) > 0)
+								free(newvar);
+						if (i == -2)
+							errorintoken(tokenlst, "Error: no such user");
+						else
+							errorintoken(tokenlst, "no ending bracket");
+						return ;
+					}
+				//printf("%s\n", elem->var[i]);
+			}
+			elem->var = newvar;
+			elem = elem->next;
+	}
+	newvar = 0;
 }
