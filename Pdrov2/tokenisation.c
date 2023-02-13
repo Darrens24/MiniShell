@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/13 15:16:39 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/13 15:32:38 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ int     squotejumper(t_tok *token, int i)
 	i++;
 	while (token->var[i] && token->var[i] != '\'')
 			i++;
+	i++;
 	return (i);
 }
 
