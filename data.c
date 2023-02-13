@@ -49,6 +49,7 @@ char	**get_array_env(t_shell *shell)
 	while (temp)
 	{
 		array[++i] = ft_strdup(temp->variable);
+		//printf("%d -> %s\n", i, array[i]);
 		temp = temp->next;
 	}
 	array[i] = NULL;
@@ -60,7 +61,7 @@ int	free_array(char **array)
 	int	i;
 
 	i = 0;
-	while (array[i])
+	while (array && array[i])
 	{
 		free(array[i]);
 		array[i] = NULL;
@@ -75,9 +76,9 @@ int	clean_between_cmds(t_shell *shell)
 {
 	int	i;
 
-	//free_array(shell->array_env);
-	//free_array(shell->all_path);
 	i = 0;
+	if (!is_builtin_command(shell, i))
+		free_array(shell->array_env);
 	if (shell->multi_cmd)
 	{
 		while (i < get_number_of_commands(shell))
@@ -91,6 +92,7 @@ int	clean_between_cmds(t_shell *shell)
 	clear_toklst(shell->user_command);
 	//free(shell->correct_path);
 	free_pids_fds(shell);
+		//free_array(shell->all_path);
 	return (EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/13 10:46:45 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/13 11:37:52 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,17 @@ int	builtin_manager(t_shell *shell, int index)
 int	redirect_and_execute_cmd(t_shell *shell, int index)
 {
 	char	*temp;
-
+	char	*all_path;
+	
 	if (!is_builtin_command(shell, index))
 	{
+		shell->array_env = get_array_env(shell);
+		all_path = get_path(shell->array_env);
+		if (!all_path)
+			return (EXIT_FAILURE);
+		shell->all_path = ft_split_slash(all_path, ':');
+		if (!shell->all_path[0])
+			return (EXIT_FAILURE);
 		temp = get_correct_path(shell, index);
 		if (!temp)
 			return (EXIT_FAILURE);
@@ -81,7 +89,9 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 	if (index > 0)
 		close_fds(shell->fd[index - 1]);
 	if (temp && !is_builtin_command(shell, index))
+	{
 		free(temp);
+	}
 	return (EXIT_SUCCESS);
 }
 

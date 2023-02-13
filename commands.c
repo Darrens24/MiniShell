@@ -20,16 +20,9 @@ char	*get_correct_path(t_shell *shell, int index)
 {
 	int	i;
 
-	shell->array_env = get_array_env(shell);
-	if (!shell->array_env)
-		return (NULL);
-	if (get_path(shell->array_env))
-		shell->all_path = ft_split_slash(get_path(shell->array_env), ':');
 	/*i = -1;
 	while (shell->all_path && shell->all_path[++i])
 		printf("arrayenv[%d] = %s\n",i, shell->all_path[i]);*/
-	if (!shell->all_path)
-		return (NULL);
 	shell->correct_path = NULL;
 	i = -1;
 	while (shell->all_path[++i])
