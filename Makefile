@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/08 16:39:25 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/14 13:53:28 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ SRC = main.c \
 		pipe_utils.c \
 		redirections.c \
 		redirection_utils.c \
+		wildcards_parsing.c \
+		wildcards.c \
 
 OBJ = $(SRC:.c=.o)
 

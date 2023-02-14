@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/14 10:32:53 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:39:30 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int	is_builtin_command(t_shell *shell, int i)
 		|| ft_strncmp(shell->multi_cmd[i][0], "unset", 6) == 0
 		|| ft_strncmp(shell->multi_cmd[i][0], "exit", 5) == 0
 		|| ft_strncmp(shell->multi_cmd[i][0], "echo", 5) == 0)
-			return (TRUE);
-	return (FALSE);
+			return (true);
+	return (false);
 }
 
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
-	int	good;
+//	int	good;
 	t_shell	shell;
 
 	if (ac != 1)
@@ -49,7 +49,7 @@ int	main(int ac, char **av, char **envp)
 	printf(YEL "Open Minishell\n" WHT);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
-		good = TRUE;
+		//good = true;
 		readline_manager(&shell);
 		if (!shell.line_readed)
 		{
@@ -60,17 +60,18 @@ int	main(int ac, char **av, char **envp)
 		{
 			token_parsing(shell.user_command, shell.line_readed);
 			tokenisation(shell.user_command, shell.sorted_env_l);
-			if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
-				good = FALSE;
+			parse_wildcard(&shell, envp);
+		/*	if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
+				good = false;
 			//printf("tok = %s\n", shell.user_command->start->var);
-			if (good == TRUE)
+			if (good == true)
 			{
 				if (pipe_command(&shell) != 0)
 					printf("Error\n");
 			}
 			clear_toklst(shell.user_command);
 			dup2(shell.saved_stdin, STDIN_FILENO);
-			dup2(shell.saved_stdout, STDOUT_FILENO);
+			dup2(shell.saved_stdout, STDOUT_FILENO);*/
 		}
 	}
 	clean_memory(&shell);

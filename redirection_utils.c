@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:06 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/08 15:22:25 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:41:51 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	is_infile_redirection(t_toklst *user_command)
 	{
 		if ((ft_strncmp(temp->var, "<", 2) == 0)
 			|| (ft_strncmp(temp->var, "<<", 3) == 0))
-				return (TRUE);
+				return (true);
 		temp = temp->next;
 	}
-	return (FALSE);
+	return (false);
 }
 
 int	is_outfile_redirection(t_toklst *user_command)
@@ -36,10 +36,10 @@ int	is_outfile_redirection(t_toklst *user_command)
 	{
 		if ((ft_strncmp(temp->var, ">", 2) == 0)
 			|| (ft_strncmp(temp->var, ">>", 3) == 0))
-				return (TRUE);
+				return (true);
 		temp = temp->next;
 	}
-	return (FALSE);
+	return (false);
 }
 
 int	delete_operator_and_infile(t_shell *shell)

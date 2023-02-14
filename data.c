@@ -30,9 +30,11 @@ int	initialize_variables(t_shell *shell)
 	shell->array_env = NULL;
 	shell->user_command->nb_elem = 0;
 	shell->multi_cmd = NULL;
-	shell->out = FALSE;
+	shell->out = false;
 	shell->current_dir_path = getcwd(NULL, 0);
 	shell->previous_dir_path = getcwd(NULL, 0);
+	shell->wild_before = NULL;
+	shell->wild_after = NULL;
 	return (EXIT_SUCCESS);
 }
 

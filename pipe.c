@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/14 10:23:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:41:39 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	redirection_parsing(t_shell *shell, int index)
 		early_out_redirection(shell->fd[index]);
 	if (index != 0)
 		inside_redirection(shell->fd[index - 1]);
-	if (shell->out == TRUE && index == get_number_of_commands(shell) - 1)
+	if (shell->out == true && index == get_number_of_commands(shell) - 1)
 		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
@@ -111,10 +111,10 @@ int	pipe_command(t_shell *shell)
 		if (redirect_and_execute_cmd(shell, i) != 0)
 			return (EXIT_FAILURE);
 	}
-	if (shell->out == TRUE)
+	if (shell->out == true)
 	{
 		dup2(shell->saved_stdout, STDOUT_FILENO);
-		shell->out = FALSE;
+		shell->out = false;
 	}
 	dup2(shell->saved_stdin, STDIN_FILENO);
 	wait_pids(shell->pid);

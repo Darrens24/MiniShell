@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/14 10:09:54 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/14 17:41:59 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	outfile_redirection(t_shell *shell, t_tok *temp)
 	if (!is_outfile_redirection(shell->user_command))
 	{
 		shell->saved_stdout = dup(STDOUT_FILENO);
-		shell->out = TRUE;
+		shell->out = true;
 	}
 	return (EXIT_SUCCESS);
 }
@@ -147,7 +147,7 @@ int	append_redirection(t_shell *shell, t_tok *temp)
 	if (!is_outfile_redirection(shell->user_command))
 	{
 		shell->saved_stdout = dup(STDOUT_FILENO);
-		shell->out = TRUE;
+		shell->out = true;
 	}
 	return (EXIT_SUCCESS);
 }

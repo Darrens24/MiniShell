@@ -10,8 +10,8 @@
 # define CYN "\e[0;96m"
 # define WHT "\e[0;97m"
 
-# define TRUE 1
-# define FALSE 0
+# define true 1
+# define false 0
 
 # include <unistd.h>
 # include <stdio.h>
@@ -95,21 +95,21 @@ void						free_pids_fds(t_shell *shell);
 
 /***\	REDIRECTION	\***/
 
-int					infile_redirection(t_shell *shell, t_tok *temp);
-int					heredoc_redirection(t_shell *shell, t_tok *temp);
-int					outfile_redirection(t_shell *shell, t_tok *temp);
-int					append_redirection(t_shell *shell, t_tok *temp);
-int					heredoc_dup(t_shell *shell);
+int			infile_redirection(t_shell *shell, t_tok *temp);
+int			heredoc_redirection(t_shell *shell, t_tok *temp);
+int			outfile_redirection(t_shell *shell, t_tok *temp);
+int			append_redirection(t_shell *shell, t_tok *temp);
+int			heredoc_dup(t_shell *shell);
 
-//************************** Redirection Utils
+//************* Redirection Utils
 
-int							is_infile_redirection(t_toklst *user_command);
-int							is_outfile_redirection(t_toklst *user_command);
-int							infile_redirection_parsing(t_shell *shell);
-int							outfile_redirection_parsing(t_shell *shell);
-char						*append_newline(char *limiter);
-int							delete_operator_and_infile(t_shell *shell);
-int							delete_operator_and_outfile(t_shell *shell);
+int					is_infile_redirection(t_toklst *user_command);
+int					is_outfile_redirection(t_toklst *user_command);
+int					infile_redirection_parsing(t_shell *shell);
+int					outfile_redirection_parsing(t_shell *shell);
+char				*append_newline(char *limiter);
+int					delete_operator_and_infile(t_shell *shell);
+int					delete_operator_and_outfile(t_shell *shell);
 
 /***\	LISTS	\***/
 
@@ -119,13 +119,13 @@ t_chained	*remove_front_node(t_chained *list);
 t_chained	*remove_back_node(t_chained *list);
 t_node		*remove_current_node(t_node *node, t_chained *lst);
 
-//************************** Lists Utils
+//************* Lists Utils
 
-int							is_empty(t_chained *list);
-t_chained					*null_list(void);
-void						print_list(t_chained *list);
-t_chained					*sort_list(t_chained *list);
-t_node						*go_to_end(t_chained *list);
+int					is_empty(t_chained *list);
+t_chained			*null_list(void);
+void				print_list(t_chained *list);
+t_chained			*sort_list(t_chained *list);
+t_node				*go_to_end(t_chained *list);
 
 /***\	SIGNALS UTILS   \***/
 
@@ -161,5 +161,18 @@ void		token_parsing(t_toklst *tokenlst, char *line);
 
 void		tokenisation(t_toklst *tokenlst, t_chained *env);
 
+/***\      WILDCARDS		\***/
+
+int			execute_ls_in_tmp(t_shell *shell, char **envp);
+int			find_occurence_in_tmp(t_shell *shell);
+int			get_wildcard_index(t_shell *shell, char *buffer);
+
+//************************** Wildcards Utils
+
+int					string_is_wildcard(char *str);
+int					cmd_has_wildcard(t_shell *shell);
+int					jump_next_wildcard(char *str, int index);
+int					jump_previous_wildcard(char *str, int index);
+int					parse_wildcard(t_shell *shell, char **envp);
 
 #endif
