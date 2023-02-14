@@ -72,7 +72,7 @@ int	free_array(char **array)
 	array = NULL;
 	return (EXIT_SUCCESS);
 }
-
+/*
 int	clean_between_cmds(t_shell *shell)
 {
 	int	i;
@@ -80,7 +80,6 @@ int	clean_between_cmds(t_shell *shell)
 	i = 0;
 	if (!is_builtin_command(shell, i))
 	{
-		free_array(shell->array_env);
 		shell->array_env = NULL;
 		//if (shell->all_path[0])
 			//free_array(shell->all_path);
@@ -97,11 +96,10 @@ int	clean_between_cmds(t_shell *shell)
 		free(shell->multi_cmd);
 		shell->multi_cmd = NULL;
 	}
-	clear_toklst(shell->user_command);
 	//free(shell->correct_path);
 	free_pids_fds(shell);
 	return (EXIT_SUCCESS);
-}
+}*/
 
 int	clean_memory(t_shell *shell)
 {
