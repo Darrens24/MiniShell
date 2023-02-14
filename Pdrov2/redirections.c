@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/07 15:47:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/08 15:54:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,51 @@
 
 int	infile_redirection_parsing(t_shell *shell)
 {
-	if (shell->user_command->start && ft_strncmp(shell->user_command->start->var, "<", 2) == 0)
-		return (infile_redirection(shell));
-	else if (shell->user_command->start && ft_strncmp(shell->user_command->start->var, "<<", 3) == 0)
-		return (heredoc_redirection(shell));
+	t_tok	*temp;
+
+	temp = shell->user_command->start;
+	while (temp && is_infile_redirection(shell->user_command))
+	{
+		if (ft_strncmp(temp->var, "<", 2) == 0)
+		{
+			if (!temp->next)
+				return (printf("Redirection needs a file\n"));
+			if (infile_redirection(shell, temp) != 0)
+				return (EXIT_FAILURE);
+			temp = shell->user_command->start;
+		}
+		else if (ft_strncmp(temp->var, "<<", 3) == 0)
+		{
+			if (!temp->next)
+				return (printf("Heredoc needs a delimiter\n"));
+			if (heredoc_redirection(shell, temp) != 0)
+				return (EXIT_FAILURE);
+			temp = shell->user_command->start;
+		}
+		else
+			temp = temp->next;
+	}
 	return (EXIT_SUCCESS);
 }
 
-int	outfile_redirection_parsing(t_shell *shell)
-{
-	if (shell->user_command->end->prev && ft_strncmp(shell->user_command->end->prev->var, ">", 2) == 0)
-		return (outfile_redirection(shell));
-	else if (shell->user_command->end->prev && ft_strncmp(shell->user_command->end->prev->var, ">>", 3) == 0)
-		return (append_redirection(shell));
-	return (EXIT_SUCCESS);
-}
-
-int	outfile_redirection(t_shell *shell)
-{
-	if (access(shell->user_command->end->var, R_OK | W_OK) < 0)
-		return (printf("Outfile permissions denied\n"));
-	close(shell->outfile);
-	shell->outfile = open(shell->user_command->end->var, O_CREAT | O_RDWR | O_TRUNC, 0644);
-	delete_operator_and_outfile(shell);
-	if (shell->outfile < 0)
-		return (printf("Outfile opening failed\n"));
-	shell->out = TRUE;
-	shell->saved_stdout = dup(STDOUT_FILENO);
-	return (EXIT_SUCCESS);
-}
-
-int	append_redirection(t_shell *shell)
-{
-	if (access(shell->user_command->end->var, R_OK | W_OK) < 0)
-		return (printf("Outfile permissions denied\n"));
-	close(shell->outfile);
-	shell->outfile = open(shell->user_command->end->var, O_CREAT | O_RDWR | O_APPEND, 0644);
-	delete_operator_and_outfile(shell);
-	if (shell->outfile < 0)
-		return (printf("Outfile opening failed\n"));
-	shell->out = TRUE;
-	dup2(shell->outfile, STDOUT_FILENO);
-	return (EXIT_SUCCESS);
-}
-
-int	infile_redirection(t_shell *shell)
+int	infile_redirection(t_shell *shell, t_tok *temp)
 {
 	close(shell->infile);
-	shell->infile = open(shell->user_command->start->next->var, O_RDONLY);
+	shell->infile = open(temp->next->var, O_RDONLY);
 	delete_operator_and_infile(shell);
 	if (shell->infile < 0)
 		return (printf("Infile opening failed\n"));
-	shell->saved_stdin = dup(STDIN_FILENO);
-	dup2(shell->infile, STDIN_FILENO);
+	if (shell->user_command->nb_elem != 0 && !is_infile_redirection(shell->user_command))
+	{
+		shell->saved_stdin = dup(STDIN_FILENO);
+		dup2(shell->infile, STDIN_FILENO);
+	}
 	return (EXIT_SUCCESS);
 }
 
-int	heredoc_redirection(t_shell *shell)
+int	heredoc_redirection(t_shell *shell, t_tok *temp)
 {
-	shell->limiter_doc = ft_strdup(shell->user_command->start->next->var);
+	shell->limiter_doc = ft_strdup(temp->next->var);
 	if (pipe(shell->doc_fd) < 0)
 		return (printf("DocPipe failed\n"));
 	delete_operator_and_infile(shell);
@@ -91,9 +77,80 @@ int	heredoc_redirection(t_shell *shell)
 	}
 	free(shell->buffer_doc);
 	free(shell->limiter_doc);
+	if (!is_infile_redirection(shell->user_command))
+		heredoc_dup(shell);
+	return (EXIT_SUCCESS);
+}
+
+int	heredoc_dup(t_shell *shell)
+{
 	close(shell->doc_fd[1]);
 	shell->saved_stdin = dup(STDIN_FILENO);
 	dup2(shell->doc_fd[0], STDIN_FILENO);
 	close(shell->doc_fd[0]);
 	return (EXIT_SUCCESS);
 }
+
+int	outfile_redirection_parsing(t_shell *shell)
+{
+	t_tok	*temp;
+
+	temp = shell->user_command->start;
+	while (temp && is_outfile_redirection(shell->user_command))
+	{
+		if (ft_strncmp(temp->var, ">", 2) == 0)
+		{
+			if (!temp->next)
+				return (printf("Redirection needs a file\n"));
+			if (outfile_redirection(shell, temp) != 0)
+				return (EXIT_FAILURE);
+			temp = shell->user_command->start;
+		}
+		else if (ft_strncmp(temp->var, ">>", 3) == 0)
+		{
+			if (!temp->next)
+				return (printf("Append needs a file\n"));
+			if (append_redirection(shell, temp) != 0)
+				return (EXIT_FAILURE);
+			temp = shell->user_command->start;
+		}
+		else
+			temp = temp->next;
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	outfile_redirection(t_shell *shell, t_tok *temp)
+{
+	if (access(temp->next->var, R_OK | W_OK) < 0)
+		return (printf("Outfile permissions denied\n"));
+	close(shell->outfile);
+	shell->outfile = open(temp->next->var, O_CREAT | O_RDWR | O_TRUNC, 0644);
+	delete_operator_and_outfile(shell);
+	if (shell->outfile < 0)
+		return (printf("Outfile opening failed\n"));
+	if (!is_outfile_redirection(shell->user_command))
+	{
+		shell->saved_stdout = dup(STDOUT_FILENO);
+		shell->out = TRUE;
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	append_redirection(t_shell *shell, t_tok *temp)
+{
+	if (access(temp->next->var, R_OK | W_OK) < 0)
+		return (printf("Outfile permissions denied\n"));
+	close(shell->outfile);
+	shell->outfile = open(temp->next->var, O_CREAT | O_RDWR | O_APPEND, 0644);
+	delete_operator_and_outfile(shell);
+	if (shell->outfile < 0)
+		return (printf("Outfile opening failed\n"));
+	if (!is_outfile_redirection(shell->user_command))
+	{
+		shell->saved_stdout = dup(STDOUT_FILENO);
+		shell->out = TRUE;
+	}
+	return (EXIT_SUCCESS);
+}
+

@@ -34,6 +34,7 @@
 /***\	DATA	\***/
 
 int			allocate_shell(t_shell *shell, char **envp);
+int			initialize_variables(t_shell *shell);
 int			clean_memory(t_shell *shell);
 int			free_array(char **array);
 char		**get_array_env(t_shell *shell);
@@ -43,12 +44,16 @@ int			clean_between_cmds(t_shell *shell);
 /***\	BUILTINS	\***/
 
 int			is_builtin_command(t_shell *shell, int i);
+int			builtin_manager(t_shell *shell, int index);
 
 //************* Directory
 
+char				*get_home(char **envp);
+int					go_to_home_directory(t_shell *shell);
+int					go_to_previous_directory(t_shell *shell);
 int					execute_directory_cmd(t_shell *shell, int i);
-int	    			print_pwd_linux(void);
-int					change_directory(const char *path);
+int	    			print_pwd_linux(t_shell *shell);
+int					change_directory(t_shell *shell, const char *path);
 
 //************* Env
 
@@ -58,8 +63,7 @@ int					add_env_variable(t_shell *shell);
 
 //************* Echo
 
-int					print_echo(char **command, int i);
-int					echo_parsing(t_shell *shell);
+int					print_echo(char **command);
 
 /***\	COMMANDS	\***/
 
@@ -71,7 +75,7 @@ char		**get_command_in_tok(t_shell *shell, int index);
 
 //************* Path
 
-char				*get_path(char **envp);
+char				*get_path(char **array_env);
 char				*get_correct_path(t_shell *shell, int index);
 
 //************* Pipe
@@ -82,7 +86,7 @@ int					redirect_and_execute_cmd(t_shell *shell, int index);
 
 //************************** Pipe Utils
 
-int							close_fds(int **fd);
+int							close_fds(int *fd);
 int							wait_pids(int *pid);
 t_tok						*go_to_next_pipe(t_shell *shell, t_tok *tok, int index);
 int							early_out_redirection(int *fd);
@@ -91,10 +95,11 @@ void						free_pids_fds(t_shell *shell);
 
 /***\	REDIRECTION	\***/
 
-int					infile_redirection(t_shell *shell);
-int					heredoc_redirection(t_shell *shell);
-int					outfile_redirection(t_shell *shell);
-int					append_redirection(t_shell *shell);
+int					infile_redirection(t_shell *shell, t_tok *temp);
+int					heredoc_redirection(t_shell *shell, t_tok *temp);
+int					outfile_redirection(t_shell *shell, t_tok *temp);
+int					append_redirection(t_shell *shell, t_tok *temp);
+int					heredoc_dup(t_shell *shell);
 
 //************************** Redirection Utils
 
@@ -112,7 +117,6 @@ t_chained	*new_front_node(t_chained *list, char *line);
 t_chained	*new_back_node(t_chained *list, char *line);
 t_chained	*remove_front_node(t_chained *list);
 t_chained	*remove_back_node(t_chained *list);
-t_node		*go_to_end(t_chained *list);
 t_node		*remove_current_node(t_node *node, t_chained *lst);
 
 //************************** Lists Utils
@@ -121,6 +125,7 @@ int							is_empty(t_chained *list);
 t_chained					*null_list(void);
 void						print_list(t_chained *list);
 t_chained					*sort_list(t_chained *list);
+t_node						*go_to_end(t_chained *list);
 
 /***\	SIGNALS UTILS   \***/
 
@@ -130,8 +135,10 @@ void		handler(int num);
 
 int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
+t_toklst	*new_back_tok_quote(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
 t_toklst	*remove_front_tok(t_toklst *list);
+t_tok		*remove_current_tok(t_tok *tok, t_toklst *list);
 void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
 

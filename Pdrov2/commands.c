@@ -1,32 +1,47 @@
 #include "minishell.h"
 
-char	*get_path(char **envp)
+char	*get_path(char **array_env)
 {
 	int	i;
 
 	i = 0;
-	while (envp && ft_strncmp(envp[i], "PATH=", 5))
+	while (array_env[i])
+	{
+		if (ft_strncmp(array_env[i], "PATH=", 5) == 0)
+			return (array_env[i] + 5);
 		i++;
-	return (envp[i] + 5);
+	}
+	printf("Can't find path if you unset it...\n");
+	return (NULL);
 }
 
 char	*get_correct_path(t_shell *shell, int index)
 {
 	int	i;
 
-	i = -1;
+	/*i = -1;
+	while (shell->all_path && shell->all_path[++i])
+		printf("arrayenv[%d] = %s\n",i, shell->all_path[i]);*/
 	shell->correct_path = NULL;
+	i = -1;
 	while (shell->all_path[++i])
 	{
-		if (ft_strncmp(shell->multi_cmd[0][0], "<", 2) == 0 && index == 0)
-			shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][2]);
-		else
-			shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][0]);
+		shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][0]);
 		if (access(shell->correct_path, F_OK) == 0)
 			return (shell->correct_path);
+		else if (access(shell->multi_cmd[index][0], F_OK) == 0)// && access(shell->multi_cmd[index][0], X_OK) == ENOTDIR)
+			return (shell->multi_cmd[index][0]);
 		free(shell->correct_path);
 	}
-	printf("Command not found\n");
+	if (shell->multi_cmd[0][0][0] == '/')
+	{
+		/*if (access(shell->multi_cmd[index][0], F_OK) != ENOTDIR)
+			printf("%s : is a directory\n", shell->multi_cmd[index][0]);
+		else*/
+			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
+	}
+	else
+		printf("%s : Command not found\n", shell->multi_cmd[index][0]);
 	return (NULL);
 }
 
@@ -71,7 +86,7 @@ char	**get_command_in_tok(t_shell *shell, int index)
 	int		i = 0;
 
 	temp = go_to_next_pipe(shell, temp, index);
-	while (temp && ft_strncmp(temp->var, "|", 2) != 0)
+	while (temp && temp->quote == 1)
 	{
 		temp = temp->next;
 		nb_of_args++;

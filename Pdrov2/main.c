@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/08 13:56:04 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:34:12 by pfaria-d         ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int ac, char **av, char **envp)
 	(void)av;
 	int	good;
 	t_shell	shell;
-
+	t_tok *tmp;
 	if (ac != 1)
 		return (printf("Minishell is pure, no arguments please\n"));
 	allocate_shell(&shell, envp);
@@ -52,20 +52,38 @@ int	main(int ac, char **av, char **envp)
 		good = TRUE;
 		readline_manager(&shell);
 		if (!shell.line_readed)
+		{
+			ft_putchar_fd('\n', STDOUT_FILENO);
 			break ;
+		}
 		if (shell.line_readed[0] != '\0')
 		{
 			token_parsing(shell.user_command, shell.line_readed);
-			tokenisation(shell.user_command, shell.sorted_env_l);
-			if (infile_redirection_parsing(&shell) != 0)
-				good = FALSE;
-			if (outfile_redirection_parsing(&shell) != 0)
-				good = FALSE;
-			if (good == TRUE)
-				pipe_command(&shell);
-			clean_between_cmds(&shell);
+			if (shell.user_command->nb_elem)
+			{
+				tokenisation(shell.user_command, shell.sorted_env_l);
+				tmp = shell.user_command->start;
+				if (shell.user_command->nb_elem != 0 && infile_redirection_parsing(&shell) != 0)
+					good = FALSE;
+				if (shell.user_command->nb_elem != 0 && outfile_redirection_parsing(&shell) != 0)
+					good = FALSE;
+				while (tmp)
+				{
+		//			printf("%s\n", tmp->var);
+		//			printf("%d\n", tmp->quote);
+					tmp = tmp->next;
+				}
+				//printf("tok = %s\n", shell.user_command->start->var);
+				if (good == TRUE)
+				{
+					if (pipe_command(&shell) != 0)
+						printf("Error\n");
+				}
+				clean_between_cmds(&shell);
+			}
 		}
 	}
+
 	clean_memory(&shell);
 	return (0);
 }

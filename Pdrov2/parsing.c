@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:04:14 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/30 13:37:52 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/14 10:37:49 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)
 				i++;
 	}
 	if (start != i)
-		new_back_tok(tokenlst, line, start, i);
+		new_back_tok_quote(tokenlst, line, start, i);
 	return (i);
 }
 
