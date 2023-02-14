@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 14:31:06 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/07 10:26:58 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/08 15:22:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,74 @@
 
 int	is_infile_redirection(t_toklst *user_command)
 {
-	if ((ft_strncmp(user_command->start->var, "<", 2) == 0)
-		|| (ft_strncmp(user_command->start->var, "<<", 3) == 0))
-			return (TRUE);
+	t_tok	*temp;
+
+	temp = user_command->start;
+	while (temp)
+	{
+		if ((ft_strncmp(temp->var, "<", 2) == 0)
+			|| (ft_strncmp(temp->var, "<<", 3) == 0))
+				return (TRUE);
+		temp = temp->next;
+	}
 	return (FALSE);
 }
 
 int	is_outfile_redirection(t_toklst *user_command)
 {
-	if (user_command->end->prev && ((ft_strncmp(user_command->end->prev->var, ">", 2) == 0)
-		|| (ft_strncmp(user_command->end->prev->var, ">>", 3) == 0)))
-			return (TRUE);
+	t_tok	*temp;
+
+	temp = user_command->start;
+	while (temp)
+	{
+		if ((ft_strncmp(temp->var, ">", 2) == 0)
+			|| (ft_strncmp(temp->var, ">>", 3) == 0))
+				return (TRUE);
+		temp = temp->next;
+	}
 	return (FALSE);
 }
 
+int	delete_operator_and_infile(t_shell *shell)
+{
+	t_tok	*temp;
+
+	temp = shell->user_command->start;
+	if (shell->user_command->nb_elem == 0)
+		return (EXIT_SUCCESS);
+	while (temp)
+	{
+		if ((!ft_strncmp(temp->var, "<", 2) || (!ft_strncmp(temp->var, "<<", 2))))
+		{
+			remove_current_tok(temp->next, shell->user_command);
+			remove_current_tok(temp, shell->user_command);
+			return (EXIT_SUCCESS);
+		}
+		temp = temp->next;
+	}
+	return (EXIT_FAILURE);
+}
+
+int	delete_operator_and_outfile(t_shell *shell)
+{
+	t_tok	*temp;
+
+	temp = shell->user_command->start;
+	if (shell->user_command->nb_elem == 0)
+		return (EXIT_SUCCESS);
+	while (temp)
+	{
+		if ((!ft_strncmp(temp->var, ">", 2) || (!ft_strncmp(temp->var, ">>", 2))))
+		{
+			remove_current_tok(temp->next, shell->user_command);
+			remove_current_tok(temp, shell->user_command);
+			return (EXIT_SUCCESS);
+		}
+		temp = temp->next;
+	}
+	return (EXIT_FAILURE);
+}
+/*
 int	delete_operator_and_outfile(t_shell *shell)
 {
 	int	i;
@@ -38,19 +92,7 @@ int	delete_operator_and_outfile(t_shell *shell)
 	while (++i < 2)
 		remove_back_tok(shell->user_command);
 	return (EXIT_SUCCESS);
-}
-
-int	delete_operator_and_infile(t_shell *shell)
-{
-	int	i;
-
-	if (shell->user_command->nb_elem == 0)
-		return (EXIT_SUCCESS);
-	i = -1;
-	while (++i < 2)
-		remove_front_tok(shell->user_command);
-	return (EXIT_SUCCESS);
-}
+}*/
 
 char	*append_newline(char *limiter)
 {

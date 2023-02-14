@@ -19,6 +19,7 @@ int	ft_strlenequal(char *line)
 		i++;
 	return (i);
 }
+
 int	envchecker(char *line, t_chained *env)
 {
 	t_node	*elem;
@@ -49,7 +50,7 @@ int	print_export(t_shell *shell)
 	temp = shell->sorted_env_l->start;
 	while (temp)
 	{
-		ft_putstr_fd("declare -x ", 1);
+		ft_putstr_fd("declare -x ", STDOUT_FILENO);
 		printf("%s\n", temp->variable);
 		temp = temp->next;
 	}
@@ -84,16 +85,19 @@ int	option_njump(char **command, int i)
 		x = 1;
 		while (command[i][x] && command[i][x] == 'n')
 			x++;
-		if (x != ft_strlen(command[i]))
+		if (x == 1 || x != ft_strlen(command[i]))
 			break;
 		i++;
 	}
 	return (i);
 }
-int	print_echo(char **command, int i)
+
+int	print_echo(char **command)
 {
 	int	tmp;
+	int	i;
 
+	i = 0;
 	tmp = option_n(command, i);
 	if (tmp && !command[option_njump(command, i)])
 		return (EXIT_SUCCESS);
@@ -188,6 +192,6 @@ int	execute_builtin_cmd(t_shell *shell, int i)
 			return (unset_variable(shell));
 	}
 	else if (ft_strncmp(shell->multi_cmd[i][0], "echo", 5) == 0)
-		print_echo(shell->multi_cmd[i], i);
+		print_echo(shell->multi_cmd[i]);
 	return (EXIT_SUCCESS);
 }

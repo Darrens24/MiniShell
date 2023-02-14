@@ -6,11 +6,10 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/08 13:23:37 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/02/13 15:50:22 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minishell
 NOCOLOR='\033[0m'
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -27,6 +26,8 @@ LIGHTBLUE='\033[1;34m'
 LIGHTPURPLE='\033[1;35m'
 LIGHTCYAN='\033[1;36m'
 WHITE='\033[1;37m'
+
+NAME = minishell
 
 CC = gcc
 
@@ -50,12 +51,10 @@ SRC = main.c \
 		redirections.c \
 		redirection_utils.c \
 
-
 OBJ = $(SRC:.c=.o)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
-
 
 all: $(NAME)
 
@@ -68,6 +67,7 @@ $(NAME): $(OBJ)
 
 clean:
 	@make clean -C ./Libft
+	@echo ${LIGHTRED}Libft Objects Removed !${NOCOLOR}
 	@rm -f $(OBJ)
 	@echo ${LIGHTRED}Minishell Objects Removed !${NOCOLOR}
 
