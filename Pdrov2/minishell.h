@@ -135,7 +135,7 @@ void		handler(int num);
 
 int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
-t_toklst	*new_back_tok_quote(t_toklst *tokenlst, char *line, int start, int end);
+t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
 t_toklst	*remove_front_tok(t_toklst *list);
 t_tok		*remove_current_tok(t_tok *tok, t_toklst *list);
@@ -160,7 +160,11 @@ void		token_parsing(t_toklst *tokenlst, char *line);
 
 /***\      TOKENISATION		\***/
 
+char		*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env);
+int			dquotejumper(t_tok *token, int i);
 void		tokenisation(t_toklst *tokenlst, t_chained *env);
-
+char		*squoteparser(t_tok *token, int i, char *newvar);
+int			squotejumper(t_tok *token, int i);
+char		*envfinder(char *line, char *newvar, t_chained *env);
 
 #endif

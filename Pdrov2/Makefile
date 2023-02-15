@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
+#    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/13 15:50:22 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/02/15 16:12:24 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,13 @@ SRC = main.c \
 		dir_management.c \
 		env_management.c \
 		signals.c \
-		token_management.c \
-		parsing_utils.c \
-		tokenisation.c \
-		parsing.c \
+		tokens/token_management.c \
+		tokens/token_management2.c \
+		tokens/tokenisation.c \
+		tokens/quotes_management2.c \
+		tokens/quotes_management.c \
+		parsing/parsing_utils.c \
+		parsing/parsing.c \
 		commands.c \
 		pipe.c \
 		pipe_utils.c \
