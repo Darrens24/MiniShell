@@ -137,9 +137,12 @@ int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
 t_toklst	*remove_front_tok(t_toklst *list);
+t_tok		*new_current_tok(t_tok *tok, t_toklst *list);
 t_tok		*remove_current_tok(t_tok *tok, t_toklst *list);
 void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
+t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer);
+t_tok		*remove_wildcard_tok(t_toklst *tokenlst);
 
 /***\      UTILS           \***/
 
@@ -163,9 +166,13 @@ void		tokenisation(t_toklst *tokenlst, t_chained *env);
 
 /***\      WILDCARDS		\***/
 
+char		*get_wild_middle(char *str, int index);
+int			parse_wildcard(t_shell *shell, char **envp);
 int			execute_ls_in_tmp(t_shell *shell, char **envp);
-int			find_occurence_in_tmp(t_shell *shell);
-int			get_wildcard_index(t_shell *shell, char *buffer);
+char		**get_wildcard_files(t_shell *shell);
+int			compare_after_wildcard(char *buffer, t_shell *shell);
+int			compare_middle_wildcard(char *buffer, t_shell *shell);;
+int			is_matching_file(char *buffer, t_shell *shell);
 
 //************************** Wildcards Utils
 
@@ -173,6 +180,7 @@ int					string_is_wildcard(char *str);
 int					cmd_has_wildcard(t_shell *shell);
 int					jump_next_wildcard(char *str, int index);
 int					jump_previous_wildcard(char *str, int index);
-int					parse_wildcard(t_shell *shell, char **envp);
+int					get_nb_of_wildcard(char *var);
+char				*remove_newline_from_buffer(char *buffer);
 
 #endif

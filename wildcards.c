@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:53:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/14 17:32:35 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/16 17:17:48 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,39 +38,164 @@ int	execute_ls_in_tmp(t_shell *shell, char **envp)
 	waitpid(pid, 0, 0);
 	dup2(STDOUT_FILENO, shell->saved_stdout);
 	close(fd_temp);
-	find_occurence_in_tmp(shell, fd_temp);
+	while (cmd_has_wildcard(shell))
+	{
+		get_wildcard_files(shell);
+	}
 	//unlink(".tmp"); --> a la toute fin de la traduction des wildcards
 	return (EXIT_SUCCESS);
 }
 
-int	get_wildcard_index(t_shell *shell, char *buffer)
+int	get_nb_of_wildcard(char *var)
 {
+	int	nb_of_wildcard;
+	int	i;
+
+	nb_of_wildcard = 0;
+	i = 0;
+	while (var[i])
+	{
+		if (var[i] == '*' && var[i + 1] == '*')
+		{
+			printf("Wildcard only manage current directory\n");
+			return (-1);
+		}
+		else if (var[i] == '*')
+			nb_of_wildcard++;
+		i++;
+	}
+	return (nb_of_wildcard);
 }
 
-int	find_occurence_in_tmp(t_shell *shell)
+/* before, ncmp sur la len de before
+ * middle chr a partir de len de before + 1, depasse l'* et marche si pas de befor
+ * after index a len de buffer - len de after puis ncmp sur la len de after
+ * un seul passage et ajoute directement a user_command
+ */
+
+int	compare_after_wildcard(char *buffer, t_shell *shell)
 {
-	char	*buffer = ft_calloc(1, 1);
-	int		nb_of_files = 0;
-	//char	**stock;
-	//int		next_wild_index = 0;
+	int	i;
+
+	i = ft_strlen(buffer) - ft_strlen(shell->wild_after);
+/*	printf("len = %d\n", i);
+	printf("buffer + i = %s\n", buffer + i);
+	printf("wildafter = %s\n", shell->wild_after);*/
+	if (buffer + i && ft_strncmp(buffer + i, shell->wild_after, ft_strlen(shell->wild_after)) == 0)
+		return (true);
+	return (false);
+}
+
+int	compare_middle_wildcard(char *buffer, t_shell *shell)
+{
+	int	j;
+
+	j = 0;
+	while (shell->wild_middle[j])
+	{
+		if (!ft_strnstr((buffer + ft_strlen(shell->wild_before) + 1), shell->wild_middle[j], ft_strlen(buffer)))
+			return (false);
+		j++;
+	}
+	return (true);
+}
+
+int	is_matching_file(char *buffer, t_shell *shell)
+{
+	if (shell->wild_before && shell->wild_middle && shell->wild_after)
+	{
+	//	printf("coucou 3\n");
+		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0 && compare_after_wildcard(buffer, shell) && compare_middle_wildcard(buffer, shell))
+	
+			return (true);
+	}
+	else if (shell->wild_before && shell->wild_middle[0])
+	{
+	//	printf("coucou befmid\n");
+		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0 && compare_middle_wildcard(buffer, shell))
+			return (true);
+	}
+	else if (shell->wild_before && shell->wild_after)
+	{
+	//	printf("coucou befaft\n");
+		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0 && compare_after_wildcard(buffer, shell) == true)
+			return (true);
+	}
+	else if (shell->wild_middle[0] && shell->wild_after)
+	{
+	//	printf("coucou midaft\n");
+		if (compare_middle_wildcard(buffer, shell) && compare_after_wildcard(buffer, shell))
+			return (true);
+	}
+	else if (shell->wild_middle[0])
+	{
+	//	printf("coucou mid\n");
+		if (compare_middle_wildcard(buffer, shell) == true)
+			return (true);
+	}
+	else if (shell->wild_before)
+	{
+	//	printf("coucou before\n");
+		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0)
+			return (true);
+	}
+	else if (shell->wild_after)
+	{
+	//	printf("coucou after\n");
+		if (compare_after_wildcard(buffer, shell) == true)
+			return (true);
+	}
+	return (false);
+}
+
+char	*remove_newline_from_buffer(char *buffer)
+{
+	char	*buffer_without_newline;
+
+	//printf("coucou du remove\n");
+	if (buffer && strchr(buffer, '\n'))
+	{
+		buffer_without_newline = ft_strndup(buffer, 0, ft_strlen(buffer) - 1);
+		free(buffer);
+		//printf("buffwithoutnl=%s\n", buffer_without_newline);
+		return (buffer_without_newline);
+	}
+	//printf("buff=%s\n", buffer);
+	return (buffer);
+}
+
+char	**get_wildcard_files(t_shell *shell)
+{
+	char	*buffer;
+	int		fd_temp;
+	t_tok	*temp;
 	
 	fd_temp = open(".tmp", O_RDWR, 0644);
 	if (fd_temp < 0)
-		return (printf("Temp opening failed\n"));
+		return (NULL);
+	buffer = ft_calloc(1, 1);
 	while (buffer)
 	{	
 		free(buffer);
 		buffer = get_next_line(fd_temp);
-		printf("buffer = %s\n", buffer);
 		if (!buffer)
 			break ;
-		next_wild_index = get_wildcard_index(shell, buffer);
-		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0)
-			nb_of_files++;
-		/*if (ft_strncmp(buffer + next_wild_index + 1, shell->wild_after, ft_strlen(shell->wild_after)) == 0)
-			nb_of_files++;*/
-	}//ceci est une recuperation du nombre d'elements a malloc dans stock
-	//maintenant, il faut reprendre la boucle et recuperer ces elements
-	printf("nb file : %d\n", nb_of_files);
+		buffer = remove_newline_from_buffer(buffer);
+		if (is_matching_file(buffer, shell))
+		{
+			new_wildcard_tok(shell->user_command, buffer);
+			temp = shell->user_command->start;
+			while (temp)
+			{
+				printf("list elements: %s\n", temp->var);
+				temp = temp->next;
+			}
+			//printf("YOUPI\n");
+		}
+	}
+	//printf("coucou du get\n");
+	remove_wildcard_tok(shell->user_command);
+	close(fd_temp);	
+	//free les variables et unlink tmp
 	return (EXIT_SUCCESS);
 }

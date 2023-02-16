@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:11:53 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/14 17:40:01 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/16 13:38:59 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@ int	string_is_wildcard(char *str)
 		if (str[i] == '*')
 			return (true);
 	return (false);
+}
+
+int	no_wildcard_before(char *str, int index)
+{
+	while (str && str[index])
+	{
+		if (str[index] == '*')
+			return (false);
+		index--;
+	}
+	return (true);
 }
 
 int	cmd_has_wildcard(t_shell *shell)
@@ -53,40 +64,60 @@ int	jump_previous_wildcard(char *str, int index)
 	return (index);
 }
 
+char	*get_wild_middle(char *str, int index)
+{
+	char	*middle;
+	int		start;
+
+	start = index;
+	while (str[index] && str[index] != '*')
+		index++;
+	middle = ft_strndup(str, start, index);
+	return (middle);
+}
+
 int	parse_wildcard(t_shell *shell, char **envp)
 {
 	int		i;
+	int		j;
 	t_tok	*temp;
-	int		nb_of_wildcards;
+	int 	nb_of_wildcard;
 
 	temp = shell->user_command->start;
-	nb_of_wildcards = 0;
 	while (temp && !string_is_wildcard(temp->var))
 		temp = temp->next;
-	nb_of_wildcards = 0;
+	//printf("var = %s\n", temp->var);
+	nb_of_wildcard = get_nb_of_wildcard(temp->var);
+	//printf("nb wild = %d\n", nb_of_wildcard);
+	if (nb_of_wildcard < 0)
+		return (EXIT_FAILURE);
+	shell->wild_middle = malloc(sizeof(char *) * (nb_of_wildcard - 1));//normalement -2 mais +1 pour le NULL ----> A FREE a la fin de la substitution de la node wildcard
+	if (!shell->wild_middle)
+		return (EXIT_FAILURE);
 	i = 0;
+	j = 0;
 	while (temp->var[i])
 	{
-		if (temp->var[i] == '*')
-			nb_of_wildcards++;
+		if (temp->var[i] == '*' && i != 0 && no_wildcard_before(temp->var, i - 1) == true)
+		{
+			shell->wild_before = ft_strndup(temp->var, 0, i);  
+		}
+		if (temp->var[i] == '*' && temp->var[i + 1] && string_is_wildcard(temp->var + i + 1))
+		{
+			shell->wild_middle[j] = get_wild_middle(temp->var, i + 1);
+			j++;
+		}
+		if (temp->var[i] == '*' && temp->var[i + 1] && !string_is_wildcard(temp->var + i + 1))
+		{
+			shell->wild_after = ft_strndup(temp->var, i + 1, ft_strlen(temp->var));
+		}
 		i++;
 	}
-	i = 0;
-	if (nb_of_wildcards == 1)
-	{
-		while (temp->var[i])
-		{
-			if (temp->var[i] == '*' && temp->var[i + 1])
-				shell->wild_after = ft_strndup(temp->var, i + 1, jump_next_wildcard(temp->var, i + 1));
-			if (temp->var[i] == '*' && temp->var[i - 1])
-				shell->wild_before = ft_strndup(temp->var, jump_previous_wildcard(temp->var, i - 1), i);  
-			i++;
-		}
-		printf("shell->wild_before : %s\n", shell->wild_before);
-		printf("shell->wild_after : %s\n", shell->wild_after);
-		execute_ls_in_tmp(shell, envp);
-	}
-	else
-		return (EXIT_FAILURE);
+	shell->wild_middle[j] = NULL; //peut-etre rajouter une protection
+	printf("shell->wild_before : %s\n", shell->wild_before);
+	printf("shell->wild_after : %s\n", shell->wild_after);
+	printf("shell->wild_middle[0] : %s\n", shell->wild_middle[0]);
+	printf("shell->wild_middle[1] : %s\n", shell->wild_middle[1]);
+	execute_ls_in_tmp(shell, envp);
 	return (EXIT_SUCCESS);
 }

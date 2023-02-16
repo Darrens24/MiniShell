@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/14 17:39:30 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/16 16:31:28 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -60,7 +60,20 @@ int	main(int ac, char **av, char **envp)
 		{
 			token_parsing(shell.user_command, shell.line_readed);
 			tokenisation(shell.user_command, shell.sorted_env_l);
+			t_tok	*temp = shell.user_command->start;
+			while (temp)
+			{
+				printf("%s\n", temp->var);
+				temp = temp->next;
+			}
 			parse_wildcard(&shell, envp);
+			printf("cc du main\n");
+			temp = shell.user_command->start;
+			while (temp)
+			{
+				printf("%s\n", temp->var);
+				temp = temp->next;
+			}
 		/*	if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
 				good = false;
 			//printf("tok = %s\n", shell.user_command->start->var);
