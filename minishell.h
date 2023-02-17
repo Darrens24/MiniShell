@@ -163,6 +163,13 @@ void		token_parsing(t_toklst *tokenlst, char *line);
 /***\      TOKENISATION		\***/
 
 void		tokenisation(t_toklst *tokenlst, t_chained *env);
+char		*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env);
+int			dquotejumper(t_tok *token, int i);
+void		tokenisation(t_toklst *tokenlst, t_chained *env);
+char		*squoteparser(t_tok *token, int i, char *newvar);
+int			squotejumper(t_tok *token, int i);
+char		*envfinder(char *line, char *newvar, t_chained *env);
+t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end);
 
 /***\      WILDCARDS		\***/
 

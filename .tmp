@@ -22,10 +22,7 @@ minishell
 minishell.h
 outfile
 outfile2
-parsing.c
-parsing.o
-parsing_utils.c
-parsing_utils.o
+parsing
 PdrCommands.txt
 Pdrov2
 pipe.c
@@ -43,9 +40,8 @@ structures.h
 tags
 testlol
 tokenisation.c
-tokenisation.o
 token_management.c
-token_management.o
+tokens
 utils.c
 utils.o
 wildcards.c

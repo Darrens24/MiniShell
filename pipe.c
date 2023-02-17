@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/14 17:41:39 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/17 09:53:43 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_number_of_commands(t_shell *shell)
 	temp = shell->user_command->start;
 	while (temp)
 	{
-		if (ft_strncmp(temp->var, "|", 2) == 0)
+		if (ft_strncmp(temp->var, "|", 2) == 0 && temp->quote == 0)
 			nb_of_cmd++;
 		temp = temp->next;
 	}
@@ -64,7 +64,8 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 {
 	char	*temp;
 	char	*all_path;
-	
+
+	temp = NULL;
 	if (!is_builtin_command(shell, index))
 	{
 		shell->array_env = get_array_env(shell);

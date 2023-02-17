@@ -6,11 +6,11 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 15:37:28 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/30 10:13:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:07:04 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	is_wspace(char c)
 {

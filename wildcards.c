@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:53:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/16 17:17:48 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/17 09:48:16 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,17 @@ int	compare_after_wildcard(char *buffer, t_shell *shell)
 
 int	compare_middle_wildcard(char *buffer, t_shell *shell)
 {
+	int	i;
 	int	j;
 
+	i = ft_strlen(shell->wild_before) + 1;
 	j = 0;
 	while (shell->wild_middle[j])
 	{
-		if (!ft_strnstr((buffer + ft_strlen(shell->wild_before) + 1), shell->wild_middle[j], ft_strlen(buffer)))
+		if (!ft_strnstr((buffer + i), shell->wild_middle[j], ft_strlen(buffer)))
 			return (false);
+		//while (!ft_strncmp(
+		//i = ft_strnstr((buffer + i), shell->wild_middle[j], ft_strlen(buffer));
 		j++;
 	}
 	return (true);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
+#    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/14 13:53:28 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/17 10:11:44 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,10 +41,14 @@ SRC = main.c \
 		dir_management.c \
 		env_management.c \
 		signals.c \
-		token_management.c \
-		parsing_utils.c \
-		tokenisation.c \
-		parsing.c \
+		tokens/token_management.c \
+		tokens/token_management2.c \
+		tokens/tokenisation.c \
+		tokens/quotes_management2.c \
+		tokens/quotes_management.c \
+		tokens/token_wildcard.c \
+		parsing/parsing_utils.c \
+		parsing/parsing.c \
 		commands.c \
 		pipe.c \
 		pipe_utils.c \
@@ -54,6 +58,15 @@ SRC = main.c \
 		wildcards.c \
 
 OBJ = $(SRC:.c=.o)
+
+NORM = $(shell norminette | grep Error: | wc -l | awk '{print $1}')
+NORMINETTE = $(shell ls | grep ewhjgewjhghewji | wc -l | awk '{print $1}')
+
+ifeq (${NORM}, ${NORMINETTE})
+    NORMINETTE = "${WHITE}NORM : ${GREEN}OK${NOCOLOR}\n"
+else
+    NORMINETTE = "${WHITE}NORM : ${RED}${NORM}errors${NOCOLOR}\n"
+endif
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -66,6 +79,7 @@ $(NAME): $(OBJ)
 	@echo ${LIGHTBLUE}Minishell Compiling... !${NOCOLOR}
 	@$(CC) $(CFLAGS) -I ./ -LLibft -lft $(OBJ) -o $@ ./Libft/libft.a -lreadline
 	@echo ${LIGHTGREEN}Minishell Compiled !${NOCOLOR}
+	@echo ${NORMINETTE}
 
 clean:
 	@make clean -C ./Libft
