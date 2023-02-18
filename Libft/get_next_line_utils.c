@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:04:12 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/23 15:19:31 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/18 15:00:19 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	line_in_stock(char *str)
 	return (0);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzzero(void *s, size_t n)
 {
 	unsigned char	*s2;
 	size_t			i;
@@ -87,6 +87,6 @@ void	*ft_callloc(size_t count, size_t size)
 	recipe = malloc(sizeof(char) * memory);
 	if (!recipe)
 		return (NULL);
-	ft_bzero(recipe, memory);
+	ft_bzzero(recipe, memory);
 	return ((void *)recipe);
 }

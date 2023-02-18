@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/17 10:11:44 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/18 16:49:01 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,19 +54,21 @@ SRC = main.c \
 		pipe_utils.c \
 		redirections.c \
 		redirection_utils.c \
-		wildcards_parsing.c \
-		wildcards.c \
+		wildcards/wildcards_utils.c \
+		wildcards/wildcards_data.c \
+		wildcards/wildcards_parsing.c \
+		wildcards/wildcards.c \
 
 OBJ = $(SRC:.c=.o)
 
-NORM = $(shell norminette | grep Error: | wc -l | awk '{print $1}')
-NORMINETTE = $(shell ls | grep ewhjgewjhghewji | wc -l | awk '{print $1}')
+#NORM = $(shell norminette | grep Error: | wc -l | awk '{print $1}')
+#NORMINETTE = $(shell ls | grep ewhjgewjhghewji | wc -l | awk '{print $1}')
 
-ifeq (${NORM}, ${NORMINETTE})
-    NORMINETTE = "${WHITE}NORM : ${GREEN}OK${NOCOLOR}\n"
-else
-    NORMINETTE = "${WHITE}NORM : ${RED}${NORM}errors${NOCOLOR}\n"
-endif
+#ifeq (${NORM}, ${NORMINETTE})
+#    NORMINETTE = "${WHITE}NORM : ${GREEN}OK${NOCOLOR}\n"
+#else
+#    NORMINETTE = "${WHITE}NORM : ${RED}${NORM}errors${NOCOLOR}\n"
+#endif
 
 %.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/16 16:31:28 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/18 16:46:18 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	main(int ac, char **av, char **envp)
 				printf("%s\n", temp->var);
 				temp = temp->next;
 			}
-			parse_wildcard(&shell, envp);
-			printf("cc du main\n");
+			while (cmd_has_wildcard(&shell))
+				parse_wildcard(&shell, envp);
 			temp = shell.user_command->start;
 			while (temp)
 			{

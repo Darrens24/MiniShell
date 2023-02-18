@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   data.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
+/*   Updated: 2023/02/18 16:49:29 by eleleux          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int	allocate_shell(t_shell *shell, char **envp)
@@ -20,6 +32,9 @@ int	allocate_shell(t_shell *shell, char **envp)
 	if (!shell->sorted_env_l)
 		return (printf("Malloc: Sorted Env failed\n"));
 	shell->sorted_env_l = sort_list(shell->env_l);
+	shell->ls_cmd = malloc(sizeof(char *) * 2);
+	if (!shell->ls_cmd)
+		return (printf("Malloc: LsCommand failed\n"));
 	initialize_variables(shell);
 	return (EXIT_SUCCESS);
 }
@@ -35,6 +50,8 @@ int	initialize_variables(t_shell *shell)
 	shell->previous_dir_path = getcwd(NULL, 0);
 	shell->wild_before = NULL;
 	shell->wild_after = NULL;
+	shell->ls_cmd[0] = "ls";
+	shell->ls_cmd[1] = NULL;
 	return (EXIT_SUCCESS);
 }
 
@@ -112,6 +129,7 @@ int	clean_memory(t_shell *shell)
 	free(shell->env_l);
 	free(shell->sorted_env_l);
 	free(shell->user_command);
+	free_array(shell->ls_cmd);
 	return (EXIT_SUCCESS);
 }
 

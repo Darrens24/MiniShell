@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 18:21:04 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/23 15:18:13 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/18 14:57:04 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 int		ft_intstrlen(char *str);
 char	*ft_join_nextline(char *dest, char *src);
 int		line_in_stock(char *str);
-void	ft_bzero(void *s, size_t n);
+void	ft_bzzero(void *s, size_t n);
 void	*ft_callloc(size_t count, size_t size);
 
 // GNL

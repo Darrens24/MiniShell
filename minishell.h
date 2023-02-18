@@ -173,21 +173,33 @@ t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end);
 
 /***\      WILDCARDS		\***/
 
+int			get_asked_wildcards(char *var, t_shell *shell);
 char		*get_wild_middle(char *str, int index);
-int			parse_wildcard(t_shell *shell, char **envp);
-int			execute_ls_in_tmp(t_shell *shell, char **envp);
 char		**get_wildcard_files(t_shell *shell);
 int			compare_after_wildcard(char *buffer, t_shell *shell);
 int			compare_middle_wildcard(char *buffer, t_shell *shell);;
-int			is_matching_file(char *buffer, t_shell *shell);
+
+//************************** Wildcards Data
+
+int					get_nb_of_wildcard(char *var);
+int					string_is_wildcard(char *str);
+int					cmd_has_wildcard(t_shell *shell);
+int					no_wildcard_before(char *str, int index);
+int					free_wildcards(t_shell *shell);
+
+//************************** Wildcards Parsing
+
+int					parse_wildcard(t_shell *shell, char **envp);
+int					one_wildcard_only(char *buffer, t_shell *shell);
+int					two_wildcards(char *buffer, t_shell *shell);
+int					all_wildcards(char *buffer, t_shell *shell);
+int					is_matching_file(char *buffer, t_shell *shell);
 
 //************************** Wildcards Utils
 
-int					string_is_wildcard(char *str);
-int					cmd_has_wildcard(t_shell *shell);
 int					jump_next_wildcard(char *str, int index);
 int					jump_previous_wildcard(char *str, int index);
-int					get_nb_of_wildcard(char *var);
 char				*remove_newline_from_buffer(char *buffer);
+int					execute_ls_in_tmp(t_shell *shell, char **envp);
 
 #endif
