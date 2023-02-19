@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 13:05:59 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 18:45:54 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,32 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 	char	*all_path;
 
 	temp = NULL;
+	all_path = NULL;
 	if (!is_builtin_command(shell, index))
 	{
-		all_path = get_path(shell->array_env);
-		if (!all_path)
-			return (EXIT_FAILURE);
-		shell->all_path = ft_split_slash(all_path, ':');
-		if (!shell->all_path[0])
-			return (EXIT_FAILURE);
-		temp = get_correct_path(shell, index);
-		if (!temp)
-			return (EXIT_FAILURE);
+		if (access(shell->multi_cmd[index][0], F_OK) == 0)// && access(shell->multi_cmd[index][0], X_OK) == ENOTDIR)
+			temp = ft_strdup(shell->multi_cmd[index][0]);
+		else
+		{
+			all_path = get_path(shell->array_env);
+			if (!all_path)
+				return (EXIT_FAILURE);
+			if (all_path)
+				shell->all_path = ft_split_slash(all_path, ':');
+			if (!shell->all_path[0])
+				return (EXIT_FAILURE);
+			temp = get_correct_path(shell, index);
+			if (!temp)
+				return (EXIT_FAILURE);
+		}
 		shell->pid[index] = fork();
 		if (shell->pid[index] == 0)
 		{
 			redirection_parsing(shell, index);
 			execve(temp, shell->multi_cmd[index], shell->array_env);
 		}
-		free_array(shell->all_path);
+		if (all_path)
+			free_array(shell->all_path);
 		free(temp);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 16:27:52 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:52:38 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,16 @@ char	*get_correct_path(t_shell *shell, int index)
 		shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][0]);
 		if (access(shell->correct_path, F_OK) == 0)
 			return (shell->correct_path);
-		else if (access(shell->multi_cmd[index][0], F_OK) == 0)// && access(shell->multi_cmd[index][0], X_OK) == ENOTDIR)
-			return (shell->multi_cmd[index][0]);
 		free(shell->correct_path);
-	}
+	}/*
 	if (shell->multi_cmd[0][0][0] == '/')
 	{
-		/*if (access(shell->multi_cmd[index][0], F_OK) != ENOTDIR)
+		if (access(shell->multi_cmd[index][0], F_OK) != ENOTDIR)
 			printf("%s : is a directory\n", shell->multi_cmd[index][0]);
-		else*/
+		else
 			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
 	}
-	else
+	else*/
 		printf("%s : Command not found\n", shell->multi_cmd[index][0]);
 	return (NULL);
 }
