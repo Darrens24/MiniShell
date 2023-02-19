@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 16:52:57 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 21:28:36 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	envchecker(char *line, t_chained *env)
 	t_node	*elem;
 	int		len;
 
-	elem = env->end;
+	elem = env->start;
 	len = ft_strlen(line);
 	while (elem)
 	{
@@ -51,4 +51,23 @@ int	envchecker(char *line, t_chained *env)
 		elem = elem->next;
 	}
 	return (0);
+}
+
+int	envindex(char *line, t_chained *env)
+{
+	t_node	*elem;
+	int		len;
+	int		index;
+
+	elem = env->start;
+	len = ft_strlen(line);
+	index = 0;
+	while (elem)
+	{
+		if (ft_strncmp(line, elem->variable, len) == 0)
+			return (index);
+		elem = elem->next;
+		index++;
+	}
+	return (-1);
 }

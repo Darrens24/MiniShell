@@ -62,6 +62,7 @@ int					print_export(t_shell *shell);
 int					add_env_variable(t_shell *shell);
 int					fill_basic_env(t_shell *shell);
 int					envchecker(char *line, t_chained *env);
+int					envindex(char *line, t_chained *env);
 
 //************* Echo
 
@@ -120,7 +121,7 @@ t_chained	*new_back_node(t_chained *list, char *line);
 t_chained	*remove_front_node(t_chained *list);
 t_chained	*remove_back_node(t_chained *list);
 t_node		*remove_current_node(t_node *node, t_chained *lst);
-t_chained	*new_current_node(chained *lst, int index, char *variable);
+t_chained	*new_current_node(t_chained *lst, int index, char *variable);
 
 //************* Lists Utils
 

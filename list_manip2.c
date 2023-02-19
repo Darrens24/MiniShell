@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:42:18 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 21:19:08 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 21:32:03 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_node	*remove_current_node(t_node *node, t_chained *lst)
 	return (node);
 }
 
-t_chained	*new_current_node(chained *lst, int index, char *variable)
+t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 {
 	t_node	*elem;
 	t_node	*temp;
@@ -48,12 +48,11 @@ t_chained	*new_current_node(chained *lst, int index, char *variable)
 	elem->variable = ft_strdup(variable);
 	elem->next = NULL;
 	elem->prev = NULL;
-	elem->quote = 0;
 	temp = lst->start;
-	while (temp && index--)
+	while (temp && --index)
 		temp = temp->next;
 	if (!temp->next)
-		new_back_node(lst);
+		new_back_node(lst, variable);
 	else
 	{
 		temp->next->prev = elem;

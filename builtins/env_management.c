@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 16:52:41 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 21:28:17 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ int	unset_variable(t_shell *shell)
 
 int	export_variable(t_shell *shell)
 {
+	int	index;
+
+	index = 0;
 	if (!envchecker(ft_strndup(shell->user_command->start->next->var,
 				0, ft_strlenequal(shell->user_command->start->next->var)),
 			shell->sorted_env_l))
@@ -79,8 +82,11 @@ int	export_variable(t_shell *shell)
 			shell->user_command->start->next->var);
 	else
 	{
+		index = envindex(ft_strndup(shell->user_command->start->next->var,
+					0, ft_strlenequal(shell->user_command->start->next->var)),
+				shell->sorted_env_l);
 		unset_variable(shell);
-		new_back_node(shell->sorted_env_l,
+		new_current_node(shell->sorted_env_l, index,
 			shell->user_command->start->next->var);
 	}
 	return (EXIT_SUCCESS);
