@@ -44,7 +44,7 @@ char	*get_correct_path(t_shell *shell, int index)
 		printf("%s : Command not found\n", shell->multi_cmd[index][0]);
 	return (NULL);
 }
-
+/*
 int	execute_command(t_shell *shell, char **envp)
 {
 	int	pid;
@@ -58,7 +58,7 @@ int	execute_command(t_shell *shell, char **envp)
 	free_array(command);
 	return (EXIT_SUCCESS);
 }
-
+*/
 char	**get_array_command(t_shell *shell)
 {
 	t_tok	*temp;

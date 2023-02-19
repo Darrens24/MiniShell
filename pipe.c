@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/17 09:53:43 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 13:05:59 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 	temp = NULL;
 	if (!is_builtin_command(shell, index))
 	{
-		shell->array_env = get_array_env(shell);
 		all_path = get_path(shell->array_env);
 		if (!all_path)
 			return (EXIT_FAILURE);
@@ -85,7 +84,6 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 			execve(temp, shell->multi_cmd[index], shell->array_env);
 		}
 		free_array(shell->all_path);
-		free_array(shell->array_env);
 		free(temp);
 	}
 	else
@@ -101,6 +99,8 @@ int	pipe_command(t_shell *shell)
 
 	shell->saved_stdout = dup(STDOUT_FILENO);
 	get_array_cmd_and_pipe_fds(shell);
+	shell->array_env = get_array_env(shell);
+	shell->home = ft_strdup(get_home(shell->array_env));
 	i = -1;
 	while (shell->user_command->nb_elem != 0 && ++i < get_number_of_commands(shell))
 	{
@@ -128,6 +128,8 @@ int	pipe_command(t_shell *shell)
 		}
 		free(shell->multi_cmd);
 	}
+	free_array(shell->array_env);
+	free(shell->home);
 	if (get_number_of_commands(shell) > 1)
 		free_pids_fds(shell);
 	return (EXIT_SUCCESS);

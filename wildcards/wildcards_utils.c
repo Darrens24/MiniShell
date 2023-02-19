@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:11:53 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/18 16:47:28 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 16:22:50 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	jump_next_wildcard(char *str, int index)
 {
 	while (str[index] && str[index] != '*')
 		index++;
-	//index--;
 	return (index);
 }
 
@@ -62,4 +61,21 @@ int	execute_ls_in_tmp(t_shell *shell, char **envp)
 	dup2(STDOUT_FILENO, shell->saved_stdout);
 	close(fd_temp);
 	return (EXIT_SUCCESS);
+}
+
+void	add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell)
+{
+	while (buffer)
+	{	
+		free(buffer);
+		buffer = get_next_line(fd_temp);
+		if (!buffer)
+			break ;
+		buffer = remove_newline_from_buffer(buffer);
+		if (is_matching_file(buffer, shell))
+		{
+			new_wildcard_tok(shell->user_command, buffer);
+			shell->nb_of_sub++;
+		}
+	}
 }

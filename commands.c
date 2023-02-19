@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
+/*   Updated: 2023/02/19 16:27:52 by eleleux          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char	*get_path(char **array_env)
@@ -15,13 +27,24 @@ char	*get_path(char **array_env)
 	return (NULL);
 }
 
+char	*get_home(char **array_env)
+{
+	int	i;
+
+	i = 0;
+	while (array_env[i])
+	{
+		if (ft_strncmp(array_env[i], "HOME=", 5) == 0)
+			return (array_env[i] + 5);
+		i++;
+	}
+	return (NULL);
+}
+
 char	*get_correct_path(t_shell *shell, int index)
 {
 	int	i;
 
-	/*i = -1;
-	while (shell->all_path && shell->all_path[++i])
-		printf("arrayenv[%d] = %s\n",i, shell->all_path[i]);*/
 	shell->correct_path = NULL;
 	i = -1;
 	while (shell->all_path[++i])
@@ -44,7 +67,7 @@ char	*get_correct_path(t_shell *shell, int index)
 		printf("%s : Command not found\n", shell->multi_cmd[index][0]);
 	return (NULL);
 }
-
+/*
 int	execute_command(t_shell *shell, char **envp)
 {
 	int	pid;
@@ -58,7 +81,7 @@ int	execute_command(t_shell *shell, char **envp)
 	free_array(command);
 	return (EXIT_SUCCESS);
 }
-
+*/
 char	**get_array_command(t_shell *shell)
 {
 	t_tok	*temp;

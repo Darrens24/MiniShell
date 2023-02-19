@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:11:53 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/18 16:51:19 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 16:22:33 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	parse_wildcard(t_shell *shell, char **envp)
 {
 	t_tok	*temp;
-	int 	nb_of_wildcard;
+	int		nb_of_wildcard;
 
 	temp = shell->user_command->start;
 	while (temp && !string_is_wildcard(temp->var))
@@ -31,49 +31,18 @@ int	parse_wildcard(t_shell *shell, char **envp)
 	get_wildcard_files(shell);
 	return (EXIT_SUCCESS);
 }
-/*
+
 int	one_wildcard_only(char *buffer, t_shell *shell)
 {
-}
-
-int	two_wildcards(char *buffer, t_shell *shell)
-{
-}
-
-int	all_wildcards(char *buffer, t_shell *shell)
-{
-}
-*/
-int	is_matching_file(char *buffer, t_shell *shell)
-{
-	if (shell->wild_before && shell->wild_middle && shell->wild_after)
-	{
-		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0 && compare_after_wildcard(buffer, shell) && compare_middle_wildcard(buffer, shell))
-			return (true);
-	}
-	else if (shell->wild_before && shell->wild_middle[0])
-	{
-		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0 && compare_middle_wildcard(buffer, shell))
-			return (true);
-	}
-	else if (shell->wild_before && shell->wild_after)
-	{
-		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0 && compare_after_wildcard(buffer, shell) == true)
-			return (true);
-	}
-	else if (shell->wild_middle[0] && shell->wild_after)
-	{
-		if (compare_middle_wildcard(buffer, shell) && compare_after_wildcard(buffer, shell))
-			return (true);
-	}
-	else if (shell->wild_middle[0])
+	if (shell->wild_middle[0])
 	{
 		if (compare_middle_wildcard(buffer, shell) == true)
 			return (true);
 	}
 	else if (shell->wild_before)
 	{
-		if (ft_strncmp(buffer, shell->wild_before, ft_strlen(shell->wild_before)) == 0)
+		if (ft_strncmp(buffer, shell->wild_before,
+				ft_strlen(shell->wild_before)) == 0)
 			return (true);
 	}
 	else if (shell->wild_after)
@@ -84,3 +53,55 @@ int	is_matching_file(char *buffer, t_shell *shell)
 	return (false);
 }
 
+int	two_wildcards(char *buffer, t_shell *shell)
+{
+	if (shell->wild_before && shell->wild_middle[0])
+	{
+		if (ft_strncmp(buffer, shell->wild_before,
+				ft_strlen(shell->wild_before)) == 0
+			&& compare_middle_wildcard(buffer, shell))
+			return (true);
+	}
+	else if (shell->wild_before && shell->wild_after)
+	{
+		if (ft_strncmp(buffer, shell->wild_before,
+				ft_strlen(shell->wild_before)) == 0
+			&& compare_after_wildcard(buffer, shell) == true)
+			return (true);
+	}
+	else if (shell->wild_middle[0] && shell->wild_after)
+	{
+		if (compare_middle_wildcard(buffer, shell)
+			&& compare_after_wildcard(buffer, shell))
+			return (true);
+	}
+	return (false);
+}
+
+int	all_wildcards(char *buffer, t_shell *shell)
+{
+	if (shell->wild_before && shell->wild_middle && shell->wild_after)
+	{
+		if (ft_strncmp(buffer, shell->wild_before,
+				ft_strlen(shell->wild_before)) == 0
+			&& compare_after_wildcard(buffer, shell)
+			&& compare_middle_wildcard(buffer, shell))
+			return (true);
+	}
+	return (false);
+}
+
+int	is_matching_file(char *buffer, t_shell *shell)
+{
+	if (shell->wild_before && shell->wild_middle && shell->wild_after)
+		return (all_wildcards(buffer, shell));
+	else if ((shell->wild_before && shell->wild_middle[0])
+		|| (shell->wild_before && shell->wild_after)
+		|| (shell->wild_middle[0] && shell->wild_after))
+		return (two_wildcards(buffer, shell));
+	else if (shell->wild_middle[0]
+		|| shell->wild_before
+		|| shell->wild_after)
+		return (one_wildcard_only(buffer, shell));
+	return (false);
+}

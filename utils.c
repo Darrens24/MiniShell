@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:42:26 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/01/28 14:43:07 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/19 16:40:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strndup(char *line, int start, int end)
 {
-	int	i;
+	int		i;
 	char	*str;
 
 	i = 0;
@@ -29,4 +29,56 @@ char	*ft_strndup(char *line, int start, int end)
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+int	ft_strlenequal(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] != '=')
+		i++;
+	return (i);
+}
+
+int	argument_after_cmd(t_shell *shell)
+{
+	if (shell->user_command->nb_elem > 1)
+		return (1);
+	return (0);
+}
+
+int	option_n(char **command, int i)
+{
+	int		returnval;
+	size_t	x;
+
+	returnval = 0;
+	x = 1;
+	i++;
+	if (command[i] && command[i][0] && command[i][0] == '-')
+	{
+		while (command[i][x] && command[i][x] == 'n')
+			x++;
+		if (x == ft_strlen(command[i]) && x != 1)
+			returnval = 1;
+	}
+	return (returnval);
+}
+
+int	option_njump(char **command, int i)
+{
+	size_t	x;
+
+	i++;
+	while (command[i] && command[i][0] && command[i][0] == '-')
+	{
+		x = 1;
+		while (command[i][x] && command[i][x] == 'n')
+			x++;
+		if (x == 1 || x != ft_strlen(command[i]))
+			break ;
+		i++;
+	}
+	return (i);
 }

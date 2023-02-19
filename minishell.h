@@ -48,7 +48,7 @@ int			builtin_manager(t_shell *shell, int index);
 
 //************* Directory
 
-char				*get_home(char **envp);
+char				*get_home(char **array_env);
 int					go_to_home_directory(t_shell *shell);
 int					go_to_previous_directory(t_shell *shell);
 int					execute_directory_cmd(t_shell *shell, int i);
@@ -60,6 +60,8 @@ int					change_directory(t_shell *shell, const char *path);
 int					execute_builtin_cmd(t_shell *shell, int i);
 int					print_export(t_shell *shell);
 int					add_env_variable(t_shell *shell);
+int					fill_basic_env(t_shell *shell);
+int					envchecker(char *line, t_chained *env);
 
 //************* Echo
 
@@ -147,6 +149,10 @@ t_tok		*remove_wildcard_tok(t_toklst *tokenlst);
 /***\      UTILS           \***/
 
 char		*ft_strndup(char *line, int start, int end);
+int			ft_strlenequal(char *line);
+int			argument_after_cmd(t_shell *shell);
+int			option_n(char **command, int i);
+int			option_njump(char **command, int i);
 
 /***\      PARSING UTILS   \***/
 
@@ -175,7 +181,7 @@ t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end);
 
 int			get_asked_wildcards(char *var, t_shell *shell);
 char		*get_wild_middle(char *str, int index);
-char		**get_wildcard_files(t_shell *shell);
+int			get_wildcard_files(t_shell *shell);
 int			compare_after_wildcard(char *buffer, t_shell *shell);
 int			compare_middle_wildcard(char *buffer, t_shell *shell);;
 
@@ -201,5 +207,6 @@ int					jump_next_wildcard(char *str, int index);
 int					jump_previous_wildcard(char *str, int index);
 char				*remove_newline_from_buffer(char *buffer);
 int					execute_ls_in_tmp(t_shell *shell, char **envp);
+void				add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/18 16:49:01 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/19 16:51:36 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,11 @@ SRC = main.c \
 		data.c \
 		utils.c \
 		list_manip.c \
+		list_manip2.c \
 		list_utils.c \
-		dir_management.c \
-		env_management.c \
+		builtins/dir_management.c \
+		builtins/env_management.c \
+		builtins/env_utils.c \
 		signals.c \
 		tokens/token_management.c \
 		tokens/token_management2.c \

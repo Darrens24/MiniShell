@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/18 16:49:29 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 16:24:58 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	allocate_shell(t_shell *shell, char **envp)
 	i = -1;
 	while (envp[++i])
 		new_back_node(shell->env_l, envp[i]);
-	shell->home = ft_strdup(get_home(envp));
+	if (i == 0)
+		fill_basic_env(shell);
 	shell->sorted_env_l = malloc(sizeof(*(shell->env_l)));
 	if (!shell->sorted_env_l)
 		return (printf("Malloc: Sorted Env failed\n"));
@@ -50,8 +51,10 @@ int	initialize_variables(t_shell *shell)
 	shell->previous_dir_path = getcwd(NULL, 0);
 	shell->wild_before = NULL;
 	shell->wild_after = NULL;
-	shell->ls_cmd[0] = "ls";
+	shell->ls_cmd[0] = ft_strdup("ls");
 	shell->ls_cmd[1] = NULL;
+	shell->saved_stdin = dup(STDIN_FILENO);
+	shell->saved_stdout = dup(STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
 
@@ -84,11 +87,9 @@ int	free_array(char **array)
 	while (array && array[i])
 	{
 		free(array[i]);
-		array[i] = NULL;
 		i++;
 	}
 	free(array);
-	array = NULL;
 	return (EXIT_SUCCESS);
 }
 /*
@@ -122,7 +123,6 @@ int	clean_between_cmds(t_shell *shell)
 
 int	clean_memory(t_shell *shell)
 {
-	free(shell->home);
 	free(shell->line_readed);
 	clear_chained_lst(shell->env_l);
 	clear_chained_lst(shell->sorted_env_l);
@@ -132,4 +132,3 @@ int	clean_memory(t_shell *shell)
 	free_array(shell->ls_cmd);
 	return (EXIT_SUCCESS);
 }
-
