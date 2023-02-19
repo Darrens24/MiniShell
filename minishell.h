@@ -120,6 +120,7 @@ t_chained	*new_back_node(t_chained *list, char *line);
 t_chained	*remove_front_node(t_chained *list);
 t_chained	*remove_back_node(t_chained *list);
 t_node		*remove_current_node(t_node *node, t_chained *lst);
+t_chained	*new_current_node(chained *lst, int index, char *variable);
 
 //************* Lists Utils
 
@@ -139,7 +140,6 @@ int			is_emptytok(t_toklst *list);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
 t_toklst	*remove_front_tok(t_toklst *list);
-t_tok		*new_current_tok(t_tok *tok, t_toklst *list);
 t_tok		*remove_current_tok(t_tok *tok, t_toklst *list);
 void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
