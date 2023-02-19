@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 21:28:17 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/19 22:33:17 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,28 @@ int	print_echo(char **command)
 int	unset_variable(t_shell *shell)
 {
 	t_node	*temp;
+	t_node	*temp2;
 
 	temp = shell->sorted_env_l->end;
+	temp2 = shell->env_l->end;
 	while (temp && ft_strncmp(temp->variable,
 			shell->user_command->start->next->var,
 			ft_strlenequal(temp->variable)))
 		temp = temp->prev;
+	while (temp2 && ft_strncmp(temp2->variable,
+			shell->user_command->start->next->var,
+			ft_strlenequal(temp2->variable)))
+		temp2 = temp2->prev;
 	if (shell->sorted_env_l->nb_elem == 1)
+	{
 		remove_back_node(shell->sorted_env_l);
+		remove_back_node(shell->env_l);
+	}
 	else if (temp)
+	{
 		remove_current_node(temp, shell->sorted_env_l);
+		remove_current_node(temp2, shell->env_l);
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -89,6 +101,8 @@ int	export_variable(t_shell *shell)
 		new_current_node(shell->sorted_env_l, index,
 			shell->user_command->start->next->var);
 	}
+	new_back_node(shell->env_l,
+		shell->user_command->start->next->var);
 	return (EXIT_SUCCESS);
 }
 
@@ -97,14 +111,14 @@ int	execute_builtin_cmd(t_shell *shell, int i)
 	execute_directory_cmd(shell, i);
 	if (ft_strncmp(shell->multi_cmd[i][0], "env", 4) == 0)
 	{
-		if (argument_after_cmd(shell) == true)
+		if (shell->multi_cmd[i][1])
 			return (printf("Env command won't take arguments or options\n"));
-		return (print_list(shell->env_l), EXIT_SUCCESS);
+		print_list(shell->array_env);
 	}
 	else if (ft_strncmp(shell->multi_cmd[i][0], "export", 7) == 0)
 	{
-		if (argument_after_cmd(shell) == false)
-			return (print_export(shell));
+		if (!shell->multi_cmd[i][1])
+			print_export(shell);
 		else
 			return (export_variable(shell));
 	}

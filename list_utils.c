@@ -57,14 +57,14 @@ t_chained	*sort_list(t_chained *list)
 	return (new);
 }
 
-void	print_list(t_chained *list)
+void	print_list(char **list)
 {
-	t_node *temp;
+	int	i;
 
-	temp = list->start;
-	while (temp)
+	i = 0;
+	while (list && list[i])
 	{
-		printf("%s\n", temp->variable);
-		temp = temp->next;
+		ft_putstr_fd(list[i++], STDOUT_FILENO);
+		ft_putendl_fd("", STDOUT_FILENO);
 	}
 }

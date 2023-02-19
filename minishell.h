@@ -127,7 +127,7 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable);
 
 int					is_empty(t_chained *list);
 t_chained			*null_list(void);
-void				print_list(t_chained *list);
+void				print_list(char **list);
 t_chained			*sort_list(t_chained *list);
 t_node				*go_to_end(t_chained *list);
 
