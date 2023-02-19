@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 17:52:38 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 20:35:39 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ char	**get_command_in_tok(t_shell *shell, int index)
 	int		i = 0;
 
 	temp = go_to_next_pipe(shell, temp, index);
-	while (temp && ft_strncmp(temp->var, "|", 2) != 0)
+	while (temp && temp->quote == 1)
 	{
 		temp = temp->next;
 		nb_of_args++;

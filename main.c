@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 12:23:41 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 20:36:21 by pfaria-d         ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(int ac, char **av, char **envp)
 
 	if (ac != 1)
 		return (printf("Minishell is pure, no arguments please\n"));
+	signal(SIGINT, &handler);
+	signal(SIGQUIT, &handler);
 	allocate_shell(&shell, envp);
 	printf(YEL "Open Minishell\n" WHT);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
@@ -60,29 +62,32 @@ int	main(int ac, char **av, char **envp)
 		if (shell.line_readed[0] != '\0')
 		{
 			token_parsing(shell.user_command, shell.line_readed);
-			tokenisation(shell.user_command, shell.sorted_env_l);
-			while (cmd_has_wildcard(&shell))
+			if (shell.user_command->nb_elem)
 			{
-				parse_wildcard(&shell, envp);
-				if (shell.nb_of_sub == 0)
-					break ;
+				tokenisation(shell.user_command, shell.sorted_env_l);
+				while (cmd_has_wildcard(&shell))
+				{
+					parse_wildcard(&shell, envp);
+					if (shell.nb_of_sub == 0)
+						break ;
+				}
+				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
+					good = false;
+			/*	t_tok *temp = shell.user_command->start;
+				while (temp)
+				{
+					printf("usrcmd = %s\n", temp->var);
+					temp = temp->next;
+				}*/
+				if (good == true)
+				{
+					if (pipe_command(&shell) != 0)
+						printf("Error\n");
+				}
+				clear_toklst(shell.user_command);
+				dup2(shell.saved_stdin, STDIN_FILENO);
+				dup2(shell.saved_stdout, STDOUT_FILENO);
 			}
-			if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
-				good = false;
-		/*	t_tok *temp = shell.user_command->start;
-			while (temp)
-			{
-				printf("usrcmd = %s\n", temp->var);
-				temp = temp->next;
-			}*/
-			if (good == true)
-			{
-				if (pipe_command(&shell) != 0)
-					printf("Error\n");
-			}
-			clear_toklst(shell.user_command);
-			dup2(shell.saved_stdin, STDIN_FILENO);
-			dup2(shell.saved_stdout, STDOUT_FILENO);
 		}
 	}
 	clean_memory(&shell);

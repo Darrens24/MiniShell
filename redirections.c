@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 12:32:42 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/19 20:43:17 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	infile_redirection_parsing(t_shell *shell)
 	temp = shell->user_command->start;
 	while (temp && is_infile_redirection(shell->user_command))
 	{
-		if (ft_strncmp(temp->var, "<", 2) == 0)
+		if (ft_strncmp(temp->var, "<", 2) == 0 && temp->quote == 0)
 		{
 			if (!temp->next)
 				return (printf("Redirection needs a file\n"));
@@ -27,7 +27,7 @@ int	infile_redirection_parsing(t_shell *shell)
 				return (EXIT_FAILURE);
 			temp = shell->user_command->start;
 		}
-		else if (ft_strncmp(temp->var, "<<", 3) == 0)
+		else if (ft_strncmp(temp->var, "<<", 3) == 0 && temp->quote == 0)
 		{
 			if (!temp->next)
 				return (printf("Heredoc needs a delimiter\n"));
@@ -98,7 +98,7 @@ int	outfile_redirection_parsing(t_shell *shell)
 	temp = shell->user_command->start;
 	while (temp && is_outfile_redirection(shell->user_command))
 	{
-		if (ft_strncmp(temp->var, ">", 2) == 0)
+		if (ft_strncmp(temp->var, ">", 2) == 0 && temp->quote == 0)
 		{
 			if (!temp->next)
 				return (printf("Redirection needs a file\n"));
@@ -106,7 +106,7 @@ int	outfile_redirection_parsing(t_shell *shell)
 				return (EXIT_FAILURE);
 			temp = shell->user_command->start;
 		}
-		else if (ft_strncmp(temp->var, ">>", 3) == 0)
+		else if (ft_strncmp(temp->var, ">>", 3) == 0 && temp->quote == 0)
 		{
 			if (!temp->next)
 				return (printf("Append needs a file\n"));
