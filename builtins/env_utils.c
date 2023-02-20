@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 21:28:36 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:07:34 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	fill_basic_env(t_shell *shell)
 
 	sh_level = 1;
 	temp = ft_itoa(sh_level);
+	temp[0]++;
 	pwd = ft_strjoin("PWD=", getcwd(0, 0));
 	str_sh_level = ft_strjoin("SHLVL=", temp);
 	free(temp);

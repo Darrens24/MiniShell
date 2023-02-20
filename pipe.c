@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 23:13:03 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:35:21 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 		{
 			all_path = get_path(shell->array_env);
 			if (!all_path)
-				return (EXIT_FAILURE);
+				return (printf("%s : Command not found\n", shell->multi_cmd[index][0]));
 			if (all_path)
 				shell->all_path = ft_split_slash(all_path, ':');
 			if (!shell->all_path[0])
@@ -105,7 +105,6 @@ int	pipe_command(t_shell *shell)
 {
 	int	i;
 
-	shell->saved_stdout = dup(STDOUT_FILENO);
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));

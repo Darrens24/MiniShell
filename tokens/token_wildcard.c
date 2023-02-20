@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:57:16 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/17 10:06:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 13:20:30 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer)
 	elem->var = ft_strdup(buffer);
 	elem->next = NULL;
 	elem->prev = NULL;
-	elem->quote = 0;
+	elem->quote = 1;
 	temp = tokenlst->start;
 	while (temp && !string_is_wildcard(temp->var))
 		temp = temp->next;

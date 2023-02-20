@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 20:36:21 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:35:51 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -80,10 +80,7 @@ int	main(int ac, char **av, char **envp)
 					temp = temp->next;
 				}*/
 				if (good == true)
-				{
-					if (pipe_command(&shell) != 0)
-						printf("Error\n");
-				}
+					pipe_command(&shell);
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);
 				dup2(shell.saved_stdout, STDOUT_FILENO);

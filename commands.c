@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 20:35:39 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:34:04 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ char	*get_path(char **array_env)
 			return (array_env[i] + 5);
 		i++;
 	}
-	printf("Can't find path if you unset it...\n");
 	return (NULL);
 }
 
@@ -62,7 +61,7 @@ char	*get_correct_path(t_shell *shell, int index)
 			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
 	}
 	else*/
-		printf("%s : Command not found\n", shell->multi_cmd[index][0]);
+	printf("%s : Command not found\n", shell->multi_cmd[index][0]);
 	return (NULL);
 }
 /*
