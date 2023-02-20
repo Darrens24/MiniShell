@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 16:24:58 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 14:44:45 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,18 @@ int	allocate_shell(t_shell *shell, char **envp)
 	if (!shell->ls_cmd)
 		return (printf("Malloc: LsCommand failed\n"));
 	initialize_variables(shell);
+	return (EXIT_SUCCESS);
+}
+
+int	get_sh_level(t_shell *shell)
+{
+	t_node	*temp;
+
+	temp = shell->user_command->start;
+	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
+	   temp = temp->next;
+	if (temp)
+		shell->sh_level = ft_atoi(temp + 6);
 	return (EXIT_SUCCESS);
 }
 
