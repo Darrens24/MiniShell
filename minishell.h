@@ -29,7 +29,7 @@
 # include <stdint.h>
 # include "./Libft/libft.h"
 # include "structures.h"
-
+extern int g_err;
 
 /***\	DATA	\***/
 

@@ -6,11 +6,13 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 20:07:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 20:42:49 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_err = 0;
 
 int	readline_manager(t_shell *shell)
 {
