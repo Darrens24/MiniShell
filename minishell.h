@@ -78,6 +78,7 @@ char		**get_command_in_tok(t_shell *shell, int index);
 
 //************* Path
 
+char				*find_path(int index, t_shell *shell);
 char				*get_path(char **array_env);
 char				*get_correct_path(t_shell *shell, int index);
 
@@ -104,12 +105,16 @@ int			outfile_redirection(t_shell *shell, t_tok *temp);
 int			append_redirection(t_shell *shell, t_tok *temp);
 int			heredoc_dup(t_shell *shell);
 
+//************* Redirection Parsing
+
+int					redirection_parsing(t_shell *shell, int index);
+int					infile_redirection_parsing(t_shell *shell);
+int					outfile_redirection_parsing(t_shell *shell);
+
 //************* Redirection Utils
 
 int					is_infile_redirection(t_toklst *user_command);
 int					is_outfile_redirection(t_toklst *user_command);
-int					infile_redirection_parsing(t_shell *shell);
-int					outfile_redirection_parsing(t_shell *shell);
 char				*append_newline(char *limiter);
 int					delete_operator_and_infile(t_shell *shell);
 int					delete_operator_and_outfile(t_shell *shell);

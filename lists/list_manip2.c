@@ -6,11 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:42:18 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 21:32:03 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/20 19:44:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_node	*remove_current_node(t_node *node, t_chained *lst)
 {
@@ -41,10 +41,7 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 
 	elem = malloc(sizeof(*elem));
 	if (!elem)
-	{
-		printf("Node: Dynamic allocation failed\n");
 		return (lst);
-	}
 	elem->variable = ft_strdup(variable);
 	elem->next = NULL;
 	elem->prev = NULL;
@@ -59,9 +56,6 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 		elem->next = temp->next;
 		temp->next = elem;
 		elem->prev = temp;
-	//	tokenlst->end->next = elem;
-	//	elem->prev = tokenlst->end;
-	//	tokenlst->end = elem;
 		lst->nb_elem++;
 	}
 	return (lst);

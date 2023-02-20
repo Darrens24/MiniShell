@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/19 16:51:36 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/20 19:43:34 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,12 @@ CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c \
 		data.c \
+		free.c \
+		path.c \
 		utils.c \
-		list_manip.c \
-		list_manip2.c \
-		list_utils.c \
+		lists/list_manip.c \
+		lists/list_manip2.c \
+		lists/list_utils.c \
 		builtins/dir_management.c \
 		builtins/env_management.c \
 		builtins/env_utils.c \
@@ -54,8 +56,9 @@ SRC = main.c \
 		commands.c \
 		pipe.c \
 		pipe_utils.c \
-		redirections.c \
-		redirection_utils.c \
+		redirections/redirections.c \
+		redirections/redirection_parsing.c \
+		redirections/redirection_utils.c \
 		wildcards/wildcards_utils.c \
 		wildcards/wildcards_data.c \
 		wildcards/wildcards_parsing.c \

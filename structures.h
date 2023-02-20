@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 14:40:21 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 16:28:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_shell
 	char				*wild_before;
 	char				**wild_middle;
 	char				*wild_after;
-	static int			sh_level;
+	char				*error_value;
 }				t_shell;
 
 typedef struct s_node

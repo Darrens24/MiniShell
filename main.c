@@ -6,7 +6,7 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 13:35:51 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 20:07:06 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	readline_manager(t_shell *shell)
 
 int	is_builtin_command(t_shell *shell, int i)
 {
-		
 	if (ft_strncmp(shell->multi_cmd[i][0], "pwd", 4) == 0
 		|| ft_strncmp(shell->multi_cmd[i][0], "cd", 3) == 0
 		|| ft_strncmp(shell->multi_cmd[i][0], "export", 7) == 0

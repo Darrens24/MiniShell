@@ -6,25 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 13:34:04 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 20:15:21 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*get_path(char **array_env)
-{
-	int	i;
-
-	i = 0;
-	while (array_env[i])
-	{
-		if (ft_strncmp(array_env[i], "PATH=", 5) == 0)
-			return (array_env[i] + 5);
-		i++;
-	}
-	return (NULL);
-}
 
 char	*get_home(char **array_env)
 {
@@ -40,72 +26,16 @@ char	*get_home(char **array_env)
 	return (NULL);
 }
 
-char	*get_correct_path(t_shell *shell, int index)
-{
-	int	i;
-
-	shell->correct_path = NULL;
-	i = -1;
-	while (shell->all_path[++i])
-	{
-		shell->correct_path = ft_strjoin(shell->all_path[i], shell->multi_cmd[index][0]);
-		if (access(shell->correct_path, F_OK) == 0)
-			return (shell->correct_path);
-		free(shell->correct_path);
-	}/*
-	if (shell->multi_cmd[0][0][0] == '/')
-	{
-		if (access(shell->multi_cmd[index][0], F_OK) != ENOTDIR)
-			printf("%s : is a directory\n", shell->multi_cmd[index][0]);
-		else
-			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
-	}
-	else*/
-	printf("%s : Command not found\n", shell->multi_cmd[index][0]);
-	return (NULL);
-}
-/*
-int	execute_command(t_shell *shell, char **envp)
-{
-	int	pid;
-	char	**command;
-
-	command = get_array_command(shell);
-	pid = fork();
-	if (pid == 0)
-		execve(shell->correct_path, command, envp);
-	waitpid(pid, 0, 0);
-	free_array(command);
-	return (EXIT_SUCCESS);
-}
-*/
-char	**get_array_command(t_shell *shell)
-{
-	t_tok	*temp;
-	int	i;
-	
-	shell->array_command = malloc(sizeof(char *) * (shell->user_command->nb_elem + 1)); // A FREE
-	if (!shell->array_command)
-		return (NULL);
-	temp = shell->user_command->start;
-	i = 0;
-	while (temp)
-	{
-		shell->array_command[i++] = ft_strdup(temp->var);
-		temp = temp->next;
-	}
-	shell->array_command[i] = NULL;
-	return (shell->array_command);
-}
-
 char	**get_command_in_tok(t_shell *shell, int index)
 {
 	char	**command;
-	t_tok	*temp = NULL;
-	int		nb_of_args = 0;
-	int		i = 0;
+	t_tok	*temp;
+	int		nb_of_args;
+	int		i;
 
+	temp = NULL;
 	temp = go_to_next_pipe(shell, temp, index);
+	nb_of_args = 0;
 	while (temp && temp->quote == 1)
 	{
 		temp = temp->next;
@@ -114,31 +44,42 @@ char	**get_command_in_tok(t_shell *shell, int index)
 	command = malloc(sizeof(char *) * (nb_of_args + 1));
 	if (!command)
 		return (NULL);
-	temp = go_to_next_pipe(shell, temp, index);	
+	temp = go_to_next_pipe(shell, temp, index);
 	i = 0;
 	while (temp && i < nb_of_args)
 	{
-		command[i] = ft_strdup(temp->var);
-		i++;
+		command[i++] = ft_strdup(temp->var);
 		temp = temp->next;
 	}
 	command[i] = NULL;
 	return (command);
 }
-/*
-int	command_manager(t_shell *shell, char **envp)
+
+int	get_array_cmd_and_pipe_fds(t_shell *shell)
 {
-//	get_correct_path(shell);
-	int	i = 0;
-	char **res = get_array_command(shell);
-	while (res[i])
+	int		i;
+
+	shell->pid = malloc(sizeof(int) * get_number_of_commands(shell));
+	if (!shell->pid)
+		return (EXIT_FAILURE);
+	i = -1;
+	shell->fd = malloc(sizeof(int *) * (get_number_of_commands(shell) - 1));
+	if (!shell->fd)
+		return (EXIT_FAILURE);
+	i = -1;
+	while (++i < (get_number_of_commands(shell) - 1))
 	{
-		printf("arraycommand %d is %s\n",i, res[i]);
-		i++;
+		shell->fd[i] = malloc(sizeof(int) * 2);
+		if (!shell->fd[i])
+			return (EXIT_FAILURE);
 	}
-	//if (pipe_case)
-	//	execupe_pipe_command(shell, envp);
-//	if (get_correct_path(shell))
-	execute_command(shell, envp);
+	shell->multi_cmd = malloc(sizeof(char *)
+			* (get_number_of_commands(shell) + 1));
+	if (!shell->multi_cmd)
+		return (EXIT_FAILURE);
+	i = -1;
+	while (++i < get_number_of_commands(shell))
+		shell->multi_cmd[i] = get_command_in_tok(shell, i);
+	shell->multi_cmd[i] = NULL;
 	return (EXIT_SUCCESS);
-}*/
+}

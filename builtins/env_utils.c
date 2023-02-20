@@ -6,13 +6,32 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 14:41:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 19:15:57 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// a mettre en donnee de shell pour l'incrementer a chaque appel de ./minishell
+char	**get_array_env(t_shell *shell)
+{
+	t_node	*temp;
+	char	**array;
+	int		i;
+
+	temp = shell->sorted_env_l->start;
+	array = malloc(sizeof(char *) * (shell->sorted_env_l->nb_elem + 1));
+	if (!array)
+		return (NULL);
+	i = 0;
+	while (temp)
+	{
+		array[i] = ft_strdup(temp->variable);
+		temp = temp->next;
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
+}
 
 int	fill_basic_env(t_shell *shell)
 {
@@ -20,8 +39,10 @@ int	fill_basic_env(t_shell *shell)
 	char	*underscore;
 	char	*str_sh_level;
 	char	*temp;
+	int		sh_level;
 
-	temp = ft_itoa(shell->sh_level);
+	sh_level = 1;
+	temp = ft_itoa(sh_level);
 	pwd = ft_strjoin("PWD=", getcwd(0, 0));
 	str_sh_level = ft_strjoin("SHLVL=", temp);
 	free(temp);

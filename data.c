@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 14:44:45 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/20 19:19:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,6 @@ int	allocate_shell(t_shell *shell, char **envp)
 	return (EXIT_SUCCESS);
 }
 
-int	get_sh_level(t_shell *shell)
-{
-	t_node	*temp;
-
-	temp = shell->user_command->start;
-	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
-	   temp = temp->next;
-	if (temp)
-		shell->sh_level = ft_atoi(temp + 6);
-	return (EXIT_SUCCESS);
-}
-
 int	initialize_variables(t_shell *shell)
 {
 	shell->all_path = NULL;
@@ -67,80 +55,22 @@ int	initialize_variables(t_shell *shell)
 	shell->ls_cmd[1] = NULL;
 	shell->saved_stdin = dup(STDIN_FILENO);
 	shell->saved_stdout = dup(STDOUT_FILENO);
+	shell->error_value = NULL;
 	return (EXIT_SUCCESS);
 }
 
-char	**get_array_env(t_shell *shell)
+int	get_number_of_commands(t_shell *shell)
 {
-	t_node	*temp;
-	char	**array;
-	int		i;
+	t_tok	*temp;
+	int		nb_of_cmd;
 
-	temp = shell->sorted_env_l->start;
-	array = malloc(sizeof(char *) * (shell->sorted_env_l->nb_elem + 1));
-	if (!array)
-		return (NULL);
-	i = 0;
+	nb_of_cmd = 1;
+	temp = shell->user_command->start;
 	while (temp)
 	{
-		array[i] = ft_strdup(temp->variable);
+		if (ft_strncmp(temp->var, "|", 2) == 0 && temp->quote == 0)
+			nb_of_cmd++;
 		temp = temp->next;
-		i++;
 	}
-	array[i] = NULL;
-	return (array);
-}
-
-int	free_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	while (array && array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-	return (EXIT_SUCCESS);
-}
-/*
-int	clean_between_cmds(t_shell *shell)
-{
-	int	i;
-
-	i = 0;
-	if (!is_builtin_command(shell, i))
-	{
-		shell->array_env = NULL;
-		//if (shell->all_path[0])
-			//free_array(shell->all_path);
-
-	}
-
-	if (shell->multi_cmd)
-	{
-		while (i < get_number_of_commands(shell))
-		{
-			free_array(shell->multi_cmd[i]);
-			i++;
-		}
-		free(shell->multi_cmd);
-		shell->multi_cmd = NULL;
-	}
-	//free(shell->correct_path);
-	free_pids_fds(shell);
-	return (EXIT_SUCCESS);
-}*/
-
-int	clean_memory(t_shell *shell)
-{
-	free(shell->line_readed);
-	clear_chained_lst(shell->env_l);
-	clear_chained_lst(shell->sorted_env_l);
-	free(shell->env_l);
-	free(shell->sorted_env_l);
-	free(shell->user_command);
-	free_array(shell->ls_cmd);
-	return (EXIT_SUCCESS);
+	return (nb_of_cmd);
 }
