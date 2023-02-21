@@ -6,11 +6,13 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 19:31:33 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:46:13 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_err;
 
 t_tok	*go_to_next_pipe(t_shell *shell, t_tok *tok, int index) // A Remplacer par go_to_next delimiter avec tous les cas de separation de commande
 {
@@ -45,13 +47,29 @@ int	inside_redirection(int *fd)
 	return (EXIT_SUCCESS);
 }
 
+// waitpid envoie l'erreur dans la variable globale
+// quand waitpid est > 0, c'est qu'il
+
+int	error_func(int error_code)
+{
+	g_err = WEXITSTATUS(error_code);
+	return (EXIT_SUCCESS);
+}
+
 int	wait_pids(pid_t *pid)
 {
 	int	i;
+	int	waitpid_return;
+	int	error_code;
 
 	i = -1;
+	error_code = 0;
 	while (pid[++i])
-		waitpid(pid[i], 0, 0);
+	{
+		waitpid_return = waitpid(pid[i], &error_code, 0);
+		if (waitpid_return > 0) 
+			error_func(error_code);
+	}
 	return (EXIT_SUCCESS);
 }
 

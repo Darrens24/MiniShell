@@ -6,11 +6,12 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 20:41:44 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/21 16:58:09 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
 
 int	builtin_manager(t_shell *shell, int index)
 {
@@ -43,6 +44,8 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 			temp = ft_strdup(shell->multi_cmd[index][0]);
 		else
 			temp = find_path(index, shell);
+		if (!temp)
+			return (EXIT_FAILURE);
 		shell->pid[index] = fork();
 		if (shell->pid[index] == 0)
 		{
@@ -83,8 +86,9 @@ int	pipe_command(t_shell *shell)
 		if (i < get_number_of_commands(shell) - 1)
 			if (pipe(shell->fd[i]) < 0)
 				return (printf("Pipe failed\n"));
-		if (redirect_and_execute_cmd(shell, i) != 0)
-			return (EXIT_FAILURE);
+	//	if (redirect_and_execute_cmd(shell, i) != 0)
+	//		return (EXIT_FAILURE);
+		redirect_and_execute_cmd(shell, i);
 	}
 	wait_pids(shell->pid);
 	final_redirection(shell);

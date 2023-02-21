@@ -6,13 +6,11 @@
 	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 	/*                                                +#+#+#+#+#+   +#+           */
 	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 20:42:49 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:47:17 by eleleux          ###   ########.fr       */
 	/*                                                                            */
 	/* ************************************************************************** */
 
 #include "minishell.h"
-
-int	g_err = 0;
 
 int	readline_manager(t_shell *shell)
 {
@@ -56,7 +54,6 @@ int	main(int ac, char **av, char **envp)
 		readline_manager(&shell);
 		if (!shell.line_readed)
 		{
-			//printf("coucou du main\n");
 			ft_putchar_fd('\n', STDOUT_FILENO);
 			break ;
 		}
@@ -74,12 +71,6 @@ int	main(int ac, char **av, char **envp)
 				}
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
 					good = false;
-			/*	t_tok *temp = shell.user_command->start;
-				while (temp)
-				{
-					printf("usrcmd = %s\n", temp->var);
-					temp = temp->next;
-				}*/
 				if (good == true)
 					pipe_command(&shell);
 				clear_toklst(shell.user_command);
@@ -87,6 +78,7 @@ int	main(int ac, char **av, char **envp)
 				dup2(shell.saved_stdout, STDOUT_FILENO);
 			}
 		}
+		//printf("errorcode = %d\n",  g_err);
 	}
 	clean_memory(&shell);
 	return (0);

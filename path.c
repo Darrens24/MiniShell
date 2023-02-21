@@ -6,11 +6,13 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:40:44 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 19:56:12 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:45:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	g_err = 0;
 
 char	*find_path(int index, t_shell *shell)
 {
@@ -19,8 +21,12 @@ char	*find_path(int index, t_shell *shell)
 
 	all_path = get_path(shell->array_env);
 	if (!all_path)
+	{
+		g_err = 127;
+		printf("%d\n", g_err);
 		return (printf("%s : Command not found\n",
 				shell->multi_cmd[index][0]), NULL);
+	}
 	shell->all_path = ft_split_slash(all_path, ':');
 	if (!shell->all_path[0])
 		return (NULL);
