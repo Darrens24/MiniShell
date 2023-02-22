@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 15:31:47 by eleleux           #+#    #+#             */
-/*   Updated: 2023/01/30 15:53:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:59:43 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*ft_strcapitalize(char *str);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_isdigit(int c);
+int		ft_strisdigit(char *str);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isalpha(int c);

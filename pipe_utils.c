@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/22 16:17:20 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/22 17:23:40 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ int	error_func(int error_code)
 	{
 		g_err = 138;
 		printf("Bus error\n");
+	}
+	else if (WTERMSIG(error_code) == 6)
+	{
+		g_err = 134;
+		printf("Pointer being freed was not allocated\n");
 	}
 	//printf("stopsig = %d\n", WSTOPSIG(error_code));
 	//printf("stopsig = %d\n", WSTOPSIG(error_code));

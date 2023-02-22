@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 17:50:06 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/08 16:38:57 by eleleux          ###   ########.fr        #
+#    Updated: 2023/02/22 17:56:51 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = ft_atoi.c \
 	  ft_isalpha.c \
 	  ft_isascii.c \
 	  ft_isdigit.c \
+	  ft_strisdigit.c \
 	  ft_isprint.c \
 	  ft_memchr.c \
 	  ft_memcmp.c \
