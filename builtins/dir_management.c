@@ -6,7 +6,7 @@
 /*   By: pfaria-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/19 16:52:18 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:29:39 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	change_directory(t_shell *shell, const char *path)
 {
 	shell->previous_dir_path = getcwd(NULL, 0);
 	if (chdir(path) < 0)
+	{
+		g_err = 1;
 		return (perror("chdir"), EXIT_FAILURE);
+	}
 	shell->current_dir_path = getcwd(NULL, 0);
 	return (EXIT_SUCCESS);
 }
@@ -48,8 +51,6 @@ int	execute_directory_cmd(t_shell *shell, int i)
 			return (go_to_home_directory(shell));
 		else if (ft_strncmp(shell->multi_cmd[i][1], "-", 2) == 0)
 			return (go_to_previous_directory(shell));
-		else if (shell->multi_cmd[i][2] != NULL)
-			return (printf("Too much arguments for cd\n"));
 		return (change_directory(shell, shell->multi_cmd[i][1]));
 	}
 	else if (ft_strncmp(shell->multi_cmd[i][0], "pwd", 4) == 0)

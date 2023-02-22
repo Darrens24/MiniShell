@@ -46,6 +46,7 @@ int			clean_between_cmds(t_shell *shell);
 
 int			is_builtin_command(t_shell *shell, int i);
 int			builtin_manager(t_shell *shell, int index);
+int			exit_shell(t_shell *shell);
 
 //************* Directory
 
@@ -133,7 +134,7 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable);
 
 int					is_empty(t_chained *list);
 t_chained			*null_list(void);
-void				print_list(char **list);
+void				print_list(t_chained *list);
 t_chained			*sort_list(t_chained *list);
 t_node				*go_to_end(t_chained *list);
 

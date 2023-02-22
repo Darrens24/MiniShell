@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 22:33:17 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:07:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,15 @@ int	export_variable(t_shell *shell)
 int	execute_builtin_cmd(t_shell *shell, int i)
 {
 	execute_directory_cmd(shell, i);
+	if (ft_strncmp(shell->multi_cmd[i][0], "exit", 5) == 0)
+	{
+		exit_shell(shell);
+	}
 	if (ft_strncmp(shell->multi_cmd[i][0], "env", 4) == 0)
 	{
 		if (shell->multi_cmd[i][1])
 			return (printf("Env command won't take arguments or options\n"));
-		print_list(shell->array_env);
+		print_list(shell->env_l);
 	}
 	else if (ft_strncmp(shell->multi_cmd[i][0], "export", 7) == 0)
 	{

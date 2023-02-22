@@ -1,14 +1,14 @@
-	/* ************************************************************************** */
-	/*                                                                            */
-	/*                                                        :::      ::::::::   */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-	/*                                                    +:+ +:+         +:+     */
-	/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
-	/*                                                +#+#+#+#+#+   +#+           */
-	/*   Created: 2023/01/25 18:46:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/21 19:47:17 by eleleux          ###   ########.fr       */
-	/*                                                                            */
-	/* ************************************************************************** */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
+/*   Updated: 2023/02/22 16:56:46 by eleleux          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -36,6 +36,34 @@ int	is_builtin_command(t_shell *shell, int i)
 	return (false);
 }
 
+int	increment_sh_level(t_shell *shell)
+{
+	t_node	*temp;
+
+	temp = shell->env_l->start;
+	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
+		temp = temp->next;
+	printf("sh is %s\n", temp->variable);
+	printf("lvl is %c\n", temp->variable[6]);
+	if (temp)
+		temp->variable[6]++;
+	printf("sh is %s\n", temp->variable);
+	printf("lvl is %c\n", temp->variable[6]);
+	return (EXIT_SUCCESS);
+}
+
+int	decrement_sh_level(t_shell *shell)
+{
+	t_node	*temp;
+
+	temp = shell->env_l->start;
+	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
+		temp = temp->next;
+	if (temp)
+		temp->variable[6]--;
+	return (EXIT_SUCCESS);
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
@@ -48,14 +76,15 @@ int	main(int ac, char **av, char **envp)
 	signal(SIGQUIT, &handler);
 	allocate_shell(&shell, envp);
 	printf(YEL "Open Minishell\n" WHT);
+	//increment_sh_level(&shell);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
 		good = true;
 		readline_manager(&shell);
 		if (!shell.line_readed)
 		{
-			ft_putchar_fd('\n', STDOUT_FILENO);
-			break ;
+				ft_putchar_fd('\n', STDOUT_FILENO);
+				break ;
 		}
 		if (shell.line_readed[0] != '\0')
 		{
@@ -78,8 +107,10 @@ int	main(int ac, char **av, char **envp)
 				dup2(shell.saved_stdout, STDOUT_FILENO);
 			}
 		}
-		//printf("errorcode = %d\n",  g_err);
+		printf("errorcode = %d\n",  g_err);
 	}
+	//decrement_sh_level(&shell);
 	clean_memory(&shell);
+	printf(YEL "Exit Minishell\n" WHT);
 	return (0);
 }

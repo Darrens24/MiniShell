@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/21 19:46:13 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:17:20 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,27 @@ int	inside_redirection(int *fd)
 
 int	error_func(int error_code)
 {
-	g_err = WEXITSTATUS(error_code);
+	//printf("wifstopped = %d\n", WIFSTOPPED(error_code));
+	//printf("wifsignaled = %d\n", WIFSIGNALED(error_code));
+	//printf("wtermsig = %d\n", WTERMSIG(error_code));
+	if (WTERMSIG(error_code) == 2)
+		g_err = 130;
+	else if (WTERMSIG(error_code) == 3)
+		g_err = 131;
+	else if (WTERMSIG(error_code) == 11)
+	{
+		g_err = 139;
+		printf("Segmentation fault\n");
+	}
+	else if (WTERMSIG(error_code) == 10)
+	{
+		g_err = 138;
+		printf("Bus error\n");
+	}
+	//printf("stopsig = %d\n", WSTOPSIG(error_code));
+	//printf("stopsig = %d\n", WSTOPSIG(error_code));
+	else
+		g_err = WEXITSTATUS(error_code);
 	return (EXIT_SUCCESS);
 }
 

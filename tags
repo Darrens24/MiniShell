@@ -272,6 +272,7 @@ count_set	Libft/ft_strtrim.c	/^int	count_set(char const *s1, char const *set)$/;
 current_dir_path	structures.h	/^	char				*current_dir_path;$/;"	m	struct:s_shell
 custom_deprep_term_function	readline/share/readline/rlptytest.c	/^custom_deprep_term_function ()$/;"	f	file:
 data	readline/include/readline/history.h	/^  histdata_t data;$/;"	m	struct:_hist_entry
+decrement_sh_level	main.c	/^int	decrement_sh_level(t_shell *shell)$/;"	f
 deftext	readline/share/readline/rl.c	/^static char *deftext;$/;"	v	file:
 deftext	readline/share/readline/rlevent.c	/^static char *deftext;$/;"	v	file:
 delete_operator_and_infile	redirections/redirection_utils.c	/^int	delete_operator_and_infile(t_shell *shell)$/;"	f
@@ -299,6 +300,7 @@ envfinder	tokens/tokenisation.c	/^char	*envfinder(char *line, char *newvar, t_ch
 envindex	builtins/env_utils.c	/^int	envindex(char *line, t_chained *env)$/;"	f
 envvarjumper	tokens/tokenisation.c	/^int    envvarjumper(t_tok *token, int i)$/;"	f
 envvarparser	tokens/tokenisation.c	/^char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+error_func	pipe_utils.c	/^int	error_func(int error_code)$/;"	f
 error_value	structures.h	/^	char				*error_value;$/;"	m	struct:s_shell
 errorintoken	parsing/parsing_utils.c	/^int	errorintoken(t_toklst *tokenlst, char *error)$/;"	f
 event_hook	readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	file:
@@ -384,6 +386,8 @@ ft_toupper	Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
 func	readline/share/readline/fileman.c	/^  rl_icpfunc_t *func;		\/* Function to call to do the job. *\/$/;"	m	struct:__anon1	file:
 function	readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;"	m	struct:_keymap_entry
 function	readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap
+g_err	path.c	/^int	g_err = 0;$/;"	v
+g_err	pipe_utils.c	/^int	g_err;$/;"	v
 get_array_cmd_and_pipe_fds	commands.c	/^int	get_array_cmd_and_pipe_fds(t_shell *shell)$/;"	f
 get_array_env	builtins/env_utils.c	/^char	**get_array_env(t_shell *shell)$/;"	f
 get_asked_wildcards	wildcards/wildcards.c	/^int	get_asked_wildcards(char *var, t_shell *shell)$/;"	f
@@ -412,6 +416,7 @@ histdata_t	readline/include/readline/history.h	/^typedef char *histdata_t;$/;"	t
 histdata_t	readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t
 home	structures.h	/^	char				*home;$/;"	m	struct:s_shell
 ignorefunc	readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
+increment_sh_level	main.c	/^int	increment_sh_level(t_shell *shell)$/;"	f
 inf	readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
 infile	structures.h	/^	int					infile;$/;"	m	struct:s_shell
 infile_redirection	redirections/redirections.c	/^int	infile_redirection(t_shell *shell, t_tok *temp)$/;"	f
@@ -525,7 +530,7 @@ prev	structures.h	/^	struct s_tok		*prev;$/;"	m	struct:s_tok	typeref:struct:s_to
 previous_dir_path	structures.h	/^	char				*previous_dir_path;$/;"	m	struct:s_shell
 print_echo	builtins/env_management.c	/^int	print_echo(char **command)$/;"	f
 print_export	builtins/env_management.c	/^int	print_export(t_shell *shell)$/;"	f
-print_list	lists/list_utils.c	/^void	print_list(char **list)$/;"	f
+print_list	lists/list_utils.c	/^void	print_list(t_chained *list)$/;"	f
 print_pwd_linux	builtins/dir_management.c	/^int	print_pwd_linux(t_shell *shell)$/;"	f
 print_toklst	tokens/token_management.c	/^void	print_toklst(t_toklst *list)$/;"	f
 process_line	readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f

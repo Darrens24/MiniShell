@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:29:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 19:44:04 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/22 14:09:43 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,14 @@ t_chained	*sort_list(t_chained *list)
 	return (new);
 }
 
-void	print_list(char **list)
+void	print_list(t_chained *list)
 {
-	int	i;
+	t_node	*temp;
 
-	i = 0;
-	while (list && list[i])
+	temp = list->start;
+	while (temp)
 	{
-		ft_putstr_fd(list[i++], STDOUT_FILENO);
-		ft_putendl_fd("", STDOUT_FILENO);
+		printf("%s\n", temp->variable);
+		temp = temp->next;
 	}
 }
