@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/22 16:56:46 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:30:53 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,27 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-				while (cmd_has_wildcard(&shell))
+				if (token_checker(&shell))
 				{
-					parse_wildcard(&shell, envp);
-					if (shell.nb_of_sub == 0)
-						break ;
+					printf("minishell: syntax error\n");
+					clear_toklst(shell.user_command);
 				}
-				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
-					good = false;
-				if (good == true)
-					pipe_command(&shell);
-				clear_toklst(shell.user_command);
-				dup2(shell.saved_stdin, STDIN_FILENO);
-				dup2(shell.saved_stdout, STDOUT_FILENO);
+				else
+				{
+					while (cmd_has_wildcard(&shell))
+					{
+						parse_wildcard(&shell, envp);
+						if (shell.nb_of_sub == 0)
+							break ;
+					}
+					if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
+						good = false;
+					if (good == true)
+						pipe_command(&shell);
+					clear_toklst(shell.user_command);
+					dup2(shell.saved_stdin, STDIN_FILENO);
+					dup2(shell.saved_stdout, STDOUT_FILENO);
+				}
 			}
 		}
 		printf("errorcode = %d\n",  g_err);
