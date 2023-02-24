@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 15:31:32 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 18:21:36 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,38 @@ int	is_builtin_command(t_shell *shell, int i)
 int	increment_sh_level(t_shell *shell)
 {
 	t_node	*temp;
+	char	*sh_level;
+	int		sh;
+	char	*itoa_sh;
+	char	*new_sh_level;
+	int		i;
 
+	sh_level = NULL;
+	new_sh_level = NULL;
+	itoa_sh = NULL;
+	sh = 0;
+	i = 0;
 	temp = shell->env_l->start;
 	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
-	temp = temp->next;
+	{
+		temp = temp->next;
+		i++;
+	}
 	if (temp)
-		temp->variable[6]++;
+	{
+		sh_level = ft_strndup(temp->variable, 6, 7);	
+		printf("%s\n", sh_level);
+		sh = ft_atoi(sh_level) + 1;
+		printf("%d\n", sh);
+		itoa_sh = ft_itoa(sh);
+		free(sh_level);
+		remove_current_node(temp, shell->env_l);
+		new_sh_level = ft_strjoin("SHLVL=", itoa_sh); 
+		free(itoa_sh);
+		new_current_node(shell->env_l, i, new_sh_level);
+		free(new_sh_level);
+	}
+	//	temp->variable[6]++;
 	return (EXIT_SUCCESS);
 }
 

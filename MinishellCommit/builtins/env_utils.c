@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 17:15:53 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 17:43:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,12 @@ int	fill_basic_env(t_shell *shell)
 	char	*underscore;
 	char	*str_sh_level;
 	char	*temp;
-	int		sh_level;
+	char	*cwd;
 
-	sh_level = 1;
-	temp = ft_itoa(sh_level);
-	pwd = ft_strjoin("PWD=", getcwd(0, 0));
+	temp = ft_itoa(1);
+	cwd = getcwd(0, 0);
+	pwd = ft_strjoin("PWD=", cwd);
+	free(cwd);
 	str_sh_level = ft_strjoin("SHLVL=", temp);
 	free(temp);
 	underscore = ft_strjoin("_=", "/usr/bin/env");
