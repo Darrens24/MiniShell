@@ -225,6 +225,7 @@ all_wildcards	wildcards/wildcards_parsing.c	/^int	all_wildcards(char *buffer, t_
 allocate_shell	data.c	/^int	allocate_shell(t_shell *shell, char **envp)$/;"	f
 already	Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
 already	Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
+and_command	bonus/and.c	/^int	and_command(t_shell *shell)$/;"	f
 append	structures.h	/^	int					append;$/;"	m	struct:s_shell
 append_newline	redirections/redirection_utils.c	/^char	*append_newline(char *limiter)$/;"	f
 append_redirection	redirections/redirections.c	/^int	append_redirection(t_shell *shell, t_tok *temp)$/;"	f
@@ -258,6 +259,7 @@ com_quit	readline/share/readline/fileman.c	/^com_quit (arg)$/;"	f
 com_rename	readline/share/readline/fileman.c	/^com_rename (arg)$/;"	f
 com_stat	readline/share/readline/fileman.c	/^com_stat (arg)$/;"	f
 com_view	readline/share/readline/fileman.c	/^com_view (arg)$/;"	f
+command	structures.h	/^	char				**command;$/;"	m	struct:s_treenode
 command_generator	readline/share/readline/fileman.c	/^command_generator (text, state)$/;"	f
 commands	readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v
 compare_after_wildcard	wildcards/wildcards.c	/^int	compare_after_wildcard(char *buffer, t_shell *shell)$/;"	f
@@ -269,6 +271,7 @@ control_character_threshold	readline/include/readline/chardefs.h	/^#define contr
 copystock	Libft/get_next_line.c	/^char	*copystock(char *stock, char *buffer)$/;"	f
 correct_path	structures.h	/^	char				*correct_path;$/;"	m	struct:s_shell
 count_set	Libft/ft_strtrim.c	/^int	count_set(char const *s1, char const *set)$/;"	f
+create_treenode	binarytree/tree_manip.c	/^void	create_treenode(t_treenode *root, char **command)$/;"	f
 current_dir_path	structures.h	/^	char				*current_dir_path;$/;"	m	struct:s_shell
 custom_deprep_term_function	readline/share/readline/rlptytest.c	/^custom_deprep_term_function ()$/;"	f	file:
 data	readline/include/readline/history.h	/^  histdata_t data;$/;"	m	struct:_hist_entry
@@ -301,13 +304,13 @@ envindex	builtins/env_utils.c	/^int	envindex(char *line, t_chained *env)$/;"	f
 envvarjumper	tokens/tokenisation.c	/^int    envvarjumper(t_tok *token, int i)$/;"	f
 envvarparser	tokens/tokenisation.c	/^char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
 error_func	pipe_utils.c	/^int	error_func(int error_code)$/;"	f
-error_value	structures.h	/^	char				*error_value;$/;"	m	struct:s_shell
 errorintoken	parsing/parsing_utils.c	/^int	errorintoken(t_toklst *tokenlst, char *error)$/;"	f
 event_hook	readline/share/readline/rlevent.c	/^event_hook ()$/;"	f	file:
 execute_builtin_cmd	builtins/env_management.c	/^int	execute_builtin_cmd(t_shell *shell, int i)$/;"	f
 execute_directory_cmd	builtins/dir_management.c	/^int	execute_directory_cmd(t_shell *shell, int i)$/;"	f
 execute_line	readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
 execute_ls_in_tmp	wildcards/wildcards_utils.c	/^int	execute_ls_in_tmp(t_shell *shell, char **envp)$/;"	f
+exit_shell	builtins/env_utils.c	/^int	exit_shell(t_shell *shell)$/;"	f
 export_variable	builtins/env_management.c	/^int	export_variable(t_shell *shell)$/;"	f
 false	minishell.h	/^# define false /;"	d
 fcopy	readline/share/readline/rlcat.c	/^fcopy(fp)$/;"	f	file:
@@ -367,6 +370,7 @@ ft_split	Libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f
 ft_split_slash	Libft/ft_split_slash.c	/^char	**ft_split_slash(char const *s, char c)$/;"	f
 ft_strchr	Libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int searched)$/;"	f
 ft_strdup	Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f
+ft_strisdigit	Libft/ft_strisdigit.c	/^int	ft_strisdigit(char *str)$/;"	f
 ft_striteri	Libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
 ft_strjoin	Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
 ft_strlcat	Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dest, const char *src, size_t size)$/;"	f
@@ -416,6 +420,7 @@ histdata_t	readline/include/readline/history.h	/^typedef char *histdata_t;$/;"	t
 histdata_t	readline/include/readline/history.h	/^typedef void *histdata_t;$/;"	t
 home	structures.h	/^	char				*home;$/;"	m	struct:s_shell
 ignorefunc	readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
+increment	structures.h	/^	int					increment;$/;"	m	struct:s_shell
 increment_sh_level	main.c	/^int	increment_sh_level(t_shell *shell)$/;"	f
 inf	readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
 infile	structures.h	/^	int					infile;$/;"	m	struct:s_shell
@@ -448,6 +453,7 @@ kseq	readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_
 kseqlen	readline/include/readline/readline.h	/^  int kseqlen;$/;"	m	struct:readline_state
 largest_char	readline/include/readline/chardefs.h	/^#define largest_char /;"	d
 lastfunc	readline/include/readline/readline.h	/^  rl_command_func_t *lastfunc;$/;"	m	struct:readline_state
+left	structures.h	/^	struct s_treenode	left;$/;"	m	struct:s_treenode	typeref:struct:s_treenode::s_treenode
 length	readline/include/readline/history.h	/^  int length;			\/* Number of elements within this array. *\/$/;"	m	struct:_hist_state
 limiter_doc	structures.h	/^	char				*limiter_doc;$/;"	m	struct:s_shell
 line	readline/include/readline/history.h	/^  char *line;$/;"	m	struct:_hist_entry
@@ -513,6 +519,7 @@ old_vtime	readline/share/readline/excallback.c	/^cc_t     old_vtime;$/;"	v
 one_wildcard_only	wildcards/wildcards_parsing.c	/^int	one_wildcard_only(char *buffer, t_shell *shell)$/;"	f
 option_n	utils.c	/^int	option_n(char **command, int i)$/;"	f
 option_njump	utils.c	/^int	option_njump(char **command, int i)$/;"	f
+or_command	bonus/and.c	/^int	or_command(t_shell *shell)$/;"	f
 out	structures.h	/^	int					out;$/;"	m	struct:s_shell
 outf	readline/include/readline/readline.h	/^  FILE *outf;$/;"	m	struct:readline_state
 outfile	structures.h	/^	int					outfile;$/;"	m	struct:s_shell
@@ -533,6 +540,7 @@ print_export	builtins/env_management.c	/^int	print_export(t_shell *shell)$/;"	f
 print_list	lists/list_utils.c	/^void	print_list(t_chained *list)$/;"	f
 print_pwd_linux	builtins/dir_management.c	/^int	print_pwd_linux(t_shell *shell)$/;"	f
 print_toklst	tokens/token_management.c	/^void	print_toklst(t_toklst *list)$/;"	f
+print_tree	binarytree/tree_manip.c	/^void	print_tree(t_treenode *tree) \/\/a supprimer a la fin$/;"	f
 process_line	readline/share/readline/excallback.c	/^process_line(char *line)$/;"	f
 progname	readline/share/readline/fileman.c	/^char *progname;$/;"	v
 progname	readline/share/readline/rl.c	/^static char *progname;$/;"	v	file:
@@ -559,6 +567,7 @@ remove_front_tok	tokens/token_management2.c	/^t_toklst	*remove_front_tok(t_tokls
 remove_newline_from_buffer	wildcards/wildcards_utils.c	/^char	*remove_newline_from_buffer(char *buffer)$/;"	f
 remove_wildcard_tok	tokens/token_wildcard.c	/^t_tok	*remove_wildcard_tok(t_toklst *tokenlst)$/;"	f
 reserved	readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
+right	structures.h	/^	struct s_treenode	right;$/;"	m	struct:s_treenode	typeref:struct:s_treenode::s_treenode
 rl_command_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t
 rl_compdisp_func_t	readline/include/readline/rltypedefs.h	/^typedef void rl_compdisp_func_t PARAMS((char **, int, int));$/;"	t
 rl_compentry_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_compentry_func_t PARAMS((const char *, int));$/;"	t
@@ -592,6 +601,7 @@ s_node	structures.h	/^typedef struct s_node$/;"	s
 s_shell	structures.h	/^typedef struct s_shell$/;"	s
 s_tok	structures.h	/^typedef struct s_tok$/;"	s
 s_toklst	structures.h	/^typedef struct s_toklst$/;"	s
+s_treenode	structures.h	/^typedef struct s_treenode$/;"	s
 save_termios	readline/share/readline/rlptytest.c	/^static struct termios save_termios;$/;"	v	typeref:struct:termios	file:
 saved_stdin	structures.h	/^	int					saved_stdin;$/;"	m	struct:s_shell
 saved_stdout	structures.h	/^	int					saved_stdout;$/;"	m	struct:s_shell
@@ -604,6 +614,7 @@ sigwinch	readline/share/readline/rlptytest.c	/^sigwinch (s)$/;"	f
 sigwinch_received	readline/share/readline/rl-callbacktest.c	/^int running, sigwinch_received;$/;"	v
 size	readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state
 size	readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typeref:struct:winsize	file:
+slash_manager	pipe.c	/^int	slash_manager(t_shell *shell, int index)$/;"	f
 slavefd	readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
 sort_list	lists/list_utils.c	/^t_chained	*sort_list(t_chained *list)$/;"	f
 sorted_env_l	structures.h	/^	struct s_chained	*sorted_env_l;$/;"	m	struct:s_shell	typeref:struct:s_shell::s_chained
@@ -626,6 +637,7 @@ t_node	structures.h	/^}				t_node;$/;"	t	typeref:struct:s_node
 t_shell	structures.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
 t_tok	structures.h	/^}				t_tok;$/;"	t	typeref:struct:s_tok
 t_toklst	structures.h	/^}				t_toklst;$/;"	t	typeref:struct:s_toklst
+t_treenode	structures.h	/^}				t_treenode;$/;"	t	typeref:struct:s_treenode
 term	readline/share/readline/excallback.c	/^struct termios term;$/;"	v	typeref:struct:termios
 text	readline/include/readline/readline.h	/^  char *text;			\/* The text to insert, if undoing a delete. *\/$/;"	m	struct:undo_list
 tilde_hook_func_t	readline/include/readline/tilde.h	/^typedef char *tilde_hook_func_t PARAMS((char *));$/;"	t

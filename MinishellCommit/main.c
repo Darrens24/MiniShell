@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 10:02:16 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 10:51:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 int	readline_manager(t_shell *shell)
 {
 	free(shell->line_readed);
-	shell->line_readed = readline(MAG "Minishell >> " WHT);
+	shell->line_readed = readline("Minishell >> ");
 	if (!shell->line_readed)
 		return (EXIT_FAILURE);
 	if (shell->line_readed && *shell->line_readed)
-	{
 		add_history(shell->line_readed);
-	}
 	return (EXIT_SUCCESS);
 }
 
@@ -43,13 +41,10 @@ int	increment_sh_level(t_shell *shell)
 	t_node	*temp;
 
 	temp = shell->env_l->start;
-	if (shell->increment != 0)
-	{
-		while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
-		temp = temp->next;
-		if (temp)
-			temp->variable[6]++;
-	}
+	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
+	temp = temp->next;
+	if (temp)
+		temp->variable[6]++;
 	return (EXIT_SUCCESS);
 }
 
@@ -77,7 +72,6 @@ int	main(int ac, char **av, char **envp)
 	signal(SIGQUIT, &handler);
 	allocate_shell(&shell, envp);
 	printf(YEL "Open Minishell\n" WHT);
-	//increment_sh_level(&shell);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
 		/*int fd = open("minishell", 0644);

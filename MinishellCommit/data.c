@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 10:04:21 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 10:48:07 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	allocate_shell(t_shell *shell, char **envp)
 		new_back_node(shell->env_l, envp[i]);
 	if (i == 0)
 		fill_basic_env(shell);
+	increment_sh_level(shell);
 	//shell->sorted_env_l = malloc(sizeof(*(shell->env_l)));
 //	if (!shell->sorted_env_l)
 //		return (printf("Malloc: Sorted Env failed\n"));

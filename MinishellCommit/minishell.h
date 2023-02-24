@@ -36,6 +36,8 @@ extern int	g_err;
 
 int			allocate_shell(t_shell *shell, char **envp);
 int			initialize_variables(t_shell *shell);
+int			increment_sh_level(t_shell *shell);
+int			decrement_sh_level(t_shell *shell);
 int			clean_memory(t_shell *shell);
 int			free_array(char **array);
 char		**get_array_env(t_shell *shell);
@@ -217,5 +219,10 @@ int					jump_previous_wildcard(char *str, int index);
 char				*remove_newline_from_buffer(char *buffer);
 int					execute_ls_in_tmp(t_shell *shell, char **envp);
 void				add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
+
+/***\      TREES		\***/
+/*
+void				create_treenode(t_treenode *root, char **command);
+void				print_tree(t_treenode *tree); //a supprimer a la fin*/
 
 #endif

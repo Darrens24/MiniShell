@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 19:44:47 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 10:56:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	heredoc_redirection(t_shell *shell, t_tok *temp)
 	delete_operator_and_infile(shell);
 	while (1)
 	{
-		shell->buffer_doc = readline(CYN "here_doc >> " WHT);
+		shell->buffer_doc = readline("here_doc >> ");
 		if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc,
 				shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/23 14:58:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 13:27:30 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	exit_shell(t_shell *shell)
 	if (shell->multi_cmd[0][1] && ft_strisdigit(shell->multi_cmd[0][1]))
 	{
 		if (shell->multi_cmd[0][2])
+		{
+			g_err = 1;
 			return (printf("exit: too many arguments\n"));
+		}
 	}
 	else if (shell->multi_cmd[0][1] && !ft_strisdigit(shell->multi_cmd[0][1]))
 		printf("exit: %s: numeric argument required\n", shell->multi_cmd[0][1]);
