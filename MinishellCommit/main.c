@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 10:51:37 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 14:23:29 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,11 @@ int	main(int ac, char **av, char **envp)
 		if (*shell.line_readed)
 		{
 			token_parsing(shell.user_command, shell.line_readed);
+			if (token_checker(&shell))
+			{
+				printf("minishell: syntax error\n");
+				clear_toklst(shell.user_command);
+			}
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);

@@ -187,6 +187,7 @@ char		*squoteparser(t_tok *token, int i, char *newvar);
 int			squotejumper(t_tok *token, int i);
 char		*envfinder(char *line, char *newvar, t_chained *env);
 t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end);
+int         token_checker(t_shell *shell);
 
 /***\      WILDCARDS		\***/
 
