@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/22 19:03:43 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 10:02:16 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int	readline_manager(t_shell *shell)
 	shell->line_readed = readline(MAG "Minishell >> " WHT);
 	if (!shell->line_readed)
 		return (EXIT_FAILURE);
-	if (shell->line_readed[0] != '\0')
+	if (shell->line_readed && *shell->line_readed)
+	{
 		add_history(shell->line_readed);
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -41,14 +43,13 @@ int	increment_sh_level(t_shell *shell)
 	t_node	*temp;
 
 	temp = shell->env_l->start;
-	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
+	if (shell->increment != 0)
+	{
+		while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
 		temp = temp->next;
-	printf("sh is %s\n", temp->variable);
-	printf("lvl is %c\n", temp->variable[6]);
-	if (temp)
-		temp->variable[6]++;
-	printf("sh is %s\n", temp->variable);
-	printf("lvl is %c\n", temp->variable[6]);
+		if (temp)
+			temp->variable[6]++;
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -79,6 +80,8 @@ int	main(int ac, char **av, char **envp)
 	//increment_sh_level(&shell);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
+		/*int fd = open("minishell", 0644);
+		printf("tty= %d\n", isatty(fd));*/
 		good = true;
 		readline_manager(&shell);
 		if (!shell.line_readed)
@@ -86,19 +89,12 @@ int	main(int ac, char **av, char **envp)
 				ft_putchar_fd('\n', STDOUT_FILENO);
 				break ;
 		}
-		if (shell.line_readed[0] != '\0')
+		if (*shell.line_readed)
 		{
 			token_parsing(shell.user_command, shell.line_readed);
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-		/*		if (token_checker(&shell))
-				{
-					printf("minishell: syntax error\n");
-					clear_toklst(shell.user_command);
-				}
-				else
-				{*/
 				while (cmd_has_wildcard(&shell))
 				{
 					parse_wildcard(&shell, envp);
@@ -108,20 +104,17 @@ int	main(int ac, char **av, char **envp)
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
 					good = false;
 				if (good == true)
-				{
-					printf("cc\n");
 					pipe_command(&shell);
-				}
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);
 				dup2(shell.saved_stdout, STDOUT_FILENO);
-			//	}
 			}
 		}
-		printf("errorcode = %d\n",  g_err);
+		//printf("errorcode = %d\n",  g_err);
 	}
 	//decrement_sh_level(&shell);
 	clean_memory(&shell);
 	printf(YEL "Exit Minishell\n" WHT);
+	system("leaks minishell");
 	return (0);
 }
