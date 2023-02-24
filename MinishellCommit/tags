@@ -259,7 +259,6 @@ com_quit	readline/share/readline/fileman.c	/^com_quit (arg)$/;"	f
 com_rename	readline/share/readline/fileman.c	/^com_rename (arg)$/;"	f
 com_stat	readline/share/readline/fileman.c	/^com_stat (arg)$/;"	f
 com_view	readline/share/readline/fileman.c	/^com_view (arg)$/;"	f
-command	structures.h	/^	char				**command;$/;"	m	struct:s_treenode
 command_generator	readline/share/readline/fileman.c	/^command_generator (text, state)$/;"	f
 commands	readline/share/readline/fileman.c	/^COMMAND commands[] = {$/;"	v
 compare_after_wildcard	wildcards/wildcards.c	/^int	compare_after_wildcard(char *buffer, t_shell *shell)$/;"	f
@@ -373,6 +372,7 @@ ft_strdup	Libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f
 ft_strisdigit	Libft/ft_strisdigit.c	/^int	ft_strisdigit(char *str)$/;"	f
 ft_striteri	Libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f
 ft_strjoin	Libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f
+ft_strjointok	tokens/tokenisation.c	/^char	*ft_strjointok(char const *s1, char const *s2)$/;"	f
 ft_strlcat	Libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dest, const char *src, size_t size)$/;"	f
 ft_strlcpy	Libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dest, const char *src, size_t size)$/;"	f
 ft_strlen	Libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f
@@ -453,7 +453,6 @@ kseq	readline/include/readline/readline.h	/^  char *kseq;$/;"	m	struct:readline_
 kseqlen	readline/include/readline/readline.h	/^  int kseqlen;$/;"	m	struct:readline_state
 largest_char	readline/include/readline/chardefs.h	/^#define largest_char /;"	d
 lastfunc	readline/include/readline/readline.h	/^  rl_command_func_t *lastfunc;$/;"	m	struct:readline_state
-left	structures.h	/^	struct s_treenode	left;$/;"	m	struct:s_treenode	typeref:struct:s_treenode::s_treenode
 length	readline/include/readline/history.h	/^  int length;			\/* Number of elements within this array. *\/$/;"	m	struct:_hist_state
 limiter_doc	structures.h	/^	char				*limiter_doc;$/;"	m	struct:s_shell
 line	readline/include/readline/history.h	/^  char *line;$/;"	m	struct:_hist_entry
@@ -567,7 +566,6 @@ remove_front_tok	tokens/token_management2.c	/^t_toklst	*remove_front_tok(t_tokls
 remove_newline_from_buffer	wildcards/wildcards_utils.c	/^char	*remove_newline_from_buffer(char *buffer)$/;"	f
 remove_wildcard_tok	tokens/token_wildcard.c	/^t_tok	*remove_wildcard_tok(t_toklst *tokenlst)$/;"	f
 reserved	readline/include/readline/readline.h	/^  char reserved[64];$/;"	m	struct:readline_state
-right	structures.h	/^	struct s_treenode	right;$/;"	m	struct:s_treenode	typeref:struct:s_treenode::s_treenode
 rl_command_func_t	readline/include/readline/rltypedefs.h	/^typedef int rl_command_func_t PARAMS((int, int));$/;"	t
 rl_compdisp_func_t	readline/include/readline/rltypedefs.h	/^typedef void rl_compdisp_func_t PARAMS((char **, int, int));$/;"	t
 rl_compentry_func_t	readline/include/readline/rltypedefs.h	/^typedef char *rl_compentry_func_t PARAMS((const char *, int));$/;"	t
@@ -601,7 +599,6 @@ s_node	structures.h	/^typedef struct s_node$/;"	s
 s_shell	structures.h	/^typedef struct s_shell$/;"	s
 s_tok	structures.h	/^typedef struct s_tok$/;"	s
 s_toklst	structures.h	/^typedef struct s_toklst$/;"	s
-s_treenode	structures.h	/^typedef struct s_treenode$/;"	s
 save_termios	readline/share/readline/rlptytest.c	/^static struct termios save_termios;$/;"	v	typeref:struct:termios	file:
 saved_stdin	structures.h	/^	int					saved_stdin;$/;"	m	struct:s_shell
 saved_stdout	structures.h	/^	int					saved_stdout;$/;"	m	struct:s_shell
@@ -637,11 +634,11 @@ t_node	structures.h	/^}				t_node;$/;"	t	typeref:struct:s_node
 t_shell	structures.h	/^}				t_shell;$/;"	t	typeref:struct:s_shell
 t_tok	structures.h	/^}				t_tok;$/;"	t	typeref:struct:s_tok
 t_toklst	structures.h	/^}				t_toklst;$/;"	t	typeref:struct:s_toklst
-t_treenode	structures.h	/^}				t_treenode;$/;"	t	typeref:struct:s_treenode
 term	readline/share/readline/excallback.c	/^struct termios term;$/;"	v	typeref:struct:termios
 text	readline/include/readline/readline.h	/^  char *text;			\/* The text to insert, if undoing a delete. *\/$/;"	m	struct:undo_list
 tilde_hook_func_t	readline/include/readline/tilde.h	/^typedef char *tilde_hook_func_t PARAMS((char *));$/;"	t
 timestamp	readline/include/readline/history.h	/^  char *timestamp;		\/* char * rather than time_t for read\/write *\/$/;"	m	struct:_hist_entry
+token_checker	tokens/token_checker.c	/^int	token_checker(t_shell *shell)$/;"	f
 token_parsing	parsing/parsing.c	/^void	token_parsing(t_toklst *tokenlst, char *line)$/;"	f
 tokenisation	tokens/tokenisation.c	/^void    tokenisation(t_toklst *tokenlst, t_chained *env)$/;"	f
 too_dangerous	readline/share/readline/fileman.c	/^too_dangerous (caller)$/;"	f

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:13:56 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/23 16:15:17 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 16:01:14 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_toklst	*remove_front_tok(t_toklst *list)
 	if (list->nb_elem == 1)
 	{
 		list->nb_elem--;
+		free(list->start->var);
 		free(list->start);
 		list->start = NULL;
 		return (list);
@@ -33,6 +34,7 @@ t_toklst	*remove_front_tok(t_toklst *list)
 	list->start->prev = NULL;
 	temp->prev = NULL;
 	temp->next = NULL;
+	free(temp->var);
 	free(temp);
 	temp = NULL;
 	list->nb_elem--;
@@ -51,6 +53,7 @@ t_toklst	*remove_back_tok(t_toklst *list)
 	if (list->nb_elem == 1)
 	{
 		list->nb_elem--;
+		free(list->end->var);
 		free(list->end);
 		list->end = NULL;
 		return (list);
@@ -60,6 +63,7 @@ t_toklst	*remove_back_tok(t_toklst *list)
 	list->end->next = NULL;
 	temp->prev = NULL;
 	temp->next = NULL;
+	free(temp->var);
 	free(temp);
 	temp = NULL;
 	list->nb_elem--;

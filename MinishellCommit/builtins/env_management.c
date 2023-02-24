@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/23 14:06:44 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 17:28:34 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,25 +85,27 @@ int	unset_variable(t_shell *shell)
 
 int	export_variable(t_shell *shell)
 {
-	int	index;
+	int		index;
+	char	*temp;
 
+	temp = ft_strndup(shell->user_command->start->next->var,
+				0, ft_strlenequal(shell->user_command->start->next->var));
 	index = 0;
-	if (!envchecker(ft_strndup(shell->user_command->start->next->var,
-				0, ft_strlenequal(shell->user_command->start->next->var)),
-			shell->sorted_env_l))
+	if (!envchecker(temp, shell->sorted_env_l))
+	{
 		new_back_node(shell->sorted_env_l,
 			shell->user_command->start->next->var);
+	}
 	else
 	{
-		index = envindex(ft_strndup(shell->user_command->start->next->var,
-					0, ft_strlenequal(shell->user_command->start->next->var)),
-				shell->sorted_env_l);
+		index = envindex(temp, shell->sorted_env_l);
 		unset_variable(shell);
 		new_current_node(shell->sorted_env_l, index,
 			shell->user_command->start->next->var);
 	}
 	new_back_node(shell->env_l,
 		shell->user_command->start->next->var);
+	free(temp);
 	return (EXIT_SUCCESS);
 }
 

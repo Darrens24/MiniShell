@@ -6,11 +6,41 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/23 13:58:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/24 16:01:40 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+char	*ft_strjointok(char const *s1, char const *s2)
+{
+	char	*recipe;
+	int		i;
+	int		j;
+
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
+		return ((char *)s2);
+	if (!s2)
+		return ((char *)s1);
+	recipe = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!recipe)
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		recipe[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+		recipe[i++] = s2[j++];
+	recipe[i] = '\0';
+	free((void *)s1);
+	free((void *)s2);
+	return (recipe);
+}
 
 char	*envfinder(char *line, char *newvar, t_chained *env)
 {
@@ -86,10 +116,10 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
 {
 	t_tok   *elem;
 	int             i;
-	char    *newvar;
+	char    *newvar = NULL;
 	int             start;
+	char	*temp = NULL;
 
-	elem = malloc(sizeof(*elem));
 	elem = tokenlst->start;
 	while(elem)
 	{
@@ -123,7 +153,10 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
 						newvar = vagueparser(i, newvar, env);
 					}
 					else if (elem->var && elem->var[i])
-							newvar = ft_strjoin(newvar, ft_strndup(elem->var, start, ++i));
+					{
+						temp = ft_strndup(elem->var, start, ++i);
+						newvar = ft_strjointok(newvar, temp);
+					}
 					if (i == -1 || i == -2)
 					{
 						if (ft_strlen(newvar) > 0)
@@ -136,8 +169,11 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
 					}
 				//printf("%s\n", elem->var[i]);
 			}
+			free(elem->var);
 			elem->var = newvar;
 			elem = elem->next;
 	}
+//	if (newvar)
+//		free(newvar);
 	newvar = 0;
 }
