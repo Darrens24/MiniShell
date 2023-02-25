@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/23 17:49:29 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/25 11:36:49 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,24 @@ int	builtin_manager(t_shell *shell, int index)
 
 int	slash_manager(t_shell *shell, int index)
 {
-	int	access_return;
+	int			access_return;
+	struct stat	buff;
 
 	access_return = 0;
 	if (shell->multi_cmd[0][0][0] == '/')
 	{
-		access_return = access(shell->multi_cmd[index][0], F_OK | R_OK | X_OK);
+		access_return = access(shell->multi_cmd[index][0], X_OK);
 		if (access_return < 0)
 		{
+			g_err = 126;
 			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
 			return (EXIT_FAILURE);
 		}
-		access_return = access(shell->multi_cmd[index][0], W_OK);
-		if (access_return < 0)
+		stat(shell->multi_cmd[index][0], &buff);
+		if (S_ISDIR(buff.st_mode))
 		{
-			printf("%s : is a directory\n", shell->multi_cmd[index][0]);
+			g_err = 126;
+			printf("%s : Is a directory\n", shell->multi_cmd[index][0]);
 			return (EXIT_FAILURE);
 		}
 	}

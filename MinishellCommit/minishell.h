@@ -37,11 +37,11 @@ extern int	g_err;
 int			allocate_shell(t_shell *shell, char **envp);
 int			initialize_variables(t_shell *shell);
 int			increment_sh_level(t_shell *shell);
-int			decrement_sh_level(t_shell *shell);
 int			clean_memory(t_shell *shell);
 int			free_array(char **array);
 char		**get_array_env(t_shell *shell);
 void		clear_chained_lst(t_chained *lst);
+int			free_increment(t_increment *incr);
 int			clean_between_cmds(t_shell *shell);
 
 /***\	BUILTINS	\***/

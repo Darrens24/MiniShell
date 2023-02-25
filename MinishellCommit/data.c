@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 17:15:07 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/25 11:05:45 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,32 @@ int	initialize_variables(t_shell *shell)
 	shell->ls_cmd[1] = NULL;
 	shell->saved_stdin = dup(STDIN_FILENO);
 	shell->saved_stdout = dup(STDOUT_FILENO);
+	return (EXIT_SUCCESS);
+}
+
+int	increment_sh_level(t_shell *shell)
+{
+	t_increment	*incr;
+
+	incr = malloc(sizeof(t_increment));
+	incr->sh = 0;
+	incr->i = 0;
+	incr->temp = shell->env_l->start;
+	while (incr->temp && ft_strncmp(incr->temp->variable, "SHLVL=", 6))
+	{
+		incr->temp = incr->temp->next;
+		incr->i++;
+	}
+	if (incr->temp)
+	{
+		incr->sh_level = ft_strndup(incr->temp->variable, 6, ft_strlen(incr->temp->variable));
+		incr->sh = ft_atoi(incr->sh_level) + 1;
+		incr->itoa_sh = ft_itoa(incr->sh);
+		remove_current_node(incr->temp, shell->env_l);
+		incr->new_sh_level = ft_strjoin("SHLVL=", incr->itoa_sh); 
+		new_current_node(shell->env_l, incr->i, incr->new_sh_level);
+	}
+	free_increment(incr);
 	return (EXIT_SUCCESS);
 }
 

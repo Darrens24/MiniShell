@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 17:43:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/25 10:53:48 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,17 @@ int	exit_shell(t_shell *shell)
 			g_err = 1;
 			return (printf("exit: too many arguments\n"));
 		}
+		g_err = ft_atoi(shell->multi_cmd[0][1]);
 	}
 	else if (shell->multi_cmd[0][1] && !ft_strisdigit(shell->multi_cmd[0][1]))
 	{
 		printf("exit: %s: numeric argument required\n", shell->multi_cmd[0][1]);
 		g_err = 255;
-		clear_toklst(shell->user_command);
-		clean_memory(shell);
-		exit(255);
 	}
 	clear_toklst(shell->user_command);
 	clean_memory(shell);
-	exit(0);
+	printf(YEL "Exit Minishell\n" WHT);
+	exit(g_err);
 	return (EXIT_SUCCESS);
 }
 

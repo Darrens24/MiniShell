@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:17:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 15:41:14 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/25 11:06:23 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,15 @@ int	free_array(char **array)
 	return (EXIT_SUCCESS);
 }
 
+int	free_increment(t_increment *incr)
+{
+	free(incr->sh_level);
+	free(incr->itoa_sh);
+	free(incr->new_sh_level);
+	free(incr);
+	return (EXIT_SUCCESS);
+}
+
 int	clean_between_cmds(t_shell *shell)
 {
 	int	i;
@@ -53,7 +62,6 @@ int	clean_between_cmds(t_shell *shell)
 	}
 	free_array(shell->array_env);
 	free(shell->home);
-//	if (get_number_of_commands(shell) > 1)
 	free_pids_fds(shell);
 	return (EXIT_SUCCESS);
 }

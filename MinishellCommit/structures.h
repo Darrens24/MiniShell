@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 13:51:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/25 10:55:45 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,16 @@ typedef struct s_toklst
 	int					nb_elem;
 	struct s_tok		*end;
 }				t_toklst;
+
+typedef struct s_increment
+{
+	t_node				*temp;
+	char				*sh_level;
+	int					sh;
+	char				*itoa_sh;
+	char				*new_sh_level;
+	int					i;
+}				t_increment;
 
 /*typedef struct s_treenode
 {

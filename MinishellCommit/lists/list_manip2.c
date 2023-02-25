@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:42:18 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 17:22:47 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/25 11:15:58 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,9 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 	while (temp && --index)
 		temp = temp->next;
 	if (!temp->next)
-	{
-		printf("cc\n");
 		new_back_node(lst, variable);
-	}
 	else
 	{
-		printf("cc\n");
 		temp->next->prev = elem;
 		elem->next = temp->next;
 		temp->next = elem;

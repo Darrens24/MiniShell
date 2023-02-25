@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 18:21:36 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/25 11:18:54 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,56 +36,6 @@ int	is_builtin_command(t_shell *shell, int i)
 	return (false);
 }
 
-int	increment_sh_level(t_shell *shell)
-{
-	t_node	*temp;
-	char	*sh_level;
-	int		sh;
-	char	*itoa_sh;
-	char	*new_sh_level;
-	int		i;
-
-	sh_level = NULL;
-	new_sh_level = NULL;
-	itoa_sh = NULL;
-	sh = 0;
-	i = 0;
-	temp = shell->env_l->start;
-	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
-	{
-		temp = temp->next;
-		i++;
-	}
-	if (temp)
-	{
-		sh_level = ft_strndup(temp->variable, 6, 7);	
-		printf("%s\n", sh_level);
-		sh = ft_atoi(sh_level) + 1;
-		printf("%d\n", sh);
-		itoa_sh = ft_itoa(sh);
-		free(sh_level);
-		remove_current_node(temp, shell->env_l);
-		new_sh_level = ft_strjoin("SHLVL=", itoa_sh); 
-		free(itoa_sh);
-		new_current_node(shell->env_l, i, new_sh_level);
-		free(new_sh_level);
-	}
-	//	temp->variable[6]++;
-	return (EXIT_SUCCESS);
-}
-
-int	decrement_sh_level(t_shell *shell)
-{
-	t_node	*temp;
-
-	temp = shell->env_l->start;
-	while (temp && ft_strncmp(temp->variable, "SHLVL=", 6))
-		temp = temp->next;
-	if (temp)
-		temp->variable[6]--;
-	return (EXIT_SUCCESS);
-}
-
 int	main(int ac, char **av, char **envp)
 {
 	(void)av;
@@ -100,8 +50,6 @@ int	main(int ac, char **av, char **envp)
 	printf(YEL "Open Minishell\n" WHT);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
-		/*int fd = open("minishell", 0644);
-		printf("tty= %d\n", isatty(fd));*/
 		good = true;
 		readline_manager(&shell);
 		if (!shell.line_readed)
@@ -114,7 +62,7 @@ int	main(int ac, char **av, char **envp)
 			token_parsing(shell.user_command, shell.line_readed);
 			if (shell.user_command->nb_elem && token_checker(&shell))
 			{
-				printf("minishell: syntax error\n");
+				printf("Minishell: syntax error\n");
 				clear_toklst(shell.user_command);
 			}
 			if (shell.user_command->nb_elem)
@@ -139,6 +87,6 @@ int	main(int ac, char **av, char **envp)
 	}
 	clean_memory(&shell);
 	printf(YEL "Exit Minishell\n" WHT);
-	system("leaks minishell");
+	//system("leaks minishell");
 	return (0);
 }
