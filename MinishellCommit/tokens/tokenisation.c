@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/24 16:01:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 10:09:26 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
 							newvar = ft_itoa(g_err);
 						else
 							newvar = envvarparser(elem, i, newvar, env);
-							i = envvarjumper(elem, i);
+						i = envvarjumper(elem, i);
 					}
 					else if (elem->var && elem->var[i] == '~')
 					{

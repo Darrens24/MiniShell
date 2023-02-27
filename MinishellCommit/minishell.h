@@ -221,9 +221,4 @@ char				*remove_newline_from_buffer(char *buffer);
 int					execute_ls_in_tmp(t_shell *shell, char **envp);
 void				add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
 
-/***\      TREES		\***/
-/*
-void				create_treenode(t_treenode *root, char **command);
-void				print_tree(t_treenode *tree); //a supprimer a la fin*/
-
 #endif

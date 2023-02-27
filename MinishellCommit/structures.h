@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/25 10:55:45 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 10:27:54 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,5 @@ typedef struct s_increment
 	char				*new_sh_level;
 	int					i;
 }				t_increment;
-
-/*typedef struct s_treenode
-{
-	struct s_treenode	left;
-	char				**command;
-	struct s_treenode	right;
-}				t_treenode;*/
 
 #endif
