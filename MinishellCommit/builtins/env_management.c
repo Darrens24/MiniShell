@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 17:28:34 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 11:25:58 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ int	unset_variable(t_shell *shell)
 {
 	t_node	*temp;
 	t_node	*temp2;
+	char	*temp3;
 
+	temp3 = ft_strndup(shell->user_command->start->next->var,
+				0, ft_strlenequal(shell->user_command->start->next->var));
 	temp = shell->sorted_env_l->end;
 	temp2 = shell->env_l->end;
 	while (temp && ft_strncmp(temp->variable,
@@ -73,12 +76,14 @@ int	unset_variable(t_shell *shell)
 	if (shell->sorted_env_l->nb_elem == 1)
 	{
 		remove_back_node(shell->sorted_env_l);
-		remove_back_node(shell->env_l);
+		if (envchecker(temp3, shell->env_l))
+			remove_back_node(shell->env_l);
 	}
 	else if (temp)
 	{
 		remove_current_node(temp, shell->sorted_env_l);
-		remove_current_node(temp2, shell->env_l);
+		if (envchecker(temp3, shell->env_l))
+			remove_current_node(temp2, shell->env_l);
 	}
 	return (EXIT_SUCCESS);
 }
@@ -96,15 +101,16 @@ int	export_variable(t_shell *shell)
 		new_back_node(shell->sorted_env_l,
 			shell->user_command->start->next->var);
 	}
-	else
+	else if (ft_strchr(shell->user_command->start->next->var, '=') != 0)
 	{
 		index = envindex(temp, shell->sorted_env_l);
 		unset_variable(shell);
 		new_current_node(shell->sorted_env_l, index,
 			shell->user_command->start->next->var);
 	}
-	new_back_node(shell->env_l,
-		shell->user_command->start->next->var);
+	if (ft_strchr(shell->user_command->start->next->var, '=') != 0)
+		new_back_node(shell->env_l,
+			shell->user_command->start->next->var);
 	free(temp);
 	return (EXIT_SUCCESS);
 }

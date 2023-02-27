@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:53:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 16:19:23 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 10:58:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	compare_after_wildcard(char *buffer, t_shell *shell)
 	int	i;
 
 	i = ft_strlen(buffer) - ft_strlen(shell->wild_after);
-	if (buffer + i && ft_strncmp(buffer + i, shell->wild_after,
+	if (ft_strncmp(buffer + i, shell->wild_after,
 			ft_strlen(shell->wild_after)) == 0)
 		return (true);
 	return (false);

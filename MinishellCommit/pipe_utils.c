@@ -6,13 +6,13 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/22 17:23:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 11:01:12 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_err;
+//int	g_err;
 
 t_tok	*go_to_next_pipe(t_shell *shell, t_tok *tok, int index) // A Remplacer par go_to_next delimiter avec tous les cas de separation de commande
 {
