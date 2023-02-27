@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/24 10:56:18 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 12:22:53 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ int	infile_redirection(t_shell *shell, t_tok *temp)
 		&& !is_infile_redirection(shell->user_command))
 		dup2(shell->infile, STDIN_FILENO);
 	return (EXIT_SUCCESS);
+}
+
+void	heredochandler(int sig)
+{
+	if (sig == SIGINT)
+		g_err = 130;
+	return ;
 }
 
 int	heredoc_redirection(t_shell *shell, t_tok *temp)

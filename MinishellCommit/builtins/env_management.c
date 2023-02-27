@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/27 11:25:58 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/27 11:30:48 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	unset_variable(t_shell *shell)
 	}
 	else if (temp)
 	{
-		remove_current_node(temp, shell->sorted_env_l);
+		if (envchecker(temp3, shell->sorted_env_l))
+			remove_current_node(temp, shell->sorted_env_l);
 		if (envchecker(temp3, shell->env_l))
 			remove_current_node(temp2, shell->env_l);
 	}

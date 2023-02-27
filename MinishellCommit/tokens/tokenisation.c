@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/27 10:09:26 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 11:41:55 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
 							newvar = squoteparser(elem, i, newvar);
 							i = squotejumper(elem, i);
 					}
-					else if (elem->var[i] == '$')
+					else if ((elem->var[i] == '$' && !elem->prev) || (elem->var[i] == '$' && elem->prev && !(ft_strncmp(elem->prev->var, "<<", 3) == 0 && elem->prev->quote == 0)))
 					{
 						i++;
 						if (elem->var[i] == '?' && !elem->var[i + 1])
