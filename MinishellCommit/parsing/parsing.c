@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:04:14 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/24 15:25:15 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/02/27 10:33:39 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ static int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)
 	i = jump_wspace(line, i);
 	start = i;
 	while (line[i] == '|')
+		i++;
+	if (start != i)
+		new_back_tok(tokenlst, line, start, i);
+	i = jump_wspace(line, i);
+	start = i;
+	while (line[i] == '&')
 		i++;
 	if (start != i)
 		new_back_tok(tokenlst, line, start, i);
