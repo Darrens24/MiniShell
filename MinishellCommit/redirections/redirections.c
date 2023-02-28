@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/27 12:22:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:29:48 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,71 @@ int	infile_redirection(t_shell *shell, t_tok *temp)
 void	heredochandler(int sig)
 {
 	if (sig == SIGINT)
+	{
 		g_err = 130;
+	}
 	return ;
+}
+
+char    *varparser(char *var, int i, char *newvar, t_chained *env)
+{
+    int start;
+
+    if (!var[i] || is_wspace(var[i])
+            || var[i] == '\"' || var[i] == '\'')
+        newvar = ft_strjoin(newvar, "$");
+    else
+    {
+        start = i;
+        while (var[i] && var[i] != '\'' && var[i] != '\"')
+            i++;
+        newvar = envfinder(ft_strndup(var, start, i), newvar, env);
+    }
+    return (newvar);
+}
+
+int    varjumper(char *var, int i)
+{
+    if (!var[i] || is_wspace(var[i])
+            || var[i] == '\"' || var[i] == '\'')
+        i += 0;
+    else
+    {
+        while (var[i] && var[i] != '\'' && var[i] != '\"')
+            i++;
+    }
+    return (i);
+}
+
+char	*replace_by_env(t_shell *shell, char *buffer)
+{
+	char	*newline;
+	int		i;
+	char	*tmp;
+
+	i = 0;
+	newline = NULL;
+	while (buffer && buffer[i])
+	{
+		if (buffer[i] == '$')
+		{
+			newline = varparser(buffer, ++i, newline, shell->sorted_env_l);
+			i = varjumper(buffer, i);
+		}
+		else
+		{
+			tmp = ft_strndup(buffer, i, i + 1);
+			newline = ft_strjoin(newline, tmp);
+			i++;
+		}
+	}
+	free(buffer);
+	return (newline);
 }
 
 int	heredoc_redirection(t_shell *shell, t_tok *temp)
 {
+	signal(SIGINT, &heredochandler);
 	shell->limiter_doc = ft_strdup(temp->next->var);
 	if (pipe(shell->doc_fd) < 0)
 		return (printf("DocPipe failed\n"));
@@ -47,6 +106,7 @@ int	heredoc_redirection(t_shell *shell, t_tok *temp)
 				ft_putchar_fd('\n', STDOUT_FILENO);
 			break ;
 		}
+		shell->buffer_doc = replace_by_env(shell, shell->buffer_doc);	
 		ft_putstr_fd(shell->buffer_doc, shell->doc_fd[1]);
 		ft_putchar_fd('\n', shell->doc_fd[1]);
 		free(shell->buffer_doc);

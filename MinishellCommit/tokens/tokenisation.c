@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/27 11:41:55 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:30:35 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strjointok(char const *s1, char const *s2)
 	return (recipe);
 }
 
-char	*envfinder(char *line, char *newvar, t_chained *env)
+char	*envinder(char *line, char *newvar, t_chained *env)
 {
 	t_node	*elem;
 	int	len;
@@ -142,10 +142,16 @@ void    tokenisation(t_toklst *tokenlst, t_chained *env)
 					{
 						i++;
 						if (elem->var[i] == '?' && !elem->var[i + 1])
-							newvar = ft_itoa(g_err);
+						{
+							temp = ft_itoa(g_err);
+							newvar = ft_strjoin(newvar, temp);
+							i++;
+						}
 						else
+						{
 							newvar = envvarparser(elem, i, newvar, env);
-						i = envvarjumper(elem, i);
+							i = envvarjumper(elem, i);
+						}
 					}
 					else if (elem->var && elem->var[i] == '~')
 					{
