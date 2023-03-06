@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/28 11:30:35 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/06 14:06:12 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strjointok(char const *s1, char const *s2)
 	return (recipe);
 }
 
-char	*envinder(char *line, char *newvar, t_chained *env)
+char	*envfinder(char *line, char *newvar, t_chained *env)
 {
 	t_node	*elem;
 	int	len;

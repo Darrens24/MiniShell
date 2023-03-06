@@ -6,11 +6,38 @@
 /*   By: pfaria-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/22 16:29:39 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/06 14:37:22 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	update_oldpwd(t_shell *shell, t_chained *list)
+{
+	char	*oldpwd;
+	t_node	*temp;
+	int		index;
+
+	oldpwd = NULL;
+	oldpwd = ft_strjoin("OLDPWD=", shell->previous_dir_path);
+	temp = list->start;
+	index = 0;
+	while (temp)
+	{
+		if (ft_strncmp("OLDPWD=", temp->variable, 7) == 0)
+		{
+			remove_current_node(temp, list);
+			new_current_node(list, index, oldpwd);
+			free(oldpwd);
+			return (EXIT_SUCCESS);
+		}
+		index++;
+		temp = temp->next;
+	}
+	new_back_node(list, oldpwd);
+	free(oldpwd);
+	return (EXIT_SUCCESS);
+}
 
 int	change_directory(t_shell *shell, const char *path)
 {
@@ -21,6 +48,8 @@ int	change_directory(t_shell *shell, const char *path)
 		return (perror("chdir"), EXIT_FAILURE);
 	}
 	shell->current_dir_path = getcwd(NULL, 0);
+	update_oldpwd(shell, shell->env_l);
+	update_oldpwd(shell, shell->sorted_env_l);
 	return (EXIT_SUCCESS);
 }
 
