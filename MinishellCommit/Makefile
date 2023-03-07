@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/24 18:15:26 by eleleux          ###   ########.fr        #
+#    Updated: 2023/03/07 14:44:25 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ $(NAME): $(OBJ)
 	@echo ${LIGHTBLUE}Libft Compiling... !${NOCOLOR}
 	@make -C ./Libft
 	@echo ${LIGHTBLUE}Minishell Compiling... !${NOCOLOR}
-	@$(CC) $(CFLAGS) -I ./ -LLibft -lft $(OBJ) -o $@ ./Libft/libft.a -lreadline
+	@$(CC) $(CFLAGS) -LLibft -lft $(OBJ) -o $@ ./Libft/libft.a -L ~/.brew/opt/readline/lib -lreadline -I ~/.brew/opt/readline/include/readline 
 	@echo ${LIGHTGREEN}Minishell Compiled !${NOCOLOR}
 	@echo ${NORMINETTE}
 

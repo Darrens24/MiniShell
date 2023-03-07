@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/28 11:29:48 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/07 13:01:21 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,16 @@ int	infile_redirection(t_shell *shell, t_tok *temp)
 		dup2(shell->infile, STDIN_FILENO);
 	return (EXIT_SUCCESS);
 }
-
+/*
 void	heredochandler(int sig)
 {
-	if (sig == SIGINT)
-	{
-		g_err = 130;
-	}
+	struct termios	new;
+
+	tcgetattr(STDIN_FILENO, TCSANOW, &new);
+	new.c_lflag &= ~ ECHO;
+
 	return ;
-}
+}*/
 
 char    *varparser(char *var, int i, char *newvar, t_chained *env)
 {
@@ -91,7 +92,10 @@ char	*replace_by_env(t_shell *shell, char *buffer)
 
 int	heredoc_redirection(t_shell *shell, t_tok *temp)
 {
-	signal(SIGINT, &heredochandler);
+	//struct termios	saved;
+
+//	tcgetattr(STDIN_FILENO, &saved);
+//	signal(SIGINT, &heredochandler);
 	shell->limiter_doc = ft_strdup(temp->next->var);
 	if (pipe(shell->doc_fd) < 0)
 		return (printf("DocPipe failed\n"));

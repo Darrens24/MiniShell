@@ -32,6 +32,8 @@
 
 extern int	g_err;
 
+void rl_replace_line (const char *text, int clear_undo);
+
 /***\	DATA	\***/
 
 int			allocate_shell(t_shell *shell, char **envp);

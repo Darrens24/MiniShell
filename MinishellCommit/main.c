@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/28 11:04:36 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/07 16:34:14 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int	main(int ac, char **av, char **envp)
 		return (printf("Minishell is pure, no arguments please\n"));
 	allocate_shell(&shell, envp);
 	printf(YEL "Open Minishell\n" WHT);
+	signal(SIGINT, &handler);
+	signal(SIGQUIT, &handler);
 	while (ft_strncmp(shell.line_readed, "exit", 5))
 	{
-		signal(SIGINT, &handler);
-		signal(SIGQUIT, &handler);
 		good = true;
 		readline_manager(&shell);
 		if (!shell.line_readed)
@@ -68,12 +68,12 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-				t_tok	*tst = shell.user_command->start;
+		/*		t_tok	*tst = shell.user_command->start;
 				while (tst)
 				{
 					printf("command = %s\n", tst->var);
 					tst = tst->next;
-				}
+				}*/
 				while (cmd_has_wildcard(&shell))
 				{
 					parse_wildcard(&shell, envp);
