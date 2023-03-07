@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/07 16:34:14 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/07 17:10:17 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av, char **envp)
 	printf(YEL "Open Minishell\n" WHT);
 	signal(SIGINT, &handler);
 	signal(SIGQUIT, &handler);
-	while (ft_strncmp(shell.line_readed, "exit", 5))
+	while (1)
 	{
 		good = true;
 		readline_manager(&shell);

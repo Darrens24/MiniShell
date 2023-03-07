@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:13:53 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/07 16:35:47 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/07 17:09:41 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,18 @@ void	handler(int num)
 	struct termios	new;
 
 	tcgetattr(STDIN_FILENO, &saved);
-	new = saved;
-	new.c_lflag &= ~(ECHO);
+	tcgetattr(STDIN_FILENO, &new);
+	new.c_lflag &= ~(ICANON | IEXTEN);
 	tcsetattr(STDIN_FILENO, TCSANOW, &new);
 	if (num == SIGINT)
 	{
-		ft_putchar_fd('\n', 0);
-		rl_on_new_line();
+		ft_putchar_fd('\n', 1);
 		rl_replace_line("", 0);
+		rl_on_new_line();
 		rl_redisplay();
 		g_err = 130;
-		tcsetattr(STDIN_FILENO, TCSANOW, &saved);
 	}
-	if (num == SIGQUIT)
+	else if (num == SIGQUIT)
 		return ;
+	tcsetattr(STDIN_FILENO, TCSADRAIN, &saved);
 }
