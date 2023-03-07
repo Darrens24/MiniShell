@@ -23,6 +23,7 @@
 # include <sys/wait.h>
 # include <sys/ioctl.h>
 # include <errno.h>
+# include <signal.h>
 # include <dirent.h>
 # include <termios.h>
 # include <string.h>

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/07 17:10:17 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/07 17:39:40 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	readline_manager(t_shell *shell)
 {
 	free(shell->line_readed);
+	signal(SIGINT, &handler);
+	signal(SIGQUIT, &handler);
 	shell->line_readed = readline("Minishell >> ");
 	if (!shell->line_readed)
 		return (EXIT_FAILURE);
@@ -46,8 +48,6 @@ int	main(int ac, char **av, char **envp)
 		return (printf("Minishell is pure, no arguments please\n"));
 	allocate_shell(&shell, envp);
 	printf(YEL "Open Minishell\n" WHT);
-	signal(SIGINT, &handler);
-	signal(SIGQUIT, &handler);
 	while (1)
 	{
 		good = true;
