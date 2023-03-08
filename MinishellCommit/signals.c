@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:13:53 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/07 17:39:17 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/08 13:26:22 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	handler(int num)
 		rl_redisplay();
 		g_err = 130;
 	}
-	else if (num == SIGQUIT)
+	//tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved);
+	if (num == SIGQUIT)
 		return ;
-//	tcsetattr(STDIN_FILENO, TCSANOW, &saved);
 }
