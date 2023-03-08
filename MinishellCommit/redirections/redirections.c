@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/07 13:01:21 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/08 14:38:27 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,33 +92,44 @@ char	*replace_by_env(t_shell *shell, char *buffer)
 
 int	heredoc_redirection(t_shell *shell, t_tok *temp)
 {
+	pid_t	here;
 	//struct termios	saved;
 
 //	tcgetattr(STDIN_FILENO, &saved);
-//	signal(SIGINT, &heredochandler);
 	shell->limiter_doc = ft_strdup(temp->next->var);
 	if (pipe(shell->doc_fd) < 0)
 		return (printf("DocPipe failed\n"));
 	delete_operator_and_infile(shell);
-	while (1)
+	here = fork();
+	if (here == 0)
 	{
-		shell->buffer_doc = readline("here_doc >> ");
-		if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc,
-				shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
+		signal(SIGINT, SIG_DFL);
+		while (1)
 		{
-			if (!shell->buffer_doc)
-				ft_putchar_fd('\n', STDOUT_FILENO);
-			break ;
+			shell->buffer_doc = readline("here_doc >> ");
+			if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc,
+					shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
+			{
+				if (!shell->buffer_doc)
+					ft_putchar_fd('\n', STDOUT_FILENO);
+				exit(1);
+			}
+			shell->buffer_doc = replace_by_env(shell, shell->buffer_doc);	
+			ft_putstr_fd(shell->buffer_doc, shell->doc_fd[1]);
+			ft_putchar_fd('\n', shell->doc_fd[1]);
+			free(shell->buffer_doc);
 		}
-		shell->buffer_doc = replace_by_env(shell, shell->buffer_doc);	
-		ft_putstr_fd(shell->buffer_doc, shell->doc_fd[1]);
-		ft_putchar_fd('\n', shell->doc_fd[1]);
-		free(shell->buffer_doc);
 	}
-	free(shell->buffer_doc);
+	waitpid(here, 0, 0);
+	//rl_replace_line("", 0);
+	//ft_putchar_fd('\n', 1);
+	//rl_on_new_line();
+	//rl_redisplay();
+	//free(shell->buffer_doc);
 	free(shell->limiter_doc);
 	if (!is_infile_redirection(shell->user_command))
 		heredoc_dup(shell);
+	//signal(SIGINT, &handler);
 	return (EXIT_SUCCESS);
 }
 

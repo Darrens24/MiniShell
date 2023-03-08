@@ -147,6 +147,7 @@ t_node				*go_to_end(t_chained *list);
 /***\	SIGNALS UTILS   \***/
 
 void		handler(int num);
+void		heredoc_handler(int num);
 
 /***\      TOKEN MANAG     \***/
 

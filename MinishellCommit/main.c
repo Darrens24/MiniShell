@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/08 13:55:27 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/08 14:35:01 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int	main(int ac, char **av, char **envp)
 	int	good;
 	t_shell	shell;
 
+	signal(SIGINT, &handler);
+	signal(SIGQUIT, &handler);
 	if (ac != 1)
 		return (printf("Minishell is pure, no arguments please\n"));
 	allocate_shell(&shell, envp);
-	signal(SIGINT, &handler);
-	signal(SIGQUIT, &handler);
 	printf(YEL "Open Minishell\n" WHT);
 	while (1)
 	{

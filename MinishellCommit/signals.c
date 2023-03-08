@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:13:53 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/08 13:26:22 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/08 14:33:20 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,41 @@ void	handler(int num)
 		ft_putchar_fd('\n', 1);
 		rl_on_new_line();
 		rl_redisplay();
-		g_err = 130;
+		g_err = 1;
 	}
-	//tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved);
+	if (num == SIGQUIT)
+		return ;
+}
+
+void	heredoc_handler(int num)
+{
+/*	struct termios term;
+
+	tcgetattr(STDIN_FILENO, &new);
+	term.c_iflag |= IGNBRK;
+	term.c_iflag &= ~(INLCR | ICRNL | IXON | IXOFF);
+	term.c_lflag &= ~(ICANON | ECHO | ECHOK | ECHOE | ECHONL | ISIG | IEXTEN);
+	term.c_cc[VMIN] = 1;
+	term.c_cc[VTIME] = 0;
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);*/
+	struct sigaction sa;
+    sa.sa_handler = heredoc_handler;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGINT, &sa, NULL);
+    sigaction(SIGQUIT, &sa, NULL);
+
+	struct termios	saved;
+	struct termios	new;
+	tcgetattr(STDIN_FILENO, &saved);
+	new = saved;
+	new.c_lflag &= ~(ECHOCTL);
+	tcsetattr(STDIN_FILENO, TCSANOW, &new);
+	if (num == SIGINT)
+	{
+		g_err = 130;
+		exit(1);
+	}
 	if (num == SIGQUIT)
 		return ;
 }
