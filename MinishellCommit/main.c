@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/09 17:46:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:20:03 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ int	main(int ac, char **av, char **envp)
 	}
 	clean_memory(&shell);
 	printf(YEL "Exit Minishell\n" WHT);
-	//system("leaks minishell");
+	system("leaks minishell");
 	return (0);
 }

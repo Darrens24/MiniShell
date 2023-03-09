@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/08 15:26:30 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/09 19:00:27 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int	allocate_shell(t_shell *shell, char **envp)
 
 int	initialize_variables(t_shell *shell)
 {
+	shell->current_dir_path = NULL;
+	shell->previous_dir_path = NULL;
 	shell->all_path = NULL;
 	shell->array_env = NULL;
 	shell->user_command->nb_elem = 0;
 	shell->multi_cmd = NULL;
 	shell->out = false;
-	shell->current_dir_path = getcwd(NULL, 0);
-	shell->previous_dir_path = getcwd(NULL, 0);
 	shell->wild_before = NULL;
 	shell->wild_after = NULL;
 	shell->ls_cmd[0] = ft_strdup("ls");

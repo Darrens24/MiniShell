@@ -6,7 +6,7 @@
 /*   By: pfaria-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/06 14:37:22 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/09 19:06:17 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	update_oldpwd(t_shell *shell, t_chained *list)
 	t_node	*temp;
 	int		index;
 
-	oldpwd = NULL;
 	oldpwd = ft_strjoin("OLDPWD=", shell->previous_dir_path);
 	temp = list->start;
 	index = 0;
@@ -45,11 +44,16 @@ int	change_directory(t_shell *shell, const char *path)
 	if (chdir(path) < 0)
 	{
 		g_err = 1;
+	//	free(shell->previous_dir_path);
 		return (perror("chdir"), EXIT_FAILURE);
 	}
-	shell->current_dir_path = getcwd(NULL, 0);
-	update_oldpwd(shell, shell->env_l);
-	update_oldpwd(shell, shell->sorted_env_l);
+//	shell->current_dir_path = getcwd(NULL, 0);
+	if (shell->previous_dir_path)
+	{
+		update_oldpwd(shell, shell->env_l);
+		update_oldpwd(shell, shell->sorted_env_l);
+		free(shell->previous_dir_path);
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -57,8 +61,12 @@ int	go_to_home_directory(t_shell *shell)
 {
 	shell->previous_dir_path = getcwd(NULL, 0);
 	if (change_directory(shell, shell->home) != 0)
+	{
+		free(shell->previous_dir_path);
 		return (EXIT_FAILURE);
-	shell->current_dir_path = getcwd(NULL, 0);
+	}
+	free(shell->previous_dir_path);
+//	shell->current_dir_path = getcwd(NULL, 0);
 	return (EXIT_SUCCESS);
 }
 
