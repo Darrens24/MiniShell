@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/08 14:38:27 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/08 19:58:28 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ char	*replace_by_env(t_shell *shell, char *buffer)
 
 int	heredoc_redirection(t_shell *shell, t_tok *temp)
 {
-	pid_t	here;
+	int	waitpid_return = 0;
+	int	error_code = 0;
 	//struct termios	saved;
 
 //	tcgetattr(STDIN_FILENO, &saved);
@@ -100,19 +101,25 @@ int	heredoc_redirection(t_shell *shell, t_tok *temp)
 	if (pipe(shell->doc_fd) < 0)
 		return (printf("DocPipe failed\n"));
 	delete_operator_and_infile(shell);
-	here = fork();
-	if (here == 0)
+	shell->here = fork();
+	signal(SIGINT, &do_nothing);
+	signal(SIGQUIT, &do_nothing);
+	if (shell->here == 0)
 	{
-		signal(SIGINT, SIG_DFL);
+		signal(SIGINT, &heredoc_handler);
+	//	signal(SIGINT, SIG_DFL);
 		while (1)
 		{
+			remove_ctrlc(1);
 			shell->buffer_doc = readline("here_doc >> ");
+			remove_ctrlc(0);
 			if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc,
 					shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
 			{
-				if (!shell->buffer_doc)
-					ft_putchar_fd('\n', STDOUT_FILENO);
-				exit(1);
+				//if (!shell->buffer_doc)
+				//	ft_putchar_fd('\n', STDOUT_FILENO);
+				rl_redisplay();
+				exit(0);
 			}
 			shell->buffer_doc = replace_by_env(shell, shell->buffer_doc);	
 			ft_putstr_fd(shell->buffer_doc, shell->doc_fd[1]);
@@ -120,16 +127,14 @@ int	heredoc_redirection(t_shell *shell, t_tok *temp)
 			free(shell->buffer_doc);
 		}
 	}
-	waitpid(here, 0, 0);
-	//rl_replace_line("", 0);
-	//ft_putchar_fd('\n', 1);
-	//rl_on_new_line();
-	//rl_redisplay();
-	//free(shell->buffer_doc);
+	waitpid_return = waitpid(shell->here, &error_code, 0);
+	if (waitpid_return > 0) 
+		error_func(error_code);
 	free(shell->limiter_doc);
+	if (g_err == 1)
+		return (EXIT_FAILURE);
 	if (!is_infile_redirection(shell->user_command))
 		heredoc_dup(shell);
-	//signal(SIGINT, &handler);
 	return (EXIT_SUCCESS);
 }
 
