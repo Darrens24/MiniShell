@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/25 11:36:49 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:52:05 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,52 +32,55 @@ int	builtin_manager(t_shell *shell, int index)
 	return (EXIT_SUCCESS);
 }
 
-int	slash_manager(t_shell *shell, int index)
+int	slash_manager(t_cmd *cmd)
 {
 	int			access_return;
 	struct stat	buff;
 
 	access_return = 0;
-	if (shell->multi_cmd[0][0][0] == '/')
+	if (cmd->var[0][0] == '/')
 	{
-		access_return = access(shell->multi_cmd[index][0], X_OK);
+		access_return = access(cmd->var[0], X_OK);
 		if (access_return < 0)
 		{
 			g_err = 126;
-			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
+			printf("%s : Permission denied\n", cmd->var[0]);
 			return (EXIT_FAILURE);
 		}
-		stat(shell->multi_cmd[index][0], &buff);
+		stat(cmd->var[0], &buff);
 		if (S_ISDIR(buff.st_mode))
 		{
 			g_err = 126;
-			printf("%s : Is a directory\n", shell->multi_cmd[index][0]);
+			printf("%s : Is a directory\n", cmd->var[0]);
 			return (EXIT_FAILURE);
 		}
 	}
 	return (EXIT_SUCCESS);
 }
 
-int	redirect_and_execute_cmd(t_shell *shell, int index)
+static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, int i)
 {
-	char	*temp;
-
-	temp = NULL;
-	if (!is_builtin_command(shell, index))
+	if (!is_builtin_command(cmd))
 	{
-		if (slash_manager(shell, index) != 0)
+		if (slash_manager(cmd) != 0)
 			return (EXIT_FAILURE);
-		if (access(shell->multi_cmd[index][0], F_OK) == 0)
-			temp = ft_strdup(shell->multi_cmd[index][0]);
+		if (access(cmd->var[0], F_OK) == 0)
+			temp = ft_strdup(cmd->var[0]);
 		else
-			temp = find_path(index, shell);
+			temp = find_path(cmd, shell);
 		if (!temp)
 			return (EXIT_FAILURE);
-		shell->pid[index] = fork();
-		if (shell->pid[index] == 0)
+		shell->pid[i] = fork();
+		signal(SIGINT, &do_nothing);
+		signal(SIGQUIT, &do_nothing);
+		if (shell->pid[i] == 0)
 		{
+			if ((cmd->next && cmd->next->exec != 0) || !cmd->next)
+				index = get_number_of_pipes(shell);
+			fprintf(stderr, "index = %d\n", index);
+			fprintf(stderr, "exec = %d\n", cmd->exec);
 			redirection_parsing(shell, index);
-			execve(temp, shell->multi_cmd[index], shell->array_env);
+			execve(temp, cmd->var, shell->array_env);
 		}
 		free(temp);
 	}
@@ -85,6 +88,28 @@ int	redirect_and_execute_cmd(t_shell *shell, int index)
 		builtin_manager(shell, index);
 	if (index > 0)
 		close_fds(shell->fd[index - 1]);
+	return (EXIT_SUCCESS);
+}
+
+int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i)
+{
+	char	*temp;
+
+	temp = NULL;
+	if (cmd->exec == 1)
+	{
+		if (g_err != 0)
+			execute_commands(cmd, index, shell, temp, i);
+			//error_return = waitpid(shell->pid[index], &stock, 0);
+			
+	}
+	else if (cmd->exec == 2)
+	{
+		if (g_err == 0)
+			execute_commands(cmd, index, shell, temp, i);
+	}
+	else
+		execute_commands(cmd, index, shell, temp, i);
 	return (EXIT_SUCCESS);
 }
 
@@ -99,26 +124,67 @@ int	final_redirection(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
+t_cmdlst	*createcmdlst(t_shell *shell, int i)
+{
+	t_tok		*t;
+	t_cmdlst	*cmdlst;
+
+	t = shell->user_command->start;
+	cmdlst = malloc(sizeof(t_cmdlst));
+	while (shell->multi_cmd[++i])
+	{
+		if (i != 0 && shell->multi_cmd[i])
+		{
+			while (t && !((ft_strncmp(t->var, "|", 2) != 0 && t->quote == 0)
+					|| (ft_strncmp(t->var, "||", 3) != 0 && t->quote == 0)
+					|| (ft_strncmp(t->var, "&&", 3) != 0 && t->quote == 0)))
+				t = t->next;
+			if (t && ft_strncmp(t->var, "||", 3) == 0 && t->quote == 0)
+				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 1);
+			else if (t && ft_strncmp(t->var, "&&", 3) == 0 && t->quote == 0)
+				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 2);
+			else
+				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0);
+			t = t->next;
+		}
+		else
+			cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0);
+	}
+	return (cmdlst);
+}
+
 int	pipe_command(t_shell *shell)
 {
-	int	i;
+	int			i;
+	t_cmdlst	*cmdlst;
+	t_cmd		*cmd;
+	int			index;
 
+	i = -1;
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
-	i = -1;
-	while (shell->user_command->nb_elem != 0
-		&& ++i < get_number_of_commands(shell))
+	cmdlst = createcmdlst(shell, i);
+	cmd = cmdlst->start;
+	i = 0;
+	index = 0;
+	while (shell->user_command->nb_elem != 0 && cmd)
 	{
-		if (i < get_number_of_commands(shell) - 1)
+		if (cmd->next && cmd->next->exec == 0)
+		{
 			if (pipe(shell->fd[i]) < 0)
 				return (printf("Pipe failed\n"));
-	//	if (redirect_and_execute_cmd(shell, i) != 0)
-	//		return (EXIT_FAILURE);
-		redirect_and_execute_cmd(shell, i);
+			if (cmd->exec != 0)
+				i = 0;
+		}
+		redirect_and_execute_cmd(cmd, i, shell, index);
+		cmd = cmd->next;
+		index++;
+		if (cmd && cmd->exec == 0)
+			i++;
 	}
 	wait_pids(shell->pid);
 	final_redirection(shell);
-	clean_between_cmds(shell);
+	//clean_between_cmds(shell);
 	return (EXIT_SUCCESS);
 }

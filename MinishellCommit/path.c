@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:40:44 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/23 11:27:05 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/08 17:59:36 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	g_err = 0;
 
-char	*find_path(int index, t_shell *shell)
+char	*find_path(t_cmd *cmd, t_shell *shell)
 {
 	char	*temp;
 	char	*all_path;
@@ -23,12 +23,12 @@ char	*find_path(int index, t_shell *shell)
 	if (!all_path)
 	{
 		return (printf("%s : Command not found\n",
-				shell->multi_cmd[index][0]), NULL);
+				cmd->var[0]), NULL);
 	}
 	shell->all_path = ft_split_slash(all_path, ':');
 	if (!shell->all_path[0])
 		return (NULL);
-	temp = get_correct_path(shell, index);
+	temp = get_correct_path(shell, cmd);
 	free_array(shell->all_path);
 	if (!temp)
 		return (NULL);
@@ -49,7 +49,7 @@ char	*get_path(char **array_env)
 	return (NULL);
 }
 
-char	*get_correct_path(t_shell *shell, int index)
+char	*get_correct_path(t_shell *shell, t_cmd *cmd)
 {
 	int	i;
 	shell->correct_path = NULL;
@@ -58,7 +58,7 @@ char	*get_correct_path(t_shell *shell, int index)
 	while (shell->all_path[++i])
 	{
 		shell->correct_path = ft_strjoin(shell->all_path[i],
-				shell->multi_cmd[index][0]);
+				cmd->var[0]);
 		if (access(shell->correct_path, F_OK) == 0)
 			return (shell->correct_path);
 		free(shell->correct_path);
@@ -66,6 +66,6 @@ char	*get_correct_path(t_shell *shell, int index)
 	//else*/
 	g_err = 127;
 //	printf("err = %d\n", g_err);
-	printf("%s : Command not found\n", shell->multi_cmd[index][0]);
+	printf("%s : Command not found\n", cmd->var[0]);
 	return (NULL);
 }

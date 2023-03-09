@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:36:36 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 19:53:44 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/09 18:07:23 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	redirection_parsing(t_shell *shell, int index)
 {
-	if (index < (get_number_of_commands(shell) - 1))
+	if (index < (get_number_of_pipes(shell)))
 		early_out_redirection(shell->fd[index]);
 	if (index != 0)
 		inside_redirection(shell->fd[index - 1]);
-	if (shell->out == true && index == get_number_of_commands(shell) - 1)
+	if (shell->out == true && index == get_number_of_pipes(shell))
 		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
+
+// Probleme de redirection en cas de combinaison de plusieurs pipes. Il faut modifier la fonction ci-dessus.
 
 int	infile_redirection_parsing(t_shell *shell)
 {

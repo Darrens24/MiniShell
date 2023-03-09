@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/25 11:05:45 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/08 15:26:30 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ int	get_number_of_commands(t_shell *shell)
 	while (temp)
 	{
 		if (ft_strncmp(temp->var, "|", 2) == 0 && temp->quote == 0)
+			nb_of_cmd++;
+		if (ft_strncmp(temp->var, "||", 3) == 0 && temp->quote == 0)
+			nb_of_cmd++;
+		if (ft_strncmp(temp->var, "&&", 3) == 0 && temp->quote == 0)
 			nb_of_cmd++;
 		temp = temp->next;
 	}

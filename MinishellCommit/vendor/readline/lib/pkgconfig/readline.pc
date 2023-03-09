@@ -1,4 +1,4 @@
-prefix=/Users/eleleux/Minishell/MinishellCommit/vendor/readline
+prefix=/Users/pfaria-d/Documents/42/common-core/Minishell/MinishellCommit/vendor/readline
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

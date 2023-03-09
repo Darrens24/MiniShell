@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/08 14:35:01 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:46:53 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 int	readline_manager(t_shell *shell)
 {
 	free(shell->line_readed);
+	signal(SIGINT, &handler);
+	signal(SIGQUIT, &handler);
+	remove_ctrlc(1);
 	shell->line_readed = readline("Minishell >> ");
+	remove_ctrlc(0);
 	if (!shell->line_readed)
 		return (EXIT_FAILURE);
 	if (shell->line_readed && *shell->line_readed)
@@ -23,15 +27,15 @@ int	readline_manager(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	is_builtin_command(t_shell *shell, int i)
+int	is_builtin_command(t_cmd *cmd)
 {
-	if (ft_strncmp(shell->multi_cmd[i][0], "pwd", 4) == 0
-		|| ft_strncmp(shell->multi_cmd[i][0], "cd", 3) == 0
-		|| ft_strncmp(shell->multi_cmd[i][0], "export", 7) == 0
-		|| ft_strncmp(shell->multi_cmd[i][0], "env", 4) == 0
-		|| ft_strncmp(shell->multi_cmd[i][0], "unset", 6) == 0
-		|| ft_strncmp(shell->multi_cmd[i][0], "exit", 5) == 0
-		|| ft_strncmp(shell->multi_cmd[i][0], "echo", 5) == 0)
+	if (ft_strncmp(cmd->var[0], "pwd", 4) == 0
+		|| ft_strncmp(cmd->var[0], "cd", 3) == 0
+		|| ft_strncmp(cmd->var[0], "export", 7) == 0
+		|| ft_strncmp(cmd->var[0], "env", 4) == 0
+		|| ft_strncmp(cmd->var[0], "unset", 6) == 0
+		|| ft_strncmp(cmd->var[0], "exit", 5) == 0
+		|| ft_strncmp(cmd->var[0], "echo", 5) == 0)
 			return (true);
 	return (false);
 }
@@ -42,8 +46,6 @@ int	main(int ac, char **av, char **envp)
 	int	good;
 	t_shell	shell;
 
-	signal(SIGINT, &handler);
-	signal(SIGQUIT, &handler);
 	if (ac != 1)
 		return (printf("Minishell is pure, no arguments please\n"));
 	allocate_shell(&shell, envp);

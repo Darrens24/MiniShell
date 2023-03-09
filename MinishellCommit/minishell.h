@@ -49,7 +49,7 @@ int			clean_between_cmds(t_shell *shell);
 
 /***\	BUILTINS	\***/
 
-int			is_builtin_command(t_shell *shell, int i);
+int			is_builtin_command(t_cmd *cmd);
 int			builtin_manager(t_shell *shell, int index);
 int			exit_shell(t_shell *shell);
 
@@ -81,20 +81,21 @@ int			command_manager(t_shell *shell, char **envp);
 int			execute_command(t_shell *shell, char **envp);
 char		**get_array_command(t_shell *shell);
 int			get_number_of_commands(t_shell *shell);
+int			get_number_of_pipes(t_shell *shell);
 char		**get_command_in_tok(t_shell *shell, int index);
 
 //************* Path
 
-char				*find_path(int index, t_shell *shell);
+char				*find_path(t_cmd *cmd, t_shell *shell);
 char				*get_path(char **array_env);
-char				*get_correct_path(t_shell *shell, int index);
+char				*get_correct_path(t_shell *shell, t_cmd *cmd);
 
 //************* Pipe
 
-int					slash_manager(t_shell *shell, int index);
+int					slash_manager(t_cmd *cmd);
 int					get_array_cmd_and_pipe_fds(t_shell *shell);
 int					pipe_command(t_shell *shell);
-int					redirect_and_execute_cmd(t_shell *shell, int index);
+int					redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i);
 
 //************************** Pipe Utils
 
@@ -148,6 +149,10 @@ t_node				*go_to_end(t_chained *list);
 
 void		handler(int num);
 void		heredoc_handler(int num);
+void		remove_ctrlc(int mode);
+void		do_nothing(int num);
+int			reset_echo(void);
+int			error_func(int error_code);
 
 /***\      TOKEN MANAG     \***/
 
@@ -200,6 +205,10 @@ char		*get_wild_middle(char *str, int index);
 int			get_wildcard_files(t_shell *shell);
 int			compare_after_wildcard(char *buffer, t_shell *shell);
 int			compare_middle_wildcard(char *buffer, t_shell *shell);;
+
+/***		COMMANDS		\***/
+
+t_cmdlst	*newp_back_cmd(t_cmdlst *cmd, char **command, int exec);
 
 //************************** Wildcards Data
 

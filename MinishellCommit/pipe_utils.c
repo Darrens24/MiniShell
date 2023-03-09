@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/27 11:01:12 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:43:30 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_tok	*go_to_next_pipe(t_shell *shell, t_tok *tok, int index) // A Remplacer par
 	i = 0;
 	while (tok && i < index)
 	{
-		while (tok && ft_strncmp(tok->var, "|", 2) != 0)
+		while (tok && (ft_strncmp(tok->var, "|", 2) != 0 && ft_strncmp(tok->var, "||", 3) != 0 && ft_strncmp(tok->var, "&&", 3) != 0))
 			tok = tok->next;
 		if (tok->next)
 			tok = tok->next;
@@ -56,7 +56,10 @@ int	error_func(int error_code)
 	//printf("wifsignaled = %d\n", WIFSIGNALED(error_code));
 	//printf("wtermsig = %d\n", WTERMSIG(error_code));
 	if (WTERMSIG(error_code) == 2)
+	{
+		ft_putchar_fd('\n', 1);
 		g_err = 130;
+	}
 	else if (WTERMSIG(error_code) == 3)
 		g_err = 131;
 	else if (WTERMSIG(error_code) == 11)

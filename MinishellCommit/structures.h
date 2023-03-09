@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/27 10:27:54 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:43:59 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_shell
 	char				**wild_middle;
 	char				*wild_after;
 	int					increment;
+	pid_t				here;
 }				t_shell;
 
 typedef struct s_node
@@ -85,5 +86,20 @@ typedef struct s_increment
 	char				*new_sh_level;
 	int					i;
 }				t_increment;
+
+typedef struct s_cmd
+{
+	struct s_cmd		*prev;
+	char				**var;
+	int					exec;
+	struct s_cmd		*next;
+}				t_cmd;
+
+typedef struct s_cmdlst
+{
+	struct s_cmd		*start;
+	int					nb_elem;
+	struct s_cmd		*end;
+}				t_cmdlst;
 
 #endif
