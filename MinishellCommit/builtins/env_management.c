@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/27 11:30:48 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/10 09:57:06 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	unset_variable(t_shell *shell)
 		if (envchecker(temp3, shell->env_l))
 			remove_current_node(temp2, shell->env_l);
 	}
+	free(temp3);
 	return (EXIT_SUCCESS);
 }
 
@@ -112,7 +113,10 @@ int	export_variable(t_shell *shell)
 	if (ft_strchr(shell->user_command->start->next->var, '=') != 0)
 		new_back_node(shell->env_l,
 			shell->user_command->start->next->var);
+	remove_current_tok(shell->user_command->start->next, shell->user_command);
 	free(temp);
+	if (shell->user_command->start->next)
+		export_variable(shell);
 	return (EXIT_SUCCESS);
 }
 
