@@ -6,11 +6,13 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:36:36 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/09 18:07:23 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:18:13 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+//maybe a modifier
 
 int	redirection_parsing(t_shell *shell, int index)
 {
@@ -22,8 +24,6 @@ int	redirection_parsing(t_shell *shell, int index)
 		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
-
-// Probleme de redirection en cas de combinaison de plusieurs pipes. Il faut modifier la fonction ci-dessus.
 
 int	infile_redirection_parsing(t_shell *shell)
 {

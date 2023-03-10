@@ -6,11 +6,30 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/08 16:19:45 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:00:23 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_tok	*go_to_next_operator(t_shell *shell, t_tok *tok, int index)
+{
+	int	i;
+
+	tok = shell->user_command->start;
+	i = 0;
+	while (tok && i < index)
+	{
+		while (tok && (ft_strncmp(tok->var, "|", 2) != 0
+				&& ft_strncmp(tok->var, "||", 3) != 0
+				&& ft_strncmp(tok->var, "&&", 3) != 0))
+			tok = tok->next;
+		if (tok->next)
+			tok = tok->next;
+		i++;
+	}
+	return (tok);
+}
 
 char	*get_home(char **array_env)
 {
@@ -34,7 +53,7 @@ char	**get_command_in_tok(t_shell *shell, int index)
 	int		i;
 
 	temp = NULL;
-	temp = go_to_next_pipe(shell, temp, index);
+	temp = go_to_next_operator(shell, temp, index);
 	nb_of_args = 0;
 	while (temp && temp->quote == 1)
 	{
@@ -44,7 +63,7 @@ char	**get_command_in_tok(t_shell *shell, int index)
 	command = malloc(sizeof(char *) * (nb_of_args + 1));
 	if (!command)
 		return (NULL);
-	temp = go_to_next_pipe(shell, temp, index);
+	temp = go_to_next_operator(shell, temp, index);
 	i = 0;
 	while (temp && i < nb_of_args)
 	{

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:42:18 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 10:39:34 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/10 14:08:53 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ t_node	*remove_current_node(t_node *node, t_chained *lst)
 	return (node);
 }
 
+int	new_back_norm(t_node *elem, t_chained *lst, char *variable)
+{
+	free(elem->variable);
+	free(elem);
+	new_back_node(lst, variable);
+	return (EXIT_SUCCESS);
+}
+
 t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 {
 	t_node	*elem;
@@ -49,11 +57,7 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 	while (temp && --index)
 		temp = temp->next;
 	if (!temp->next)
-	{
-		free(elem->variable);
-		free(elem);
-		new_back_node(lst, variable);
-	}
+		new_back_norm(elem, lst, variable);
 	else
 	{
 		temp->next->prev = elem;

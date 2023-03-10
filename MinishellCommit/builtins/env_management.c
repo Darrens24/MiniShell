@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 11:03:30 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/10 13:27:40 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,74 +55,12 @@ int	print_echo(char **command)
 	return (EXIT_SUCCESS);
 }
 
-int	unset_variable(t_shell *shell)
+int	export_manager(t_shell *shell, int i)
 {
-	t_node	*temp;
-	t_node	*temp2;
-	char	*temp3;
-	t_tok	*search;
-
-	search = shell->user_command->start->next;
-	while (search)
-	{
-		temp3 = ft_strndup(search->var,
-					0, ft_strlenequal(search->var));
-		temp = shell->sorted_env_l->end;
-		temp2 = shell->env_l->end;
-		while (temp && ft_strncmp(temp->variable,
-				search->var,
-				ft_strlenequal(temp->variable)))
-			temp = temp->prev;
-		while (temp2 && ft_strncmp(temp2->variable,
-				search->var,
-				ft_strlenequal(temp2->variable)))
-			temp2 = temp2->prev;
-		if (shell->sorted_env_l->nb_elem == 1)
-		{
-			remove_back_node(shell->sorted_env_l);
-			if (envchecker(temp3, shell->env_l))
-				remove_back_node(shell->env_l);
-		}
-		else if (temp)
-		{
-			if (envchecker(temp3, shell->sorted_env_l))
-				remove_current_node(temp, shell->sorted_env_l);
-			if (envchecker(temp3, shell->env_l))
-				remove_current_node(temp2, shell->env_l);
-		}
-		search = search->next;
-		free(temp3);
-	}
-	return (EXIT_SUCCESS);
-}
-
-int	export_variable(t_shell *shell)
-{
-	int		index;
-	char	*temp;
-
-	temp = ft_strndup(shell->user_command->start->next->var,
-				0, ft_strlenequal(shell->user_command->start->next->var));
-	index = 0;
-	if (!envchecker(temp, shell->sorted_env_l))
-	{
-		new_back_node(shell->sorted_env_l,
-			shell->user_command->start->next->var);
-	}
-	else if (ft_strchr(shell->user_command->start->next->var, '=') != 0)
-	{
-		index = envindex(temp, shell->sorted_env_l);
-		unset_variable(shell);
-		new_current_node(shell->sorted_env_l, index,
-			shell->user_command->start->next->var);
-	}
-	if (ft_strchr(shell->user_command->start->next->var, '=') != 0)
-		new_back_node(shell->env_l,
-			shell->user_command->start->next->var);
-	remove_current_tok(shell->user_command->start->next, shell->user_command);
-	free(temp);
-	if (shell->user_command->start->next)
-		export_variable(shell);
+	if (!shell->multi_cmd[i][1])
+		print_export(shell);
+	else
+		return (export_variable(shell));
 	return (EXIT_SUCCESS);
 }
 
@@ -138,12 +76,7 @@ int	execute_builtin_cmd(t_shell *shell, int i)
 		print_list(shell->env_l);
 	}
 	else if (ft_strncmp(shell->multi_cmd[i][0], "export", 7) == 0)
-	{
-		if (!shell->multi_cmd[i][1])
-			print_export(shell);
-		else
-			return (export_variable(shell));
-	}
+		export_manager(shell, i);
 	else if (ft_strncmp(shell->multi_cmd[i][0], "unset", 6) == 0)
 	{
 		if (argument_after_cmd(shell) == false)

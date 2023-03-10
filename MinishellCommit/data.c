@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 10:19:49 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/10 12:53:26 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,12 @@ int	increment_sh_level(t_shell *shell)
 	}
 	if (incr->temp)
 	{
-		incr->sh_level = ft_strndup(incr->temp->variable, 6, ft_strlen(incr->temp->variable));
+		incr->sh_level = ft_strndup(incr->temp->variable, 6,
+				ft_strlen(incr->temp->variable));
 		incr->sh = ft_atoi(incr->sh_level) + 1;
 		incr->itoa_sh = ft_itoa(incr->sh);
 		remove_current_node(incr->temp, shell->env_l);
-		incr->new_sh_level = ft_strjoin("SHLVL=", incr->itoa_sh); 
+		incr->new_sh_level = ft_strjoin("SHLVL=", incr->itoa_sh);
 		new_current_node(shell->env_l, incr->i, incr->new_sh_level);
 	}
 	free_increment(incr);

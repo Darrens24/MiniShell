@@ -73,6 +73,13 @@ int					fill_basic_env(t_shell *shell);
 int					envchecker(char *line, t_chained *env);
 int					envindex(char *line, t_chained *env);
 
+//************* Export / Unset
+
+int					clean_export_list(t_shell *shell, char *temp3, t_node *temp, t_node *temp2);
+int					export_manager(t_shell *shell, int i);
+int					unset_variable(t_shell *shell);
+int					export_variable(t_shell *shell);
+
 //************* Echo
 
 int					print_echo(char **command);
@@ -103,7 +110,7 @@ int					redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i);
 
 int							close_fds(int *fd);
 int							wait_pids(int *pid);
-t_tok						*go_to_next_pipe(t_shell *shell, t_tok *tok, int index);
+t_tok						*go_to_next_operator(t_shell *shell, t_tok *tok, int index);
 int							early_out_redirection(int *fd);
 int							inside_redirection(int *fd);
 void						free_pids_fds(t_shell *shell);

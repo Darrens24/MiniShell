@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:40:44 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/08 17:59:36 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:54:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ char	*get_path(char **array_env)
 char	*get_correct_path(t_shell *shell, t_cmd *cmd)
 {
 	int	i;
-	shell->correct_path = NULL;
 
+	shell->correct_path = NULL;
 	i = -1;
 	while (shell->all_path[++i])
 	{
@@ -63,9 +63,7 @@ char	*get_correct_path(t_shell *shell, t_cmd *cmd)
 			return (shell->correct_path);
 		free(shell->correct_path);
 	}
-	//else*/
 	g_err = 127;
-//	printf("err = %d\n", g_err);
 	printf("%s : Command not found\n", cmd->var[0]);
 	return (NULL);
 }

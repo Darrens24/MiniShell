@@ -6,63 +6,11 @@
 /*   By: pfaria-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/10 10:24:57 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/10 13:03:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	update_pwd(t_shell *shell, t_chained *list)
-{
-	char	*pwd;
-	t_node	*temp;
-	int		index;
-
-	pwd = ft_strjoin("PWD=", shell->current_dir_path);
-	temp = list->start;
-	index = 0;
-	while (temp)
-	{
-		if (ft_strncmp("PWD=", temp->variable, 4) == 0)
-		{
-			remove_current_node(temp, list);
-			new_current_node(list, index, pwd);
-			free(pwd);
-			return (EXIT_SUCCESS);
-		}
-		index++;
-		temp = temp->next;
-	}
-	new_back_node(list, pwd);
-	free(pwd);
-	return (EXIT_SUCCESS);
-}
-
-int	update_oldpwd(t_shell *shell, t_chained *list)
-{
-	char	*oldpwd;
-	t_node	*temp;
-	int		index;
-
-	oldpwd = ft_strjoin("OLDPWD=", shell->previous_dir_path);
-	temp = list->start;
-	index = 0;
-	while (temp)
-	{
-		if (ft_strncmp("OLDPWD=", temp->variable, 7) == 0)
-		{
-			remove_current_node(temp, list);
-			new_current_node(list, index, oldpwd);
-			free(oldpwd);
-			return (EXIT_SUCCESS);
-		}
-		index++;
-		temp = temp->next;
-	}
-	new_back_node(list, oldpwd);
-	free(oldpwd);
-	return (EXIT_SUCCESS);
-}
 
 int	change_directory(t_shell *shell, const char *path)
 {
@@ -97,7 +45,6 @@ int	go_to_home_directory(t_shell *shell)
 		return (EXIT_FAILURE);
 	}
 	free(shell->previous_dir_path);
-//	shell->current_dir_path = getcwd(NULL, 0);
 	return (EXIT_SUCCESS);
 }
 

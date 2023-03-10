@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/03/08 16:06:46 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/03/10 14:38:32 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,10 @@ SRC = main.c \
 		lists/list_manip2.c \
 		lists/list_utils.c \
 		builtins/dir_management.c \
+		builtins/dir_utils.c \
 		builtins/env_management.c \
 		builtins/env_utils.c \
+		builtins/export_unset.c \
 		signals.c \
 		tokens/token_management.c \
 		tokens/token_management2.c \
@@ -57,6 +59,7 @@ SRC = main.c \
 		commands.c \
 		pipe.c \
 		pipe_utils.c \
+		redirections/heredoc.c \
 		redirections/redirections.c \
 		redirections/redirection_parsing.c \
 		redirections/redirection_utils.c \
@@ -64,7 +67,7 @@ SRC = main.c \
 		wildcards/wildcards_data.c \
 		wildcards/wildcards_parsing.c \
 		wildcards/wildcards.c \
-		commands/commands.c \
+		bonus/operator_lists.c \
 
 OBJ = $(SRC:.c=.o)
 
