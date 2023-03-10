@@ -61,6 +61,8 @@ int					go_to_previous_directory(t_shell *shell);
 int					execute_directory_cmd(t_shell *shell, int i);
 int	    			print_pwd_linux(t_shell *shell);
 int					change_directory(t_shell *shell, const char *path);
+int					update_pwd(t_shell *shell, t_chained *list);
+int					update_oldpwd(t_shell *shell, t_chained *list);
 
 //************* Env
 

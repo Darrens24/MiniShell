@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 09:57:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/10 11:03:30 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,33 +60,39 @@ int	unset_variable(t_shell *shell)
 	t_node	*temp;
 	t_node	*temp2;
 	char	*temp3;
+	t_tok	*search;
 
-	temp3 = ft_strndup(shell->user_command->start->next->var,
-				0, ft_strlenequal(shell->user_command->start->next->var));
-	temp = shell->sorted_env_l->end;
-	temp2 = shell->env_l->end;
-	while (temp && ft_strncmp(temp->variable,
-			shell->user_command->start->next->var,
-			ft_strlenequal(temp->variable)))
-		temp = temp->prev;
-	while (temp2 && ft_strncmp(temp2->variable,
-			shell->user_command->start->next->var,
-			ft_strlenequal(temp2->variable)))
-		temp2 = temp2->prev;
-	if (shell->sorted_env_l->nb_elem == 1)
+	search = shell->user_command->start->next;
+	while (search)
 	{
-		remove_back_node(shell->sorted_env_l);
-		if (envchecker(temp3, shell->env_l))
-			remove_back_node(shell->env_l);
+		temp3 = ft_strndup(search->var,
+					0, ft_strlenequal(search->var));
+		temp = shell->sorted_env_l->end;
+		temp2 = shell->env_l->end;
+		while (temp && ft_strncmp(temp->variable,
+				search->var,
+				ft_strlenequal(temp->variable)))
+			temp = temp->prev;
+		while (temp2 && ft_strncmp(temp2->variable,
+				search->var,
+				ft_strlenequal(temp2->variable)))
+			temp2 = temp2->prev;
+		if (shell->sorted_env_l->nb_elem == 1)
+		{
+			remove_back_node(shell->sorted_env_l);
+			if (envchecker(temp3, shell->env_l))
+				remove_back_node(shell->env_l);
+		}
+		else if (temp)
+		{
+			if (envchecker(temp3, shell->sorted_env_l))
+				remove_current_node(temp, shell->sorted_env_l);
+			if (envchecker(temp3, shell->env_l))
+				remove_current_node(temp2, shell->env_l);
+		}
+		search = search->next;
+		free(temp3);
 	}
-	else if (temp)
-	{
-		if (envchecker(temp3, shell->sorted_env_l))
-			remove_current_node(temp, shell->sorted_env_l);
-		if (envchecker(temp3, shell->env_l))
-			remove_current_node(temp2, shell->env_l);
-	}
-	free(temp3);
 	return (EXIT_SUCCESS);
 }
 
