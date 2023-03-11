@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/03/10 14:38:32 by eleleux          ###   ########.fr        #
+#    Updated: 2023/03/11 18:16:01 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC = main.c \
 		signals.c \
 		tokens/token_management.c \
 		tokens/token_management2.c \
+		tokens/token_utils.c \
 		tokens/tokenisation.c \
 		tokens/token_checker.c \
 		tokens/quotes_management2.c \

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 15:16:16 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 17:22:31 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_shell
 	char				*wild_after;
 	int					increment;
 	pid_t				here;
+	struct s_tokation	*tkion;	
 }				t_shell;
 
 typedef struct s_node
@@ -102,13 +103,13 @@ typedef struct s_cmdlst
 	struct s_cmd		*end;
 }				t_cmdlst;
 
-typedef struct s_tokenisation
+typedef struct s_tokation
 {
 	t_tok				*elem;
 	int					i;
 	char				*newvar;
 	int					start;
 	char				*temp;
-}				t_tokenisation;
+}				t_tokation;
 
 #endif
