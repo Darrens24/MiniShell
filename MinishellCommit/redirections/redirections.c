@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 14:43:05 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:44:33 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	outfile_redirection(t_shell *shell, t_tok *temp)
 	if (shell->outfile < 0)
 		return (printf("Outfile opening failed\n"));
 	if (!is_outfile_redirection(shell->user_command))
-		shell->out = true;
+		shell->out = TRUE;
 	return (EXIT_SUCCESS);
 }
 
@@ -42,7 +42,7 @@ int	append_redirection(t_shell *shell, t_tok *temp)
 	if (shell->outfile < 0)
 		return (printf("Outfile opening failed\n"));
 	if (!is_outfile_redirection(shell->user_command))
-		shell->out = true;
+		shell->out = TRUE;
 	return (EXIT_SUCCESS);
 }
 

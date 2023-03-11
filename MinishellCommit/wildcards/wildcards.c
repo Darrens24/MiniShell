@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:53:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/27 10:58:46 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:45:47 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_asked_wildcards(char *var, t_shell *shell)
 	j = 0;
 	while (var[i])
 	{
-		if (var[i] == '*' && i != 0 && no_wildcard_before(var, i - 1) == true)
+		if (var[i] == '*' && i != 0 && no_wildcard_before(var, i - 1) == TRUE)
 			shell->wild_before = ft_strndup(var, 0, i);
 		if (var[i] == '*' && var[i + 1] && string_is_wildcard(var + i + 1))
 		{
@@ -77,14 +77,14 @@ int	compare_middle_wildcard(char *buffer, t_shell *shell)
 	while (shell->wild_middle[j])
 	{
 		if (!ft_strnstr((buffer + i), shell->wild_middle[j], ft_strlen(buffer)))
-			return (false);
+			return (FALSE);
 		while (!ft_strncmp(shell->wild_middle[j], buffer + i,
 				ft_strlen(shell->wild_middle[j])))
 			i++;
 		i += ft_strlen(shell->wild_middle[j]);
 		j++;
 	}
-	return (true);
+	return (TRUE);
 }
 
 int	compare_after_wildcard(char *buffer, t_shell *shell)
@@ -94,6 +94,6 @@ int	compare_after_wildcard(char *buffer, t_shell *shell)
 	i = ft_strlen(buffer) - ft_strlen(shell->wild_after);
 	if (ft_strncmp(buffer + i, shell->wild_after,
 			ft_strlen(shell->wild_after)) == 0)
-		return (true);
-	return (false);
+		return (TRUE);
+	return (FALSE);
 }

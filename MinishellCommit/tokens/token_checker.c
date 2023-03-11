@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:45:17 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/11 14:30:20 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:45:46 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	token_checker(t_shell *shell)
 			if (tok->var[0] == '>' || tok->var[0] == '&' || tok->var[0] == '|'
 				|| tok->var[0] == '<')
 				if (norm_checker(tok))
-					return (true);
+					return (TRUE);
 		tok = tok->next;
 	}
-	return (false);
+	return (FALSE);
 }

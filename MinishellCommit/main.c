@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/09 18:20:03 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:45:41 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	is_builtin_command(t_cmd *cmd)
 		|| ft_strncmp(cmd->var[0], "unset", 6) == 0
 		|| ft_strncmp(cmd->var[0], "exit", 5) == 0
 		|| ft_strncmp(cmd->var[0], "echo", 5) == 0)
-			return (true);
-	return (false);
+			return (TRUE);
+	return (FALSE);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -52,7 +52,7 @@ int	main(int ac, char **av, char **envp)
 	printf(YEL "Open Minishell\n" WHT);
 	while (1)
 	{
-		good = true;
+		good = TRUE;
 		readline_manager(&shell);
 		if (!shell.line_readed)
 		{
@@ -83,8 +83,8 @@ int	main(int ac, char **av, char **envp)
 						break ;
 				}
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
-					good = false;
-				if (good == true)
+					good = FALSE;
+				if (good == TRUE)
 					pipe_command(&shell);
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:08:59 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 10:34:34 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:45:49 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	string_is_wildcard(char *str)
 	i = -1;
 	while (str && str[++i])
 		if (str[i] == '*')
-			return (true);
-	return (false);
+			return (TRUE);
+	return (FALSE);
 }
 
 int	no_wildcard_before(char *str, int index)
@@ -49,10 +49,10 @@ int	no_wildcard_before(char *str, int index)
 	while (str && str[index])
 	{
 		if (str[index] == '*')
-			return (false);
+			return (FALSE);
 		index--;
 	}
-	return (true);
+	return (TRUE);
 }
 
 int	cmd_has_wildcard(t_shell *shell)
@@ -63,10 +63,10 @@ int	cmd_has_wildcard(t_shell *shell)
 	while (temp)
 	{
 		if (string_is_wildcard(temp->var))
-			return (true);
+			return (TRUE);
 		temp = temp->next;
 	}
-	return (false);
+	return (FALSE);
 }
 
 int	free_wildcards(t_shell *shell)

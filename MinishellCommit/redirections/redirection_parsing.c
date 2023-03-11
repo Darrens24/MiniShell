@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:36:36 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 14:18:13 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:44:31 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	redirection_parsing(t_shell *shell, int index)
 		early_out_redirection(shell->fd[index]);
 	if (index != 0)
 		inside_redirection(shell->fd[index - 1]);
-	if (shell->out == true && index == get_number_of_pipes(shell))
+	if (shell->out == TRUE && index == get_number_of_pipes(shell))
 		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }

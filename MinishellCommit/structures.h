@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 17:22:31 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:41:12 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_tok
 {
 	struct s_tok		*prev;
 	char				*var;
-	int			quote;
+	int					quote;
 	struct s_tok		*next;
 }				t_tok;
 

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 10:49:59 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:45:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,10 @@ int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i)
 
 int	final_redirection(t_shell *shell)
 {
-	if (shell->out == true)
+	if (shell->out == TRUE)
 	{
 		dup2(shell->saved_stdout, STDOUT_FILENO);
-		shell->out = false;
+		shell->out = FALSE;
 	}
 	dup2(shell->saved_stdin, STDIN_FILENO);
 	return (EXIT_SUCCESS);

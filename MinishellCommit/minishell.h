@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
+/*   Updated: 2023/03/11 18:46:38 by eleleux          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -10,8 +22,8 @@
 # define CYN "\e[0;96m"
 # define WHT "\e[0;97m"
 
-# define true 1
-# define false 0
+# define TRUE 1
+# define FALSE 0
 
 # include <unistd.h>
 # include <stdio.h>
@@ -33,7 +45,9 @@
 
 extern int	g_err;
 
-void rl_replace_line (const char *text, int clear_undo);
+/***\	READLINE	\***/
+
+void		rl_replace_line(const char *text, int clear_undo);
 
 /***\	DATA	\***/
 
@@ -55,34 +69,35 @@ int			exit_shell(t_shell *shell);
 
 //************* Directory
 
-char				*get_home(char **array_env);
-int					go_to_home_directory(t_shell *shell);
-int					go_to_previous_directory(t_shell *shell);
-int					execute_directory_cmd(t_shell *shell, int i);
-int	    			print_pwd_linux(t_shell *shell);
-int					change_directory(t_shell *shell, const char *path);
-int					update_pwd(t_shell *shell, t_chained *list);
-int					update_oldpwd(t_shell *shell, t_chained *list);
+char		*get_home(char **array_env);
+int			go_to_home_directory(t_shell *shell);
+int			go_to_previous_directory(t_shell *shell);
+int			execute_directory_cmd(t_shell *shell, int i);
+int			print_pwd_linux(t_shell *shell);
+int			change_directory(t_shell *shell, const char *path);
+int			update_pwd(t_shell *shell, t_chained *list);
+int			update_oldpwd(t_shell *shell, t_chained *list);
 
 //************* Env
 
-int					execute_builtin_cmd(t_shell *shell, int i);
-int					print_export(t_shell *shell);
-int					add_env_variable(t_shell *shell);
-int					fill_basic_env(t_shell *shell);
-int					envchecker(char *line, t_chained *env);
-int					envindex(char *line, t_chained *env);
+int			execute_builtin_cmd(t_shell *shell, int i);
+int			print_export(t_shell *shell);
+int			add_env_variable(t_shell *shell);
+int			fill_basic_env(t_shell *shell);
+int			envchecker(char *line, t_chained *env);
+int			envindex(char *line, t_chained *env);
 
 //************* Export / Unset
 
-int					clean_export_list(t_shell *shell, char *temp3, t_node *temp, t_node *temp2);
-int					export_manager(t_shell *shell, int i);
-int					unset_variable(t_shell *shell);
-int					export_variable(t_shell *shell);
+int			clean_export_list(t_shell *shell, char *temp3,
+				t_node *temp, t_node *temp2);
+int			export_manager(t_shell *shell, int i);
+int			unset_variable(t_shell *shell);
+int			export_variable(t_shell *shell);
 
 //************* Echo
 
-int					print_echo(char **command);
+int			print_echo(char **command);
 
 /***\	COMMANDS	\***/
 
@@ -95,25 +110,26 @@ char		**get_command_in_tok(t_shell *shell, int index);
 
 //************* Path
 
-char				*find_path(t_cmd *cmd, t_shell *shell);
-char				*get_path(char **array_env);
-char				*get_correct_path(t_shell *shell, t_cmd *cmd);
+char		*find_path(t_cmd *cmd, t_shell *shell);
+char		*get_path(char **array_env);
+char		*get_correct_path(t_shell *shell, t_cmd *cmd);
 
 //************* Pipe
 
-int					slash_manager(t_cmd *cmd);
-int					get_array_cmd_and_pipe_fds(t_shell *shell);
-int					pipe_command(t_shell *shell);
-int					redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i);
+int			slash_manager(t_cmd *cmd);
+int			get_array_cmd_and_pipe_fds(t_shell *shell);
+int			pipe_command(t_shell *shell);
+int			redirect_and_execute_cmd(t_cmd *cmd, int index,
+				t_shell *shell, int i);
 
 //************************** Pipe Utils
 
-int							close_fds(int *fd);
-int							wait_pids(int *pid);
-t_tok						*go_to_next_operator(t_shell *shell, t_tok *tok, int index);
-int							early_out_redirection(int *fd);
-int							inside_redirection(int *fd);
-void						free_pids_fds(t_shell *shell);
+int			close_fds(int *fd);
+int			wait_pids(int *pid);
+t_tok		*go_to_next_operator(t_shell *shell, t_tok *tok, int index);
+int			early_out_redirection(int *fd);
+int			inside_redirection(int *fd);
+void		free_pids_fds(t_shell *shell);
 
 /***\	REDIRECTION	\***/
 
@@ -125,17 +141,17 @@ int			heredoc_dup(t_shell *shell);
 
 //************* Redirection Parsing
 
-int					redirection_parsing(t_shell *shell, int index);
-int					infile_redirection_parsing(t_shell *shell);
-int					outfile_redirection_parsing(t_shell *shell);
+int			redirection_parsing(t_shell *shell, int index);
+int			infile_redirection_parsing(t_shell *shell);
+int			outfile_redirection_parsing(t_shell *shell);
 
 //************* Redirection Utils
 
-int					is_infile_redirection(t_toklst *user_command);
-int					is_outfile_redirection(t_toklst *user_command);
-char				*append_newline(char *limiter);
-int					delete_operator_and_infile(t_shell *shell);
-int					delete_operator_and_outfile(t_shell *shell);
+int			is_infile_redirection(t_toklst *user_command);
+int			is_outfile_redirection(t_toklst *user_command);
+char		*append_newline(char *limiter);
+int			delete_operator_and_infile(t_shell *shell);
+int			delete_operator_and_outfile(t_shell *shell);
 
 /***\	LISTS	\***/
 
@@ -148,11 +164,11 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable);
 
 //************* Lists Utils
 
-int					is_empty(t_chained *list);
-t_chained			*null_list(void);
-void				print_list(t_chained *list);
-t_chained			*sort_list(t_chained *list);
-t_node				*go_to_end(t_chained *list);
+int			is_empty(t_chained *list);
+t_chained	*null_list(void);
+void		print_list(t_chained *list);
+t_chained	*sort_list(t_chained *list);
+t_node		*go_to_end(t_chained *list);
 
 /***\	SIGNALS UTILS   \***/
 
@@ -203,7 +219,7 @@ int			tokenisation(t_toklst *tokenlst, t_chained *env);
 char		*squoteparser(t_tok *token, int i, char *newvar);
 int			squotejumper(t_tok *token, int i);
 t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end);
-int         token_checker(t_shell *shell);
+int			token_checker(t_shell *shell);
 char		*ft_strjointok(char const *s1, char const *s2);
 void		dollarcase(t_tokation *tk, t_chained *env);
 void		norm_errors(t_tokation *tk, t_toklst *tokenlst);
@@ -224,7 +240,7 @@ int			get_asked_wildcards(char *var, t_shell *shell);
 char		*get_wild_middle(char *str, int index);
 int			get_wildcard_files(t_shell *shell);
 int			compare_after_wildcard(char *buffer, t_shell *shell);
-int			compare_middle_wildcard(char *buffer, t_shell *shell);;
+int			compare_middle_wildcard(char *buffer, t_shell *shell);
 
 /***		COMMANDS		\***/
 
@@ -232,26 +248,26 @@ t_cmdlst	*newp_back_cmd(t_cmdlst *cmd, char **command, int exec);
 
 //************************** Wildcards Data
 
-int					get_nb_of_wildcard(char *var);
-int					string_is_wildcard(char *str);
-int					cmd_has_wildcard(t_shell *shell);
-int					no_wildcard_before(char *str, int index);
-int					free_wildcards(t_shell *shell);
+int			get_nb_of_wildcard(char *var);
+int			string_is_wildcard(char *str);
+int			cmd_has_wildcard(t_shell *shell);
+int			no_wildcard_before(char *str, int index);
+int			free_wildcards(t_shell *shell);
 
 //************************** Wildcards Parsing
 
-int					parse_wildcard(t_shell *shell, char **envp);
-int					one_wildcard_only(char *buffer, t_shell *shell);
-int					two_wildcards(char *buffer, t_shell *shell);
-int					all_wildcards(char *buffer, t_shell *shell);
-int					is_matching_file(char *buffer, t_shell *shell);
+int			parse_wildcard(t_shell *shell, char **envp);
+int			one_wildcard_only(char *buffer, t_shell *shell);
+int			two_wildcards(char *buffer, t_shell *shell);
+int			all_wildcards(char *buffer, t_shell *shell);
+int			is_matching_file(char *buffer, t_shell *shell);
 
 //************************** Wildcards Utils
 
-int					jump_next_wildcard(char *str, int index);
-int					jump_previous_wildcard(char *str, int index);
-char				*remove_newline_from_buffer(char *buffer);
-int					execute_ls_in_tmp(t_shell *shell, char **envp);
-void				add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
+int			jump_next_wildcard(char *str, int index);
+int			jump_previous_wildcard(char *str, int index);
+char		*remove_newline_from_buffer(char *buffer);
+int			execute_ls_in_tmp(t_shell *shell, char **envp);
+void		add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
 
 #endif

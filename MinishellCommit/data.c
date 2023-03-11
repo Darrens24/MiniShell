@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 17:26:21 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:45:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	initialize_variables(t_shell *shell)
 	shell->array_env = NULL;
 	shell->user_command->nb_elem = 0;
 	shell->multi_cmd = NULL;
-	shell->out = false;
+	shell->out = FALSE;
 	shell->wild_before = NULL;
 	shell->wild_after = NULL;
 	shell->ls_cmd[0] = ft_strdup("ls");

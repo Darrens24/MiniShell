@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 13:27:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 18:45:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	execute_builtin_cmd(t_shell *shell, int i)
 		export_manager(shell, i);
 	else if (ft_strncmp(shell->multi_cmd[i][0], "unset", 6) == 0)
 	{
-		if (argument_after_cmd(shell) == false)
+		if (argument_after_cmd(shell) == FALSE)
 			return (EXIT_SUCCESS);
 		else
 			return (unset_variable(shell));
