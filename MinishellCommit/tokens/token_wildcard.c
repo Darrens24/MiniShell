@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:57:16 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/20 13:20:30 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 14:50:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer)
 
 	elem = malloc(sizeof(*elem));
 	if (!elem)
-	{
-		printf("Node: Dynamic allocation failed\n");
 		return (tokenlst);
-	}
 	elem->var = ft_strdup(buffer);
 	elem->next = NULL;
 	elem->prev = NULL;
@@ -47,16 +44,14 @@ t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer)
 	while (temp && !string_is_wildcard(temp->var))
 		temp = temp->next;
 	if (!temp->next)
-		new_back_tok(tokenlst, buffer, 0, ft_strlen(buffer) + 1); //+1 peut etre optionnel 
+		new_back_tok(tokenlst, buffer, 0,
+			ft_strlen(buffer) + 1);
 	else
 	{
 		temp->next->prev = elem;
 		elem->next = temp->next;
 		temp->next = elem;
 		elem->prev = temp;
-	//	tokenlst->end->next = elem;
-	//	elem->prev = tokenlst->end;
-	//	tokenlst->end = elem;
 		tokenlst->nb_elem++;
 	}
 	return (tokenlst);

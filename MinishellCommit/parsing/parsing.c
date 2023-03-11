@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:04:14 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/27 10:33:39 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 11:11:55 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,24 @@ static int	jump_text(char *line, int i)
 	quote = line[i++];
 	while (line[i] && line[i] != quote)
 		i++;
+	return (i);
+}
+
+static int	norm_parsing(t_toklst *tokenlst, char *line, int start, int i)
+{
+	i = jump_wspace(line, i);
+	start = i;
+	while (line[i] == '<')
+		i++;
+	if (start != i)
+		new_back_tok(tokenlst, line, start, i);
+	i = jump_wspace(line, i);
+	start = i;
+	while (line[i] == '>')
+		i++;
+	if (start != i)
+		new_back_tok(tokenlst, line, start, i);
+	i = jump_wspace(line, i);
 	return (i);
 }
 
@@ -36,19 +54,6 @@ static int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)
 		i++;
 	if (start != i)
 		new_back_tok(tokenlst, line, start, i);
-	i = jump_wspace(line, i);
-	start = i;
-	while (line[i] == '<')
-		i++;
-	if (start != i)
-		new_back_tok(tokenlst, line, start, i);
-	i = jump_wspace(line, i);
-	start = i;
-	while (line[i] == '>')
-		i++;
-	if (start != i)
-		new_back_tok(tokenlst, line, start, i);
-	i = jump_wspace(line, i);
 	return (i);
 }
 
@@ -64,7 +69,7 @@ static int	secondparsing(t_toklst *tokenlst, char *line, int start, int i)
 			if (checknextquote(line, line[i], tmp))
 				i = jump_text(line, i);
 			else
-				return (errorintoken(tokenlst, "no ending quote"));
+				return (errorintoken(tokenlst, "No ending quote"));
 			i++;
 		}
 		else
@@ -87,6 +92,7 @@ void	token_parsing(t_toklst *tokenlst, char *line)
 	while (line[i])
 	{
 		i = firstparsing(tokenlst, line, start, i);
+		i = norm_parsing(tokenlst, line, start, i);
 		start = i;
 		i = secondparsing(tokenlst, line, start, i);
 		if (i == -1)

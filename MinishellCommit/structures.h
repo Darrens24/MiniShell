@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/09 17:43:59 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/11 15:16:16 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,14 @@ typedef struct s_cmdlst
 	int					nb_elem;
 	struct s_cmd		*end;
 }				t_cmdlst;
+
+typedef struct s_tokenisation
+{
+	t_tok				*elem;
+	int					i;
+	char				*newvar;
+	int					start;
+	char				*temp;
+}				t_tokenisation;
 
 #endif

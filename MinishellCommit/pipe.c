@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 14:11:33 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 10:49:59 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,6 @@ int	pipe_command(t_shell *shell)
 	}
 	wait_pids(shell->pid);
 	final_redirection(shell);
-	clean_between_cmds(shell);
+	//clean_between_cmds(shell);
 	return (EXIT_SUCCESS);
 }

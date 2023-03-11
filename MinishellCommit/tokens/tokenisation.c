@@ -6,46 +6,18 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/06 14:06:12 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 16:12:52 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ft_strjointok(char const *s1, char const *s2)
-{
-	char	*recipe;
-	int		i;
-	int		j;
-
-	if (!s1 && !s2)
-		return (NULL);
-	if (!s1)
-		return ((char *)s2);
-	if (!s2)
-		return ((char *)s1);
-	recipe = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
-	if (!recipe)
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		recipe[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-		recipe[i++] = s2[j++];
-	recipe[i] = '\0';
-	free((void *)s1);
-	free((void *)s2);
-	return (recipe);
-}
+//modification du ++i dans jointok
 
 char	*envfinder(char *line, char *newvar, t_chained *env)
 {
 	t_node	*elem;
-	int	len;
+	int		len;
 
 	line = ft_strjoin(line, "=");
 	elem = env->end;
@@ -53,13 +25,14 @@ char	*envfinder(char *line, char *newvar, t_chained *env)
 	while (elem)
 	{
 		if (ft_strncmp(line, elem->variable, len) == 0)
-			newvar = ft_strjoin(newvar, ft_strndup(elem->variable, len, ft_strlen(elem->variable)));
+			newvar = ft_strjoin(newvar, ft_strndup(elem->variable, len,
+						ft_strlen(elem->variable)));
 		elem = elem->prev;
 	}
 	return (newvar);
 }
 
-char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
+char	*envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 {
 	int	start;
 
@@ -72,7 +45,7 @@ char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 		i++;
 	}
 	else if (!token->var[i] || is_wspace(token->var[i])
-			|| token->var[i] == '\"' || token->var[i] == '\'')
+		|| token->var[i] == '\"' || token->var[i] == '\'')
 		newvar = ft_strjoin(newvar, "$");
 	else
 	{
@@ -84,7 +57,7 @@ char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 	return (newvar);
 }
 
-int    envvarjumper(t_tok *token, int i)
+int	envvarjumper(t_tok *token, int i)
 {
 	if (token->var[i] && token->var[i] == '{')
 	{
@@ -94,7 +67,7 @@ int    envvarjumper(t_tok *token, int i)
 		i++;
 	}
 	else if (!token->var[i] || is_wspace(token->var[i])
-			|| token->var[i] == '\"' || token->var[i] == '\'')
+		|| token->var[i] == '\"' || token->var[i] == '\'')
 		i += 0;
 	else
 	{
@@ -111,75 +84,93 @@ char	*vagueparser(int i, char *newvar, t_chained	*envp)
 	newvar = envfinder("HOME", newvar, envp);
 	return (newvar);
 }
-
-void    tokenisation(t_toklst *tokenlst, t_chained *env)
+/*
+static void	dollarcase(t_tok *elem, int *i, char *temp, char *newvar)
 {
-	t_tok   *elem;
-	int             i;
-	char    *newvar = NULL;
-	int             start;
-	char	*temp = NULL;
-
-	elem = tokenlst->start;
-	while(elem)
+	*i += 1;
+	if (elem->var[*i] == '?' && !elem->var[*i + 1])
 	{
-			newvar = 0;
-			i = 0;
-			while(elem->var[i])
-			{
-					start = i;
-					if (elem->var[i] == '\"')
-					{
-						newvar = dquoteparser(elem, ++i, newvar, env);
-						i = dquotejumper(elem, i);
-					}
-					else if (elem->var[i] == '\'')
-					{
-							newvar = squoteparser(elem, i, newvar);
-							i = squotejumper(elem, i);
-					}
-					else if ((elem->var[i] == '$' && !elem->prev) || (elem->var[i] == '$' && elem->prev && !(ft_strncmp(elem->prev->var, "<<", 3) == 0 && elem->prev->quote == 0)))
-					{
-						i++;
-						if (elem->var[i] == '?' && !elem->var[i + 1])
-						{
-							temp = ft_itoa(g_err);
-							newvar = ft_strjoin(newvar, temp);
-							i++;
-						}
-						else
-						{
-							newvar = envvarparser(elem, i, newvar, env);
-							i = envvarjumper(elem, i);
-						}
-					}
-					else if (elem->var && elem->var[i] == '~')
-					{
-						i++;
-						newvar = vagueparser(i, newvar, env);
-					}
-					else if (elem->var && elem->var[i])
-					{
-						temp = ft_strndup(elem->var, start, ++i);
-						newvar = ft_strjointok(newvar, temp);
-					}
-					if (i == -1 || i == -2)
-					{
-						if (ft_strlen(newvar) > 0)
-								free(newvar);
-						if (i == -2)
-							errorintoken(tokenlst, "Error: no such user");
-						else
-							errorintoken(tokenlst, "no ending bracket");
-						return ;
-					}
-				//printf("%s\n", elem->var[i]);
-			}
-			free(elem->var);
-			elem->var = newvar;
-			elem = elem->next;
+		temp = ft_itoa(g_err);
+		newvar = ft_strjoin(newvar, temp);
+		*i += 1;
 	}
-//	if (newvar)
-//		free(newvar);
-	newvar = 0;
+	else
+	{
+		newvar = envvarparser(elem, *i, newvar, env);
+		*i = envvarjumper(elem, *i);
+	}
+}*/
+
+void	tokenisation(t_toklst *tokenlst, t_chained *env)
+{
+	t_tokenisation	*tkion;
+/*	t_tok	*elem;
+	int		i;
+	char	*newvar;
+	int		start;
+	char	*temp;*/
+
+	tkion = malloc(sizeof(t_tokenisation));
+	tkion->elem = tokenlst->start;
+	while (tkion->elem)
+	{
+		tkion->newvar = 0;
+		tkion->i = 0;
+		while (tkion->elem->var[tkion->i])
+		{
+			tkion->start = tkion->i;
+			if (tkion->elem->var[tkion->i] == '\"')
+			{
+				tkion->newvar = dquoteparser(tkion->elem, ++tkion->i, tkion->newvar, env);
+				tkion->i = dquotejumper(tkion->elem, tkion->i);
+			}
+			else if (tkion->elem->var[tkion->i] == '\'')
+			{
+					tkion->newvar = squoteparser(tkion->elem, tkion->i, tkion->newvar);
+					tkion->i = squotejumper(tkion->elem, tkion->i);
+			}
+			else if ((tkion->elem->var[tkion->i] == '$' && !tkion->elem->prev)
+				|| (tkion->elem->var[tkion->i] == '$' && tkion->elem->prev
+					&& !(ft_strncmp(tkion->elem->prev->var, "<<", 3) == 0
+						&& tkion->elem->prev->quote == 0)))
+			{
+				tkion->i++;
+				if (tkion->elem->var[tkion->i] == '?' && !tkion->elem->var[tkion->i + 1])
+				{
+					tkion->temp = ft_itoa(g_err);
+					tkion->newvar = ft_strjoin(tkion->newvar, tkion->temp);
+					tkion->i++;
+				}
+				else
+				{
+					tkion->newvar = envvarparser(tkion->elem, tkion->i, tkion->newvar, env);
+					tkion->i = envvarjumper(tkion->elem, tkion->i);
+				}
+			}
+			else if (tkion->elem->var && tkion->elem->var[tkion->i] == '~')
+			{
+				tkion->i++;
+				tkion->newvar = vagueparser(tkion->i, tkion->newvar, env);
+			}
+			else if (tkion->elem->var && tkion->elem->var[tkion->i])
+			{
+				tkion->temp = ft_strndup(tkion->elem->var, tkion->start, ++tkion->i);
+				tkion->newvar = ft_strjointok(tkion->newvar, tkion->temp);
+			}
+			if (tkion->i == -1 || tkion->i == -2)
+			{
+				if (ft_strlen(tkion->newvar) > 0)
+					free(tkion->newvar);
+				if (tkion->i == -2)
+					errorintoken(tokenlst, "Error: no such user");
+				else
+					errorintoken(tokenlst, "No ending bracket");
+				return ;
+			}
+		}
+		free(tkion->elem->var);
+		tkion->elem->var = tkion->newvar;
+		tkion->elem = tkion->elem->next;
+	}
+	tkion->newvar = 0;
 }

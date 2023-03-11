@@ -6,11 +6,38 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:13:56 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/24 16:01:14 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/11 14:55:56 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+char	*ft_strjointok(char const *s1, char const *s2)
+{
+	char	*recipe;
+	int		i;
+	int		j;
+
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
+		return ((char *)s2);
+	if (!s2)
+		return ((char *)s1);
+	recipe = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!recipe)
+		return (NULL);
+	i = -1;
+	while (s1[++i])
+		recipe[i] = s1[i];
+	j = 0;
+	while (s2[j])
+		recipe[i++] = s2[j++];
+	recipe[i] = '\0';
+	free((void *)s1);
+	free((void *)s2);
+	return (recipe);
+}
 
 t_toklst	*remove_front_tok(t_toklst *list)
 {
