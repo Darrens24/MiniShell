@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:45:42 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 12:50:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,35 +156,34 @@ t_cmdlst	*createcmdlst(t_shell *shell, int i)
 int	pipe_command(t_shell *shell)
 {
 	int			i;
-	t_cmdlst	*cmdlst;
-	t_cmd		*cmd;
+	t_cmd		*temp;
 	int			index;
 
 	i = -1;
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
-	cmdlst = createcmdlst(shell, i);
-	cmd = cmdlst->start;
+	shell->cmdlst = createcmdlst(shell, i);
+	temp = shell->cmdlst->start;
 	i = 0;
 	index = 0;
-	while (shell->user_command->nb_elem != 0 && cmd)
+	while (shell->user_command->nb_elem != 0 && temp)
 	{
-		if (cmd->next && cmd->next->exec == 0)
+		if (temp->next && temp->next->exec == 0)
 		{
 			if (pipe(shell->fd[i]) < 0)
 				return (printf("Pipe failed\n"));
-			if (cmd->exec != 0)
+			if (temp->exec != 0)
 				i = 0;
 		}
-		redirect_and_execute_cmd(cmd, i, shell, index);
-		cmd = cmd->next;
+		redirect_and_execute_cmd(temp, i, shell, index);
+		temp = temp->next;
 		index++;
-		if (cmd && cmd->exec == 0)
+		if (temp && temp->exec == 0)
 			i++;
 	}
 	wait_pids(shell->pid);
 	final_redirection(shell);
-	//clean_between_cmds(shell);
+	clean_between_cmds(shell);
 	return (EXIT_SUCCESS);
 }

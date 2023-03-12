@@ -6,7 +6,7 @@
 /*   By: pfaria-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/10 13:03:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 16:54:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ int	change_directory(t_shell *shell, const char *path)
 
 int	go_to_home_directory(t_shell *shell)
 {
-	shell->previous_dir_path = getcwd(NULL, 0);
 	if (change_directory(shell, shell->home) != 0)
 	{
 		free(shell->previous_dir_path);
 		return (EXIT_FAILURE);
 	}
-	free(shell->previous_dir_path);
 	return (EXIT_SUCCESS);
 }
 

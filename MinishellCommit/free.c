@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:17:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 10:26:32 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 12:56:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_pids_fds(t_shell *shell)
 	int	i;
 
 	i = -1;
-	while (++i < (get_number_of_commands(shell) - 1))
+	while (++i < get_number_of_pipes(shell))
 		free(shell->fd[i]);
 	free(shell->fd);
 	free(shell->pid);
@@ -60,6 +60,8 @@ int	clean_between_cmds(t_shell *shell)
 		}
 		free(shell->multi_cmd);
 	}
+	if (shell->cmdlst)
+		clear_cmd_lst(shell->cmdlst);
 	free_array(shell->array_env);
 	free(shell->home);
 	free_pids_fds(shell);

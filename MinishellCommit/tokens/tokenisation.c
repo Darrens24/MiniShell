@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/11 18:15:30 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 16:49:40 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	dollarcase(t_tokation *tk, t_chained *env)
 	{
 		tk->temp = ft_itoa(g_err);
 		tk->newvar = ft_strjoin(tk->newvar, tk->temp);
+		free(tk->temp);
 		tk->i++;
 	}
 	else

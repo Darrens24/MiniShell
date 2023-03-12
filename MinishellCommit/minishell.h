@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:46:38 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 16:02:49 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,7 @@ void		dollarcase(t_tokation *tk, t_chained *env);
 void		norm_errors(t_tokation *tk, t_toklst *tokenlst);
 void		antislash_norm(t_tokation *tk, t_chained *env);
 void		tilde_and_classicnorm(t_tokation *tk, t_chained *env);
+char		*join_without_leaks(char *newvar, char *temp);
 
 //************************** Token Utils
 
@@ -241,10 +242,6 @@ char		*get_wild_middle(char *str, int index);
 int			get_wildcard_files(t_shell *shell);
 int			compare_after_wildcard(char *buffer, t_shell *shell);
 int			compare_middle_wildcard(char *buffer, t_shell *shell);
-
-/***		COMMANDS		\***/
-
-t_cmdlst	*newp_back_cmd(t_cmdlst *cmd, char **command, int exec);
 
 //************************** Wildcards Data
 
@@ -269,5 +266,11 @@ int			jump_previous_wildcard(char *str, int index);
 char		*remove_newline_from_buffer(char *buffer);
 int			execute_ls_in_tmp(t_shell *shell, char **envp);
 void		add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
+
+/***		AND/OR		\***/
+
+t_cmdlst	*newp_back_cmd(t_cmdlst *cmd, char **command, int exec);
+t_cmdlst	*remove_back_cmd(t_cmdlst *cmdlst);
+void		clear_cmd_lst(t_cmdlst *cmdlst);
 
 #endif

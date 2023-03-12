@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:57:38 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 14:10:15 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 12:57:56 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,37 @@ t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
 	}
 	cmdlst->nb_elem++;
 	return (cmdlst);
+}
+
+t_cmdlst	*remove_back_cmd(t_cmdlst *cmdlst)
+{
+	t_cmd	*temp;
+
+	if (cmdlst->nb_elem == 0)
+		return (NULL);
+	if (cmdlst->nb_elem == 1)
+	{
+		cmdlst->nb_elem--;
+		free_array(cmdlst->end->var);
+		free(cmdlst->end);
+		cmdlst->end = NULL;
+		return (cmdlst);
+	}
+	temp = cmdlst->end;
+	cmdlst->end = cmdlst->end->prev;
+	cmdlst->end->next = NULL;
+	temp->prev = NULL;
+	temp->next = NULL;
+	free_array(temp->var);
+	free(temp);
+	temp = NULL;
+	cmdlst->nb_elem--;
+	return (cmdlst);
+}
+
+void	clear_cmd_lst(t_cmdlst *cmdlst)
+{
+	while (cmdlst->nb_elem)
+		remove_back_cmd(cmdlst);
+	free(cmdlst);
 }

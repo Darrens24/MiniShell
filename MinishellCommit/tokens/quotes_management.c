@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:07:27 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/11 13:44:25 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 16:04:48 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,34 +33,39 @@
 
 static int	bracket_case(t_tok *token, int i, char *newvar, t_chained *env)
 {
-	int	start;
+	int		start;
+	char	*temp;
 
 	start = i + 1;
 	while (token->var[i] && token->var[i] != '\"'
 		&& token->var[i] != '}')
 		i++;
-	newvar = envfinder(ft_strndup(token->var, start, i),
-			newvar, env);
+	temp = ft_strndup(token->var, start, i);
+	newvar = envfinder(temp, newvar, env);
+	free(temp);
 	i++;
 	return (i);
 }
 
 static char	*classic_case(t_tok *token, int *i, char *newvar, t_chained *env)
 {
-	int	start;
+	int		start;
+	char	*temp;
 
 	start = *i;
 	while (token->var[*i] && token->var[*i] != '\"'
 		&& token->var[*i] != '\'')
 		*i += 1;
-	newvar = envfinder(ft_strndup(token->var, start, *i),
-			newvar, env);
+	temp = ft_strndup(token->var, start, *i);
+	newvar = envfinder(temp, newvar, env);
+	free(temp);
 	return (newvar);
 }
 
 char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
 {
-	int	start;
+	int		start;
+	char	*temp;
 
 	while (token->var[i] && token->var[i] != '\"')
 	{
@@ -72,16 +77,17 @@ char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
 				i += bracket_case(token, i, newvar, env);
 			else if (!token->var[i] || is_wspace(token->var[i])
 				|| token->var[i] == '"')
-				newvar = ft_strjoin(newvar, "$");
+				newvar = join_without_leaks(newvar, "$");
 			else
 				newvar = classic_case(token, &i, newvar, env);
 		}
 		else
 		{
-			newvar = ft_strjoin(newvar, ft_strndup(token->var, start, ++i));
+			i++;
+			temp = ft_strndup(token->var, start, i);
+			newvar = join_without_leaks(newvar, temp);
 		}
 	}
-	i++;
 	return (newvar);
 }
 

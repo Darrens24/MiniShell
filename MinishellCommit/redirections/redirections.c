@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:05:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:44:33 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/12 17:05:11 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	infile_redirection(t_shell *shell, t_tok *temp)
 	shell->infile = open(temp->next->var, O_RDONLY);
 	delete_operator_and_infile(shell);
 	if (shell->infile < 0)
-		return (printf("Infile opening failed\n"));
+		return (perror("open"), EXIT_FAILURE);
 	if (shell->user_command->nb_elem != 0
 		&& !is_infile_redirection(shell->user_command))
 		dup2(shell->infile, STDIN_FILENO);
@@ -29,7 +29,7 @@ int	outfile_redirection(t_shell *shell, t_tok *temp)
 	shell->outfile = open(temp->next->var, O_CREAT | O_RDWR | O_TRUNC, 0644);
 	delete_operator_and_outfile(shell);
 	if (shell->outfile < 0)
-		return (printf("Outfile opening failed\n"));
+		return (perror("open"), EXIT_FAILURE);
 	if (!is_outfile_redirection(shell->user_command))
 		shell->out = TRUE;
 	return (EXIT_SUCCESS);
