@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/13 14:17:07 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:17:14 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,16 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, i
 		if (shell->pid[i] == 0)
 		{
 			if (cmd->exec == 0 || (cmd->next && cmd->next->exec == 0))
+			{
 				redirection_parsing(shell, index, cmd);
+			}
 			execve(temp, cmd->var, shell->array_env);
 		}
 		free(temp);
 	}
 	else
 		builtin_manager(shell, index, cmd);
-	if (index > 0)
+	if (index > 0 && cmd->exec == 0)
 		close_fds(shell->fd[index - 1]);
 	return (EXIT_SUCCESS);
 }
