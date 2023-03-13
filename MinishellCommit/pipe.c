@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/13 15:17:14 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/13 17:08:30 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,15 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, i
 		if (shell->pid[i] == 0)
 		{
 			if (cmd->exec == 0 || (cmd->next && cmd->next->exec == 0))
-			{
 				redirection_parsing(shell, index, cmd);
-			}
 			execve(temp, cmd->var, shell->array_env);
 		}
+/*		if (cmd->exec != 0 || (index == 0 && cmd->next->exec != 0)) 
+ *		{ int	error_ret = 0; int	error_code = 0;
+			error_ret = waitpid(shell->pid[i], &error_code, 0);
+			if (error_ret > 0)
+				error_func(error_code);
+		}*/
 		free(temp);
 	}
 	else
@@ -102,6 +106,7 @@ int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i)
 	}
 	else if (cmd->exec == 2)
 	{
+		printf("g_err = %d\n", g_err);
 		if (g_err == 0)
 			execute_commands(cmd, index, shell, temp, i);
 	}
@@ -150,6 +155,78 @@ t_cmdlst	*createcmdlst(t_shell *shell, int i)
 	return (cmdlst);
 }
 
+t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
+{
+	t_cmd	*elem;
+	int		i;
+
+	elem = malloc(sizeof(*elem));
+	if (!elem)
+		return (NULL);
+	elem->var = malloc(sizeof(char *) * (size_to_malloc(command) + 1));
+	i = -1;
+	while (command[++i])
+		elem->var[i] = ft_strdup(command[i]);
+	initialize_elem(elem, exec, i);
+	if (cmdlst->nb_elem == 0)
+	{
+		cmdlst->start = elem;
+		cmdlst->end = elem;
+	}
+	else
+	{
+		cmdlst->end->next = elem;
+		elem->prev = cmdlst->end;
+		cmdlst->end = elem;
+	}
+	cmdlst->nb_elem++;
+	return (cmdlst);
+}
+
+t_oplst	*new_back_op(t_oplst *oplst, t_cmdlst *cmdlst)
+{
+	t_op	*elem;
+
+	elem = malloc(sizeof(t_op));
+	if (!elem)
+		return (NULL);
+	elem->cmdlst = cmdlst;
+	if (oplst->nb_elem == 0)
+	{
+		oplst->start->cmdlst = op;
+		oplst->end->cmdlst = op;
+	}
+	else
+	{
+		oplst->end->next = elem;
+		elem->prev = oplst->end;
+		oplst->end = elem;
+	}
+	oplst->nb_elem++;
+	return (oplst);
+}
+
+t_oplst *createop(t_shell *shell)
+{
+	t_cmd		*cmd;
+	int			i;
+	t_op		*op;
+	t_oplst		*oplst;
+
+	oplst = malloc(sizeof(t_oplst));
+	cmd = shell->cmdlst->start;
+	while (cmd)
+	{
+		i = cmd->exec;
+		while (cmd && cmd->exec == i)
+		{
+			op->cmdlst = newp_back_cmd(oplst->cmdlst, cmd->var, cmd->exec);
+			cmd = cmd->next;
+		}
+		
+	}
+}
+
 int	pipe_command(t_shell *shell)
 {
 	int			i;
@@ -161,6 +238,7 @@ int	pipe_command(t_shell *shell)
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
 	shell->cmdlst = createcmdlst(shell, i);
+	shell->op = createop(shell);
 	temp = shell->cmdlst->start;
 	i = 0;
 	index = 0;

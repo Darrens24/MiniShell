@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/12 12:54:55 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/13 16:54:17 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,17 @@ typedef struct s_tokation
 	char				*temp;
 }				t_tokation;
 
+typedef struct	s_op
+{
+	struct s_op		*prev;
+	struct s_cmdlst	*cmdlst;
+	struct s_op		*next;
+}				t_op;
+
+typedef struct	s_oplst
+{
+	struct s_op		*start;
+	int				nb_elem;
+	struct s_op		*end;
+}				t_oplst;
 #endif
