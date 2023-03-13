@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:36:36 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:44:31 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/13 14:18:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 //maybe a modifier
 
-int	redirection_parsing(t_shell *shell, int index)
+int	redirection_parsing(t_shell *shell, int index, t_cmd *cmd)
 {
-	if (index < (get_number_of_pipes(shell)))
+	if (cmd->next && cmd->next->exec == 0)
 		early_out_redirection(shell->fd[index]);
-	if (index != 0)
+	if (cmd->exec == 0 && cmd->prev)
 		inside_redirection(shell->fd[index - 1]);
 	if (shell->out == TRUE && index == get_number_of_pipes(shell))
 		dup2(shell->outfile, STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/12 16:02:49 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/13 14:15:21 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			clean_between_cmds(t_shell *shell);
 /***\	BUILTINS	\***/
 
 int			is_builtin_command(t_cmd *cmd);
-int			builtin_manager(t_shell *shell, int index);
+int			builtin_manager(t_shell *shell, int index, t_cmd *cmd);
 int			exit_shell(t_shell *shell);
 
 //************* Directory
@@ -141,7 +141,7 @@ int			heredoc_dup(t_shell *shell);
 
 //************* Redirection Parsing
 
-int			redirection_parsing(t_shell *shell, int index);
+int			redirection_parsing(t_shell *shell, int index, t_cmd *cmd);
 int			infile_redirection_parsing(t_shell *shell);
 int			outfile_redirection_parsing(t_shell *shell);
 

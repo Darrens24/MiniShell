@@ -6,17 +6,17 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/12 12:50:25 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/13 14:17:07 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	builtin_manager(t_shell *shell, int index)
+int	builtin_manager(t_shell *shell, int index, t_cmd *cmd)
 {
 	if (get_number_of_commands(shell) == 1)
 	{
-		redirection_parsing(shell, index);
+		redirection_parsing(shell, index, cmd);
 		execute_builtin_cmd(shell, index);
 	}
 	else if (get_number_of_commands(shell) > 1)
@@ -24,7 +24,7 @@ int	builtin_manager(t_shell *shell, int index)
 		shell->pid[index] = fork();
 		if (shell->pid[index] == 0)
 		{
-			redirection_parsing(shell, index);
+			redirection_parsing(shell, index, cmd);
 			execute_builtin_cmd(shell, index);
 			exit(1);
 		}
@@ -75,17 +75,14 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, i
 		signal(SIGQUIT, &do_nothing);
 		if (shell->pid[i] == 0)
 		{
-			if ((cmd->next && cmd->next->exec != 0) || !cmd->next)
-				index = get_number_of_pipes(shell);
-			fprintf(stderr, "index = %d\n", index);
-			fprintf(stderr, "exec = %d\n", cmd->exec);
-			redirection_parsing(shell, index);
+			if (cmd->exec == 0 || (cmd->next && cmd->next->exec == 0))
+				redirection_parsing(shell, index, cmd);
 			execve(temp, cmd->var, shell->array_env);
 		}
 		free(temp);
 	}
 	else
-		builtin_manager(shell, index);
+		builtin_manager(shell, index, cmd);
 	if (index > 0)
 		close_fds(shell->fd[index - 1]);
 	return (EXIT_SUCCESS);
@@ -100,8 +97,6 @@ int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i)
 	{
 		if (g_err != 0)
 			execute_commands(cmd, index, shell, temp, i);
-			//error_return = waitpid(shell->pid[index], &stock, 0);
-			
 	}
 	else if (cmd->exec == 2)
 	{
@@ -173,8 +168,6 @@ int	pipe_command(t_shell *shell)
 		{
 			if (pipe(shell->fd[i]) < 0)
 				return (printf("Pipe failed\n"));
-			if (temp->exec != 0)
-				i = 0;
 		}
 		redirect_and_execute_cmd(temp, i, shell, index);
 		temp = temp->next;
