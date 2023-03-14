@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/13 17:08:30 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:22:35 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, i
 	else
 		builtin_manager(shell, index, cmd);
 	if (index > 0 && cmd->exec == 0)
+	{
+		printf("cc\n");
 		close_fds(shell->fd[index - 1]);
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -106,7 +109,6 @@ int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i)
 	}
 	else if (cmd->exec == 2)
 	{
-		printf("g_err = %d\n", g_err);
 		if (g_err == 0)
 			execute_commands(cmd, index, shell, temp, i);
 	}
@@ -133,6 +135,7 @@ t_cmdlst	*createcmdlst(t_shell *shell, int i)
 
 	t = shell->user_command->start;
 	cmdlst = malloc(sizeof(t_cmdlst));
+	cmdlst->nb_elem = 0;
 	while (shell->multi_cmd[++i])
 	{
 		if (i != 0 && shell->multi_cmd[i])
@@ -155,34 +158,6 @@ t_cmdlst	*createcmdlst(t_shell *shell, int i)
 	return (cmdlst);
 }
 
-t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
-{
-	t_cmd	*elem;
-	int		i;
-
-	elem = malloc(sizeof(*elem));
-	if (!elem)
-		return (NULL);
-	elem->var = malloc(sizeof(char *) * (size_to_malloc(command) + 1));
-	i = -1;
-	while (command[++i])
-		elem->var[i] = ft_strdup(command[i]);
-	initialize_elem(elem, exec, i);
-	if (cmdlst->nb_elem == 0)
-	{
-		cmdlst->start = elem;
-		cmdlst->end = elem;
-	}
-	else
-	{
-		cmdlst->end->next = elem;
-		elem->prev = cmdlst->end;
-		cmdlst->end = elem;
-	}
-	cmdlst->nb_elem++;
-	return (cmdlst);
-}
-
 t_oplst	*new_back_op(t_oplst *oplst, t_cmdlst *cmdlst)
 {
 	t_op	*elem;
@@ -191,10 +166,12 @@ t_oplst	*new_back_op(t_oplst *oplst, t_cmdlst *cmdlst)
 	if (!elem)
 		return (NULL);
 	elem->cmdlst = cmdlst;
+	elem->next = NULL;
+	elem->prev = NULL;
 	if (oplst->nb_elem == 0)
 	{
-		oplst->start->cmdlst = op;
-		oplst->end->cmdlst = op;
+		oplst->start = elem;
+		oplst->end = elem;
 	}
 	else
 	{
@@ -206,25 +183,40 @@ t_oplst	*new_back_op(t_oplst *oplst, t_cmdlst *cmdlst)
 	return (oplst);
 }
 
+t_oplst *new_back_oplst(t_oplst *oplst, t_cmd *cmd)
+{
+	int			i;
+	t_cmdlst	*tmp;
+
+	tmp = malloc(sizeof(t_cmdlst));
+	tmp->nb_elem = 0;
+	i = cmd->exec;
+	while ((cmd && cmd->exec == i) || (cmd && cmd->exec == 0))
+	{
+		tmp = newp_back_cmd(tmp, cmd->var, cmd->exec);
+		cmd = cmd->next;
+	}
+	oplst = new_back_op(oplst, tmp);
+	return (oplst);
+}
+
 t_oplst *createop(t_shell *shell)
 {
 	t_cmd		*cmd;
-	int			i;
-	t_op		*op;
 	t_oplst		*oplst;
+	int			y;
 
 	oplst = malloc(sizeof(t_oplst));
+	oplst->nb_elem = 0;
 	cmd = shell->cmdlst->start;
 	while (cmd)
 	{
-		i = cmd->exec;
-		while (cmd && cmd->exec == i)
-		{
-			op->cmdlst = newp_back_cmd(oplst->cmdlst, cmd->var, cmd->exec);
+		y = cmd->exec;
+		oplst = new_back_oplst(oplst, cmd);
+		while ((cmd && cmd->exec == y) || (cmd && cmd->exec == 0))
 			cmd = cmd->next;
-		}
-		
 	}
+	return (oplst);
 }
 
 int	pipe_command(t_shell *shell)
@@ -232,30 +224,37 @@ int	pipe_command(t_shell *shell)
 	int			i;
 	t_cmd		*temp;
 	int			index;
+	t_oplst		*op;
+	t_op		*optmp;
 
 	i = -1;
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
 	shell->cmdlst = createcmdlst(shell, i);
-	shell->op = createop(shell);
-	temp = shell->cmdlst->start;
+	op = createop(shell);
 	i = 0;
 	index = 0;
-	while (shell->user_command->nb_elem != 0 && temp)
+	optmp = op->start;
+	while (optmp && optmp->cmdlst)
 	{
-		if (temp->next && temp->next->exec == 0)
+		temp = optmp->cmdlst->start;
+		while (shell->user_command->nb_elem != 0 && temp)
 		{
-			if (pipe(shell->fd[i]) < 0)
-				return (printf("Pipe failed\n"));
+			if (temp->next && temp->next->exec == 0)
+			{
+				if (pipe(shell->fd[i]) < 0)
+					return (printf("Pipe failed\n"));
+			}
+			redirect_and_execute_cmd(temp, i, shell, index);
+			temp = temp->next;
+			index++;
+			if (temp && temp->exec == 0)
+				i++;
 		}
-		redirect_and_execute_cmd(temp, i, shell, index);
-		temp = temp->next;
-		index++;
-		if (temp && temp->exec == 0)
-			i++;
+		wait_pids(shell->pid);
+		optmp = optmp->next;
 	}
-	wait_pids(shell->pid);
 	final_redirection(shell);
 	clean_between_cmds(shell);
 	return (EXIT_SUCCESS);

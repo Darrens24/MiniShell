@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:57:38 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/12 12:57:56 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/14 14:50:38 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
 	t_cmd	*elem;
 	int		i;
 
-	elem = malloc(sizeof(*elem));
+	elem = malloc(sizeof(t_cmd));
 	if (!elem)
 		return (NULL);
 	elem->var = malloc(sizeof(char *) * (size_to_malloc(command) + 1));
@@ -89,5 +89,5 @@ void	clear_cmd_lst(t_cmdlst *cmdlst)
 {
 	while (cmdlst->nb_elem)
 		remove_back_cmd(cmdlst);
-	free(cmdlst);
+	//free(cmdlst);
 }

@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:17:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/12 12:56:18 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/14 18:59:09 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ int	clean_between_cmds(t_shell *shell)
 	if (shell->cmdlst)
 		clear_cmd_lst(shell->cmdlst);
 	free_array(shell->array_env);
+	shell->array_env = NULL;
 	free(shell->home);
+	shell->home = NULL;
 	free_pids_fds(shell);
 	return (EXIT_SUCCESS);
 }
