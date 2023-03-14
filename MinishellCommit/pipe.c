@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/14 19:22:35 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:27:59 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, i
 		else
 			temp = find_path(cmd, shell);
 		if (!temp)
+		{
+			if (index > 0 && cmd->exec == 0)
+				close_fds(shell->fd[index - 1]);
 			return (EXIT_FAILURE);
+		}
 		shell->pid[i] = fork();
 		signal(SIGINT, &do_nothing);
 		signal(SIGQUIT, &do_nothing);
@@ -90,10 +94,7 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, i
 	else
 		builtin_manager(shell, index, cmd);
 	if (index > 0 && cmd->exec == 0)
-	{
-		printf("cc\n");
 		close_fds(shell->fd[index - 1]);
-	}
 	return (EXIT_SUCCESS);
 }
 
