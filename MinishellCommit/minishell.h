@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/14 15:01:49 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/18 11:49:53 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,7 +269,7 @@ void		add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
 
 /***		AND/OR		\***/
 
-t_cmdlst	*newp_back_cmd(t_cmdlst *cmd, char **command, int exec);
+t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec, int prio);
 t_cmdlst	*remove_back_cmd(t_cmdlst *cmdlst);
 void		clear_cmd_lst(t_cmdlst *cmdlst);
 

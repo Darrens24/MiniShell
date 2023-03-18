@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 13:00:23 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/17 20:16:18 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,19 @@ t_tok	*go_to_next_operator(t_shell *shell, t_tok *tok, int index)
 	i = 0;
 	while (tok && i < index)
 	{
-		while (tok && (ft_strncmp(tok->var, "|", 2) != 0
+		while ((tok && (ft_strncmp(tok->var, "|", 2) != 0
 				&& ft_strncmp(tok->var, "||", 3) != 0
 				&& ft_strncmp(tok->var, "&&", 3) != 0))
+				|| (tok && (ft_strncmp(tok->var, ")", 2) == 0
+				|| ft_strncmp(tok->var, "(", 2) == 0)))
 			tok = tok->next;
 		if (tok->next)
 			tok = tok->next;
 		i++;
 	}
+	while (tok && (ft_strncmp(tok->var, ")", 2) == 0
+			|| ft_strncmp(tok->var, "(", 2) == 0))
+		tok = tok->next;
 	return (tok);
 }
 

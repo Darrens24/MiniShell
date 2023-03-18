@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:45:41 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/18 14:29:47 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-		/*		t_tok	*tst = shell.user_command->start;
+				/*
+				t_tok	*tst = shell.user_command->start;
 				while (tst)
 				{
 					printf("command = %s\n", tst->var);
 					tst = tst->next;
-				}*/
+				}
+				*/
 				while (cmd_has_wildcard(&shell))
 				{
 					parse_wildcard(&shell, envp);

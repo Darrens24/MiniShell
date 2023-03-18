@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:57:38 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/14 14:50:38 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/03/18 11:53:28 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,17 @@ int	size_to_malloc(char **command)
 	return (i);
 }
 
-int	initialize_elem(t_cmd *elem, int exec, int i)
+int	initialize_elem(t_cmd *elem, int exec, int i, int prio)
 {
 	elem->var[i] = NULL;
 	elem->next = NULL;
 	elem->prev = NULL;
 	elem->exec = exec;
+	elem->prio = prio;
 	return (EXIT_SUCCESS);
 }
 
-t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
+t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec, int prio)
 {
 	t_cmd	*elem;
 	int		i;
@@ -43,7 +44,7 @@ t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
 	i = -1;
 	while (command[++i])
 		elem->var[i] = ft_strdup(command[i]);
-	initialize_elem(elem, exec, i);
+	initialize_elem(elem, exec, i, prio);
 	if (cmdlst->nb_elem == 0)
 	{
 		cmdlst->start = elem;
