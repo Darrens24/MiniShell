@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/25 10:53:48 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/03 16:01:58 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	envchecker(char *line, t_chained *env)
 	len = ft_strlen(line);
 	while (elem)
 	{
-		if (ft_strncmp(line, elem->variable, len) == 0)
+		if (ft_strncmp(line, elem->variable, len) == 0 && (elem->variable[len] == '=' || elem->variable[len] == '\0'))
 			return (1);
 		elem = elem->next;
 	}

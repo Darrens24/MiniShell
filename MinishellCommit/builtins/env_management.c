@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:45:35 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/03 17:36:19 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,26 @@ int	print_echo(char **command)
 	return (EXIT_SUCCESS);
 }
 
+int	pipe_in_command(t_toklst *cmd)
+{
+	t_tok	*tmp;
+
+	tmp = cmd->start;
+	while (tmp)
+	{
+		if (ft_strncmp(tmp->var, "|", 2 == 0))
+			return (TRUE);
+		tmp = tmp->next;
+	}
+	return (FALSE);
+}
+
 int	export_manager(t_shell *shell, int i)
 {
 	if (!shell->multi_cmd[i][1])
 		print_export(shell);
+	else if (shell->multi_cmd[i][1] && pipe_in_command(shell->user_command))
+	   return (EXIT_FAILURE);
 	else
 		return (export_variable(shell));
 	return (EXIT_SUCCESS);
