@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:42:18 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 14:08:53 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/04 11:47:12 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ t_node	*remove_current_node(t_node *node, t_chained *lst)
 		node->prev->next = node->next;
 		node->next->prev = node->prev;
 	}
+    if (!node->prev)
+    {
+        remove_front_node(lst);
+        return (node);
+    }
 	if (!node->next)
 	{
 		remove_back_node(lst);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   export_unset.c                                     :+:      :+:    :+:   */
+/*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:21:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/03 17:01:36 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/04 11:45:12 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	export_ascii_sorted(t_tok *temp, t_chained *sorted_env)
 		new_back_node(sorted_env, temp->var);
 	else
 	{
-		index--;
+	//	index--;
 		new_current_node(sorted_env, index, temp->var); 
 	}
 	return (EXIT_SUCCESS);
@@ -61,7 +61,6 @@ int	export_variable(t_shell *shell)
 {
 	t_tok	*temp;
 	t_node	*node_to_remove;
-	int		index;
 	char	*var_before_equal;
 
 	temp = find_export_args(shell);
@@ -74,14 +73,10 @@ int	export_variable(t_shell *shell)
 			export_ascii_sorted(temp, shell->sorted_env_l);
 		else if (envchecker(var_before_equal, shell->sorted_env_l))
 		{
-			index = envindex(var_before_equal, shell->sorted_env_l);
 			node_to_remove = find_node_to_remove(var_before_equal, shell->sorted_env_l);
 			remove_current_node(node_to_remove, shell->sorted_env_l);
-			if (index == 0)
-				new_front_node(shell->sorted_env_l, temp->var);
-			else
-				new_current_node(shell->sorted_env_l, index - 1, temp->var);
-		}
+            export_ascii_sorted(temp, shell->sorted_env_l);
+        }
 		free(var_before_equal);
 		temp = temp->next;
 	}
