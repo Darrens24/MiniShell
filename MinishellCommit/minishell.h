@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/18 11:49:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/04 11:22:24 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,21 @@ int			fill_basic_env(t_shell *shell);
 int			envchecker(char *line, t_chained *env);
 int			envindex(char *line, t_chained *env);
 
-//************* Export / Unset
+//************* Export
 
+int	        valid_arg(char *arg);
+t_tok	    *find_export_args(t_shell *shell);
+int	        export_ascii_sorted(t_tok *temp, t_chained *sorted_env);
+int			export_manager(t_shell *shell, int i);
+int			export_variable(t_shell *shell);
+
+//************* Unset
+
+t_tok	    *find_unset_args(t_shell *shell);
+t_node	    *find_node_to_remove(char *var_before_equal, t_chained *lst);
 int			clean_export_list(t_shell *shell, char *temp3,
 				t_node *temp, t_node *temp2);
-int			export_manager(t_shell *shell, int i);
 int			unset_variable(t_shell *shell);
-int			export_variable(t_shell *shell);
 
 //************* Echo
 
