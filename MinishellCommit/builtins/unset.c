@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:33:41 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/03 16:38:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/04 12:49:21 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_node	*find_node_to_remove(char *var_before_equal, t_chained *lst)
 			return (temp);
 		temp = temp->next;
 	}
+    printf("coucou\n");
 	return (temp);
 }
 
@@ -53,6 +54,16 @@ int	clean_export_list(t_shell *shell, char *temp3, t_node *temp, t_node *temp2)
 			remove_current_node(temp2, shell->env_l);
 	}
 	return (EXIT_SUCCESS);
+}
+
+int	valid_arg(char *arg)
+{
+	int	i;
+
+	i = 0;
+	if (!arg[i] || !ft_isalpha(arg[i]))
+		return (FALSE);
+	return (TRUE);
 }
 
 int	unset_variable(t_shell *shell)

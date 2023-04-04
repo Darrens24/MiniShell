@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/04 11:22:24 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/04 12:36:41 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			update_oldpwd(t_shell *shell, t_chained *list);
 //************* Env
 
 int			execute_builtin_cmd(t_shell *shell, int i);
-int			print_export(t_shell *shell);
+int			export_manager(t_shell *shell, int i);
 int			add_env_variable(t_shell *shell);
 int			fill_basic_env(t_shell *shell);
 int			envchecker(char *line, t_chained *env);
@@ -89,14 +89,16 @@ int			envindex(char *line, t_chained *env);
 
 //************* Export
 
-int	        valid_arg(char *arg);
+int         equal_in_string(char *str);
 t_tok	    *find_export_args(t_shell *shell);
 int	        export_ascii_sorted(t_tok *temp, t_chained *sorted_env);
-int			export_manager(t_shell *shell, int i);
 int			export_variable(t_shell *shell);
+void        put_quotes_to_export(char *variable);
+int			print_export(t_shell *shell);
 
 //************* Unset
 
+int	        valid_arg(char *arg);
 t_tok	    *find_unset_args(t_shell *shell);
 t_node	    *find_node_to_remove(char *var_before_equal, t_chained *lst);
 int			clean_export_list(t_shell *shell, char *temp3,

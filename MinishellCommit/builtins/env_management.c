@@ -6,25 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/03 17:36:19 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/04 11:58:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	print_export(t_shell *shell)
-{
-	t_node	*temp;
-
-	temp = shell->sorted_env_l->start;
-	while (temp)
-	{
-		ft_putstr_fd("declare -x ", STDOUT_FILENO);
-		printf("%s\n", temp->variable);
-		temp = temp->next;
-	}
-	return (EXIT_SUCCESS);
-}
 
 int	print_echo(char **command)
 {
