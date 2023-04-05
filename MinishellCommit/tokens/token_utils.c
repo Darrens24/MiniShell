@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:02:41 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/12 16:17:28 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/04 18:24:26 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	token_norm_parsing(t_tokation *tk, t_chained *env)
 	tk->start = tk->i;
 	if (tk->elem->var[tk->i] == '\"' || tk->elem->var[tk->i] == '\'')
 		antislash_norm(tk, env);
-	else if ((tk->elem->var[tk->i] == '$' && !tk->elem->prev)
+    else if ((tk->elem->var[tk->i] == '$' && !tk->elem->prev)
 		|| (tk->elem->var[tk->i] == '$' && tk->elem->prev
 			&& !(ft_strncmp(tk->elem->prev->var, "<<", 3) == 0
 				&& tk->elem->prev->quote == 0)))

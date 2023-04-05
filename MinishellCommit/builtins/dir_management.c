@@ -6,7 +6,7 @@
 /*   By: pfaria-d <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/12 16:54:18 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/05 10:13:46 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	change_directory(t_shell *shell, const char *path)
 	if (chdir(path) < 0)
 	{
 		g_err = 1;
+		free(shell->previous_dir_path);
 		return (perror("chdir"), EXIT_FAILURE);
 	}
 	shell->current_dir_path = getcwd(NULL, 0);
@@ -48,7 +49,9 @@ int	go_to_home_directory(t_shell *shell)
 
 int	go_to_previous_directory(t_shell *shell)
 {
-	if (change_directory(shell, shell->previous_dir_path) != 0)
+    if (!shell->previous_dir_path)
+        return (print_pwd_linux(shell));
+    if (change_directory(shell, shell->previous_dir_path) != 0)
 		return (EXIT_FAILURE);
 	print_pwd_linux(shell);
 	return (EXIT_SUCCESS);
@@ -80,6 +83,7 @@ int	print_pwd_linux(t_shell *shell)
 	{
 		while (!directory)
 		{
+            free(directory);
 			change_directory(shell, "../");
 			directory = getcwd(NULL, 0);
 		}

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:07:27 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/02/17 10:05:30 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/04 18:41:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,14 @@ char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
 						newvar, env);
 				i++;
 			}
+            else if (token->var[i] == '?')
+            {
+                newvar = join_without_leaks(newvar, ft_itoa(g_err));
+                i++;
+            }
 			else if (!token->var[i] || is_wspace(token->var[i])
 				|| token->var[i] == '"')
-				newvar = ft_strjoin(newvar, "$");
+				newvar = join_without_leaks(newvar, "$");
 			else
 			{
 				start = i;
@@ -46,7 +51,7 @@ char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)
 			}
 		}
 		else
-			newvar = ft_strjoin(newvar, ft_strndup(token->var, start, ++i));
+			newvar = join_without_leaks(newvar, ft_strndup(token->var, start, ++i));
 	}
 	i++;
 	return (newvar);
@@ -68,6 +73,8 @@ int	dquotejumper(t_tok *token, int i)
 					return (-1);
 				i++;
 			}
+            else if (token->var[i] == '?')
+                i++;
 			else if (!token->var[i] || is_wspace(token->var[i])
 				|| token->var[i] == '"')
 				i = i - 0;
