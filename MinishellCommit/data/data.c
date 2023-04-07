@@ -6,11 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:45:37 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/05 10:24:05 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	allocate_shell(t_shell *shell, char **envp)
 {

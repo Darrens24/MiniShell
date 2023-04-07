@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/18 14:29:16 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:43:23 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,7 +309,8 @@ int	pipe_command(t_shell *shell)
 			if (temp && temp->exec == 0)
 				i++;
 		}
-		wait_pids(shell->pid);
+        printf("ON EST LA\n");
+		wait_pids(shell->pid, shell);
 		optmp = optmp->next;
 	}
 	final_redirection(shell);

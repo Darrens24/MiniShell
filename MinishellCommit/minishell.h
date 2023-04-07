@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/04 12:36:41 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/05 12:35:25 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int			redirect_and_execute_cmd(t_cmd *cmd, int index,
 //************************** Pipe Utils
 
 int			close_fds(int *fd);
-int			wait_pids(int *pid);
+int			wait_pids(int *pid, t_shell *shell);
 t_tok		*go_to_next_operator(t_shell *shell, t_tok *tok, int index);
 int			early_out_redirection(int *fd);
 int			inside_redirection(int *fd);

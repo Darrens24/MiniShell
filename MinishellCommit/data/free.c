@@ -6,11 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:17:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/14 18:59:09 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:24:13 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 void	free_pids_fds(t_shell *shell)
 {

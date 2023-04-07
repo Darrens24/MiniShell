@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/05 10:21:03 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/05 12:35:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	error_func(int error_code)
 	return (EXIT_SUCCESS);
 }
 
-int	wait_pids(pid_t *pid)
+int	wait_pids(pid_t *pid, t_shell *shell)
 {
 	int	i;
 	int	waitpid_return;
@@ -65,8 +65,9 @@ int	wait_pids(pid_t *pid)
 
 	i = -1;
 	error_code = 0;
-	while (pid[++i])
+	while (++i < get_number_of_commands(shell))
 	{
+        printf("pid = %d\n", i);
 		waitpid_return = waitpid(pid[i], &error_code, 0);
 		if (waitpid_return > 0)
 			error_func(error_code);

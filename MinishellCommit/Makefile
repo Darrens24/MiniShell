@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/04 11:20:05 by eleleux          ###   ########.fr        #
+#    Updated: 2023/04/05 10:28:16 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,10 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC = main.c \
-		data.c \
-		free.c \
-		path.c \
+		data/data.c \
+		data/free.c \
+		data/path.c \
+		data/commands.c \
 		utils.c \
 		lists/list_manip.c \
 		lists/list_manip2.c \
@@ -58,7 +59,6 @@ SRC = main.c \
 		tokens/token_wildcard.c \
 		parsing/parsing_utils.c \
 		parsing/parsing.c \
-		commands.c \
 		pipe.c \
 		pipe_utils.c \
 		redirections/heredoc.c \

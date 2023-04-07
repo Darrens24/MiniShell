@@ -390,7 +390,7 @@ _rl_uppercase_p	vendor/readline/include/readline/chardefs.h	99;"	d
 add_files_to_toklist	wildcards/wildcards_utils.c	/^void	add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell)$/;"	f
 all_path	structures.h	/^	char				**all_path;$/;"	m	struct:s_shell
 all_wildcards	wildcards/wildcards_parsing.c	/^int	all_wildcards(char *buffer, t_shell *shell)$/;"	f
-allocate_shell	data.c	/^int	allocate_shell(t_shell *shell, char **envp)$/;"	f
+allocate_shell	data/data.c	/^int	allocate_shell(t_shell *shell, char **envp)$/;"	f
 already	Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
 already	Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
 antislash_norm	tokens/tokenisation.c	/^void	antislash_norm(t_tokation *tk, t_chained *env)$/;"	f
@@ -418,10 +418,10 @@ change_directory	builtins/dir_management.c	/^int	change_directory(t_shell *shell
 change_prompt	readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
 change_prompt	vendor/readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
 checknextquote	parsing/parsing_utils.c	/^int	checknextquote(char *line, char quote, int start)$/;"	f
-clean_between_cmds	free.c	/^int	clean_between_cmds(t_shell *shell)$/;"	f
+clean_between_cmds	data/free.c	/^int	clean_between_cmds(t_shell *shell)$/;"	f
 clean_export_list	builtins/export_unset.c	/^int	clean_export_list(t_shell *shell, char *temp3, t_node *temp, t_node *temp2)$/;"	f
 clean_export_list	builtins/unset.c	/^int	clean_export_list(t_shell *shell, char *temp3, t_node *temp, t_node *temp2)$/;"	f
-clean_memory	free.c	/^int	clean_memory(t_shell *shell)$/;"	f
+clean_memory	data/free.c	/^int	clean_memory(t_shell *shell)$/;"	f
 cleanstock	Libft/get_next_line.c	/^char	*cleanstock(char *stock)$/;"	f
 clear_chained_lst	tokens/token_management2.c	/^void	clear_chained_lst(t_chained *lst)$/;"	f
 clear_cmd_lst	bonus/operator_lists.c	/^void	clear_cmd_lst(t_cmdlst *cmdlst)$/;"	f
@@ -546,14 +546,14 @@ find_command	readline/share/readline/fileman.c	/^find_command (name)$/;"	f
 find_command	vendor/readline/share/readline/fileman.c	/^find_command (name)$/;"	f
 find_export_args	builtins/export.c	/^t_tok	*find_export_args(t_shell *shell)$/;"	f
 find_node_to_remove	builtins/unset.c	/^t_node	*find_node_to_remove(char *var_before_equal, t_chained *lst)$/;"	f
-find_path	path.c	/^char	*find_path(t_cmd *cmd, t_shell *shell)$/;"	f
+find_path	data/path.c	/^char	*find_path(t_cmd *cmd, t_shell *shell)$/;"	f
 find_unset_args	builtins/unset.c	/^t_tok	*find_unset_args(t_shell *shell)$/;"	f
 firstparsing	parsing/parsing.c	/^static int	firstparsing(t_toklst *tokenlst, char *line, int start, int i)$/;"	f	file:
 flags	readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state
 flags	vendor/readline/include/readline/history.h	/^  int flags;$/;"	m	struct:_hist_state
-free_array	free.c	/^int	free_array(char **array)$/;"	f
-free_increment	free.c	/^int	free_increment(t_increment *incr)$/;"	f
-free_pids_fds	free.c	/^void	free_pids_fds(t_shell *shell)$/;"	f
+free_array	data/free.c	/^int	free_array(char **array)$/;"	f
+free_increment	data/free.c	/^int	free_increment(t_increment *incr)$/;"	f
+free_pids_fds	data/free.c	/^void	free_pids_fds(t_shell *shell)$/;"	f
 free_wildcards	wildcards/wildcards_data.c	/^int	free_wildcards(t_shell *shell)$/;"	f
 freetab	Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
 freetab	Libft/ft_split_slash.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
@@ -621,18 +621,18 @@ function	readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;
 function	readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap
 function	vendor/readline/include/readline/keymaps.h	/^  rl_command_func_t *function;$/;"	m	struct:_keymap_entry
 function	vendor/readline/include/readline/readline.h	/^  rl_command_func_t *function;$/;"	m	struct:_funmap
-g_err	path.c	/^int	g_err = 0;$/;"	v
-get_array_cmd_and_pipe_fds	commands.c	/^int	get_array_cmd_and_pipe_fds(t_shell *shell)$/;"	f
+g_err	data/path.c	/^int	g_err = 0;$/;"	v
+get_array_cmd_and_pipe_fds	data/commands.c	/^int	get_array_cmd_and_pipe_fds(t_shell *shell)$/;"	f
 get_array_env	builtins/env_utils.c	/^char	**get_array_env(t_shell *shell)$/;"	f
 get_asked_wildcards	wildcards/wildcards.c	/^int	get_asked_wildcards(char *var, t_shell *shell)$/;"	f
-get_command_in_tok	commands.c	/^char	**get_command_in_tok(t_shell *shell, int index)$/;"	f
-get_correct_path	path.c	/^char	*get_correct_path(t_shell *shell, t_cmd *cmd)$/;"	f
-get_home	commands.c	/^char	*get_home(char **array_env)$/;"	f
+get_command_in_tok	data/commands.c	/^char	**get_command_in_tok(t_shell *shell, int index)$/;"	f
+get_correct_path	data/path.c	/^char	*get_correct_path(t_shell *shell, t_cmd *cmd)$/;"	f
+get_home	data/commands.c	/^char	*get_home(char **array_env)$/;"	f
 get_nb_of_wildcard	wildcards/wildcards_data.c	/^int	get_nb_of_wildcard(char *var)$/;"	f
 get_next_line	Libft/get_next_line.c	/^char	*get_next_line(int fd)$/;"	f
-get_number_of_commands	data.c	/^int	get_number_of_commands(t_shell *shell)$/;"	f
-get_number_of_pipes	commands.c	/^int	get_number_of_pipes(t_shell *shell)$/;"	f
-get_path	path.c	/^char	*get_path(char **array_env)$/;"	f
+get_number_of_commands	data/data.c	/^int	get_number_of_commands(t_shell *shell)$/;"	f
+get_number_of_pipes	data/commands.c	/^int	get_number_of_pipes(t_shell *shell)$/;"	f
+get_path	data/path.c	/^char	*get_path(char **array_env)$/;"	f
 get_prompt	readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f
 get_prompt	vendor/readline/share/readline/excallback.c	/^get_prompt(void)$/;"	f
 get_size	Libft/ft_itoa.c	/^static int	get_size(long n)$/;"	f	file:
@@ -641,7 +641,7 @@ get_wildcard_files	wildcards/wildcards.c	/^int	get_wildcard_files(t_shell *shell
 give_line	Libft/get_next_line.c	/^char	*give_line(char *stock, char c)$/;"	f
 go_to_end	lists/list_manip.c	/^t_node	*go_to_end(t_chained *list)$/;"	f
 go_to_home_directory	builtins/dir_management.c	/^int	go_to_home_directory(t_shell *shell)$/;"	f
-go_to_next_operator	commands.c	/^t_tok	*go_to_next_operator(t_shell *shell, t_tok *tok, int index)$/;"	f
+go_to_next_operator	data/commands.c	/^t_tok	*go_to_next_operator(t_shell *shell, t_tok *tok, int index)$/;"	f
 go_to_previous_directory	builtins/dir_management.c	/^int	go_to_previous_directory(t_shell *shell)$/;"	f
 handler	signals.c	/^void	handler(int num)$/;"	f
 here	structures.h	/^	pid_t				here;$/;"	m	struct:s_shell
@@ -663,7 +663,7 @@ i	structures.h	/^	int					i;$/;"	m	struct:s_tokation
 ignorefunc	readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
 ignorefunc	vendor/readline/include/readline/readline.h	/^  rl_compignore_func_t *ignorefunc;$/;"	m	struct:readline_state
 increment	structures.h	/^	int					increment;$/;"	m	struct:s_shell
-increment_sh_level	data.c	/^int	increment_sh_level(t_shell *shell)$/;"	f
+increment_sh_level	data/data.c	/^int	increment_sh_level(t_shell *shell)$/;"	f
 inf	readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
 inf	vendor/readline/include/readline/readline.h	/^  FILE *inf;$/;"	m	struct:readline_state
 infile	structures.h	/^	int					infile;$/;"	m	struct:s_shell
@@ -674,7 +674,7 @@ init_readline	vendor/readline/share/readline/rlptytest.c	/^init_readline (int in
 initialize_elem	bonus/operator_lists.c	/^int	initialize_elem(t_cmd *elem, int exec, int i, int prio)$/;"	f
 initialize_readline	readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
 initialize_readline	vendor/readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
-initialize_variables	data.c	/^int	initialize_variables(t_shell *shell)$/;"	f
+initialize_variables	data/data.c	/^int	initialize_variables(t_shell *shell)$/;"	f
 inside_redirection	pipe_utils.c	/^int	inside_redirection(int *fd)$/;"	f
 insmode	readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state
 insmode	vendor/readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state

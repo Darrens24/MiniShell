@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:11:53 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:45:52 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/05 12:17:19 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	parse_wildcard(t_shell *shell, char **envp)
 {
 	t_tok	*temp;
 	int		nb_of_wildcard;
+    int     i;
 
 	temp = shell->user_command->start;
 	while (temp && !string_is_wildcard(temp->var))
@@ -26,7 +27,10 @@ int	parse_wildcard(t_shell *shell, char **envp)
 	shell->wild_middle = malloc(sizeof(char *) * (nb_of_wildcard));
 	if (!shell->wild_middle)
 		return (EXIT_FAILURE);
-	get_asked_wildcards(temp->var, shell);
+    i = -1;
+    while (shell->wild_middle[++i])
+        shell->wild_middle[i] = NULL;
+    get_asked_wildcards(temp->var, shell);
 	execute_ls_in_tmp(shell, envp);
 	get_wildcard_files(shell);
 	return (EXIT_SUCCESS);

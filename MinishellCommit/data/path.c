@@ -6,11 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:40:44 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 12:54:18 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/05 10:24:19 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	g_err = 0;
 

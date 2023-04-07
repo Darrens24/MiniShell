@@ -6,11 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/17 20:16:18 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:29:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_tok	*go_to_next_operator(t_shell *shell, t_tok *tok, int index)
 {
@@ -99,7 +99,7 @@ int	get_array_cmd_and_pipe_fds(t_shell *shell)
 {
 	int		i;
 
-	shell->pid = malloc(sizeof(int) * get_number_of_commands(shell));
+	shell->pid = malloc(sizeof(pid_t) * get_number_of_commands(shell));
 	if (!shell->pid)
 		return (EXIT_FAILURE);
 	i = -1;
