@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/18 11:47:49 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/18 15:15:14 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,18 @@ typedef struct	s_oplst
 	int				nb_elem;
 	struct s_op		*end;
 }				t_oplst;
+
+typedef struct s_branch
+{
+	struct s_branch	*right;
+	struct s_branch	*left;
+	char			**cmd;
+}				t_branch;
+
+typedef struct s_tree
+{
+	struct s_branch	*start; 
+	int				nb_elem;
+}				t_tree;
+
 #endif

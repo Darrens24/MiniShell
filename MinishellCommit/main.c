@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/05 12:30:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/18 15:06:23 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,12 @@ int	main(int ac, char **av, char **envp)
 						break ;
 				}
 				t_tok	*tst = shell.user_command->start;
+				int	i = 0;
 				while (tst)
 				{
-					printf("command = %s\n", tst->var);
+					printf("command[%d] = %s\n", i, tst->var);
 					tst = tst->next;
+					i++;
 				}
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
