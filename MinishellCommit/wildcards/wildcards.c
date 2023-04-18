@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:53:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/05 12:16:54 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/18 18:46:54 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,18 @@ int	get_asked_wildcards(char *var, t_shell *shell)
 	while (var[i])
 	{
 		if (var[i] == '*' && i != 0 && no_wildcard_before(var, i - 1) == TRUE)
-        {
 			shell->wild_before = ft_strndup(var, 0, i);
-            //printf("before = %s\n", shell->wild_before);
-        }
-        if (var[i] == '*' && var[i + 1] && string_is_wildcard(var + i + 1))
+		if (var[i] == '*' && var[i + 1] && string_is_wildcard(var + i + 1))
 		{
 			shell->wild_middle[j] = get_wild_middle(var, i + 1);
 			j++;
 		}
 		if (var[i] == '*' && var[i + 1] && !string_is_wildcard(var + i + 1))
-        {
 			shell->wild_after = ft_strndup(var, i + 1, ft_strlen(var));
-            //printf("after = %s\n", shell->wild_after);
-        }
 		i++;
 	}
 	shell->wild_middle[j] = NULL;
-    /*
+	/*
     int k = 0;
     while (shell->wild_middle[k])
     {

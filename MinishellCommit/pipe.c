@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 11:00:54 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/18 19:13:48 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,176 +123,18 @@ int	final_redirection(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-t_cmdlst	*createcmdlst(t_shell *shell, int i)
-{
-	t_tok		*t;
-	int			prio;
-	t_cmdlst	*cmdlst;
-	int			tmp;
-
-	t = shell->user_command->start;
-	prio = 0;
-	cmdlst = malloc(sizeof(t_cmdlst));
-	cmdlst->nb_elem = 0;
-	while (shell->multi_cmd[++i])
-	{
-		if (i != 0 && shell->multi_cmd[i])
-		{
-			while (t && ft_strncmp(t->var, "(", 2) == 0 && prio++ > -10)
-				t = t->next;
-			while (t && ft_strncmp(t->var, ")", 2) == 0 && prio-- > -10)
-				t = t->next;
-			while (t && !((ft_strncmp(t->var, "|", 2) != 0 && t->quote == 0)
-					|| (ft_strncmp(t->var, "||", 3) != 0 && t->quote == 0)
-					|| (ft_strncmp(t->var, "&&", 3) != 0 && t->quote == 0)))
-				t = t->next;
-			tmp = prio;
-			if (t && t->next)
-			{
-				while (t && t->next && ft_strncmp(t->next->var, "(", 2) == 0 && tmp++ > -10)
-					t = t->next;
-				while (t && t->next && ft_strncmp(t->next->var, ")", 2) == 0 && tmp-- > -10)
-					t = t->next;
-			}
-			if (t && ft_strncmp(t->var, "||", 3) == 0 && t->quote == 0)
-				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 1, tmp);
-			else if (t && ft_strncmp(t->var, "&&", 3) == 0 && t->quote == 0)
-				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 2, tmp);
-			else
-				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0, tmp);
-			while (tmp > prio && tmp--)
-				t = t->prev;
-			t = t->next;
-		}
-		else
-		{
-			while (t && ft_strncmp(t->var, "(", 2) == 0 && prio++ > -10)
-				t = t->next;
-			while (t && ft_strncmp(t->var, ")", 2) == 0 && prio-- > -10)
-				t = t->next;
-			cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0, prio);
-		}
-	}
-	return (cmdlst);
-}
-
-t_oplst	*new_back_op(t_oplst *oplst, t_cmdlst *cmdlst)
-{
-	t_op	*elem;
-
-	elem = malloc(sizeof(t_op));
-	if (!elem)
-		return (NULL);
-	elem->cmdlst = cmdlst;
-	elem->next = NULL;
-	elem->prev = NULL;
-	if (oplst->nb_elem == 0)
-	{
-		oplst->start = elem;
-		oplst->end = elem;
-	}
-	else
-	{
-		oplst->end->next = elem;
-		elem->prev = oplst->end;
-		oplst->end = elem;
-	}
-	oplst->nb_elem++;
-	return (oplst);
-}
-
-t_oplst *new_back_oplst(t_oplst *oplst, t_cmd *cmd)
-{
-	int			i;
-	t_cmdlst	*tmp;
-
-	tmp = malloc(sizeof(t_cmdlst));
-	tmp->nb_elem = 0;
-	i = cmd->exec;
-	while ((cmd && cmd->exec == i) || (cmd && cmd->exec == 0) || (cmd && cmd->prev && cmd->prev->prio == cmd->prio && cmd->prio != 0))
-	{
-		tmp = newp_back_cmd(tmp, cmd->var, cmd->exec, cmd->prio);
-		cmd = cmd->next;
-	}
-	oplst = new_back_op(oplst, tmp);
-	return (oplst);
-}
-
-t_oplst *createop(t_shell *shell)
-{
-	t_cmd		*cmd;
-	t_oplst		*oplst;
-	int			y;
-	int			x = 0;
-
-	oplst = malloc(sizeof(t_oplst));
-	oplst->nb_elem = 0;
-	cmd = shell->cmdlst->start;
-	while (cmd)
-	{
-		y = cmd->exec;
-		oplst = new_back_oplst(oplst, cmd);
-		while ((cmd && cmd->exec == y) || (cmd && cmd->exec == 0) || (cmd && cmd->prev && cmd->prev->prio == cmd->prio && cmd->prio != 0))
-		{
-			cmd = cmd->next;
-		}
-		x++;
-	}
-	return (oplst);
-}
-
-void	printoplst(t_oplst *oplst)
-{
-	t_op	*op;
-	t_cmd	*tmp;
-	int		i;
-
-	op = oplst->start;
-	while (op)
-	{
-		i = -1;
-		printf("------------------\n");
-		tmp = op->cmdlst->start;
-		while (tmp)
-		{
-			while (tmp->var[++i])
-				printf("var[%d] = %s, prio = %d\n", i, tmp->var[i], tmp->prio);
-			tmp = tmp->next;
-		}
-		op = op->next;
-	}
-	printf("------------------\n");
-}
-
 int	pipe_command(t_shell *shell)
 {
 	int			i;
 	t_cmd		*temp;
 	int			index;
-	t_oplst		*op;
-	t_op		*optmp;
 
 	i = -1;
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
-	shell->cmdlst = createcmdlst(shell, i);
-	op = createop(shell);
-	/*
-	int	y = -1;
-	while (shell->multi_cmd[++y])
-	{
-		printf("-=================-\n");
-		int	x = -1;
-		while (shell->multi_cmd[y][++x])
-			printf("multi_cmd[%d][%d] = %s\n", y, x, shell->multi_cmd[y][x]);
-	}
-	printf("-=================-\n");
-	*/
-	//printoplst(op);
 	i = 0;
 	index = 0;
-	optmp = op->start;
 	while (optmp && optmp->cmdlst)
 	{
 		temp = optmp->cmdlst->start;

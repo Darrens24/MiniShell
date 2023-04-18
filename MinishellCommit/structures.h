@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 15:15:14 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/18 17:54:27 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,14 @@ typedef struct s_tokation
 	char				*temp;
 }				t_tokation;
 
-typedef struct	s_op
+typedef struct s_op
 {
 	struct s_op		*prev;
 	struct s_cmdlst	*cmdlst;
 	struct s_op		*next;
 }				t_op;
 
-typedef struct	s_oplst
+typedef struct s_oplst
 {
 	struct s_op		*start;
 	int				nb_elem;
@@ -131,13 +131,14 @@ typedef struct	s_oplst
 typedef struct s_branch
 {
 	struct s_branch	*right;
+	struct s_branch	*middle;
 	struct s_branch	*left;
 	char			**cmd;
 }				t_branch;
 
 typedef struct s_tree
 {
-	struct s_branch	*start; 
+	struct s_branch	*start;
 	int				nb_elem;
 }				t_tree;
 
