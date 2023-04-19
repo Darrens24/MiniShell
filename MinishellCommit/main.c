@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/19 14:00:35 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/19 18:22:58 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,8 @@ int	main(int ac, char **av, char **envp)
 					tst = tst->next;
 					i++;
 				}
-				/*
 				fill_trinary_tree(shell.user_command, &shell);
-				print_tree(shell.tree);
-				//printf("coucou1\n");
+				//print_tree(shell.tree);
 				tst = shell.user_command->start;
 				i = 0;
 				//printf("coucou2\n");
@@ -115,11 +113,12 @@ int	main(int ac, char **av, char **envp)
 					tst = tst->next;
 					i++;
 				}
-				*/
+				/*
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
 				if (good == TRUE)
 					pipe_command(&shell);
+				*/
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);
 				dup2(shell.saved_stdout, STDOUT_FILENO);

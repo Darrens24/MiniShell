@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/19 13:59:02 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/19 18:21:38 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,10 +285,15 @@ void		clear_cmd_lst(t_cmdlst *cmdlst);
 
 /***		TREES		\***/
 
+int			number_of_parentheses(t_tok *temp);
 void		fill_trinary_tree(t_toklst *user_command, t_shell *shell);
 t_tree		*create_start_branch(t_tree *tree, t_toklst *user_command);
+t_tree		*op_create_start_branch(t_tree *tree, t_tok *temp);
 t_tree		*create_middle_branch(t_tree *tree, t_toklst *user_command);
 void		fill_tree_command_remove_tok(t_toklst *user_command, t_branch *branch);
 int			is_operator(char *str);
+int			is_and_or(char *str);
+int			and_or_in_cmd(t_toklst *user_command);
+t_tree		*create_ast_branches(t_tree *tree, t_toklst *user_command);
 
 #endif
