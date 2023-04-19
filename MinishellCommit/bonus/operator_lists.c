@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operator_lists.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:57:38 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/18 11:53:28 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:35:18 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,16 @@ int	size_to_malloc(char **command)
 	return (i);
 }
 
-int	initialize_elem(t_cmd *elem, int exec, int i, int prio)
+int	initialize_elem(t_cmd *elem, int exec, int i)
 {
 	elem->var[i] = NULL;
 	elem->next = NULL;
 	elem->prev = NULL;
 	elem->exec = exec;
-	elem->prio = prio;
 	return (EXIT_SUCCESS);
 }
 
-t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec, int prio)
+t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
 {
 	t_cmd	*elem;
 	int		i;
@@ -44,7 +43,7 @@ t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec, int prio)
 	i = -1;
 	while (command[++i])
 		elem->var[i] = ft_strdup(command[i]);
-	initialize_elem(elem, exec, i, prio);
+	initialize_elem(elem, exec, i);
 	if (cmdlst->nb_elem == 0)
 	{
 		cmdlst->start = elem;

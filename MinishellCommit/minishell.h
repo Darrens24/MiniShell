@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/05 12:35:25 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/19 09:33:01 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,7 +279,7 @@ void		add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
 
 /***		AND/OR		\***/
 
-t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec, int prio);
+t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec);
 t_cmdlst	*remove_back_cmd(t_cmdlst *cmdlst);
 void		clear_cmd_lst(t_cmdlst *cmdlst);
 

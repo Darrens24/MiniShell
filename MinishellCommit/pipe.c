@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 19:13:48 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:34:34 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,38 +123,67 @@ int	final_redirection(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
+t_cmdlst	*createcmdlst(t_shell *shell, int i)
+{
+	t_tok		*t;
+	t_cmdlst	*cmdlst;
+
+	t = shell->user_command->start;
+	cmdlst = malloc(sizeof(t_cmdlst));
+	while (shell->multi_cmd[++i])
+	{
+		if (i != 0 && shell->multi_cmd[i])
+		{
+			while (t && !((ft_strncmp(t->var, "|", 2) != 0 && t->quote == 0)
+					|| (ft_strncmp(t->var, "||", 3) != 0 && t->quote == 0)
+					|| (ft_strncmp(t->var, "&&", 3) != 0 && t->quote == 0)))
+				t = t->next;
+			if (t && ft_strncmp(t->var, "||", 3) == 0 && t->quote == 0)
+				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 1);
+			else if (t && ft_strncmp(t->var, "&&", 3) == 0 && t->quote == 0)
+				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 2);
+			else
+				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0);
+			t = t->next;
+		}
+		else
+			cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0);
+	}
+	return (cmdlst);
+}
+
 int	pipe_command(t_shell *shell)
 {
 	int			i;
-	t_cmd		*temp;
+	t_cmdlst	*cmdlst;
+	t_cmd		*cmd;
 	int			index;
 
 	i = -1;
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
+	cmdlst = createcmdlst(shell, i);
+	cmd = cmdlst->start;
 	i = 0;
 	index = 0;
-	while (optmp && optmp->cmdlst)
+	while (shell->user_command->nb_elem != 0 && cmd)
 	{
-		temp = optmp->cmdlst->start;
-		while (shell->user_command->nb_elem != 0 && temp)
+		if (cmd->next && cmd->next->exec == 0)
 		{
-			if (temp->next && temp->next->exec == 0)
-			{
-				if (pipe(shell->fd[i]) < 0)
-					return (printf("Pipe failed\n"));
-			}
-			redirect_and_execute_cmd(temp, i, shell, index);
-			temp = temp->next;
-			index++;
-			if (temp && temp->exec == 0)
-				i++;
+			if (pipe(shell->fd[i]) < 0)
+				return (printf("Pipe failed\n"));
+			if (cmd->exec != 0)
+				i = 0;
 		}
-		wait_pids(shell->pid, shell);
-		optmp = optmp->next;
+		redirect_and_execute_cmd(cmd, i, shell, index);
+		cmd = cmd->next;
+		index++;
+		if (cmd && cmd->exec == 0)
+			i++;
 	}
+	wait_pids(shell->pid, shell);
 	final_redirection(shell);
-	clean_between_cmds(shell);
+	//clean_between_cmds(shell);
 	return (EXIT_SUCCESS);
 }
