@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:07:27 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/19 11:36:08 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:10:56 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	varjumper(char *var, int i)
 {
-	while (var[i] && (ft_isalpha(var[i]) || var[i] == '_'))
+	while (var[i] && (ft_isalnum(var[i]) || var[i] == '_'))
 		i++;
 	return (i);
 }
@@ -71,7 +71,7 @@ int	dquotej2(t_tok *token, int i)
 	if (token->var[i] && token->var[i] == '{')
 	{
 		while (token->var[i]
-			&& (ft_isalpha(token->var[i]) || token->var[i] == '_'))
+			&& (ft_isalnum(token->var[i]) || token->var[i] == '_'))
 			i++;
 		if (token->var[i] && token->var[i] == '\"')
 			return (-1);
@@ -85,7 +85,7 @@ int	dquotej2(t_tok *token, int i)
 	else
 	{
 		while (token->var[i]
-			&& (ft_isalpha(token->var[i]) || token->var[i] == '_'))
+			&& (ft_isalnum(token->var[i]) || token->var[i] == '_'))
 			i++;
 	}
 	return (i);
@@ -96,9 +96,7 @@ int	dquotejumper(t_tok *token, int i)
 	while (token->var[i] && token->var[i] != '\"')
 	{
 		if (token->var[i] && token->var[i] == '$')
-		{
 			i = dquotej2(token, i);
-		}
 		else
 			++i;
 	}

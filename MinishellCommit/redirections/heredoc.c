@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:30:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/10 14:43:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/19 13:27:10 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	varjumper(char *var, int i)
 		i += 0;
 	else
 	{
-		while (var[i] && var[i] != '\'' && var[i] != '\"')
+		while (var[i] && var[i] != '\'' && var[i] != '\"'
+			&& (ft_isalnum(var[i]) || var[i] == '_'))
 			i++;
 	}
 	return (i);
@@ -35,7 +36,8 @@ char	*varparser(char *var, int i, char *newvar, t_chained *env)
 	else
 	{
 		start = i;
-		while (var[i] && var[i] != '\'' && var[i] != '\"')
+		while (var[i] && var[i] != '\'' && var[i] != '\"'
+			&& (ft_isalnum(var[i]) || var[i] == '_'))
 			i++;
 		newvar = envfinder(ft_strndup(var, start, i), newvar, env);
 	}

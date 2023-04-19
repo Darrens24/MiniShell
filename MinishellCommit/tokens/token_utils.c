@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:02:41 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 18:46:54 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:35:18 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	token_norm_parsing(t_tokation *tk, t_chained *env)
 	tk->start = tk->i;
 	if (tk->elem->var[tk->i] == '\"' || tk->elem->var[tk->i] == '\'')
 		antislash_norm(tk, env);
-    else if ((tk->elem->var[tk->i] == '$' && !tk->elem->prev)
+	else if ((tk->elem->var[tk->i] == '$' && !tk->elem->prev)
 		|| (tk->elem->var[tk->i] == '$' && tk->elem->prev
 			&& !(ft_strncmp(tk->elem->prev->var, "<<", 3) == 0
 				&& tk->elem->prev->quote == 0)))
@@ -49,7 +49,8 @@ int	envvarjumper(t_tok *token, int i)
 		i += 0;
 	else
 	{
-		while (token->var[i] && token->var[i] != '\'' && token->var[i] != '\"')
+		while (token->var[i] && token->var[i] != '\'' && token->var[i] != '\"'
+			&& (ft_isalnum(token->var[i]) || token->var[i] == '_'))
 			i++;
 	}
 	return (i);
@@ -82,9 +83,9 @@ char	*envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 	int		start;
 	char	*temp;
 
-	if (token->var[i] && token->var[i] == '{')
+	start = i;
+	if (token->var[i] && token->var[i] == '{' && i++ > -1)
 	{
-		start = ++i;
 		while (token->var[i] && token->var[i] != '}')
 			i++;
 		temp = ft_strndup(token->var, start, i++);
@@ -96,8 +97,8 @@ char	*envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 		newvar = ft_strjoin(newvar, "$");
 	else
 	{
-		start = i;
-		while (token->var[i] && token->var[i] != '\'' && token->var[i] != '\"')
+		while (token->var[i] && token->var[i] != '\'' && token->var[i] != '\"'
+			&& (ft_isalnum(token->var[i]) || token->var[i] == '_'))
 			i++;
 		temp = ft_strndup(token->var, start, i);
 		newvar = envfinder(temp, newvar, env);

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/04 18:31:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/19 13:36:31 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	dollarcase(t_tokation *tk, t_chained *env)
 {
 	tk->i++;
-	if (tk->elem->var[tk->i] == '?') // ATTENTION LINUX, peut etre devoir preciser pas de +1 sur mac
+	if (tk->elem->var[tk->i] == '?')
 	{
 		tk->temp = ft_itoa(g_err);
 		tk->newvar = ft_strjoin(tk->newvar, tk->temp);
@@ -45,8 +45,8 @@ void	antislash_norm(t_tokation *tk, t_chained *env)
 {
 	if (tk->elem->var[tk->i] == '\"')
 	{
-        tk->newvar = dquoteparser(tk->elem, ++tk->i, tk->newvar, env);
-        tk->i = dquotejumper(tk->elem, tk->i);
+		tk->newvar = dquoteparser(tk->elem, ++tk->i, tk->newvar, env);
+		tk->i = dquotejumper(tk->elem, tk->i);
 	}
 	else if (tk->elem->var[tk->i] == '\'')
 	{
