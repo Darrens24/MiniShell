@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 16:56:46 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/19 14:00:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	readline_manager(t_shell *shell)
 {
 	free(shell->line_readed);
-	signal(SIGINT, &handler);
-	signal(SIGQUIT, &handler);
-	remove_ctrlc(1);
+	//signal(SIGINT, &handler);
+	//signal(SIGQUIT, &handler);
+	//remove_ctrlc(1);
 	shell->line_readed = readline("Minishell >> ");
-	remove_ctrlc(0);
+	//remove_ctrlc(0);
 	if (!shell->line_readed)
 		return (EXIT_FAILURE);
 	if (shell->line_readed && *shell->line_readed)
@@ -38,6 +38,24 @@ int	is_builtin_command(t_cmd *cmd)
 		|| ft_strncmp(cmd->var[0], "echo", 5) == 0)
 			return (TRUE);
 	return (FALSE);
+}
+
+void	print_tree(t_tree *tree)
+{
+	t_branch	*temp;
+	int			i;
+	int			j;
+
+	temp = tree->start;
+	j = 0;
+	while (temp)
+	{
+		i = 0;
+		while (temp->cmd[i])
+			printf("treecmd[%d] is %s\n", j, temp->cmd[i++]);
+		temp = temp->middle;
+		j++;
+	}
 }
 
 int	main(int ac, char **av, char **envp)
@@ -80,10 +98,24 @@ int	main(int ac, char **av, char **envp)
 				int	i = 0;
 				while (tst)
 				{
-					printf("command[%d] = %s\n", i, tst->var);
+					printf("commandbefore[%d] = %s\n", i, tst->var);
 					tst = tst->next;
 					i++;
 				}
+				/*
+				fill_trinary_tree(shell.user_command, &shell);
+				print_tree(shell.tree);
+				//printf("coucou1\n");
+				tst = shell.user_command->start;
+				i = 0;
+				//printf("coucou2\n");
+				while (tst)
+				{
+					printf("commandafter[%d] = %s\n", i, tst->var);
+					tst = tst->next;
+					i++;
+				}
+				*/
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
 				if (good == TRUE)

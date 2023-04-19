@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/19 09:33:01 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:59:02 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,5 +282,13 @@ void		add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
 t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec);
 t_cmdlst	*remove_back_cmd(t_cmdlst *cmdlst);
 void		clear_cmd_lst(t_cmdlst *cmdlst);
+
+/***		TREES		\***/
+
+void		fill_trinary_tree(t_toklst *user_command, t_shell *shell);
+t_tree		*create_start_branch(t_tree *tree, t_toklst *user_command);
+t_tree		*create_middle_branch(t_tree *tree, t_toklst *user_command);
+void		fill_tree_command_remove_tok(t_toklst *user_command, t_branch *branch);
+int			is_operator(char *str);
 
 #endif
