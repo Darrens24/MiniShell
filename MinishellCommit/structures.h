@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 14:51:37 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/21 16:31:04 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct s_tok
 	struct s_tok		*prev;
 	char				*var;
 	int					quote;
+	int					prio;
 	struct s_tok		*next;
 }				t_tok;
 
@@ -138,7 +139,7 @@ typedef struct s_branch
 	struct s_branch	*left;
 	struct s_branch	*dad;
 	char			**cmd;
-	int				error_code;
+	int				err_code;
 }				t_branch;
 
 typedef struct s_tree

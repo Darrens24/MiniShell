@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 14:43:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/21 18:04:12 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,6 @@ int	main(int ac, char **av, char **envp)
 				}
 				t_tok	*tst = shell.user_command->start;
 				int	i = 0;
-				while (tst)
-				{
-					printf("commandbefore[%d] = %s\n", i, tst->var);
-					tst = tst->next;
-					i++;
-				}
 				if (and_or_in_cmd(shell.user_command))
 				{
 					fill_trinary_tree(shell.user_command, &shell);
@@ -110,12 +104,14 @@ int	main(int ac, char **av, char **envp)
 				tst = shell.user_command->start;
 				i = 0;
 				//printf("coucou2\n");
+				/*
 				while (tst)
 				{
 					printf("commandafter[%d] = %s\n", i, tst->var);
 					tst = tst->next;
 					i++;
 				}
+				*/
 				
 				/*
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))

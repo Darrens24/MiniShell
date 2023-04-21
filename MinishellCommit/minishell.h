@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 14:35:20 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/21 18:17:39 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,6 +287,8 @@ void		clear_cmd_lst(t_cmdlst *cmdlst);
 
 void		fill_trinary_tree(t_toklst *user_command, t_shell *shell);
 void		fill_tree_command_remove_tok(t_toklst *user_command, t_branch *branch);
+t_tree		*fill_tree_with_operator(t_shell *shell, t_tok *temp);
+t_tree		*create_cmd_l_leaf(t_tree *tree, t_tok *temp);
 
 /***		BRANCH CREATION		\***/
 
