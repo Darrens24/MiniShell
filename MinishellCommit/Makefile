@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/19 11:03:52 by eleleux          ###   ########.fr        #
+#    Updated: 2023/04/21 13:11:13 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,9 @@ SRC = main.c \
 		bonus/operator_lists.c \
 		tree.c \
 		branch_creation.c \
+		parentheses.c \
+		tree_data.c \
+		parentheses_jump.c \
 
 OBJ = $(SRC:.c=.o)
 

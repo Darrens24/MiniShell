@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/19 18:22:58 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/21 14:43:00 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	print_tree(t_tree *tree)
 		i = 0;
 		while (temp->cmd[i])
 			printf("treecmd[%d] is %s\n", j, temp->cmd[i++]);
-		temp = temp->middle;
+		temp = temp->left;
 		j++;
 	}
 }
@@ -102,8 +102,11 @@ int	main(int ac, char **av, char **envp)
 					tst = tst->next;
 					i++;
 				}
-				fill_trinary_tree(shell.user_command, &shell);
-				//print_tree(shell.tree);
+				if (and_or_in_cmd(shell.user_command))
+				{
+					fill_trinary_tree(shell.user_command, &shell);
+					print_tree(shell.tree);
+				}
 				tst = shell.user_command->start;
 				i = 0;
 				//printf("coucou2\n");
@@ -113,6 +116,7 @@ int	main(int ac, char **av, char **envp)
 					tst = tst->next;
 					i++;
 				}
+				
 				/*
 				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;

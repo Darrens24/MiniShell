@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/19 18:21:38 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/21 14:35:20 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,17 +283,45 @@ t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec);
 t_cmdlst	*remove_back_cmd(t_cmdlst *cmdlst);
 void		clear_cmd_lst(t_cmdlst *cmdlst);
 
-/***		TREES		\***/
+/***		TREE		\***/
 
-int			number_of_parentheses(t_tok *temp);
 void		fill_trinary_tree(t_toklst *user_command, t_shell *shell);
-t_tree		*create_start_branch(t_tree *tree, t_toklst *user_command);
-t_tree		*op_create_start_branch(t_tree *tree, t_tok *temp);
-t_tree		*create_middle_branch(t_tree *tree, t_toklst *user_command);
 void		fill_tree_command_remove_tok(t_toklst *user_command, t_branch *branch);
+
+/***		BRANCH CREATION		\***/
+
+t_tok		*go_to_branch_start(t_toklst *user_command);
+t_tree		*create_start_branch(t_tree *tree, t_tok *temp);
+t_tree		*create_ast_branches(t_tree *tree, t_shell *shell, t_tok *temp);
+t_branch	*create_left_leaf(t_tree *tree, t_tok *temp);
+t_tree		*create_left_branches(t_shell *shell, t_tok *temp);
+t_tok		*go_to_first_and_or(t_toklst *user_command);
+t_tok		*go_to_first_operator(t_toklst *user_command);
+t_tok		*go_to_next_pipe_before_operator(t_tok *temp);
+
+/***		TREE DATA		\***/
+
 int			is_operator(char *str);
 int			is_and_or(char *str);
 int			and_or_in_cmd(t_toklst *user_command);
-t_tree		*create_ast_branches(t_tree *tree, t_toklst *user_command);
+int			get_number_of_op(t_toklst *user_command, t_shell *shell);
+int			tree_number_of_pipes(t_toklst *user_command, t_shell *shell, char mode);
+
+/***		PARENTHESES		\***/
+
+t_tok		*go_to_first_closed_parenthese(t_tok *temp, int *count, int *diff);
+t_tok		*go_to_last_closed_parenthese(t_tok *temp, int *count, int *diff);
+t_tok		*go_to_last_opened_parenthese(t_tok *temp, int *count, int *diff);
+int			number_of_parentheses(t_tok *temp);
+t_tok		*go_to_reverse_parenthese(t_tok *temp, int *count, int *diff);
+int			reverse_number_of_parentheses(t_tok *temp);
+
+/***		PARENTHESES JUMPS		\***/
+
+t_tok		*and_or_jump_parentheses(t_tok *temp);
+t_tok		*pipe_jump_parentheses(t_tok *temp);
+t_tok		*and_or_reverse_jump_parentheses(t_tok *temp);
+t_tok		*pipe_reverse_jump_parentheses(t_tok *temp);
+t_tok		*operator_jump_parentheses(t_tok *temp);
 
 #endif
