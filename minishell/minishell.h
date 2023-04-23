@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:27:51 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:30:37 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ char		*get_correct_path(t_shell *shell, int index);
 int			slash_manager(t_shell *shell, int index);
 int			get_array_cmd_and_pipe_fds(t_shell *shell);
 int			pipe_command(t_shell *shell);
-int			redirect_and_execute_cmd(int index, t_shell *shell);
 
 //************************** Pipe Utils
 

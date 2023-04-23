@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:27:36 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:30:27 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,12 +140,6 @@ static int	execute_commands(int index, t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	redirect_and_execute_cmd(int index, t_shell *shell)
-{
-	execute_commands(index, shell);
-	return (EXIT_SUCCESS);
-}
-
 int	final_redirection(t_shell *shell)
 {
 	if (shell->out == TRUE)
@@ -157,47 +151,13 @@ int	final_redirection(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-t_cmdlst	*createcmdlst(t_shell *shell, int i)
-{
-	t_tok		*t;
-	t_cmdlst	*cmdlst;
-
-	t = shell->user_command->start;
-	cmdlst = malloc(sizeof(t_cmdlst));
-	while (shell->multi_cmd[++i])
-	{
-		if (i != 0 && shell->multi_cmd[i])
-		{
-			while (t && !((ft_strncmp(t->var, "|", 2) != 0 && t->quote == 0)
-					|| (ft_strncmp(t->var, "||", 3) != 0 && t->quote == 0)
-					|| (ft_strncmp(t->var, "&&", 3) != 0 && t->quote == 0)))
-				t = t->next;
-			if (t && ft_strncmp(t->var, "||", 3) == 0 && t->quote == 0)
-				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 1);
-			else if (t && ft_strncmp(t->var, "&&", 3) == 0 && t->quote == 0)
-				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 2);
-			else
-				cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0);
-			t = t->next;
-		}
-		else
-			cmdlst = newp_back_cmd(cmdlst, shell->multi_cmd[i], 0);
-	}
-	return (cmdlst);
-}
-
 int	pipe_command(t_shell *shell)
 {
-	t_cmdlst	*cmdlst;
-	t_cmd		*cmd;
 	int			index;
 
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
-	index = -1;
-	cmdlst = createcmdlst(shell, index);
-	cmd = cmdlst->start;
 	index = -1;
 	while (shell->user_command->nb_elem != 0
 		&& ++index < get_number_of_commands(shell))
@@ -205,11 +165,9 @@ int	pipe_command(t_shell *shell)
 		if (index < get_number_of_commands(shell) - 1)
 			if (pipe(shell->fd[index]) < 0)
 				return (printf("Pipe failed\n"));
-		redirect_and_execute_cmd(index, shell);
-		cmd = cmd->next;
+		execute_commands(index, shell);
 	}
 	wait_pids(shell->pid, shell);
 	final_redirection(shell);
-	//clean_between_cmds(shell);
 	return (EXIT_SUCCESS);
 }
