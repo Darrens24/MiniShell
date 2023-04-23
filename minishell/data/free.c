@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:17:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 11:03:51 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:01:52 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_pids_fds(t_shell *shell)
 	int	i;
 
 	i = -1;
-	while (++i < get_number_of_pipes(shell))
+	while (++i < get_number_of_commands(shell))
 		free(shell->fd[i]);
 	free(shell->fd);
 	free(shell->pid);

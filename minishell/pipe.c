@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 11:06:10 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:04:16 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,10 @@ int	slash_manager(t_cmd *cmd)
 	return (EXIT_SUCCESS);
 }
 
-static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, int i)
+static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, int i)
 {
+	char	*temp;
+
 	if (!is_builtin_command(cmd))
 	{
 		if (slash_manager(cmd) != 0)
@@ -141,21 +143,7 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, char *temp, i
 
 int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i)
 {
-	char	*temp;
-
-	temp = NULL;
-	if (cmd->exec == 1)
-	{
-		if (g_err != 0)
-			execute_commands(cmd, index, shell, temp, i);
-	}
-	else if (cmd->exec == 2)
-	{
-		if (g_err == 0)
-			execute_commands(cmd, index, shell, temp, i);
-	}
-	else
-		execute_commands(cmd, index, shell, temp, i);
+	execute_commands(cmd, index, shell, i);
 	return (EXIT_SUCCESS);
 }
 

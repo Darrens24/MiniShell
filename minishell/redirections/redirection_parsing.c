@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection_parsing.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:36:36 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/13 14:18:46 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:02:20 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	redirection_parsing(t_shell *shell, int index, t_cmd *cmd)
 		early_out_redirection(shell->fd[index]);
 	if (cmd->exec == 0 && cmd->prev)
 		inside_redirection(shell->fd[index - 1]);
-	if (shell->out == TRUE && index == get_number_of_pipes(shell))
+	if (shell->out == TRUE && index == get_number_of_commands(shell))
 		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
