@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 11:02:18 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:16:33 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ int	readline_manager(t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	is_builtin_command(t_cmd *cmd)
+int	is_builtin_command(t_shell *shell, int index)
 {
-	if (ft_strncmp(cmd->var[0], "pwd", 4) == 0
-		|| ft_strncmp(cmd->var[0], "cd", 3) == 0
-		|| ft_strncmp(cmd->var[0], "export", 7) == 0
-		|| ft_strncmp(cmd->var[0], "env", 4) == 0
-		|| ft_strncmp(cmd->var[0], "unset", 6) == 0
-		|| ft_strncmp(cmd->var[0], "exit", 5) == 0
-		|| ft_strncmp(cmd->var[0], "echo", 5) == 0)
-			return (TRUE);
+	if (ft_strncmp(shell->multi_cmd[index][0], "pwd", 4) == 0
+		|| ft_strncmp(shell->multi_cmd[index][0], "cd", 3) == 0
+		|| ft_strncmp(shell->multi_cmd[index][0], "export", 7) == 0
+		|| ft_strncmp(shell->multi_cmd[index][0], "env", 4) == 0
+		|| ft_strncmp(shell->multi_cmd[index][0], "unset", 6) == 0
+		|| ft_strncmp(shell->multi_cmd[index][0], "exit", 5) == 0
+		|| ft_strncmp(shell->multi_cmd[index][0], "echo", 5) == 0)
+		return (TRUE);
 	return (FALSE);
 }
 

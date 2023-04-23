@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:04:16 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:18:32 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,71 +79,70 @@ int	builtin_manager(t_shell *shell, int index, t_cmd *cmd)
 	return (EXIT_SUCCESS);
 }
 
-int	slash_manager(t_cmd *cmd)
+int	slash_manager(t_shell *shell, int index)
 {
 	int			access_return;
 	struct stat	buff;
 
 	access_return = 0;
-	if (cmd->var[0][0] == '/')
+	if (shell->multi_cmd[index][0][0] == '/')
 	{
-		access_return = access(cmd->var[0], X_OK);
+		access_return = access(shell->multi_cmd[index][0], X_OK);
 		if (access_return < 0)
 		{
 			g_err = 126;
-			printf("%s : Permission denied\n", cmd->var[0]);
+			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
 			return (EXIT_FAILURE);
 		}
-		stat(cmd->var[0], &buff);
+		stat(shell->multi_cmd[index][0], &buff);
 		if (S_ISDIR(buff.st_mode))
 		{
 			g_err = 126;
-			printf("%s : Is a directory\n", cmd->var[0]);
+			printf("%s : Is a directory\n", shell->multi_cmd[index][0]);
 			return (EXIT_FAILURE);
 		}
 	}
 	return (EXIT_SUCCESS);
 }
 
-static int	execute_commands(t_cmd *cmd, int index, t_shell *shell, int i)
+static int	execute_commands(t_cmd *cmd, int index, t_shell *shell)
 {
 	char	*temp;
 
-	if (!is_builtin_command(cmd))
+	if (!is_builtin_command(shell, index))
 	{
-		if (slash_manager(cmd) != 0)
+		if (slash_manager(shell, index) != 0)
 			return (EXIT_FAILURE);
-		if (access(cmd->var[0], F_OK) == 0)
-			temp = ft_strdup(cmd->var[0]);
+		if (access(shell->multi_cmd[index][0], F_OK) == 0)
+			temp = ft_strdup(shell->multi_cmd[index][0]);
 		else
 			temp = find_path(cmd, shell);
 		if (!temp)
 		{
-			if (index > 0 && cmd->exec == 0)
+			if (index > 0)
 				close_fds(shell->fd[index - 1]);
 			return (EXIT_FAILURE);
 		}
-		shell->pid[i] = fork();
+		shell->pid[index] = fork();
 		signal(SIGINT, &do_nothing);
 		signal(SIGQUIT, &do_nothing);
-		if (shell->pid[i] == 0)
+		if (shell->pid[index] == 0)
 		{
-			if (cmd->exec == 0 || (cmd->next && cmd->next->exec == 0))
-				redirection_parsing(shell, index, cmd);
+			redirection_parsing(shell, index, cmd);
 			execve(temp, cmd->var, shell->array_env);
 		}
 		free(temp);
 	}
 	else
 		builtin_manager(shell, index, cmd);
-	if (index > 0 && cmd->exec == 0)
+	if (index > 0)
 		close_fds(shell->fd[index - 1]);
 	return (EXIT_SUCCESS);
 }
 
-int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell, int i)
+int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell)
 {
-	execute_commands(cmd, index, shell, i);
+	execute_commands(cmd, index, shell);
 	return (EXIT_SUCCESS);
 }
 
@@ -189,33 +188,25 @@ t_cmdlst	*createcmdlst(t_shell *shell, int i)
 
 int	pipe_command(t_shell *shell)
 {
-	int			i;
 	t_cmdlst	*cmdlst;
 	t_cmd		*cmd;
 	int			index;
 
-	i = -1;
 	get_array_cmd_and_pipe_fds(shell);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
-	cmdlst = createcmdlst(shell, i);
+	index = -1;
+	cmdlst = createcmdlst(shell, index);
 	cmd = cmdlst->start;
-	i = 0;
-	index = 0;
-	while (shell->user_command->nb_elem != 0 && cmd)
+	index = -1;
+	while (shell->user_command->nb_elem != 0
+		&& ++index < get_number_of_commands(shell))
 	{
-		if (cmd->next && cmd->next->exec == 0)
-		{
-			if (pipe(shell->fd[i]) < 0)
+		if (index < get_number_of_commands(shell) - 1)
+			if (pipe(shell->fd[index]) < 0)
 				return (printf("Pipe failed\n"));
-			if (cmd->exec != 0)
-				i = 0;
-		}
-		redirect_and_execute_cmd(cmd, i, shell, index);
+		redirect_and_execute_cmd(cmd, index, shell);
 		cmd = cmd->next;
-		index++;
-		if (cmd && cmd->exec == 0)
-			i++;
 	}
 	wait_pids(shell->pid, shell);
 	final_redirection(shell);

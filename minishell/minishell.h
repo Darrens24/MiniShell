@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 18:17:39 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/23 12:18:14 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			clean_between_cmds(t_shell *shell);
 
 /***\	BUILTINS	\***/
 
-int			is_builtin_command(t_cmd *cmd);
+int			is_builtin_command(t_shell *shell, int index);
 int			builtin_manager(t_shell *shell, int index, t_cmd *cmd);
 int			exit_shell(t_shell *shell);
 
@@ -126,11 +126,10 @@ char		*get_correct_path(t_shell *shell, t_cmd *cmd);
 
 //************* Pipe
 
-int			slash_manager(t_cmd *cmd);
+int			slash_manager(t_shell *shell, int index);
 int			get_array_cmd_and_pipe_fds(t_shell *shell);
 int			pipe_command(t_shell *shell);
-int			redirect_and_execute_cmd(t_cmd *cmd, int index,
-				t_shell *shell, int i);
+int			redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell);
 
 //************************** Pipe Utils
 
