@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:34:52 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 15:20:18 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,16 @@ int	slash_manager(t_shell *shell, int index)
 
 static int	execute_commands(int index, t_shell *shell)
 {
-	char	*temp;
+	char		*temp;
+	struct stat	buff;
 
+	stat(shell->multi_cmd[index][0], &buff);
 	if (!is_builtin_command(shell, index))
 	{
 		if (slash_manager(shell, index) != 0)
 			return (EXIT_FAILURE);
-		if (access(shell->multi_cmd[index][0], F_OK) == 0)
+		if (access(shell->multi_cmd[index][0], F_OK) == 0
+			&& S_ISREG(buff.st_mode))
 			temp = ft_strdup(shell->multi_cmd[index][0]);
 		else
 			temp = find_path(index, shell);

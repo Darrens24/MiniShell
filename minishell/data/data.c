@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 11:57:08 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 14:00:19 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int	initialize_variables(t_shell *shell)
 	shell->user_command->nb_elem = 0;
 	shell->multi_cmd = NULL;
 	shell->out = FALSE;
-	shell->wild_before = NULL;
-	shell->wild_after = NULL;
 	shell->ls_cmd[0] = ft_strdup("ls");
 	shell->ls_cmd[1] = NULL;
 	shell->saved_stdin = dup(STDIN_FILENO);

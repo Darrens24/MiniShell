@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:33:57 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 15:20:08 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-				if ((shell.user_command->nb_elem != 0) && (infile_redirection_parsing(&shell) != 0 || outfile_redirection_parsing(&shell) != 0))
+				if ((shell.user_command->nb_elem != 0)
+					&& (infile_redirection_parsing(&shell) != 0
+						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
 				if (good == TRUE)
 					pipe_command(&shell);

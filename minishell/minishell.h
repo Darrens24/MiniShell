@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:34:20 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 13:56:00 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,18 @@ int			envindex(char *line, t_chained *env);
 
 //************* Export
 
-int         equal_in_string(char *str);
-t_tok	    *find_export_args(t_shell *shell);
-int	        export_ascii_sorted(t_tok *temp, t_chained *sorted_env);
+int			equal_in_string(char *str);
+t_tok		*find_export_args(t_shell *shell);
+int			export_ascii_sorted(t_tok *temp, t_chained *sorted_env);
 int			export_variable(t_shell *shell);
-void        put_quotes_to_export(char *variable);
+void		put_quotes_to_export(char *variable);
 int			print_export(t_shell *shell);
 
 //************* Unset
 
-int	        valid_arg(char *arg);
-t_tok	    *find_unset_args(t_shell *shell);
-t_node	    *find_node_to_remove(char *var_before_equal, t_chained *lst);
+int			valid_arg(char *arg);
+t_tok		*find_unset_args(t_shell *shell);
+t_node		*find_node_to_remove(char *var_before_equal, t_chained *lst);
 int			clean_export_list(t_shell *shell, char *temp3,
 				t_node *temp, t_node *temp2);
 int			unset_variable(t_shell *shell);
@@ -196,8 +196,6 @@ t_toklst	*remove_front_tok(t_toklst *list);
 t_tok		*remove_current_tok(t_tok *tok, t_toklst *list);
 void		print_toklst(t_toklst *list);
 void		clear_toklst(t_toklst *lst);
-t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer);
-t_tok		*remove_wildcard_tok(t_toklst *tokenlst);
 
 /***\      UTILS           \***/
 
@@ -242,37 +240,5 @@ char		*envvarparser(t_tok *token, int i, char *newvar, t_chained *env);
 int			envvarjumper(t_tok *token, int i);
 char		*vagueparser(int i, char *newvar, t_chained	*envp);
 void		token_norm_parsing(t_tokation *tk, t_chained *env);
-
-/***\      WILDCARDS		\***/
-
-int			get_asked_wildcards(char *var, t_shell *shell);
-char		*get_wild_middle(char *str, int index);
-int			get_wildcard_files(t_shell *shell);
-int			compare_after_wildcard(char *buffer, t_shell *shell);
-int			compare_middle_wildcard(char *buffer, t_shell *shell);
-
-//************************** Wildcards Data
-
-int			get_nb_of_wildcard(char *var);
-int			string_is_wildcard(char *str);
-int			cmd_has_wildcard(t_shell *shell);
-int			no_wildcard_before(char *str, int index);
-int			free_wildcards(t_shell *shell);
-
-//************************** Wildcards Parsing
-
-int			parse_wildcard(t_shell *shell, char **envp);
-int			one_wildcard_only(char *buffer, t_shell *shell);
-int			two_wildcards(char *buffer, t_shell *shell);
-int			all_wildcards(char *buffer, t_shell *shell);
-int			is_matching_file(char *buffer, t_shell *shell);
-
-//************************** Wildcards Utils
-
-int			jump_next_wildcard(char *str, int index);
-int			jump_previous_wildcard(char *str, int index);
-char		*remove_newline_from_buffer(char *buffer);
-int			execute_ls_in_tmp(t_shell *shell, char **envp);
-void		add_files_to_toklist(char *buffer, int fd_temp, t_shell *shell);
 
 #endif

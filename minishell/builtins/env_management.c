@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_management.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/04 11:58:25 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/23 13:53:38 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	export_manager(t_shell *shell, int i)
 	if (!shell->multi_cmd[i][1])
 		print_export(shell);
 	else if (shell->multi_cmd[i][1] && pipe_in_command(shell->user_command))
-	   return (EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	else
 		return (export_variable(shell));
 	return (EXIT_SUCCESS);

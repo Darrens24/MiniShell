@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:33:36 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 14:10:33 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,9 @@ typedef struct s_shell
 	int					out;
 	char				**ls_cmd;
 	int					nb_of_sub;
-	char				*wild_before;
-	char				**wild_middle;
-	char				*wild_after;
 	int					increment;
 	pid_t				here;
-	struct s_tokation	*tkion;	
-	struct s_cmdlst		*cmdlst;
-	struct s_tree		*tree;
+	struct s_tokation	*tkion;
 	int					nb_of_op;
 	int					l_nb_of_pipes;
 	int					r_nb_of_pipes;

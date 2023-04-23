@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir_management.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/05 10:13:46 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/23 13:53:45 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	go_to_home_directory(t_shell *shell)
 
 int	go_to_previous_directory(t_shell *shell)
 {
-    if (!shell->previous_dir_path)
-        return (print_pwd_linux(shell));
-    if (change_directory(shell, shell->previous_dir_path) != 0)
+	if (!shell->previous_dir_path)
+		return (print_pwd_linux(shell));
+	if (change_directory(shell, shell->previous_dir_path) != 0)
 		return (EXIT_FAILURE);
 	print_pwd_linux(shell);
 	return (EXIT_SUCCESS);
@@ -83,7 +83,7 @@ int	print_pwd_linux(t_shell *shell)
 	{
 		while (!directory)
 		{
-            free(directory);
+			free(directory);
 			change_directory(shell, "../");
 			directory = getcwd(NULL, 0);
 		}
