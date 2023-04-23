@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:16:33 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:33:57 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	readline_manager(t_shell *shell)
 {
 	free(shell->line_readed);
-	//signal(SIGINT, &handler);
-	//signal(SIGQUIT, &handler);
-	//remove_ctrlc(1);
+	signal(SIGINT, &handler);
+	signal(SIGQUIT, &handler);
+	remove_ctrlc(1);
 	shell->line_readed = readline("Minishell >> ");
-	//remove_ctrlc(0);
+	remove_ctrlc(0);
 	if (!shell->line_readed)
 		return (EXIT_FAILURE);
 	if (shell->line_readed && *shell->line_readed)
@@ -40,30 +40,12 @@ int	is_builtin_command(t_shell *shell, int index)
 	return (FALSE);
 }
 
-void	print_tree(t_tree *tree)
-{
-	t_branch	*temp;
-	int			i;
-	int			j;
-
-	temp = tree->start;
-	j = 0;
-	while (temp)
-	{
-		i = 0;
-		while (temp->cmd[i])
-			printf("treecmd[%d] is %s\n", j, temp->cmd[i++]);
-		temp = temp->left;
-		j++;
-	}
-}
-
 int	main(int ac, char **av, char **envp)
 {
-	(void)av;
-	int	good;
+	int		good;
 	t_shell	shell;
 
+	(void)av;
 	if (ac != 1)
 		return (printf("Minishell is pure, no arguments please\n"));
 	allocate_shell(&shell, envp);
@@ -74,8 +56,8 @@ int	main(int ac, char **av, char **envp)
 		readline_manager(&shell);
 		if (!shell.line_readed)
 		{
-				ft_putchar_fd('\n', STDOUT_FILENO);
-				break ;
+			ft_putchar_fd('\n', STDOUT_FILENO);
+			break ;
 		}
 		if (*shell.line_readed)
 		{
@@ -97,7 +79,6 @@ int	main(int ac, char **av, char **envp)
 				dup2(shell.saved_stdout, STDOUT_FILENO);
 			}
 		}
-		//printf("errorcode = %d\n",  g_err);
 	}
 	clean_memory(&shell);
 	printf(YEL "Exit Minishell\n" WHT);

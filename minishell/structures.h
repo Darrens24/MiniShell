@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 16:31:04 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/23 12:33:36 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,22 +94,6 @@ typedef struct s_increment
 	int					i;
 }				t_increment;
 
-typedef struct s_cmd
-{
-	struct s_cmd		*prev;
-	char				**var;
-	int					exec;
-	int					prio;
-	struct s_cmd		*next;
-}				t_cmd;
-
-typedef struct s_cmdlst
-{
-	struct s_cmd		*start;
-	int					nb_elem;
-	struct s_cmd		*end;
-}				t_cmdlst;
-
 typedef struct s_tokation
 {
 	t_tok				*elem;
@@ -118,35 +102,5 @@ typedef struct s_tokation
 	int					start;
 	char				*temp;
 }				t_tokation;
-
-typedef struct s_op
-{
-	struct s_op		*prev;
-	struct s_cmdlst	*cmdlst;
-	struct s_op		*next;
-}				t_op;
-
-typedef struct s_oplst
-{
-	struct s_op		*start;
-	int				nb_elem;
-	struct s_op		*end;
-}				t_oplst;
-
-typedef struct s_branch
-{
-	struct s_branch	*right;
-	struct s_branch	*left;
-	struct s_branch	*dad;
-	char			**cmd;
-	int				err_code;
-}				t_branch;
-
-typedef struct s_tree
-{
-	struct s_branch	*start;
-	struct s_branch	*map;
-	int				nb_elem;
-}				t_tree;
 
 #endif
