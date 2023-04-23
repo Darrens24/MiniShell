@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:18:32 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:23:38 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell)
 		if (access(shell->multi_cmd[index][0], F_OK) == 0)
 			temp = ft_strdup(shell->multi_cmd[index][0]);
 		else
-			temp = find_path(cmd, shell);
+			temp = find_path(index, shell);
 		if (!temp)
 		{
 			if (index > 0)
@@ -129,7 +129,7 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell)
 		if (shell->pid[index] == 0)
 		{
 			redirection_parsing(shell, index, cmd);
-			execve(temp, cmd->var, shell->array_env);
+			execve(temp, shell->multi_cmd[index], shell->array_env);
 		}
 		free(temp);
 	}

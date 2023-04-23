@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:18:14 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:21:38 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,9 @@ char		**get_command_in_tok(t_shell *shell, int index);
 
 //************* Path
 
-char		*find_path(t_cmd *cmd, t_shell *shell);
+char		*find_path(int index, t_shell *shell);
 char		*get_path(char **array_env);
-char		*get_correct_path(t_shell *shell, t_cmd *cmd);
+char		*get_correct_path(t_shell *shell, int index);
 
 //************* Pipe
 
