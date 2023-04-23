@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:36:36 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:02:20 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:24:59 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 //maybe a modifier
 
-int	redirection_parsing(t_shell *shell, int index, t_cmd *cmd)
+int	redirection_parsing(t_shell *shell, int index)
 {
-	if (cmd->next && cmd->next->exec == 0)
+	if (index < (get_number_of_commands(shell) - 1))
 		early_out_redirection(shell->fd[index]);
-	if (cmd->exec == 0 && cmd->prev)
+	if (index != 0)
 		inside_redirection(shell->fd[index - 1]);
-	if (shell->out == TRUE && index == get_number_of_commands(shell))
+	if (shell->out == TRUE && index == get_number_of_commands(shell) - 1)
 		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }

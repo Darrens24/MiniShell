@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:21:38 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:27:51 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int			clean_between_cmds(t_shell *shell);
 /***\	BUILTINS	\***/
 
 int			is_builtin_command(t_shell *shell, int index);
-int			builtin_manager(t_shell *shell, int index, t_cmd *cmd);
+int			builtin_manager(t_shell *shell, int index);
 int			exit_shell(t_shell *shell);
 
 //************* Directory
@@ -129,7 +129,7 @@ char		*get_correct_path(t_shell *shell, int index);
 int			slash_manager(t_shell *shell, int index);
 int			get_array_cmd_and_pipe_fds(t_shell *shell);
 int			pipe_command(t_shell *shell);
-int			redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell);
+int			redirect_and_execute_cmd(int index, t_shell *shell);
 
 //************************** Pipe Utils
 
@@ -150,7 +150,7 @@ int			heredoc_dup(t_shell *shell);
 
 //************* Redirection Parsing
 
-int			redirection_parsing(t_shell *shell, int index, t_cmd *cmd);
+int			redirection_parsing(t_shell *shell, int index);
 int			infile_redirection_parsing(t_shell *shell);
 int			outfile_redirection_parsing(t_shell *shell);
 

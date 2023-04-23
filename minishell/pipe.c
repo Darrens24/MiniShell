@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:23:38 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:27:36 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ t_cmdlst	*newp_back_cmd(t_cmdlst *cmdlst, char **command, int exec)
 	return (cmdlst);
 }
 
-int	builtin_manager(t_shell *shell, int index, t_cmd *cmd)
+int	builtin_manager(t_shell *shell, int index)
 {
 	if (get_number_of_commands(shell) == 1)
 	{
-		redirection_parsing(shell, index, cmd);
+		redirection_parsing(shell, index);
 		execute_builtin_cmd(shell, index);
 	}
 	else if (get_number_of_commands(shell) > 1)
@@ -71,7 +71,7 @@ int	builtin_manager(t_shell *shell, int index, t_cmd *cmd)
 		shell->pid[index] = fork();
 		if (shell->pid[index] == 0)
 		{
-			redirection_parsing(shell, index, cmd);
+			redirection_parsing(shell, index);
 			execute_builtin_cmd(shell, index);
 			exit(1);
 		}
@@ -105,7 +105,7 @@ int	slash_manager(t_shell *shell, int index)
 	return (EXIT_SUCCESS);
 }
 
-static int	execute_commands(t_cmd *cmd, int index, t_shell *shell)
+static int	execute_commands(int index, t_shell *shell)
 {
 	char	*temp;
 
@@ -128,21 +128,21 @@ static int	execute_commands(t_cmd *cmd, int index, t_shell *shell)
 		signal(SIGQUIT, &do_nothing);
 		if (shell->pid[index] == 0)
 		{
-			redirection_parsing(shell, index, cmd);
+			redirection_parsing(shell, index);
 			execve(temp, shell->multi_cmd[index], shell->array_env);
 		}
 		free(temp);
 	}
 	else
-		builtin_manager(shell, index, cmd);
+		builtin_manager(shell, index);
 	if (index > 0)
 		close_fds(shell->fd[index - 1]);
 	return (EXIT_SUCCESS);
 }
 
-int	redirect_and_execute_cmd(t_cmd *cmd, int index, t_shell *shell)
+int	redirect_and_execute_cmd(int index, t_shell *shell)
 {
-	execute_commands(cmd, index, shell);
+	execute_commands(index, shell);
 	return (EXIT_SUCCESS);
 }
 
@@ -205,7 +205,7 @@ int	pipe_command(t_shell *shell)
 		if (index < get_number_of_commands(shell) - 1)
 			if (pipe(shell->fd[index]) < 0)
 				return (printf("Pipe failed\n"));
-		redirect_and_execute_cmd(cmd, index, shell);
+		redirect_and_execute_cmd(index, shell);
 		cmd = cmd->next;
 	}
 	wait_pids(shell->pid, shell);
