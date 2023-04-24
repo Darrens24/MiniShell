@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:08:04 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/18 18:46:54 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:23:04 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,14 @@ char	*join_without_leaks(char *newvar, char *temp)
 	recipe = ft_strjoin(newvar, temp);
 	free(newvar);
 	free(temp);
+	return (recipe);
+}
+
+char	*join_without_leaks2(char *newvar, char *temp)
+{
+	char	*recipe;
+
+	recipe = ft_strjoin(newvar, temp);
+	free(newvar);
 	return (recipe);
 }

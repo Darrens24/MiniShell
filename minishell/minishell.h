@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 13:56:00 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:21:10 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int			unset_variable(t_shell *shell);
 
 //************* Echo
 
-int			print_echo(char **command);
+int			print_echo(char **command, t_shell *shell);
 
 /***\	COMMANDS	\***/
 
@@ -232,6 +232,7 @@ void		norm_errors(t_tokation *tk, t_toklst *tokenlst);
 void		antislash_norm(t_tokation *tk, t_chained *env);
 void		tilde_and_classicnorm(t_tokation *tk, t_chained *env);
 char		*join_without_leaks(char *newvar, char *temp);
+char		*join_without_leaks2(char *newvar, char *temp);
 
 //************************** Token Utils
 
@@ -240,5 +241,6 @@ char		*envvarparser(t_tok *token, int i, char *newvar, t_chained *env);
 int			envvarjumper(t_tok *token, int i);
 char		*vagueparser(int i, char *newvar, t_chained	*envp);
 void		token_norm_parsing(t_tokation *tk, t_chained *env);
+char		*get_command(t_shell *shell, int index);
 
 #endif

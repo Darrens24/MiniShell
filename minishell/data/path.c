@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:40:44 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 15:17:41 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/24 10:44:21 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*find_path(int index, t_shell *shell)
 	shell->all_path = ft_split_slash(all_path, ':');
 	if (!shell->all_path[0])
 		return (NULL);
-	printf("cc\n");
 	temp = get_correct_path(shell, index);
 	free_array(shell->all_path);
 	if (!temp)

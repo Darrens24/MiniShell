@@ -6,14 +6,15 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 13:53:38 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:21:47 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	print_echo(char **command)
+int	print_echo(char **command, t_shell *shell)
 {
+	(void)shell;
 	int	tmp;
 	int	i;
 
@@ -30,7 +31,8 @@ int	print_echo(char **command)
 	while (command[i])
 	{
 		ft_putstr_fd(command[i], STDOUT_FILENO);
-		ft_putchar_fd(' ', STDOUT_FILENO);
+		if (get_command(shell, i) != NULL)
+			ft_putchar_fd(' ', STDOUT_FILENO);
 		i++;
 	}
 	if (tmp)
@@ -87,6 +89,6 @@ int	execute_builtin_cmd(t_shell *shell, int i)
 			return (unset_variable(shell));
 	}
 	else if (ft_strncmp(shell->multi_cmd[i][0], "echo", 5) == 0)
-		print_echo(shell->multi_cmd[i]);
+		print_echo(shell->multi_cmd[i], shell);
 	return (EXIT_SUCCESS);
 }

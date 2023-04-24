@@ -6,13 +6,11 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 12:47:01 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/19 13:36:31 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:09:17 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-//modification du ++i dans jointok
 
 void	dollarcase(t_tokation *tk, t_chained *env)
 {
@@ -24,11 +22,16 @@ void	dollarcase(t_tokation *tk, t_chained *env)
 		free(tk->temp);
 		tk->i++;
 	}
-	else
+	else if (tk->elem->var[tk->i] && (ft_isalnum(tk->elem->var[tk->i])
+			|| tk->elem->var[tk->i] == '_'))
 	{
 		tk->newvar = envvarparser(tk->elem, tk->i, tk->newvar, env);
 		tk->i = envvarjumper(tk->elem, tk->i);
 	}
+	else if (tk->elem->var[tk->i] == '\'' || tk->elem->var[tk->i] == '\"')
+		tk->newvar = ft_strdup("");
+	else
+		tk->newvar = join_without_leaks2(tk->newvar, "$");
 }
 
 void	norm_errors(t_tokation *tk, t_toklst *tokenlst)

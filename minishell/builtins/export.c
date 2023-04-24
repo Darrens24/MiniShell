@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:21:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 13:53:52 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:09:03 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	export_ascii_sorted(t_tok *temp, t_chained *sorted_env)
 
 	search = sorted_env->start;
 	index = 0;
-	while (search && ft_strncmp(temp->var, search->variable, (ft_strlen(search->variable) + ft_strlen(temp->var))) > 0)
+	while (search && ft_strncmp(temp->var, search->variable,
+			(ft_strlen(search->variable) + ft_strlen(temp->var))) > 0)
 	{
 		index++;
 		search = search->next;
@@ -84,17 +85,17 @@ int	export_variable(t_shell *shell)
 			{
 				if (envchecker(var_before_equal, shell->env_l))
 				{
-					node_to_remove = find_node_to_remove(var_before_equal, shell->env_l);
+					node_to_remove = find_node_to_remove(var_before_equal,
+							shell->env_l);
 					printf("nodetoremove %s\n", node_to_remove->variable);
 					remove_current_node(node_to_remove, shell->env_l);
-					printf("cc3\n");
 				}
 				new_back_node(shell->env_l, temp->var);
-				printf("cc4\n");
 			}
 			else if (!equal_in_string(temp->var))
 				return (EXIT_FAILURE);
-			node_to_remove = find_node_to_remove(var_before_equal, shell->sorted_env_l);
+			node_to_remove = find_node_to_remove(var_before_equal,
+					shell->sorted_env_l);
 			remove_current_node(node_to_remove, shell->sorted_env_l);
 			export_ascii_sorted(temp, shell->sorted_env_l);
 		}

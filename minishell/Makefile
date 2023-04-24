@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
+#    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/23 11:03:17 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/04/24 16:12:45 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRC = main.c \
 		tokens/token_checker.c \
 		tokens/quotes_management2.c \
 		tokens/quotes_management.c \
+		tokens/token_utils2.c \
 		parsing/parsing_utils.c \
 		parsing/parsing.c \
 		pipe.c \

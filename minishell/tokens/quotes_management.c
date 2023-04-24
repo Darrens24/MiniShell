@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:07:27 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/19 13:10:56 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:07:09 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ char	*dquotep2(t_tok *token, int *y, char *newvar, t_chained *env)
 	else if (token->var[i] == '?' && i++ > -1)
 		newvar = join_without_leaks(newvar, ft_itoa(g_err));
 	else if (!token->var[i] || is_wspace(token->var[i])
-		|| token->var[i] == '"')
-		newvar = join_without_leaks(newvar, "$");
+		|| token->var[i] == '"' || !(ft_isalnum(token->var[i])
+			|| token->var[i] == '_'))
+		newvar = join_without_leaks2(newvar, "$");
 	else
 	{
 		i = varjumper(token->var, start = i);
@@ -80,7 +81,8 @@ int	dquotej2(t_tok *token, int i)
 	else if (token->var[i] == '?')
 		i++;
 	else if (!token->var[i] || is_wspace(token->var[i])
-		|| token->var[i] == '"')
+		|| token->var[i] == '"' || !(ft_isalnum(token->var[i])
+			&& token->var[i] == '_'))
 		i = i - 0;
 	else
 	{
