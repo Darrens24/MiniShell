@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 14:00:19 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:22:38 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	initialize_variables(t_shell *shell)
 	shell->ls_cmd[1] = NULL;
 	shell->saved_stdin = dup(STDIN_FILENO);
 	shell->saved_stdout = dup(STDOUT_FILENO);
+	shell->nb_of_pipes = 0;
+	shell->index_of_pipes = 0;
+	shell->last_index = -1;
+	shell->index_of_commands = 0;
 	return (EXIT_SUCCESS);
 }
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
+#    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/25 10:42:37 by eleleux          ###   ########.fr        #
+#    Updated: 2023/04/25 17:28:44 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ SRC = main.c \
 		parentheses.c \
 		tree_data.c \
 		tree_utils.c \
+		execution_bonus.c \
 		parentheses_jump.c \
 
 

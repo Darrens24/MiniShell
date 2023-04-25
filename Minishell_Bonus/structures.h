@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/25 10:45:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/25 17:03:04 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef struct s_shell
 	pid_t				here;
 	struct s_tokation	*tkion;
 	struct s_tree		*tree;
+	int					nb_of_pipes;
+	int					index_of_pipes;
+	int					last_index;
+	int					index_of_commands;
 }				t_shell;
 
 typedef struct s_node

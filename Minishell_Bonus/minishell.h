@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/25 10:43:52 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/25 17:23:09 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,7 +326,10 @@ t_tok		*and_or_reverse_jump_parentheses(t_tok *temp);
 t_tok		*pipe_reverse_jump_parentheses(t_tok *temp);
 t_tok		*operator_jump_parentheses(t_tok *temp);
 
-void print_tree_cmds(t_tree *tree);
-void print_branch_cmds(t_branch *branch);
+void		print_tree_cmds(t_tree *tree);
+void		print_branch_cmds(t_branch *branch);
 
+/***		EXEC BONUS				 ***/
+
+int			execution_bonus(t_shell *shell, t_branch *map);
 #endif

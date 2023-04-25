@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/25 10:37:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/25 17:23:52 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ int	main(int ac, char **av, char **envp)
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
 				if (good == TRUE && and_or_in_cmd(shell.user_command))
+				{
 					fill_trinary_tree(shell.user_command, &shell);
+					execution_bonus(&shell, shell.tree->map);
+				}
 				else if (good == TRUE)
 					pipe_command(&shell);
 				clear_toklst(shell.user_command);
