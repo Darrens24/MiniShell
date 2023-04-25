@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 18:04:12 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/23 13:52:11 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	main(int ac, char **av, char **envp)
 				if (and_or_in_cmd(shell.user_command))
 				{
 					fill_trinary_tree(shell.user_command, &shell);
-					print_tree(shell.tree);
+					//print_tree(shell.tree);
 				}
 				tst = shell.user_command->start;
 				i = 0;

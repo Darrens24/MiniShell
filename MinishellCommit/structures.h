@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 16:31:04 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/24 14:53:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_shell
 	struct s_cmdlst		*cmdlst;
 	struct s_tree		*tree;
 	int					nb_of_op;
-	int					l_nb_of_pipes;
-	int					r_nb_of_pipes;
+	struct s_toklst		*left_command;
+	struct s_toklst		*right_command;
 }				t_shell;
 
 typedef struct s_node
@@ -139,6 +139,8 @@ typedef struct s_branch
 	struct s_branch	*left;
 	struct s_branch	*dad;
 	char			**cmd;
+	struct s_toklst	*left_command;
+	struct s_toklst	*right_command;
 	int				err_code;
 }				t_branch;
 
@@ -146,7 +148,6 @@ typedef struct s_tree
 {
 	struct s_branch	*start;
 	struct s_branch	*map;
-	int				nb_elem;
 }				t_tree;
 
 #endif
