@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_manip.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:28:14 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/23 16:57:56 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/24 18:45:05 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,42 @@ t_node	*go_to_end(t_chained *list)
 	while (temp->next != NULL)
 		temp = temp->next;
 	return (temp);
+}
+
+t_tok	*go_to_end_tok(t_toklst *list)
+{
+	t_tok	*temp;
+
+	temp = list->start;
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
+}
+
+t_toklst	*new_front_tok(t_toklst *list, char *line)
+{
+	t_tok	*elem;
+
+	elem = malloc(sizeof(*elem));
+	if (!elem)
+		return (0);
+	elem->var = ft_strdup(line);
+	elem->next = NULL;
+	elem->prev = NULL;
+	if (list->nb_elem == 0)
+	{
+		list->start = elem;
+		list->end = elem;
+	}
+	else
+	{
+		list->start->prev = elem;
+		elem->next = list->start;
+		list->start = elem;
+		//list->end = go_to_end_tok(list);
+	}
+	list->nb_elem++;
+	return (list);
 }
 
 t_chained	*new_front_node(t_chained *list, char *line)

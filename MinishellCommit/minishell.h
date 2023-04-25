@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 18:17:39 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/24 14:54:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,8 @@ int			error_func(int error_code);
 /***\      TOKEN MANAG     \***/
 
 int			is_emptytok(t_toklst *list);
+t_tok		*go_to_end_tok(t_toklst *list);
+t_toklst	*new_front_tok(t_toklst *list, char *line);
 t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end);
 t_toklst	*remove_back_tok(t_toklst *list);
 t_toklst	*remove_front_tok(t_toklst *list);
@@ -286,28 +288,33 @@ void		clear_cmd_lst(t_cmdlst *cmdlst);
 /***		TREE		\***/
 
 void		fill_trinary_tree(t_toklst *user_command, t_shell *shell);
-void		fill_tree_command_remove_tok(t_toklst *user_command, t_branch *branch);
-t_tree		*fill_tree_with_operator(t_shell *shell, t_tok *temp);
-t_tree		*create_cmd_l_leaf(t_tree *tree, t_tok *temp);
+t_tok		*go_to_branch_start(t_toklst *user_command);
+t_toklst	*split_left(t_toklst *active_command);
+t_toklst	*split_right(t_toklst *active_command);
+char		**give_active_command(t_toklst *left_command);
+
+/***		TREE UTILS 		\***/
+
+t_toklst	*split_right(t_toklst *active_command);
+t_toklst	*split_left(t_toklst *active_command);
+char		**allocate_operator_cmd(t_tok *temp);
+char		**allocate_classic_cmd(t_tok *temp);
+char		**give_active_command(t_toklst *left_command);
 
 /***		BRANCH CREATION		\***/
 
-t_tok		*go_to_branch_start(t_toklst *user_command);
-t_tree		*create_start_branch(t_tree *tree, t_tok *temp);
-t_tree		*create_ast_branches(t_tree *tree, t_shell *shell, t_tok *temp);
-t_branch	*create_left_leaf(t_tree *tree, t_tok *temp);
-t_tree		*create_left_branches(t_shell *shell, t_tok *temp);
-t_tok		*go_to_first_and_or(t_toklst *user_command);
-t_tok		*go_to_first_operator(t_toklst *user_command);
-t_tok		*go_to_next_pipe_before_operator(t_tok *temp);
+t_tree		*create_start_branch(t_tree *tree, t_tok *temp, t_toklst *user_command);
+t_branch	*create_left_leaf(t_branch *map);
+t_branch	*create_right_leaf(t_branch *map);
 
 /***		TREE DATA		\***/
 
 int			is_operator(char *str);
 int			is_and_or(char *str);
+int			operator_in_cmd(t_toklst *user_command);
 int			and_or_in_cmd(t_toklst *user_command);
-int			get_number_of_op(t_toklst *user_command, t_shell *shell);
-int			tree_number_of_pipes(t_toklst *user_command, t_shell *shell, char mode);
+int			and_or_in_cmd_outside_parentheses(t_toklst *user_command);
+int			pipe_in_cmd_outside_parentheses(t_toklst *user_command);
 
 /***		PARENTHESES		\***/
 
@@ -325,5 +332,8 @@ t_tok		*pipe_jump_parentheses(t_tok *temp);
 t_tok		*and_or_reverse_jump_parentheses(t_tok *temp);
 t_tok		*pipe_reverse_jump_parentheses(t_tok *temp);
 t_tok		*operator_jump_parentheses(t_tok *temp);
+
+void print_tree_cmds(t_tree *tree);
+void print_branch_cmds(t_branch *branch);
 
 #endif
