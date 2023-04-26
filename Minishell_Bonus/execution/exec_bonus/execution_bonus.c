@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/26 13:48:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 18:54:16 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,59 +25,22 @@ int	is_builtin_command_bonus(char **command)
 	return (FALSE);
 }
 
-void	reset_pipes(t_shell *shell)
-{
-	shell->nb_of_pipes = 0;
-	shell->index_of_pipes = 0;
-	shell->last_index = -1;
-}
-
-void	changefds(t_shell *shell, int i)
-{
-	int	**fd;
-	int	index;
-
-	index = -1;
-	fd = malloc(sizeof(int *) * (i - 1));
-	while (++index < i - 1)
-		fd[index] = malloc(sizeof(int) * 2);
-	index = -1;
-	while (++index < shell->nb_of_pipes - 1)
-	{
-		fd[index][0] = shell->fd[index][0];
-		fd[index][1] = shell->fd[index][1];
-	}
-	index = -1;
-	while (++index < shell->nb_of_pipes - 1)
-		free(shell->fd[index]);
-	shell->fd = fd;
-}
-
-void	checkfds(t_shell *shell)
-{
-	int	i;
-
-	i = 0;
-	while (shell->fd[i])
-		i++;
-	if (--i != shell->nb_of_pipes)
-		changefds(shell, i);
-}
-
 int	redirection_bonus(t_shell *shell)
-{
-	checkfds(shell);
-	if (shell->index_of_pipes != shell->last_index)
+{		
+	if (shell->index_of_pipes < shell->nb_of_pipes)
 	{
-		if (shell->index_of_pipes < shell->nb_of_pipes)
-			early_out_redirection(shell->fd[shell->index_of_pipes]);
-		if (shell->index_of_pipes != 0)
-			inside_redirection(shell->fd[shell->index_of_pipes - 1]);
-		if (shell->out == TRUE
-			&& shell->index_of_pipes == shell->nb_of_pipes)
-			dup2(shell->outfile, STDOUT_FILENO);
+		//printf("coucou qui devrait s'afficher en early out\n");
+		early_out_redirection(shell->fd[shell->index_of_pipes]);
 	}
-	shell->last_index = shell->index_of_pipes;
+	if (shell->index_of_pipes != 0 && shell->last_index != -1
+		&& shell->nb_of_pipes == shell->index_of_pipes)
+	{		
+		//printf("coucou qui devrait s'afficher en inside out\n");
+		inside_redirection(shell->fd[shell->index_of_pipes - 1]);
+	}
+	//if (shell->out == TRUE
+	//	&& shell->index_of_pipes == shell->nb_of_pipes)
+	//	dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
 
@@ -147,24 +110,25 @@ int	execute_command_clean_leaf(t_shell *shell, char **command)
 				close_fds(shell->fd[shell->index_of_pipes - 1]);
 			return (EXIT_FAILURE);
 		}
-		shell->pid[shell->index_of_commands++] = fork();
+		if (shell->index_of_pipes != shell->nb_of_pipes)
+			pipe(shell->fd[shell->index_of_pipes]);
+		shell->pid[shell->index_of_commands] = fork();
 		signal(SIGINT, &do_nothing);
 		signal(SIGQUIT, &do_nothing);
-		if (shell->pid[shell->index_of_pipes] == 0)
+		if (shell->pid[shell->index_of_commands] == 0)
 		{
 			redirection_bonus(shell);
 			execve(tmp, command, shell->array_env);
 		}
+		shell->last_index = shell->index_of_pipes;
+		free(tmp);
 	}
 	//else
 	//{
 	//	redirection_bonus(shell);
 	//	execute_builtin_bonus(command);
 	//}
-	if (shell->index_of_pipes > 0)
-		close_fds(shell->fd[shell->index_of_pipes - 1]);
-	if (shell->nb_of_pipes == shell->index_of_pipes)
-		reset_pipes(shell);
+	wait_pids_bonus(shell->pid, shell);
 	return (EXIT_SUCCESS);
 }
 
@@ -182,12 +146,17 @@ int	is_and(char *cmd)
 	return (0);
 }
 
+int	is_pipe(char *cmd)
+{
+	if (ft_strncmp(cmd, "|", 2) == 0)
+		return (1);
+	return (0);
+}
+
 int	execution_bonus(t_shell *shell, t_branch *map)
 {
 	t_branch	*tmp;
 
-	printf("commande left actuelle %p\n", map->left);
-	printf("commande right actuelle %p\n", map->right);
 	if (map && map->left)
 	{
 		printf("left -> %s \n", map->left->cmd[0]);
@@ -202,46 +171,66 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 		if (map && is_and_or(map->cmd[0]))
 		{
 			if (is_and(map->cmd[0]) && map->err_code == 0)
+			{
+				printf("cc\n");
 				return (execution_bonus(shell, map->right));
-			else if (is_or(map->cmd[0]) && map->err_code == 1)
+			}
+			else if (is_or(map->cmd[0]) && map->err_code > 0)
+				return (execution_bonus(shell, map->right));
+			else if (map && is_pipe(map->cmd[0]))
 				return (execution_bonus(shell, map->right));
 			else
 			{
+				printf("dad\n");
 				tmp = map;
 				map = map->dad;
-				printf("map dad from is_and_or is %p\n", map);
 				if (map)
 				{
-					clean(tmp);
-					return (execution_bonus(shell, map->dad));
+					printf("i clean son\n");
+					clean_node(tmp);
+					printf("cmd after clean = %s\n", map->cmd[0]);
+					return (execution_bonus(shell, map));
 				}
 				else if (!map)
 				{
-					clean(shell->tree->start);
+					printf("OH JE VAIS TOUT CLEAN LA STAFT\n");
+					clean_node(shell->tree->start);
 					return (EXIT_SUCCESS);
 				}
 			}
 		}
 		else if (map && is_operator(map->cmd[0])
-			&& shell->nb_of_pipes && ++shell->index_of_pipes)
+			&& shell->nb_of_pipes)
 			return (execution_bonus(shell, map->right));
 	}
 	else if (map && !is_operator(map->cmd[0]))
 	{
-		printf("execute -> %s \n", map->cmd[0]);
+		printf("execute -> %s | then dad -> %s\n", map->cmd[0], map->dad->cmd[0]);
 		tmp = map;
 		map = map->dad;
+		if (is_pipe(tmp->dad->cmd[0]) && tmp->dad->right == tmp)
+			shell->index_of_pipes++;
+		//printf("nb_of_pipes = %d | index_of_pipes = %d | last_index = %d\n", shell->nb_of_pipes, shell->index_of_pipes, shell->last_index);
 		execute_command_clean_leaf(shell, tmp->cmd);
 		clean_node(tmp);
 		map->err_code = g_err;
-		printf("error code of dad's exec is %d\n", map->err_code);
+		printf("map error code = %d\n", map->err_code);
+		shell->index_of_commands++;
 		return (execution_bonus(shell, map));
 	}
 	else if (map && map->dad)
 	{
-		printf("dad \n");
+		if (map && is_pipe(map->cmd[0]))
+		{
+			if (shell->index_of_pipes > 0 && shell->last_index != -1)
+				close_fds(shell->fd[shell->index_of_pipes - 1]);
+			if (shell->nb_of_pipes == shell->index_of_pipes)
+				shell->last_index = -1;
+		}
+		printf("dad\n");
 		tmp = map;
 		map = map->dad;
+		map->err_code = tmp->err_code;
 		clean_node(tmp);
 		return (execution_bonus(shell, map));
 	}
