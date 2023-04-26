@@ -1,0 +1,1 @@
+(cat lol || ls) | grep a && (whoami | (wc || wc -l) && ls -a) || cat | cat | (ls && grep c)
