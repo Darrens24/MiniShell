@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 10:10:41 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:26:44 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,26 @@ int	is_parenthese(char *str)
 	return (0);
 }
 
-int	get_number_of_bonus_commands(t_toklst *user_command)
+void	allocate_pids_and_fds(t_shell *shell, int count)
+{
+	int	i;
+
+	shell->fd = malloc(sizeof(int *) * shell->nb_of_fds_to_malloc);
+	if (!shell->fd)
+		return ;
+	i = -1;
+	while (++i < shell->nb_of_fd_to_malloc)
+	{
+		shell->fd[i] = malloc(sizeof(int) * 2);
+		if (!shell->fd[i])
+			return ;
+	}
+	shell->pid = malloc(sizeof(pid_t) * count);
+	if (!shell->pid)
+		return ;
+}
+
+int	get_number_of_bonus_commands(t_toklst *user_command, t_shell *shell)
 {
 	t_tok	*temp;
 	int		count;
@@ -49,7 +68,11 @@ int	get_number_of_bonus_commands(t_toklst *user_command)
 		if (temp && is_parenthese(temp->var))
 			temp = temp->next;
 		else if (temp && is_operator(temp->var))
+		{
+			if (ft_strncmp(temp->var, "|", 2) == 0)
+				shell->nb_of_fds_to_malloc++;
 			temp = temp->next;
+		}
 		else
 		{
 			count++;
@@ -57,6 +80,7 @@ int	get_number_of_bonus_commands(t_toklst *user_command)
 				temp = temp->next;
 		}
 	}
+	allocate_pids_and_fds(shell, count);
 	return (count);
 }
 
