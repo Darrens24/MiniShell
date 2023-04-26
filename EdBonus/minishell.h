@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/25 10:43:52 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 10:02:47 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,5 +328,6 @@ t_tok		*operator_jump_parentheses(t_tok *temp);
 
 void print_tree_cmds(t_tree *tree);
 void print_branch_cmds(t_branch *branch);
+int	get_number_of_bonus_commands(t_toklst *user_command);
 
 #endif
