@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/25 10:42:37 by eleleux          ###   ########.fr        #
+#    Updated: 2023/04/26 10:04:22 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ SRC = main.c \
 		tree_data.c \
 		tree_utils.c \
 		parentheses_jump.c \
+		execution/clean_tree.c \
 
 
 OBJ = $(SRC:.c=.o)
