@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/26 12:23:45 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:48:00 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,10 +186,11 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 {
 	t_branch	*tmp;
 
-	printf("commande actuelle %p\n", map->left);
+	printf("commande left actuelle %p\n", map->left);
+	printf("commande right actuelle %p\n", map->right);
 	if (map && map->left)
 	{
-		printf("left -> %s |\n", map->left->cmd[0]);
+		printf("left -> %s \n", map->left->cmd[0]);
 		if (map && is_and_or(map->cmd[0]))
 			return (execution_bonus(shell, map->left));
 		else if (map && is_operator(map->cmd[0]) && ++shell->nb_of_pipes)
@@ -197,7 +198,7 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 	}
 	else if (map && map->right)
 	{
-		printf("right -> %s |\n", map->right->cmd[0]);
+		printf("right -> %s \n", map->right->cmd[0]);
 		if (map && is_and_or(map->cmd[0]))
 		{
 			if (is_and(map->cmd[0]) && map->err_code == 0)
@@ -208,8 +209,17 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 			{
 				tmp = map;
 				map = map->dad;
-				clean(tmp);
-				return (execution_bonus(shell, map->dad));
+				printf("map dad from is_and_or is %p\n", map);
+				if (map)
+				{
+					clean(tmp);
+					return (execution_bonus(shell, map->dad));
+				}
+				else if (!map)
+				{
+					clean(shell->tree->start);
+					return (EXIT_SUCCESS);
+				}
 			}
 		}
 		else if (map && is_operator(map->cmd[0])
@@ -218,17 +228,18 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 	}
 	else if (map && !is_operator(map->cmd[0]))
 	{
-		printf("execute -> %s |\n", map->cmd[0]);
+		printf("execute -> %s \n", map->cmd[0]);
 		tmp = map;
 		map = map->dad;
 		execute_command_clean_leaf(shell, tmp->cmd);
 		clean_node(tmp);
 		map->err_code = g_err;
+		printf("error code of dad's exec is %d\n", map->err_code);
 		return (execution_bonus(shell, map));
 	}
 	else if (map && map->dad)
 	{
-		printf("dad |\n");
+		printf("dad \n");
 		tmp = map;
 		map = map->dad;
 		clean_node(tmp);

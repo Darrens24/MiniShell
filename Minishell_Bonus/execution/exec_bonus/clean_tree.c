@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_tree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 12:22:04 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:46:54 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 t_branch	*clean(t_branch *temp)
 {
+	t_branch	*temp2 = NULL;
+	printf("tentative de clean\n");
 	if (temp && temp->left)
 		return (clean(temp->left));
 	else if (temp && temp->right)
@@ -28,7 +30,10 @@ t_branch	*clean(t_branch *temp)
 		temp->right = NULL;
 		temp->left_command = NULL;
 		temp->right_command = NULL;
-		return (clean(temp->dad));
+		temp2 = temp->dad;
+		temp->dad = NULL;
+		free(temp);
+		return (clean(temp2));
 	}
 	return (temp);
 }
