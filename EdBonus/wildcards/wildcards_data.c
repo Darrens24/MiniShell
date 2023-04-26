@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:08:59 by eleleux           #+#    #+#             */
-/*   Updated: 2023/03/11 18:45:49 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 11:11:24 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,24 @@ int	cmd_has_wildcard(t_shell *shell)
 int	free_wildcards(t_shell *shell)
 {
 	if (shell->wild_before)
+	{
+		printf("hey before\n");
 		free(shell->wild_before);
+	}
 	if (shell->wild_after)
+	{
+		printf("hey after\n");
 		free(shell->wild_after);
-	if (shell->wild_middle)
+	}
+	if (shell->wild_middle && *shell->wild_middle)
+	{
+		printf("hey middle full\n");
 		free_array(shell->wild_middle);
+	}
+	else if (shell->wild_middle)
+	{
+		printf("hey middle empty\n");
+		free(shell->wild_middle);
+	}
 	return (EXIT_SUCCESS);
 }
