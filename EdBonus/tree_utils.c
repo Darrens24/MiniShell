@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/24 19:30:05 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:19:20 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,20 @@ char	**allocate_classic_cmd(t_tok *temp)
 
 	i = 0;
 	start = temp;
-	while (start && i++)
+	while (start)
+	{
 		start = start->next;
+		i++;
+	}
 	cmd = malloc(sizeof(char *) * (i + 1));
 	if (!cmd)
 		return (0);
 	i = 0;
 	while (temp)
 	{
-		cmd[i++] = ft_strdup(temp->var);
+		cmd[i] = ft_strdup(temp->var);
 		temp = temp->next;
+		i++;
 	}
 	cmd[i] = NULL;
 	return (cmd);
@@ -106,11 +110,12 @@ char	**give_active_command(t_toklst *left_command)
 	if (operator_in_cmd(left_command))
 	{
 		temp = go_to_branch_start(left_command);
-//		printf("start from active is %s\n", temp->var);
 		cmd = allocate_operator_cmd(temp);
 	}
 	else if (left_command)
+	{
 		cmd = allocate_classic_cmd(left_command->start);
+	}
 	else
 		cmd = NULL;
 	return (cmd);

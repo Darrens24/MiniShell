@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:07:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/24 19:30:09 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 16:19:13 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_branch	*create_left_leaf(t_branch *map)
 	left_branch->left = NULL;
 	left_branch->dad = map;
 	left_branch->cmd = give_active_command(left_branch->dad->left_command);
-	printf("left cmd is %s\n", left_branch->cmd[0]);
 	if (map && operator_in_cmd(map->left_command))
 	{
 		left_branch->left_command = split_left(left_branch->dad->left_command);//si fini on doit stop
@@ -57,7 +56,6 @@ t_branch	*create_left_leaf(t_branch *map)
 		left_branch->left_command = NULL;
 		left_branch->right_command = NULL;
 	}
-	printf("ca va segfault dans left leaf!!\n");
 	left_branch->err_code = -1;
 	map->left = left_branch;
 	return (left_branch);
@@ -74,7 +72,6 @@ t_branch	*create_right_leaf(t_branch *map)
 	right_branch->left = NULL;
 	right_branch->dad = map;
 	right_branch->cmd = give_active_command(right_branch->dad->right_command);
-	printf("right cmd is %s\n", right_branch->cmd[0]);
 	if (map && operator_in_cmd(map->right_command))
 	{
 		right_branch->left_command = split_left(right_branch->dad->right_command);
