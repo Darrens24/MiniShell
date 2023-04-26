@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tree.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/24 19:30:15 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 11:19:51 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_tree	*get_new_start_split_command(t_shell *shell, t_branch *map)
 	}
 	else if (map && map->dad)
 	{
-		printf("dad\n");
+		//printf("dad\n");
 		//map = map->dad;
 		get_new_start_split_command(shell, map->dad);
 	}
@@ -129,7 +129,7 @@ void	fill_trinary_tree(t_toklst *user_command, t_shell *shell)
 	printf("startright is %s\n", shell->tree->start->right_command->start->var);
 	*/
 	shell->tree = get_new_start_split_command(shell, shell->tree->map);
-	print_tree_cmds(shell->tree);
+	//print_tree_cmds(shell->tree);
 	//create_ast_branches(shell->tree, shell);
 }
 /*

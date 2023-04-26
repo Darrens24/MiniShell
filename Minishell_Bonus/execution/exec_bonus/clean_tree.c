@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clean_tree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 10:10:41 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 12:22:04 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 t_branch	*clean(t_branch *temp)
 {
@@ -20,7 +20,10 @@ t_branch	*clean(t_branch *temp)
 		return (clean(temp->right));
 	else if (temp && temp->dad)
 	{
-		free_array(temp->cmd);
+		if (temp->cmd && *temp->cmd)
+			free_array(temp->cmd);
+		else if (temp->cmd)
+			free(temp->cmd);
 		temp->left = NULL;
 		temp->right = NULL;
 		temp->left_command = NULL;
@@ -28,6 +31,28 @@ t_branch	*clean(t_branch *temp)
 		return (clean(temp->dad));
 	}
 	return (temp);
+}
+
+void	clean_node(t_branch *temp)
+{
+	if (temp->cmd && *temp->cmd)
+		free_array(temp->cmd);
+	else if (temp->cmd)
+		free(temp->cmd);
+	temp->left = NULL;
+	temp->right = NULL;
+	temp->left_command = NULL;
+	temp->right_command = NULL;
+	if (temp->dad->left)
+	{
+		free(temp->dad->left);
+		temp->dad->left = NULL;
+	}
+	else if (temp->dad->right)
+	{
+		free(temp->dad->right);
+		temp->dad->right = NULL;
+	}
 }
 
 int	is_parenthese(char *str)
@@ -53,7 +78,8 @@ int	get_number_of_bonus_commands(t_toklst *user_command)
 		else
 		{
 			count++;
-			while (temp && !(is_operator(temp->var) || is_parenthese(temp->var)))
+			while (temp && !(is_operator(temp->var)
+					|| is_parenthese(temp->var)))
 				temp = temp->next;
 		}
 	}
