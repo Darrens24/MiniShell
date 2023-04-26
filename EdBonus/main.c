@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 10:11:07 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/26 11:34:39 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,27 @@ int	main(int ac, char **av, char **envp)
 					&& (infile_redirection_parsing(&shell) != 0
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
-				int	test = get_number_of_bonus_commands(shell.user_command);
-				printf("nb of cmd is %d\n", test);
-				/*
+				parse_wildcard(&shell, envp);
 				if (good == TRUE && and_or_in_cmd(shell.user_command))
 					fill_trinary_tree(shell.user_command, &shell);
 				else if (good == TRUE)
 					pipe_command(&shell);
+				/*
+				t_tok *temp = shell.user_command->start;
+				while (temp)
+				{
+					printf("before : %s\n", temp->var);
+					temp = temp->next;
+				}
+				*/
+				/*
+				temp = shell.user_command->start;
+				while (temp)
+				{
+					printf("after : %s\n", temp->var);
+					temp = temp->next;
+				}
+				if (good == TRUE)
 				*/
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);

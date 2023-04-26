@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:23:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 14:10:30 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/26 11:28:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	**get_command_in_tok(t_shell *shell, int index)
 
 	temp = NULL;
 	temp = go_to_next_operator(shell, temp, index);
-	nb_of_args = 0;
+	nb_of_args = 1;
 	while (temp && temp->quote == 1)
 	{
 		temp = temp->next;
@@ -96,7 +96,9 @@ int	get_array_cmd_and_pipe_fds(t_shell *shell)
 		return (EXIT_FAILURE);
 	i = -1;
 	while (++i < get_number_of_commands(shell))
+	{
 		shell->multi_cmd[i] = get_command_in_tok(shell, i);
+	}
 	shell->multi_cmd[i] = NULL;
 	return (EXIT_SUCCESS);
 }
