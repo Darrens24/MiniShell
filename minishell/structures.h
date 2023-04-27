@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 14:10:33 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:46:32 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,13 @@ typedef struct s_tokation
 	int					start;
 	char				*temp;
 }				t_tokation;
+
+typedef struct s_unset
+{
+	t_tok				*temp;
+	t_node				*env_node;
+	t_node				*export_node;
+	char				*var;
+}				t_unset;
 
 #endif

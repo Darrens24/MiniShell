@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 10:04:01 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:42:29 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,29 @@ int	is_builtin_command(t_shell *shell, int index)
 	return (FALSE);
 }
 
+void	execute_user_command(t_shell *shell, int good)
+{
+	token_parsing(shell->user_command, shell->line_readed);
+	if (shell->user_command->nb_elem && token_checker(shell))
+	{
+		printf("Minishell: syntax error\n");
+		clear_toklst(shell->user_command);
+	}
+	if (shell->user_command->nb_elem)
+	{
+		tokenisation(shell->user_command, shell->sorted_env_l);
+		if ((shell->user_command->nb_elem != 0)
+			&& (infile_redirection_parsing(shell) != 0
+				|| outfile_redirection_parsing(shell) != 0))
+			good = FALSE;
+		if (good == TRUE)
+			pipe_command(shell);
+		clear_toklst(shell->user_command);
+		dup2(shell->saved_stdin, STDIN_FILENO);
+		dup2(shell->saved_stdout, STDOUT_FILENO);
+	}
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	int		good;
@@ -60,27 +83,7 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		}
 		if (*shell.line_readed)
-		{
-			token_parsing(shell.user_command, shell.line_readed);
-			if (shell.user_command->nb_elem && token_checker(&shell))
-			{
-				printf("Minishell: syntax error\n");
-				clear_toklst(shell.user_command);
-			}
-			if (shell.user_command->nb_elem)
-			{
-				tokenisation(shell.user_command, shell.sorted_env_l);
-				if ((shell.user_command->nb_elem != 0)
-					&& (infile_redirection_parsing(&shell) != 0
-						|| outfile_redirection_parsing(&shell) != 0))
-					good = FALSE;
-				if (good == TRUE)
-					pipe_command(&shell);
-				clear_toklst(shell.user_command);
-				dup2(shell.saved_stdin, STDIN_FILENO);
-				dup2(shell.saved_stdout, STDOUT_FILENO);
-			}
-		}
+			execute_user_command(&shell, good);
 	}
 	clean_memory(&shell);
 	printf(YEL "Exit Minishell\n" WHT);
