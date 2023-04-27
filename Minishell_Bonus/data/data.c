@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/25 17:22:38 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:49:34 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	initialize_variables(t_shell *shell)
 	shell->index_of_pipes = 0;
 	shell->last_index = -1;
 	shell->index_of_commands = 0;
+	shell->index_of_pid = 0;
 	return (EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 18:43:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:12:24 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ void	allocate_pids_and_fds(t_shell *shell, int count)
 	shell->pid = malloc(sizeof(pid_t) * count);
 	if (!shell->pid)
 		return ;
+	i = -1;
+	while (++i < count)
+		shell->pid[i] = -1;
 }
 int	get_bcmd(t_toklst *user_command, t_shell *shell)
 {

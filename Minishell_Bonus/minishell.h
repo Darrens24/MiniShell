@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 18:46:25 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:49:06 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -335,5 +335,6 @@ void		clean_node(t_branch *temp);
 /***		EXEC BONUS				 ***/
 
 int			execution_bonus(t_shell *shell, t_branch *map);
-int			wait_pids_bonus(pid_t *pid, t_shell *shell);
+int	wait_pids_bonus(pid_t *pid, t_shell *shell, int end, int i);
+int			wait_pid_mono(t_shell *shell, int i);
 #endif
