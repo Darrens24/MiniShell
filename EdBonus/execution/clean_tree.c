@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 16:26:44 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/27 08:52:36 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	is_parenthese(char *str)
 		return (1);
 	return (0);
 }
-
+/*
 void	allocate_pids_and_fds(t_shell *shell, int count)
 {
 	int	i;
@@ -83,6 +83,7 @@ int	get_number_of_bonus_commands(t_toklst *user_command, t_shell *shell)
 	allocate_pids_and_fds(shell, count);
 	return (count);
 }
+*/
 
 int	builtin_manager_bonus(t_shell *shell, int index)
 {
