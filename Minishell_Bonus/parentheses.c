@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:57:42 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/21 17:55:31 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/27 17:10:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_tok	*go_to_last_closed_parenthese(t_tok *temp, int *count, int *diff)
 	return (temp);
 }
 
+/*
 t_tok	*go_to_last_opened_parenthese(t_tok *temp, int *count, int *diff)
 {
 	temp = go_to_reverse_parenthese(temp, count, diff);
@@ -65,6 +66,7 @@ t_tok	*go_to_last_opened_parenthese(t_tok *temp, int *count, int *diff)
 	}
 	return (temp);
 }
+*/
 
 int	number_of_parentheses(t_tok *temp)
 {

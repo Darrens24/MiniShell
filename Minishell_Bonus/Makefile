@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/27 17:10:29 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/04/27 17:24:29 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,7 @@ SRC = main.c \
 		branch_creation.c \
 		parentheses.c \
 		tree_data.c \
+		tree_data2.c \
 		tree_utils.c \
 		parentheses_jump.c \
 		execution/exec_bonus/execution_bonus.c \

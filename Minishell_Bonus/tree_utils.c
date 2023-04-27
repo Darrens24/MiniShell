@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 16:33:34 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:01:09 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,19 +98,9 @@ char	**give_active_command(t_toklst *left_command)
 	int			i;
 
 	i = 0;
-	/*
-	temp = left_command->start;
-	while (temp)
-	{
-		printf("left_command is %s\n", temp->var);
-		temp = temp->next;
-	}
-
-	*/
 	if (operator_in_cmd(left_command))
 	{
 		temp = go_to_branch_start(left_command);
-//		printf("start from active is %s\n", temp->var);
 		cmd = allocate_operator_cmd(temp);
 	}
 	else if (left_command)
