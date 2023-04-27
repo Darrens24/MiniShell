@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards_parsing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:11:53 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 18:46:54 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 08:56:15 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@ int	parse_wildcard(t_shell *shell, char **envp)
 	temp = shell->user_command->start;
 	while (temp && !string_is_wildcard(temp->var))
 		temp = temp->next;
+	if (!temp)
+		return (EXIT_FAILURE);
 	nb_of_wildcard = get_nb_of_wildcard(temp->var);
 	if (nb_of_wildcard < 0)
 		return (EXIT_FAILURE);
-	shell->wild_middle = malloc(sizeof(char *) * (nb_of_wildcard));
+	shell->wild_middle = malloc(sizeof(char *) * (nb_of_wildcard + 1));
 	if (!shell->wild_middle)
 		return (EXIT_FAILURE);
+	shell->wild_before = NULL;
+	shell->wild_after = NULL;
 	i = -1;
 	while (shell->wild_middle[++i])
 		shell->wild_middle[i] = NULL;

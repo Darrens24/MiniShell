@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wildcards_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:11:53 by eleleux           #+#    #+#             */
-/*   Updated: 2023/02/19 16:22:50 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/27 09:04:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*remove_newline_from_buffer(char *buffer)
 {
 	char	*buffer_without_newline;
 
-	if (buffer && strchr(buffer, '\n'))
+	if (buffer && ft_strchr(buffer, '\n'))
 	{
 		buffer_without_newline = ft_strndup(buffer, 0, ft_strlen(buffer) - 1);
 		free(buffer);
