@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:33:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/27 17:50:09 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,8 @@ char		*get_correct_path(t_shell *shell, int index);
 int			slash_manager(t_shell *shell, int index);
 int			get_array_cmd_and_pipe_fds(t_shell *shell);
 int			pipe_command(t_shell *shell);
+int			execute_execve(t_shell *shell,
+				char *temp, struct stat buff, int index);
 
 //************************** Pipe Utils
 
@@ -296,7 +298,8 @@ char		**give_active_command(t_toklst *left_command);
 
 /***		BRANCH CREATION		\***/
 
-t_tree		*create_start_branch(t_tree *tree, t_tok *temp, t_toklst *user_command);
+t_tree		*create_start_branch(t_tree *tree,
+				t_tok *temp, t_toklst *user_command);
 t_branch	*create_left_leaf(t_branch *map);
 t_branch	*create_right_leaf(t_branch *map);
 
