@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:21:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/24 16:09:03 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:48:02 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@ int	equal_in_string(char *str)
 	return (FALSE);
 }
 
+void	variable_is_in_env(char *var, t_shell *shell, t_tok *temp)
+{
+	t_node	*node_to_remove;
+
+
+}
+
 int	export_variable(t_shell *shell)
 {
 	t_tok	*temp;
@@ -81,13 +88,13 @@ int	export_variable(t_shell *shell)
 		}
 		else if (envchecker(var_before_equal, shell->sorted_env_l))
 		{
+			//variable_is_in_env(var_before_equal, shell, temp);
 			if (equal_in_string(temp->var))
 			{
 				if (envchecker(var_before_equal, shell->env_l))
 				{
 					node_to_remove = find_node_to_remove(var_before_equal,
 							shell->env_l);
-					printf("nodetoremove %s\n", node_to_remove->variable);
 					remove_current_node(node_to_remove, shell->env_l);
 				}
 				new_back_node(shell->env_l, temp->var);
