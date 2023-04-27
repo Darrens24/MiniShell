@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/26 11:14:45 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/04/27 16:56:45 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ SRC = main.c \
 		parentheses_jump.c \
 		execution/exec_bonus/execution_bonus.c \
 		execution/exec_bonus/clean_tree.c \
+		execution/exec_bonus/execution_utils.c \
 
 
 OBJ = $(SRC:.c=.o)

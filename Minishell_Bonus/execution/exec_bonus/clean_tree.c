@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 12:00:14 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:56:11 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 t_branch	*clean(t_branch *temp)
 {
-	t_branch	*temp2 = NULL;
+	t_branch	*temp2;
+
+	temp2 = NULL;
 	if (temp && temp->left)
 		return (clean(temp->left));
 	else if (temp && temp->right)
@@ -88,6 +90,7 @@ void	allocate_pids_and_fds(t_shell *shell, int count)
 	while (++i < count)
 		shell->pid[i] = -1;
 }
+
 int	get_bcmd(t_toklst *user_command, t_shell *shell)
 {
 	t_tok	*temp;
