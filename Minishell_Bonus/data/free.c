@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:17:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:01:52 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:14:30 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	free_pids_fds(t_shell *shell)
 	int	i;
 
 	i = -1;
-	while (++i < get_number_of_commands(shell))
-		free(shell->fd[i]);
+	if (get_number_of_commands(shell) > 1)
+	{
+		while (++i < get_number_of_commands(shell) - 1)
+			free(shell->fd[i]);
+	}
 	free(shell->fd);
 	free(shell->pid);
 }
