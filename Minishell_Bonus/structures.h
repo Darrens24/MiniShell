@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:17:47 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:36:58 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,14 @@ typedef struct s_increment
 	char				*new_sh_level;
 	int					i;
 }				t_increment;
+
+typedef struct s_unset
+{
+	t_tok				*temp;
+	t_node				*env_node;
+	t_node				*export_node;
+	char				*var;
+}				t_unset;
 
 typedef struct s_tokation
 {

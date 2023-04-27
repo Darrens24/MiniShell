@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/27 17:50:50 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/04/27 18:15:47 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ SRC = main.c \
 		builtins/env_management.c \
 		builtins/env_utils.c \
 		builtins/export.c \
+		builtins/export_unset.c \
 		builtins/unset.c \
 		signals.c \
 		tokens/token_management.c \

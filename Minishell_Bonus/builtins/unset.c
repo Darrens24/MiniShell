@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 16:33:41 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/04 12:49:21 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/27 18:38:19 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,12 @@ t_node	*find_node_to_remove(char *var_before_equal, t_chained *lst)
 	temp = lst->start;
 	while (temp)
 	{
-		if (ft_strncmp(var_before_equal, temp->variable, ft_strlenequal(temp->variable)) == 0)
+		if (ft_strncmp(var_before_equal, temp->variable,
+				ft_strlenequal(temp->variable)) == 0)
 			return (temp);
 		temp = temp->next;
 	}
-    printf("coucou\n");
 	return (temp);
-}
-
-int	clean_export_list(t_shell *shell, char *temp3, t_node *temp, t_node *temp2)
-{
-	if (shell->sorted_env_l->nb_elem == 1)
-	{
-		remove_back_node(shell->sorted_env_l);
-		if (envchecker(temp3, shell->env_l))
-			remove_back_node(shell->env_l);
-	}
-	else if (temp)
-	{
-		if (envchecker(temp3, shell->sorted_env_l))
-			remove_current_node(temp, shell->sorted_env_l);
-		if (envchecker(temp3, shell->env_l))
-			remove_current_node(temp2, shell->env_l);
-	}
-	return (EXIT_SUCCESS);
 }
 
 int	valid_arg(char *arg)
@@ -66,32 +48,37 @@ int	valid_arg(char *arg)
 	return (TRUE);
 }
 
+void	norm_unset(t_unset *uns, t_shell *shell)
+{
+	uns->env_node = find_node_to_remove(uns->var, shell->env_l);
+	remove_current_node(uns->env_node, shell->env_l);
+}
+
 int	unset_variable(t_shell *shell)
 {
-	t_tok	*temp;
-	t_node	*env_node;
-	t_node	*export_node;
-	char	*var_before_equal;
+	t_unset	*uns;
 
-	temp = find_unset_args(shell);
-	env_node = shell->env_l->start;
-	while (temp)
+	uns = malloc(sizeof(t_unset));
+	if (!uns)
+		return (EXIT_FAILURE);
+	uns->temp = find_unset_args(shell);
+	uns->env_node = shell->env_l->start;
+	while (uns->temp)
 	{
-		var_before_equal = ft_strndup(temp->var, 0, ft_strlen(temp->var));
-		if (!valid_arg(var_before_equal))
-			printf("unset: '%s': not a valid identifier\n", temp->var);
-		else if (envchecker(var_before_equal, shell->sorted_env_l))
+		uns->var = ft_strndup(uns->temp->var, 0, ft_strlen(uns->temp->var));
+		if (!valid_arg(uns->var))
+			printf("unset: '%s': not a valid identifier\n", uns->temp->var);
+		else if (envchecker(uns->var, shell->sorted_env_l))
 		{
-			export_node = find_node_to_remove(var_before_equal, shell->sorted_env_l);
-			remove_current_node(export_node, shell->sorted_env_l);
+			uns->export_node = find_node_to_remove(uns->var,
+					shell->sorted_env_l);
+			remove_current_node(uns->export_node, shell->sorted_env_l);
 		}
-		if (envchecker(var_before_equal, shell->env_l))
-		{
-			env_node = find_node_to_remove(var_before_equal, shell->env_l);
-			remove_current_node(env_node, shell->env_l);
-		}
-		free(var_before_equal);
-		temp = temp->next;
+		if (envchecker(uns->var, shell->env_l))
+			norm_unset(uns, shell);
+		free(uns->var);
+		uns->temp = uns->temp->next;
 	}
+	free(uns);
 	return (EXIT_SUCCESS);
 }

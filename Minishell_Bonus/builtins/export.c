@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:21:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:56:10 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/27 18:07:17 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,32 @@ int	equal_in_string(char *str)
 	}
 	return (FALSE);
 }
-/*
-void	variable_is_in_env(char *var, t_shell *shell, t_tok *temp)
+
+static void	variable_is_in_env(char *var, t_shell *shell, t_tok *temp)
 {
 	t_node	*node_to_remove;
 
-
+	if (equal_in_string(temp->var))
+	{
+		if (envchecker(var, shell->env_l))
+		{
+			node_to_remove = find_node_to_remove(var,
+					shell->env_l);
+			remove_current_node(node_to_remove, shell->env_l);
+		}
+		new_back_node(shell->env_l, temp->var);
+	}
+	else if (!equal_in_string(temp->var))
+		return ;
+	node_to_remove = find_node_to_remove(var,
+			shell->sorted_env_l);
+	remove_current_node(node_to_remove, shell->sorted_env_l);
+	export_ascii_sorted(temp, shell->sorted_env_l);
 }
-*/
 
 int	export_variable(t_shell *shell)
 {
 	t_tok	*temp;
-	t_node	*node_to_remove;
 	char	*var_before_equal;
 
 	temp = find_export_args(shell);
@@ -88,66 +101,8 @@ int	export_variable(t_shell *shell)
 			export_ascii_sorted(temp, shell->sorted_env_l);
 		}
 		else if (envchecker(var_before_equal, shell->sorted_env_l))
-		{
-			//variable_is_in_env(var_before_equal, shell, temp);
-			if (equal_in_string(temp->var))
-			{
-				if (envchecker(var_before_equal, shell->env_l))
-				{
-					node_to_remove = find_node_to_remove(var_before_equal,
-							shell->env_l);
-					remove_current_node(node_to_remove, shell->env_l);
-				}
-				new_back_node(shell->env_l, temp->var);
-			}
-			else if (!equal_in_string(temp->var))
-				return (EXIT_FAILURE);
-			node_to_remove = find_node_to_remove(var_before_equal,
-					shell->sorted_env_l);
-			remove_current_node(node_to_remove, shell->sorted_env_l);
-			export_ascii_sorted(temp, shell->sorted_env_l);
-		}
+			variable_is_in_env(var_before_equal, shell, temp);
 		free(var_before_equal);
-		temp = temp->next;
-	}
-	return (EXIT_SUCCESS);
-}
-
-void	put_quotes_to_export(char *variable)
-{
-	int	i;
-
-	i = 0;
-	while (variable[i] && variable[i] != '=')
-	{
-		ft_putchar_fd(variable[i], 1);
-		i++;
-	}
-	if (variable[i])
-	{
-		ft_putchar_fd('=', 1);
-		ft_putchar_fd('\"', 1);
-		i++;
-	}
-	while (variable[i])
-	{
-		ft_putchar_fd(variable[i], 1);
-		i++;
-	}
-	if (equal_in_string(variable))
-		ft_putchar_fd('\"', 1);
-}
-
-int	print_export(t_shell *shell)
-{
-	t_node	*temp;
-
-	temp = shell->sorted_env_l->start;
-	while (temp)
-	{
-		ft_putstr_fd("declare -x ", STDOUT_FILENO);
-		put_quotes_to_export(temp->variable);
-		ft_putchar_fd('\n', STDOUT_FILENO);
 		temp = temp->next;
 	}
 	return (EXIT_SUCCESS);
