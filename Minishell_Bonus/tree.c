@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 11:19:51 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:27:31 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_tree	*get_new_start_split_command(t_shell *shell, t_branch *map)
 	*/
 	if (map && map->left_command)
 	{
-
+		//printf("creation | left\n");
 		create_left_leaf(map);
 		clear_toklst(map->left_command);
 		free(map->left_command);
@@ -58,6 +58,7 @@ t_tree	*get_new_start_split_command(t_shell *shell, t_branch *map)
 	}
 	else if (map && map->right_command)
 	{
+		//printf("creation | right\n");
 		create_right_leaf(map);
 		clear_toklst(map->right_command);
 		free(map->right_command);
@@ -66,6 +67,7 @@ t_tree	*get_new_start_split_command(t_shell *shell, t_branch *map)
 	}
 	else if (map && map->dad)
 	{
+		//printf("creation | dad\n");
 		//printf("dad\n");
 		//map = map->dad;
 		get_new_start_split_command(shell, map->dad);

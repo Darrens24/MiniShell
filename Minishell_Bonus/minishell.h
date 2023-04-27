@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 11:50:30 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:46:25 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,11 +328,12 @@ t_tok		*operator_jump_parentheses(t_tok *temp);
 
 void		print_tree_cmds(t_tree *tree);
 void		print_branch_cmds(t_branch *branch);
-int			get_number_of_bonus_commands(t_toklst *user_command);
+int			get_bcmd(t_toklst *user_command, t_shell *shell);
 t_branch	*clean(t_branch *temp);
 void		clean_node(t_branch *temp);
 
 /***		EXEC BONUS				 ***/
 
 int			execution_bonus(t_shell *shell, t_branch *map);
+int			wait_pids_bonus(pid_t *pid, t_shell *shell);
 #endif

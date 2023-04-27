@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 14:42:42 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/26 18:44:00 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,23 @@ int	wait_pids(pid_t *pid, t_shell *shell)
 	i = -1;
 	error_code = 0;
 	while (++i < get_number_of_commands(shell))
+	{
+		waitpid_return = waitpid(pid[i], &error_code, 0);
+		if (waitpid_return > 0)
+			error_func(error_code);
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	wait_pids_bonus(pid_t *pid, t_shell *shell)
+{
+	int	i;
+	int	waitpid_return;
+	int	error_code;
+
+	i = -1;
+	error_code = 0;
+	while (++i < shell->bcmd)
 	{
 		waitpid_return = waitpid(pid[i], &error_code, 0);
 		if (waitpid_return > 0)
