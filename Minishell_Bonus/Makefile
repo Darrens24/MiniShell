@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/27 16:56:45 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/04/27 17:10:29 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRC = main.c \
 		execution/exec_bonus/execution_bonus.c \
 		execution/exec_bonus/clean_tree.c \
 		execution/exec_bonus/execution_utils.c \
+		execution/exec_bonus/execute_final_boss.c \
 
 
 OBJ = $(SRC:.c=.o)

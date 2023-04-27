@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 16:56:11 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:03:36 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,16 +118,4 @@ int	get_bcmd(t_toklst *user_command, t_shell *shell)
 	}
 	allocate_pids_and_fds(shell, count);
 	return (count);
-}
-
-int	builtin_manager_bonus(t_shell *shell, int index)
-{
-	shell->pid[index] = fork();
-	if (shell->pid[index] == 0)
-	{
-		redirection_parsing(shell, index);
-		execute_builtin_cmd(shell, index);
-		exit(1);
-	}
-	return (EXIT_SUCCESS);
 }

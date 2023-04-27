@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 10:48:26 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:17:47 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_shell
 	int					nb_of_fds_to_malloc;
 	int					bcmd;
 	int					index_of_pid;
+	int					valid_pipe;
 }				t_shell;
 
 typedef struct s_node

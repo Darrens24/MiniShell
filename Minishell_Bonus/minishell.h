@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 16:50:49 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:09:08 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -337,11 +337,17 @@ void		clean_node(t_branch *temp);
 int			execution_bonus(t_shell *shell, t_branch *map);
 int			wait_pids_bonus(pid_t *pid, t_shell *shell, int end, int i);
 int			wait_pid_mono(t_shell *shell, int i);
+int			redirection_bonus(t_shell *shell);
+char		*get_correct_path_bonus(t_shell *shell, char *command);
+char		*find_path_bonus(char *command, t_shell *shell);
+int			execute_command_clean_leaf(t_shell *shell, char **command);
 
 /***		EXEC UTILS				***/
 
 int			is_pipe(char *cmd);
 int			is_and(char *cmd);
 int			is_or(char *cmd);
+int			not_execute_builtin(t_shell *shell, char **command, char *tmp,
+				struct stat buff);
 
 #endif
