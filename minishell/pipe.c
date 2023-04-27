@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 15:20:18 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 17:59:57 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,31 +64,9 @@ static int	execute_commands(int index, t_shell *shell)
 	struct stat	buff;
 
 	stat(shell->multi_cmd[index][0], &buff);
+	temp = NULL;
 	if (!is_builtin_command(shell, index))
-	{
-		if (slash_manager(shell, index) != 0)
-			return (EXIT_FAILURE);
-		if (access(shell->multi_cmd[index][0], F_OK) == 0
-			&& S_ISREG(buff.st_mode))
-			temp = ft_strdup(shell->multi_cmd[index][0]);
-		else
-			temp = find_path(index, shell);
-		if (!temp)
-		{
-			if (index > 0)
-				close_fds(shell->fd[index - 1]);
-			return (EXIT_FAILURE);
-		}
-		shell->pid[index] = fork();
-		signal(SIGINT, &do_nothing);
-		signal(SIGQUIT, &do_nothing);
-		if (shell->pid[index] == 0)
-		{
-			redirection_parsing(shell, index);
-			execve(temp, shell->multi_cmd[index], shell->array_env);
-		}
-		free(temp);
-	}
+		execute_execve(shell, temp, buff, index);
 	else
 		builtin_manager(shell, index);
 	if (index > 0)

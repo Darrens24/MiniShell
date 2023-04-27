@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/18 14:42:42 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:00:34 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,5 @@ int	wait_pids(pid_t *pid, t_shell *shell)
 		if (waitpid_return > 0)
 			error_func(error_code);
 	}
-	return (EXIT_SUCCESS);
-}
-
-int	close_fds(int *fd)
-{
-	close(fd[0]);
-	close(fd[1]);
 	return (EXIT_SUCCESS);
 }
