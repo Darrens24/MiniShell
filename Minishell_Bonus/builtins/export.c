@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:21:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:48:02 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/27 17:56:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,14 @@ int	equal_in_string(char *str)
 	}
 	return (FALSE);
 }
-
+/*
 void	variable_is_in_env(char *var, t_shell *shell, t_tok *temp)
 {
 	t_node	*node_to_remove;
 
 
 }
+*/
 
 int	export_variable(t_shell *shell)
 {
