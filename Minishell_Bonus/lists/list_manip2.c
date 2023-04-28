@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_manip2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:42:18 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 15:21:05 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:29:33 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,26 @@ t_node	*remove_current_node(t_node *node, t_chained *lst)
 	return (node);
 }
 
-int	new_back_norm(t_node *elem, t_chained *lst, char *variable)
-{
-	free(elem->variable);
-	free(elem);
-	new_back_node(lst, variable);
-	return (EXIT_SUCCESS);
-}
-
 t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 {
 	t_node	*elem;
 	t_node	*temp;
 
-	elem = malloc(sizeof(*elem));
-	if (!elem)
-		return (lst);
-	elem->variable = ft_strdup(variable);
-	elem->next = NULL;
-	elem->prev = NULL;
 	temp = lst->start;
 	while (temp && --index)
 		temp = temp->next;
-	if (!temp->next)
-		new_back_norm(elem, lst, variable);
+	if (!temp->prev)
+		return (new_front_node(lst, variable));
+	else if (!temp->next)
+		return (new_back_node(lst, variable));
 	else
 	{
+		elem = malloc(sizeof(*elem));
+		if (!elem)
+			return (lst);
+		elem->variable = ft_strdup(variable);
+		elem->next = NULL;
+		elem->prev = NULL;
 		temp->next->prev = elem;
 		elem->next = temp->next;
 		temp->next = elem;

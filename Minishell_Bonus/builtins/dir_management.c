@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir_management.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/23 13:53:45 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:40:26 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ int	change_directory(t_shell *shell, const char *path)
 int	go_to_home_directory(t_shell *shell)
 {
 	if (change_directory(shell, shell->home) != 0)
-	{
-		free(shell->previous_dir_path);
 		return (EXIT_FAILURE);
-	}
 	return (EXIT_SUCCESS);
 }
 

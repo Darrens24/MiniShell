@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:50:35 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:33:49 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,10 @@ static int	execute_commands(int index, t_shell *shell)
 	char		*temp;
 	struct stat	buff;
 
-	temp = NULL;
 	stat(shell->multi_cmd[index][0], &buff);
+	temp = NULL;
+	if (!ft_strncmp(shell->multi_cmd[0][0], ".", 2) && !shell->multi_cmd[0][1])
+		return (printf(DOT));
 	if (!is_builtin_command(shell, index))
 		execute_execve(shell, temp, buff, index);
 	else

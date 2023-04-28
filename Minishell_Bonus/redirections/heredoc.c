@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:30:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/19 13:27:10 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 09:13:21 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,7 @@ int	heredoc_prompt(t_shell *shell)
 		remove_ctrlc(0);
 		if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc,
 				shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
-		{
-			rl_redisplay();
 			exit(0);
-		}
 		shell->buffer_doc = replace_by_env(shell, shell->buffer_doc);
 		ft_putstr_fd(shell->buffer_doc, shell->doc_fd[1]);
 		ft_putchar_fd('\n', shell->doc_fd[1]);
@@ -108,6 +105,7 @@ int	heredoc_redirection(t_shell *shell, t_tok *temp)
 	signal(SIGQUIT, &do_nothing);
 	if (shell->here == 0)
 		heredoc_prompt(shell);
+	printf("%s\r", "");
 	waitpid_return = waitpid(shell->here, &error_code, 0);
 	if (waitpid_return > 0)
 		error_func(error_code);
