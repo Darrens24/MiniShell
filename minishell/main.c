@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 18:42:29 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 10:30:43 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	main(int ac, char **av, char **envp)
 			execute_user_command(&shell, good);
 	}
 	clean_memory(&shell);
+	system("leaks minishell");
 	printf(YEL "Exit Minishell\n" WHT);
 	return (0);
 }
