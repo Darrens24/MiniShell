@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/28 11:52:34 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:28:24 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,37 @@ int	execute_map_dad(t_shell *shell, t_branch *map, t_branch *tmp)
 	return (execution_bonus(shell, map));
 }
 
+int	check_valid_pipe(t_branch *map)
+{
+	t_branch	*tmp;
+
+	tmp = map;
+	while (tmp)
+	{
+		if (is_pipe(tmp->cmd[0]))
+			return (1);
+		tmp = tmp->dad;
+	}
+	return (0);
+}
+
 int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 {
 	execute_command_clean_leaf(shell, tmp->cmd);
 	if ((map && shell->nb_of_pipes != shell->index_of_pipes)
 		|| (shell->last_index != -1 && shell->valid_pipe))
 	{
-		if (shell->last_index != -1 && shell->valid_pipe)
+		if (shell->last_index != -1 && shell->valid_pipe && check_valid_pipe(map))
+		{
+			if (read(shell->fd[shell->index_of_pipes - 1][1], NULL, 1) > 0)
+			{
+				close(shell->fd[shell->index_of_pipes -1][0]);
+				open(O_RDONLY, shell->fd[shell->index_of_pipes - 1][0]);
+			}
+			printf("je close >;( -> %d\n", shell->index_of_pipes - 1);
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
-		if (shell->nb_of_pipes == shell->index_of_pipes)
+		}
+		if (!check_valid_pipe(map))
 		{
 			shell->valid_pipe = 0;
 			shell->last_index = -1;
@@ -79,8 +101,10 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 		shell->index_of_pid = shell->index_of_commands + 1;
 	}
 	if (shell->index_of_pipes == shell->nb_of_pipes && is_pipe(map->cmd[0]))
+	{
 		wait_pids_bonus(shell->pid, shell,
 			shell->index_of_commands, shell->index_of_pid);
+	}
 	clean_node(tmp);
 	map->err_code = g_err;
 	shell->index_of_commands++;

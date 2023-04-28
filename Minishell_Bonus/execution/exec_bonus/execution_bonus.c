@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/28 11:05:17 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:45:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	redirection_bonus(t_shell *shell)
 		early_out_redirection(shell->fd[shell->index_of_pipes]);
 	if (shell->index_of_pipes != 0 && shell->last_index != -1
 		&& shell->nb_of_pipes == shell->index_of_pipes)
+	{
+		printf("je redirige dedans\n");
 		inside_redirection(shell->fd[shell->index_of_pipes - 1]);
+	}
 	if (shell->out == TRUE
 		&& shell->index_of_pipes == shell->nb_of_pipes)
 		dup2(shell->outfile, STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 11:43:22 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 13:04:50 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_branch	*clean(t_branch *temp, t_branch *map)
 		return (clean(temp->right, map));
 	else if (temp && temp->dad)
 	{		
-		printf("cc\n");
 		temp2 = temp->dad;
 		clean_node(temp);
 		if (temp2 == map)
@@ -53,7 +52,6 @@ void	clean_node(t_branch *temp)
 		free(temp->dad->right);
 		temp->dad->right = NULL;
 	}
-	printf("cc2\n");
 }
 
 int	is_parenthese(char *str)
