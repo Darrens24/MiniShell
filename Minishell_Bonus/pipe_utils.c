@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:47:32 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:56:58 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	wait_pids(pid_t *pid, t_shell *shell)
 	return (EXIT_SUCCESS);
 }
 
-int	wait_pid_mono(t_shell *shell, int i)
+int	wait_pid_mono(t_shell *shell, int i, t_branch *map)
 {
 	int	waitpid_return;
 	int	error_code;
@@ -82,7 +82,10 @@ int	wait_pid_mono(t_shell *shell, int i)
 	error_code = 0;
 	if (shell->pid[i] != -1)
 	{
-		waitpid_return = waitpid(shell->pid[i], &error_code, 0);
+		if (!is_last_pipe_command(map) && is_and(map->dad->cmd[0]))
+			waitpid_return = waitpid(shell->pid[i], &error_code, WNOHANG);
+		else
+			waitpid_return = waitpid(shell->pid[i], &error_code, 0);
 		if (waitpid_return > 0)
 			error_func(error_code);
 	}

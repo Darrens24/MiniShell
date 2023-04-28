@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/28 14:43:28 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/28 17:00:40 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,23 +73,65 @@ int	check_valid_pipe(t_branch *map)
 	return (0);
 }
 
+int	is_last_pipe_command(t_branch *map)
+{
+	t_branch	*tmp;
+
+	tmp = map;
+	while (tmp && !is_pipe(tmp->cmd[0]))
+		tmp = tmp->dad;
+	if (tmp)
+		while (tmp && tmp->right)
+			tmp = tmp->right;
+	if (tmp == map)
+		return (TRUE);
+	return (FALSE);
+}
+
 int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 {
+	//char	buffer[1000];
+
 	execute_command_clean_leaf(shell, tmp->cmd);
+	
 	if ((map && shell->nb_of_pipes != shell->index_of_pipes)
 		|| (shell->last_index != -1 && shell->valid_pipe))
 	{
-		if (shell->last_index != -1 && shell->valid_pipe)
+		if (is_last_pipe_command(tmp) || map->err_code > 0)
 		{
-			if (read(shell->fd[shell->index_of_pipes - 1][1], NULL, 1) > 0)
-			{
-				close(shell->fd[shell->index_of_pipes -1][0]);
-				open(O_RDONLY, shell->fd[shell->index_of_pipes - 1][0]);
-			}
-			printf("je close >;( -> %d\n", shell->index_of_pipes - 1);
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
 		}
-		if (!check_valid_pipe(map))
+			/*
+			//else if (is_last_pipe_command(map))
+			//close_fds(shell->fd[shell->index_of_pipes - 1]);
+			if (is_pipe(map->cmd[0]))
+			{
+				printf("c'est une pipe je ferme les fdp batard\n");
+				close_fds(shell->fd[shell->index_of_pipes - 1]);
+			}
+			else if (get_next_line(shell->fd[shell->index_of_pipes - 1][0]))
+			{
+				printf("je suis rentre huhu\n");
+				//close(shell->fd[shell->index_of_pipes - 1][0]);
+				//close(shell->fd[shell->index_of_pipes - 1][1]);
+				dup2(shell->fd[shell->index_of_pipes - 1][0], STDIN_FILENO);
+				//open(O_RDONLY, shell->fd[shell->index_of_pipes - 1][0]);
+			}
+			close_fds(shell->fd[shell->index_of_pipes - 1]);
+			if (read(shell->fd[shell->index_of_pipes - 1][0], buffer, 1) > 0)
+			{
+				printf("read est bon\n");
+				open(O_RDONLY, shell->fd[shell->index_of_pipes - 1][0]);
+				//close_fds(shell->fd[shell->index_of_pipes - 1]);
+			}
+			else
+			{
+				printf("je close >;( -> %d\n", shell->index_of_pipes - 1);
+				//close(shell->fd[shell->index_of_pipes - 1][0]);
+				close_fds(shell->fd[shell->index_of_pipes - 1]);
+			}
+			*/
+		if (is_last_pipe_command(tmp))
 		{
 			shell->valid_pipe = 0;
 			shell->last_index = -1;
@@ -97,13 +139,16 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	}
 	if (!is_pipe(map->cmd[0]))
 	{
-		wait_pid_mono(shell, shell->index_of_commands);
+		printf("mono\n");
+		wait_pid_mono(shell, shell->index_of_commands, tmp);
 		shell->index_of_pid = shell->index_of_commands + 1;
 	}
 	if (shell->index_of_pipes == shell->nb_of_pipes && is_pipe(map->cmd[0]))
 	{
+		printf("multi\n");
 		wait_pids_bonus(shell->pid, shell,
 			shell->index_of_commands, shell->index_of_pid);
+		//close_fds(shell->fd[shell->index_of_pipes - 1]);
 	}
 	clean_node(tmp);
 	map->err_code = g_err;
