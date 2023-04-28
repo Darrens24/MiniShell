@@ -6,36 +6,29 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:03:36 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:43:22 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-t_branch	*clean(t_branch *temp)
+t_branch	*clean(t_branch *temp, t_branch *map)
 {
 	t_branch	*temp2;
 
 	temp2 = NULL;
 	if (temp && temp->left)
-		return (clean(temp->left));
+		return (clean(temp->left, map));
 	else if (temp && temp->right)
-		return (clean(temp->right));
+		return (clean(temp->right, map));
 	else if (temp && temp->dad)
-	{
-		if (temp->cmd && *temp->cmd)
-			free_array(temp->cmd);
-		else if (temp->cmd)
-			free(temp->cmd);
-		temp->left = NULL;
-		temp->right = NULL;
-		temp->left_command = NULL;
-		temp->right_command = NULL;
+	{		
+		printf("cc\n");
 		temp2 = temp->dad;
-		temp->dad = NULL;
-		free(temp->dad->left);
-		free(temp);
-		return (clean(temp2));
+		clean_node(temp);
+		if (temp2 == map)
+			return (EXIT_SUCCESS);
+		return (clean(temp2, map));
 	}
 	return (temp);
 }
@@ -60,6 +53,7 @@ void	clean_node(t_branch *temp)
 		free(temp->dad->right);
 		temp->dad->right = NULL;
 	}
+	printf("cc2\n");
 }
 
 int	is_parenthese(char *str)

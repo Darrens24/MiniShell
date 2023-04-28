@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:50:09 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:43:43 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -332,7 +332,7 @@ t_tok		*operator_jump_parentheses(t_tok *temp);
 void		print_tree_cmds(t_tree *tree);
 void		print_branch_cmds(t_branch *branch);
 int			get_bcmd(t_toklst *user_command, t_shell *shell);
-t_branch	*clean(t_branch *temp);
+t_branch	*clean(t_branch *temp, t_branch *map);
 void		clean_node(t_branch *temp);
 
 /***		EXEC BONUS				 ***/

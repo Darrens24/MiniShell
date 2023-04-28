@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/27 17:09:54 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:05:17 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ int	execute_command_clean_leaf(t_shell *shell, char **command)
 	char		*tmp;
 	struct stat	buff;
 
-	shell->array_env = get_array_env(shell);
-	shell->home = ft_strdup(get_home(shell->array_env));
 	tmp = NULL;
 	stat(command[0], &buff);
 	if (!is_builtin_command_bonus(command))

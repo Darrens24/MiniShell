@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/27 17:36:00 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:52:34 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp)
 			tmp = map;
 			map = map->dad;
 			if (map)
-				return (clean_node(tmp), execution_bonus(shell, map));
+				return (clean(tmp->right, map), execution_bonus(shell, map));
 			else if (!map)
-				return (clean_node(shell->tree->start), EXIT_SUCCESS);
+				return (clean(shell->tree->start, map), EXIT_SUCCESS);
 		}
 	}
 	else if (map && is_operator(map->cmd[0])

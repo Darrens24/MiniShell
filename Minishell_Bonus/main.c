@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 16:57:02 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/28 11:53:18 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,17 @@ int	main(int ac, char **av, char **envp)
 					&& (infile_redirection_parsing(&shell) != 0
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
-				/*
-				t_tok *temp = shell.user_command->start;
-				while (temp)
-				{
-					printf("usrcmd is %s\n", temp->var);
-					temp = temp->next;
-				}
-				*/
 				if (good == TRUE && and_or_in_cmd(shell.user_command))
 				{
 					shell.nb_of_fds_to_malloc = 0;
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
 					fill_trinary_tree(shell.user_command, &shell);
 					execution_bonus(&shell, shell.tree->map);
+					//free(shell.tree->start);
+					//free(shell.tree);
+					clean_between_cmds(&shell);
 				}
-				if (good == TRUE)
+				else if (good == TRUE)
 					pipe_command(&shell);
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);
