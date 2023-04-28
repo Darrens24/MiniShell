@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 11:43:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:44:30 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define TRUE 1
 # define FALSE 0
+# define DOT "filename argument required\n.: usage: . filename [arguments]\n"
 
 # include <unistd.h>
 # include <stdio.h>

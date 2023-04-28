@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_final_boss.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/28 14:28:24 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/28 14:43:28 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	if ((map && shell->nb_of_pipes != shell->index_of_pipes)
 		|| (shell->last_index != -1 && shell->valid_pipe))
 	{
-		if (shell->last_index != -1 && shell->valid_pipe && check_valid_pipe(map))
+		if (shell->last_index != -1 && shell->valid_pipe)
 		{
 			if (read(shell->fd[shell->index_of_pipes - 1][1], NULL, 1) > 0)
 			{
