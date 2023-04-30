@@ -6,11 +6,11 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:45:48 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/27 17:47:59 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/30 10:24:06 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 int	close_fds(int *fd)
 {

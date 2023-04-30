@@ -6,11 +6,11 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 13:10:39 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 11:18:34 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/04/30 10:20:57 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_tok	*pipe_jump_parentheses(t_tok *temp)
 {

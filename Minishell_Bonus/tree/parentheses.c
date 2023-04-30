@@ -6,11 +6,11 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:57:42 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:10:18 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/30 10:20:41 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_tok	*go_to_first_closed_parenthese(t_tok *temp, int *count, int *diff)
 {

@@ -6,11 +6,11 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:32:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:25:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/30 10:21:14 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	is_and_or(char *str)
 {

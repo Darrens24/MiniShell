@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/04/27 18:15:47 by eleleux          ###   ########.fr        #
+#    Updated: 2023/04/30 10:25:18 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,9 +61,9 @@ SRC = main.c \
 		tokens/token_wildcard.c \
 		parsing/parsing_utils.c \
 		parsing/parsing.c \
-		pipe.c \
-		pipe_utils.c \
-		execute_execve.c \
+		execution/exec/pipe.c \
+		execution/exec/pipe_utils.c \
+		execution/exec/execute_execve.c \
 		redirections/heredoc.c \
 		redirections/redirections.c \
 		redirections/redirection_parsing.c \
@@ -72,13 +72,13 @@ SRC = main.c \
 		wildcards/wildcards_data.c \
 		wildcards/wildcards_parsing.c \
 		wildcards/wildcards.c \
-		tree.c \
-		branch_creation.c \
-		parentheses.c \
-		tree_data.c \
-		tree_data2.c \
-		tree_utils.c \
-		parentheses_jump.c \
+		tree/tree.c \
+		tree/branch_creation.c \
+		tree/parentheses.c \
+		tree/tree_data.c \
+		tree/tree_data2.c \
+		tree/tree_utils.c \
+		tree/parentheses_jump.c \
 		execution/exec_bonus/execution_bonus.c \
 		execution/exec_bonus/clean_tree.c \
 		execution/exec_bonus/execution_utils.c \

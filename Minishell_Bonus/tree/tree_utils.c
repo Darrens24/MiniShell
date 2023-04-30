@@ -6,11 +6,11 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:01:09 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/30 10:22:36 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_toklst	*split_right(t_toklst *active_command)
 {
@@ -95,9 +95,7 @@ char	**give_active_command(t_toklst *left_command)
 {
 	t_tok		*temp;
 	char		**cmd;
-	int			i;
 
-	i = 0;
 	if (operator_in_cmd(left_command))
 	{
 		temp = go_to_branch_start(left_command);

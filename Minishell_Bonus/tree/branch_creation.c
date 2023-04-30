@@ -6,11 +6,11 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:07:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:05:32 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/30 10:20:28 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_tree	*create_start_branch(t_tree *tree, t_tok *temp, t_toklst *user_command)
 {

@@ -6,11 +6,11 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:24:42 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:25:33 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/30 10:21:22 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 int	and_or_in_cmd_outside_parentheses(t_toklst *user_command)
 {
