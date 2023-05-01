@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 18:36:58 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/30 19:22:08 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct s_branch
 	struct s_toklst	*left_command;
 	struct s_toklst	*right_command;
 	int				err_code;
+	int				cmd_block;
 }				t_branch;
 
 typedef struct s_tree

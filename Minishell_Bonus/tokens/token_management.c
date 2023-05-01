@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/25 10:35:36 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/01 10:40:31 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_toklst	*new_front_tok(t_toklst *list, char *line)
 	elem->var = ft_strdup(line);
 	elem->next = NULL;
 	elem->prev = NULL;
+	elem->prio = 0;
 	if (list->nb_elem == 0)
 	{
 		list->start = elem;
@@ -98,6 +99,7 @@ t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
 	elem->next = NULL;
 	elem->prev = NULL;
 	elem->quote = 0;
+	elem->prio = 0;
 	if (tokenlst->nb_elem == 0)
 	{
 		tokenlst->start = elem;
@@ -127,6 +129,7 @@ t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end)
 	elem->next = NULL;
 	elem->prev = NULL;
 	elem->quote = 1;
+	elem->prio = 0;
 	if (tokenlst->nb_elem == 0)
 	{
 		tokenlst->start = elem;
