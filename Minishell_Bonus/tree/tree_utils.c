@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/01 11:00:27 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/01 11:58:38 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ t_toklst	*split_right(t_toklst *active_command)
 	new_right_list->nb_elem = 0;
 	temp = go_to_branch_start(active_command);
 	if (temp && is_operator(temp->var))
+    {
 		temp = temp->next;
+        temp->prio = temp->prev->prio;
+    }
 	while (temp)
 	{
 		new_back_tok(new_right_list, temp->var, 0, ft_strlen(temp->var));
@@ -43,8 +46,12 @@ t_toklst	*split_left(t_toklst *active_command)
 		return (0);
 	new_left_list->nb_elem = 0;
 	temp = go_to_branch_start(active_command);
+    printf("prio from splitleft is %d\n", temp->prio);
 	if (temp && is_operator(temp->var))
+    {
 		temp = temp->prev;
+        temp->prio = temp->next->prio;
+    }
 	while (temp)
 	{
 		new_front_tok(new_left_list, temp->var);
