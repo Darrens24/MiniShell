@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/01 10:11:06 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:37:49 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ int	is_builtin_command(t_shell *shell, int index)
 		|| ft_strncmp(shell->multi_cmd[index][0], "echo", 5) == 0)
 		return (TRUE);
 	return (FALSE);
+}
+
+void print_cmds_with_blocks(t_branch *node) {
+    if (node == NULL) {
+        return;
+    }
+
+    if (node->cmd != NULL) {
+        printf("Commands in block %d:\n", node->cmd_block);
+        for (int i = 0; node->cmd[i] != NULL; i++) {
+            printf("\t%s\n", node->cmd[i]);
+        }
+    }
+
+    print_cmds_with_blocks(node->left);
+    print_cmds_with_blocks(node->right);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -81,7 +97,9 @@ int	main(int ac, char **av, char **envp)
 					shell.nb_of_fds_to_malloc = 0;
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
 					fill_trinary_tree(shell.user_command, &shell);
-					execution_bonus(&shell, shell.tree->map);
+					printf("la tree est bonne\n");
+					print_cmds_with_blocks(shell.tree->start);
+					//execution_bonus(&shell, shell.tree->map);
 					//free(shell.tree->start);
 					//free(shell.tree);
 					clean_between_cmds(&shell);
