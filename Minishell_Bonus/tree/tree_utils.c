@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/30 10:22:36 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:00:27 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_toklst	*split_right(t_toklst *active_command)
 	while (temp)
 	{
 		new_back_tok(new_right_list, temp->var, 0, ft_strlen(temp->var));
+        new_right_list->end->prio = temp->prio;
 		temp = temp->next;
 	}
 	return (new_right_list);
@@ -47,6 +48,7 @@ t_toklst	*split_left(t_toklst *active_command)
 	while (temp)
 	{
 		new_front_tok(new_left_list, temp->var);
+        new_left_list->start->prio = temp->prio;
 		temp = temp->prev;
 	}
 	return (new_left_list);

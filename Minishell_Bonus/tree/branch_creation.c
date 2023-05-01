@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:07:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/30 19:22:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:14:32 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ t_branch	*create_left_leaf(t_branch *map)
 	if (map && operator_in_cmd(map->left_command))
 	{
 		l_branch->left_command = split_left(l_branch->dad->left_command);
+        l_branch->cmd_block = left_command->start->prio;
 		l_branch->right_command = split_right(l_branch->dad->left_command);
+        l_branch->cmd_block = right_command->start->prio;
 	}
 	else if (map && !is_operator(l_branch->cmd[0]))
 	{
 		l_branch->left_command = NULL;
 		l_branch->right_command = NULL;
+        l_branch->cmd_block = map->dad->cmd_block;
 	}
 	l_branch->err_code = -1;
 	map->left = l_branch;
@@ -78,12 +81,15 @@ t_branch	*create_right_leaf(t_branch *map)
 	if (map && operator_in_cmd(map->right_command))
 	{
 		r_branch->left_command = split_left(r_branch->dad->right_command);
+        r_branch->cmd_block = left_command->start->prio;
 		r_branch->right_command = split_right(r_branch->dad->right_command);
+        r_branch->cmd_block = right_command->start->prio;
 	}
 	else if (map && !is_operator(r_branch->cmd[0]))
 	{
 		r_branch->left_command = NULL;
 		r_branch->right_command = NULL;
+        r_branch->cmd_block = map->dad->cmd_block;
 	}
 	r_branch->err_code = -1;
 	map->right = r_branch;

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/30 10:21:05 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:15:02 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,33 @@ static t_tok	*start_when_pipe(t_tok *temp)
 
 t_tok	*go_to_branch_start(t_toklst *user_command)
 {
-	t_tok	*temp;
+	t_tok	    *temp;
+    static int  prio = 0;
 
 	temp = user_command->end;
 	if (temp && and_or_in_cmd_outside_parentheses(user_command))
+    {
 		temp = start_when_and_or(temp);
+        if (prio)
+            temp->prio = prio;
+    }
 	else if (temp && pipe_in_cmd_outside_parentheses(user_command))
+    {
 		temp = start_when_pipe(temp);
+        if (prio)
+            temp->prio = prio;
+    }
 	else if (temp && ft_strncmp(temp->var, ")", 2) == 0)
 	{
 		remove_front_tok(user_command);
 		remove_back_tok(user_command);
+        prio++;
 		temp = go_to_branch_start(user_command);
 	}
 	return (temp);
 }
+
+//ls[0] &&[0] ((cat lol[2] ||[2] whoami[2]) |[1] grep a[1]) 
 
 t_tree	*get_new_start_split_command(t_shell *shell, t_branch *map)
 {
