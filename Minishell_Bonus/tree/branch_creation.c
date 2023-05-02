@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:07:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/01 11:56:15 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/02 18:23:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ t_branch	*create_left_leaf(t_branch *map)
 	if (map && operator_in_cmd(map->left_command))
 	{
 		l_branch->left_command = split_left(l_branch->dad->left_command);
-        printf("prio is %d\n", l_branch->left_command->start->prio);
         l_branch->cmd_block = l_branch->left_command->start->prio;
 		l_branch->right_command = split_right(l_branch->dad->left_command);
         l_branch->cmd_block = l_branch->right_command->start->prio;
@@ -82,7 +81,6 @@ t_branch	*create_right_leaf(t_branch *map)
 	if (map && operator_in_cmd(map->right_command))
 	{
 		r_branch->left_command = split_left(r_branch->dad->right_command);
-        printf("prio is %d\n", r_branch->left_command->start->prio);
         r_branch->cmd_block = r_branch->left_command->start->prio;
 		r_branch->right_command = split_right(r_branch->dad->right_command);
         r_branch->cmd_block = r_branch->right_command->start->prio;

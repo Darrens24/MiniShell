@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/01 11:58:38 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/02 18:23:58 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ t_toklst	*split_left(t_toklst *active_command)
 		return (0);
 	new_left_list->nb_elem = 0;
 	temp = go_to_branch_start(active_command);
-    printf("prio from splitleft is %d\n", temp->prio);
 	if (temp && is_operator(temp->var))
     {
 		temp = temp->prev;

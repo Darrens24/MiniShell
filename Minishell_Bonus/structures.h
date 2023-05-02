@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/30 19:22:08 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/02 18:58:14 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_shell
 	int					bcmd;
 	int					index_of_pid;
 	int					valid_pipe;
+	int					current_cmdb;
 }				t_shell;
 
 typedef struct s_node

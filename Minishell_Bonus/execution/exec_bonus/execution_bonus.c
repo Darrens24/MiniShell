@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/02 11:33:39 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/02 19:05:44 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,16 @@ int	is_builtin_command_bonus(char **command)
 int	redirection_bonus(t_shell *shell)
 {		
 	if (shell->index_of_pipes < shell->nb_of_pipes)
+	{
+		printf("early of pipe = %d\n", shell->index_of_pipes);
 		early_out_redirection(shell->fd[shell->index_of_pipes]);
+	}
 	if (shell->index_of_pipes != 0 && shell->last_index != -1
 		&& shell->nb_of_pipes == shell->index_of_pipes)
+	{
+		printf("inside redirection\n");
 		inside_redirection(shell->fd[shell->index_of_pipes - 1]);
+	}
 	if (shell->out == TRUE
 		&& shell->index_of_pipes == shell->nb_of_pipes)
 		dup2(shell->outfile, STDOUT_FILENO);

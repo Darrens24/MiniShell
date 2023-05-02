@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:12:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/02 11:37:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/02 19:06:21 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,8 @@ int	wait_pid_mono(t_shell *shell, int i)
 	int	error_code;
 
 	error_code = 0;
-	if (shell->pid[i] != -1)
-	{
-		waitpid_return = waitpid(shell->pid[i], &error_code, 0);
-		if (waitpid_return > 0)
-			error_func(error_code);
-	}
+	waitpid_return = waitpid(shell->pid[i], &error_code, 0);
+	if (waitpid_return > 0)
+		error_func(error_code);
 	return (EXIT_SUCCESS);
 }

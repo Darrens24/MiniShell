@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/02 17:13:58 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/02 19:11:13 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ int	execute_subshell(t_shell *shell, t_branch *map)
 	waitpid_return = 0;
 	error_code = 0;
 	tmp = map;
+	shell->current_cmdb = map->cmd_block;
+	if (shell->index_of_pipes != shell->nb_of_pipes)
+	{
+		printf("je pipe dans subshell\n");
+		pipe(shell->fd[shell->index_of_pipes]);
+	}
+	redirection_bonus(shell);
 	pid = fork();
 	if (pid == 0)
 	{
@@ -53,8 +60,6 @@ int	execute_subshell(t_shell *shell, t_branch *map)
 	if (waitpid_return > 0)
 		error_func(error_code);
 	map->err_code = g_err;
-	printf("map is %s\n", map->cmd[0]);
-	printf("mapdad is %s\n", map->dad->cmd[0]);
 	tmp = map;
 	map = map->dad;
 	return	(clean(tmp, map), execution_bonus(shell, map));
@@ -139,45 +144,18 @@ int	is_last_pipe_command(t_branch *map)
 
 int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 {
+	if (shell->index_of_pipes != shell->nb_of_pipes && map->cmd_block == 0)
+	{
+		printf("je pipe dans operator\n");
+		pipe(shell->fd[shell->index_of_pipes]);
+	}
+	shell->current_cmdb = map->cmd_block;
 	execute_command_clean_leaf(shell, tmp->cmd);
-	
 	if ((map && shell->nb_of_pipes != shell->index_of_pipes)
 		|| (shell->last_index != -1 && shell->valid_pipe))
 	{
 		if (is_last_pipe_command(tmp) || map->err_code > 0)
-		{
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
-		}
-			/*
-			//else if (is_last_pipe_command(map))
-			//close_fds(shell->fd[shell->index_of_pipes - 1]);
-			if (is_pipe(map->cmd[0]))
-			{
-				printf("c'est une pipe je ferme les fdp batard\n");
-				close_fds(shell->fd[shell->index_of_pipes - 1]);
-			}
-			else if (get_next_line(shell->fd[shell->index_of_pipes - 1][0]))
-			{
-				printf("je suis rentre huhu\n");
-				//close(shell->fd[shell->index_of_pipes - 1][0]);
-				//close(shell->fd[shell->index_of_pipes - 1][1]);
-				dup2(shell->fd[shell->index_of_pipes - 1][0], STDIN_FILENO);
-				//open(O_RDONLY, shell->fd[shell->index_of_pipes - 1][0]);
-			}
-			close_fds(shell->fd[shell->index_of_pipes - 1]);
-			if (read(shell->fd[shell->index_of_pipes - 1][0], buffer, 1) > 0)
-			{
-				printf("read est bon\n");
-				open(O_RDONLY, shell->fd[shell->index_of_pipes - 1][0]);
-				//close_fds(shell->fd[shell->index_of_pipes - 1]);
-			}
-			else
-			{
-				printf("je close >;( -> %d\n", shell->index_of_pipes - 1);
-				//close(shell->fd[shell->index_of_pipes - 1][0]);
-				close_fds(shell->fd[shell->index_of_pipes - 1]);
-			}
-			*/
 		if (is_last_pipe_command(tmp))
 		{
 			shell->valid_pipe = 0;
@@ -186,13 +164,11 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	}
 	if (!is_pipe(map->cmd[0]))
 	{
-		printf("JE FAIS DU MONO\n");
 		wait_pid_mono(shell, shell->index_of_commands);
 		shell->index_of_pid = shell->index_of_commands + 1;
 	}
 	if (shell->index_of_pipes == shell->nb_of_pipes && is_pipe(map->cmd[0]))
 	{
-		printf("JE FAIS DU BONUS\n");
 		wait_pids_bonus(shell->pid, shell,
 			shell->index_of_commands, shell->index_of_pid);
 		//close_fds(shell->fd[shell->index_of_pipes - 1]);
@@ -212,32 +188,23 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 	tmp = NULL;
 	if (map->cmd_block > cmd_block && map->cmd_block != 0)
 	{
+		// SI ON EST DANS UNE PIPE (MAP DAD), ON FAIT LA REDIRECTION OUT //
 		printf("JE FAIS UN SUBSHELL\n");
 		cmd_block = map->cmd_block;
 		execute_subshell(shell, map);
 		print_cmds_with_blocks(shell->tree->start);
 	}
 	else if (map && map->left)
-	{
-		printf("LEFT\n");
 		execute_map_left(shell, map);
-	}
 	else if (map && map->right)
-	{
 		execute_map_right(shell, map, tmp);
-		printf("RIGHT\n");
-	}
 	else if (map && !is_operator(map->cmd[0]))
 	{
-		printf("COMMANDE\n");
 		tmp = map;
 		map = map->dad;
 		execute_map_operator(shell, map, tmp);
 	}
 	else if (map && map->dad)
-	{
-		printf("DAD\n");
 		execute_map_dad(shell, map, tmp);
-	}
 	return (EXIT_SUCCESS);
 }
