@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/02 15:40:01 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/02 17:13:58 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp)
 			tmp = map;
 			map = map->dad;
 			if (map)
-				return (clean(tmp->right, map), execution_bonus(shell, map));
+				return (clean(tmp->right, tmp), execution_bonus(shell, map));
 			else if (!map)
 				return (clean(shell->tree->start, map), EXIT_SUCCESS);
 		}
@@ -97,6 +97,7 @@ int	execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp)
 		return (execution_bonus(shell, map->right));
 	return (EXIT_FAILURE);
 }
+
 
 int	execute_map_dad(t_shell *shell, t_branch *map, t_branch *tmp)
 {
@@ -202,13 +203,14 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	return (execution_bonus(shell, map));
 }
 
+// ls && (wc && wc) || (whoami && lol)
 int	execution_bonus(t_shell *shell, t_branch *map)
 {
 	t_branch	*tmp;
 	static int	cmd_block = 0;
 
 	tmp = NULL;
-	if (cmd_block != map->cmd_block && map->cmd_block != 0)
+	if (map->cmd_block > cmd_block && map->cmd_block != 0)
 	{
 		printf("JE FAIS UN SUBSHELL\n");
 		cmd_block = map->cmd_block;
@@ -217,8 +219,8 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 	}
 	else if (map && map->left)
 	{
-		execute_map_left(shell, map);
 		printf("LEFT\n");
+		execute_map_left(shell, map);
 	}
 	else if (map && map->right)
 	{

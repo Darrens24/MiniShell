@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/02 15:41:43 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/02 17:15:46 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	main(int ac, char **av, char **envp)
 					shell.nb_of_fds_to_malloc = 0;
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
 					fill_trinary_tree(shell.user_command, &shell);
+					//print_cmds_with_blocks(shell.tree->start);
 					//printf("la tree est bonne\n");
 					//print_cmds_with_blocks(shell.tree->start);
 					execution_bonus(&shell, shell.tree->map);
