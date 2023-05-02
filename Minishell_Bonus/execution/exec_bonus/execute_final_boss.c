@@ -6,11 +6,54 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/28 17:00:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/02 14:08:55 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+/* int	subshell(t_shell *shell, char **command, char *tmp, */
+/* 	struct stat buff) */
+/* { */
+/* 	if (shell->index_of_pipes != shell->nb_of_pipes) */
+/* 		pipe(shell->fd[shell->index_of_pipes]); */
+/* 	shell->pid[shell->index_of_commands] = fork(); */
+/* 	signal(SIGINT, &do_nothing); */
+/* 	signal(SIGQUIT, &do_nothing); */
+/* 	if (shell->pid[shell->index_of_commands] == 0) */
+/* 	{ */
+/* 		redirection_bonus(shell); */
+/* 		execve(tmp, command, shell->array_env); */
+/* 	} */
+/* 	if (shell->index_of_pipes != shell->nb_of_pipes) */
+/* 		shell->last_index = shell->index_of_pipes; */
+/* 	free(tmp); */
+/* 	return (EXIT_SUCCESS); */
+/* } */
+
+int	execute_subshell(t_shell *shell, t_branch *map)
+{
+	pid_t		pid;
+	t_branch	*tmp;
+	int			waitpid_return;
+	int			error_code;
+	
+	waitpid_return = 0;
+	error_code = 0;
+	pid = fork();
+	tmp = map;
+	tmp->dad = NULL;
+	if (pid == 0)
+	{
+		execution_bonus(shell, tmp);
+		exit(0);
+	}
+	waitpid_return = waitpid(pid, &error_code, 0);
+	if (waitpid_return > 0)
+		error_func(error_code);
+	map->err_code = g_err;
+	return	(clean(tmp, map), execution_bonus(shell, map));
+}
 
 int	execute_map_left(t_shell *shell, t_branch *map)
 {
@@ -90,8 +133,6 @@ int	is_last_pipe_command(t_branch *map)
 
 int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 {
-	//char	buffer[1000];
-
 	execute_command_clean_leaf(shell, tmp->cmd);
 	
 	if ((map && shell->nb_of_pipes != shell->index_of_pipes)
@@ -139,13 +180,11 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	}
 	if (!is_pipe(map->cmd[0]))
 	{
-		printf("mono\n");
-		wait_pid_mono(shell, shell->index_of_commands, tmp);
+		wait_pid_mono(shell, shell->index_of_commands);
 		shell->index_of_pid = shell->index_of_commands + 1;
 	}
 	if (shell->index_of_pipes == shell->nb_of_pipes && is_pipe(map->cmd[0]))
 	{
-		printf("multi\n");
 		wait_pids_bonus(shell->pid, shell,
 			shell->index_of_commands, shell->index_of_pid);
 		//close_fds(shell->fd[shell->index_of_pipes - 1]);
@@ -159,7 +198,12 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 int	execution_bonus(t_shell *shell, t_branch *map)
 {
 	t_branch	*tmp;
+	static int	cmd_block = 0;
 
+	if (cmd_block != map->cmd_block && map->cmd_block != 0)
+		execute_subshell(shell, map);
+	else if (cmd_block != map->cmd_block && map->cmd_block == 0)
+		cmd_block = 0;
 	tmp = NULL;
 	if (map && map->left)
 		execute_map_left(shell, map);

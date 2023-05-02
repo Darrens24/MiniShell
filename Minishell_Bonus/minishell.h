@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 16:51:16 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/02 11:38:18 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -340,7 +340,7 @@ void		clean_node(t_branch *temp);
 
 int			execution_bonus(t_shell *shell, t_branch *map);
 int			wait_pids_bonus(pid_t *pid, t_shell *shell, int end, int i);
-int			wait_pid_mono(t_shell *shell, int i, t_branch *map);
+int			wait_pid_mono(t_shell *shell, int i);
 int			redirection_bonus(t_shell *shell);
 char		*get_correct_path_bonus(t_shell *shell, char *command);
 char		*find_path_bonus(char *command, t_shell *shell);
