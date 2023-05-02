@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/02 11:38:18 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:05:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # include "structures.h"
 
 extern int	g_err;
+
+void print_cmds_with_blocks(t_branch *node);
 
 /***\	READLINE	\***/
 

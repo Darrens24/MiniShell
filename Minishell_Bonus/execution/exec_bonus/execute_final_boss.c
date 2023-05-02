@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/02 14:08:55 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:40:01 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,23 @@ int	execute_subshell(t_shell *shell, t_branch *map)
 	
 	waitpid_return = 0;
 	error_code = 0;
-	pid = fork();
 	tmp = map;
-	tmp->dad = NULL;
+	pid = fork();
 	if (pid == 0)
 	{
+		tmp->dad = NULL;
 		execution_bonus(shell, tmp);
+		printf("JE TERMINE L'EXECUTION DU SUB\n");
 		exit(0);
 	}
 	waitpid_return = waitpid(pid, &error_code, 0);
 	if (waitpid_return > 0)
 		error_func(error_code);
 	map->err_code = g_err;
+	printf("map is %s\n", map->cmd[0]);
+	printf("mapdad is %s\n", map->dad->cmd[0]);
+	tmp = map;
+	map = map->dad;
 	return	(clean(tmp, map), execution_bonus(shell, map));
 }
 
@@ -180,11 +185,13 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	}
 	if (!is_pipe(map->cmd[0]))
 	{
+		printf("JE FAIS DU MONO\n");
 		wait_pid_mono(shell, shell->index_of_commands);
 		shell->index_of_pid = shell->index_of_commands + 1;
 	}
 	if (shell->index_of_pipes == shell->nb_of_pipes && is_pipe(map->cmd[0]))
 	{
+		printf("JE FAIS DU BONUS\n");
 		wait_pids_bonus(shell->pid, shell,
 			shell->index_of_commands, shell->index_of_pid);
 		//close_fds(shell->fd[shell->index_of_pipes - 1]);
@@ -200,22 +207,35 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 	t_branch	*tmp;
 	static int	cmd_block = 0;
 
-	if (cmd_block != map->cmd_block && map->cmd_block != 0)
-		execute_subshell(shell, map);
-	else if (cmd_block != map->cmd_block && map->cmd_block == 0)
-		cmd_block = 0;
 	tmp = NULL;
-	if (map && map->left)
+	if (cmd_block != map->cmd_block && map->cmd_block != 0)
+	{
+		printf("JE FAIS UN SUBSHELL\n");
+		cmd_block = map->cmd_block;
+		execute_subshell(shell, map);
+		print_cmds_with_blocks(shell->tree->start);
+	}
+	else if (map && map->left)
+	{
 		execute_map_left(shell, map);
+		printf("LEFT\n");
+	}
 	else if (map && map->right)
+	{
 		execute_map_right(shell, map, tmp);
+		printf("RIGHT\n");
+	}
 	else if (map && !is_operator(map->cmd[0]))
 	{
+		printf("COMMANDE\n");
 		tmp = map;
 		map = map->dad;
 		execute_map_operator(shell, map, tmp);
 	}
 	else if (map && map->dad)
+	{
+		printf("DAD\n");
 		execute_map_dad(shell, map, tmp);
+	}
 	return (EXIT_SUCCESS);
 }
