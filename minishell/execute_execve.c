@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:45:48 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/28 09:18:03 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:59:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	execute_execve(t_shell *shell, char *temp, struct stat buff, int index)
 	}
 	shell->pid[index] = fork();
 	signal(SIGINT, &do_nothing);
-	signal(SIGQUIT, &do_nothing);
+	signal(SIGQUIT, &do_nothing_but_quit3);
 	if (shell->pid[index] == 0)
 	{
 		redirection_parsing(shell, index);

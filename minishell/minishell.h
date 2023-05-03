@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 09:23:19 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 16:00:22 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void		handler(int num);
 void		heredoc_handler(int num);
 void		remove_ctrlc(int mode);
 void		do_nothing(int num);
-int			reset_echo(void);
+void		do_nothing_but_quit3(int num);
 int			error_func(int error_code);
 
 /***\      TOKEN MANAG     \***/

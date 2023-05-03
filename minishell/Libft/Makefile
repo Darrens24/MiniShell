@@ -6,7 +6,7 @@
 #    By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/08 17:50:06 by eleleux           #+#    #+#              #
-#    Updated: 2023/02/22 17:56:51 by eleleux          ###   ########.fr        #
+#    Updated: 2023/05/03 16:04:04 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,6 @@ OBJ = $(SRC:.c=.o)
 	@$(CC) $(CFLAGS) -I ./ -c $< -o ${<:.c=.o}
 
 $(NAME) : $(OBJ)
-	@echo ${LIGHTBLUE}Libft Compiling...${NOCOLOR}
 	@ar rcs $@ $(OBJ)
 	@echo ${LIGHTGREEN}Libft Compiled !${NOCOLOR}
 
