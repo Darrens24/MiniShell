@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:49:26 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/02 18:59:40 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:45:35 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	wait_pids_bonus(pid_t *pid, t_shell *shell, int end, int i)
 	{
 		if (shell->pid[i] != -1)
 		{
+			printf("Je wait pid le pid numero : %d\n", i);
 			waitpid_return = waitpid(pid[i], &error_code, 0);
 			if (waitpid_return > 0)
 				error_func(error_code);
@@ -55,7 +56,6 @@ int	wait_pids_bonus(pid_t *pid, t_shell *shell, int end, int i)
 int	not_execute_builtin(t_shell *shell, char **command, char *tmp,
 	struct stat buff)
 {
-	printf("j'execute %s\n", command[0]);
 	if (access(command[0], F_OK) == 0 && S_ISREG(buff.st_mode))
 		tmp = ft_strdup(command[0]);
 	else
@@ -66,6 +66,11 @@ int	not_execute_builtin(t_shell *shell, char **command, char *tmp,
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
 		return (EXIT_FAILURE);
 	}
+	if (shell->index_of_pipes != shell->nb_of_pipes && shell->current_cmdb == 0)
+	{
+		printf("je pipe %s le fd que je pipe est = %d\n", command[0], shell->index_of_pipes);
+		pipe(shell->fd[shell->index_of_pipes]);
+	}
 	shell->pid[shell->index_of_commands] = fork();
 	signal(SIGINT, &do_nothing);
 	signal(SIGQUIT, &do_nothing);
@@ -73,6 +78,7 @@ int	not_execute_builtin(t_shell *shell, char **command, char *tmp,
 	{
 		if (shell->current_cmdb == 0)
 			redirection_bonus(shell);
+		fprintf(stderr, "j'execute %s\n", command[0]);
 		execve(tmp, command, shell->array_env);
 	}
 	if (shell->index_of_pipes != shell->nb_of_pipes)

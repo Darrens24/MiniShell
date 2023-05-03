@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/03 16:33:22 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 13:40:37 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,12 @@ int	redirection_bonus(t_shell *shell)
 {		
 	if (shell->index_of_pipes < shell->nb_of_pipes)
 	{
-		printf("out redirection in fd[%d]\n", shell->index_of_pipes);
+		fprintf(stderr, "outside redirection dans fd[%d]\n", shell->index_of_pipes);
 		early_out_redirection(shell->fd[shell->index_of_pipes]);
 	}
-	if (shell->index_of_pipes != 0 && shell->last_index != -1
-		&& shell->nb_of_pipes == shell->index_of_pipes)
+	if (shell->last_index != -1)
 	{
-		printf("inside redirection in fd[%d]\n", shell->index_of_pipes - 1);
+		fprintf(stderr, "inside redirection dans fd[%d]\n", shell->index_of_pipes -1);
 		inside_redirection(shell->fd[shell->index_of_pipes - 1]);
 	}
 	if (shell->out == TRUE

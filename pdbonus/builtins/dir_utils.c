@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:02:40 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 15:38:37 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/04/28 10:31:23 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	update_oldpwd(t_shell *shell, t_chained *list)
 	index = 0;
 	while (temp)
 	{
-		if (ft_strncmp("OLDPWD", temp->variable, 6) == 0)
+		if (ft_strncmp("OLDPWD=", temp->variable, 7) == 0)
 		{
 			remove_current_node(temp, list);
 			new_current_node(list, index, oldpwd);

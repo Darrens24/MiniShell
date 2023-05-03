@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/02 19:11:13 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:06:41 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,39 @@
 /* 	return (EXIT_SUCCESS); */
 /* } */
 
+int	is_last_command(t_branch *map, t_branch *searched)
+{
+	t_branch	*tmp;
+
+	tmp = map;
+	while (tmp && tmp->dad)
+		tmp = tmp->dad;
+	if (tmp)
+		while (tmp && tmp->right)
+			tmp = tmp->right;
+	if (tmp == searched)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	is_last_pipe_command(t_branch *map)
+{
+	t_branch	*tmp;
+
+	tmp = map;
+	while (tmp && !is_pipe(tmp->cmd[0]))
+		tmp = tmp->dad;
+	if (tmp)
+		while (tmp && tmp->right)
+			tmp = tmp->right;
+	if (tmp == map)
+		return (TRUE);
+	return (FALSE);
+}
+
+
 int	execute_subshell(t_shell *shell, t_branch *map)
 {
-	pid_t		pid;
 	t_branch	*tmp;
 	int			waitpid_return;
 	int			error_code;
@@ -45,24 +75,34 @@ int	execute_subshell(t_shell *shell, t_branch *map)
 	if (shell->index_of_pipes != shell->nb_of_pipes)
 	{
 		printf("je pipe dans subshell\n");
+		printf("index of pipes = %d\n", shell->index_of_pipes);
 		pipe(shell->fd[shell->index_of_pipes]);
 	}
-	redirection_bonus(shell);
-	pid = fork();
-	if (pid == 0)
+	shell->pid[shell->index_of_commands] = fork();
+	if (shell->pid[shell->index_of_commands] == 0)
 	{
+		redirection_bonus(shell);
 		tmp->dad = NULL;
 		execution_bonus(shell, tmp);
-		printf("JE TERMINE L'EXECUTION DU SUB\n");
+		fprintf(stderr, "JE TERMINE L'EXECUTION DU SUB\n");
 		exit(0);
 	}
-	waitpid_return = waitpid(pid, &error_code, 0);
+	waitpid_return = waitpid(0, &error_code, 0);
 	if (waitpid_return > 0)
 		error_func(error_code);
-	map->err_code = g_err;
+	shell->index_of_commands++;
 	tmp = map;
 	map = map->dad;
-	return	(clean(tmp, map), execution_bonus(shell, map));
+	clean(tmp, map);
+	/*
+	if (is_last_command(shell->tree->start, map))
+	{
+		printf("je waitpid multi dans sub\n");
+		wait_pids_bonus(shell->pid, shell,
+			shell->index_of_commands, shell->index_of_pid);
+	}
+	*/
+	return	(execution_bonus(shell, map));
 }
 
 int	execute_map_left(t_shell *shell, t_branch *map)
@@ -127,48 +167,28 @@ int	check_valid_pipe(t_branch *map)
 	return (0);
 }
 
-int	is_last_pipe_command(t_branch *map)
-{
-	t_branch	*tmp;
-
-	tmp = map;
-	while (tmp && !is_pipe(tmp->cmd[0]))
-		tmp = tmp->dad;
-	if (tmp)
-		while (tmp && tmp->right)
-			tmp = tmp->right;
-	if (tmp == map)
-		return (TRUE);
-	return (FALSE);
-}
-
 int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 {
-	if (shell->index_of_pipes != shell->nb_of_pipes && map->cmd_block == 0)
-	{
-		printf("je pipe dans operator\n");
-		pipe(shell->fd[shell->index_of_pipes]);
-	}
 	shell->current_cmdb = map->cmd_block;
 	execute_command_clean_leaf(shell, tmp->cmd);
-	if ((map && shell->nb_of_pipes != shell->index_of_pipes)
-		|| (shell->last_index != -1 && shell->valid_pipe))
+	if (shell->index_of_pipes != shell->nb_of_pipes && shell->valid_pipe)
 	{
-		if (is_last_pipe_command(tmp) || map->err_code > 0)
-			close_fds(shell->fd[shell->index_of_pipes - 1]);
-		if (is_last_pipe_command(tmp))
-		{
-			shell->valid_pipe = 0;
-			shell->last_index = -1;
-		}
+		fprintf(stderr, "je close %d\n", shell->index_of_pipes -1);
+		close_fds(shell->fd[shell->index_of_pipes - 1]);
 	}
-	if (!is_pipe(map->cmd[0]))
+	else if (is_last_pipe_command(tmp))
 	{
-		wait_pid_mono(shell, shell->index_of_commands);
-		shell->index_of_pid = shell->index_of_commands + 1;
+		fprintf(stderr, "je last close %d\n", shell->index_of_pipes -1);
+		close_fds(shell->fd[shell->index_of_pipes - 1]);
 	}
-	if (shell->index_of_pipes == shell->nb_of_pipes && is_pipe(map->cmd[0]))
+	if (is_last_pipe_command(tmp))
 	{
+		shell->valid_pipe = 0;
+		shell->last_index = -1;
+	}
+	if (is_last_command(shell->tree->start, tmp))
+	{
+		printf("je waitpid multi\n");
 		wait_pids_bonus(shell->pid, shell,
 			shell->index_of_commands, shell->index_of_pid);
 		//close_fds(shell->fd[shell->index_of_pipes - 1]);
@@ -188,11 +208,10 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 	tmp = NULL;
 	if (map->cmd_block > cmd_block && map->cmd_block != 0)
 	{
-		// SI ON EST DANS UNE PIPE (MAP DAD), ON FAIT LA REDIRECTION OUT //
 		printf("JE FAIS UN SUBSHELL\n");
 		cmd_block = map->cmd_block;
 		execute_subshell(shell, map);
-		print_cmds_with_blocks(shell->tree->start);
+		//print_cmds_with_blocks(shell->tree->start);
 	}
 	else if (map && map->left)
 		execute_map_left(shell, map);
