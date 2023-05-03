@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:42:18 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 10:29:33 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:40:28 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_chained	*new_current_node(t_chained *lst, int index, char *variable)
 	t_node	*temp;
 
 	temp = lst->start;
-	while (temp && --index)
+	while (temp && --index > 0)
 		temp = temp->next;
 	if (!temp->prev)
 		return (new_front_node(lst, variable));

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/28 10:40:26 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:36:02 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	change_directory(t_shell *shell, const char *path)
 {
 	shell->previous_dir_path = getcwd(NULL, 0);
+	printf("previous is %s\n", shell->previous_dir_path);
 	if (chdir(path) < 0)
 	{
 		g_err = 1;
