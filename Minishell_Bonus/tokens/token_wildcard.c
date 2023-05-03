@@ -6,26 +6,25 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:57:16 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 16:09:34 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 12:05:09 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_tok	*remove_wildcard_tok(t_toklst *tokenlst)
+t_tok	*remove_wildcard_tok(t_toklst *tokenlst, t_tok *temp)
 {
-	t_tok	*temp;
+	t_tok	*returned;
 
-	temp = tokenlst->start;
-	if (string_is_wildcard(temp->var))
+	returned = temp->next;
+	if (!temp->prev)
 	{
 		remove_front_tok(tokenlst);
-		return (temp);
+		return (returned);
 	}
-	while (temp && !string_is_wildcard(temp->var))
-		temp = temp->next;
-	remove_current_tok(temp, tokenlst);
-	return (temp);
+	else
+		remove_current_tok(temp, tokenlst);
+	return (returned);
 }
 
 t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer)

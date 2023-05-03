@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:08:59 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 11:11:24 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 13:09:54 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,8 @@ int	no_wildcard_before(char *str, int index)
 	return (TRUE);
 }
 
-int	cmd_has_wildcard(t_shell *shell)
+int	cmd_has_wildcard(t_tok *temp)
 {
-	t_tok	*temp;
-
-	temp = shell->user_command->start;
 	while (temp)
 	{
 		if (string_is_wildcard(temp->var))
@@ -72,24 +69,12 @@ int	cmd_has_wildcard(t_shell *shell)
 int	free_wildcards(t_shell *shell)
 {
 	if (shell->wild_before)
-	{
-		printf("hey before\n");
 		free(shell->wild_before);
-	}
 	if (shell->wild_after)
-	{
-		printf("hey after\n");
 		free(shell->wild_after);
-	}
-	if (shell->wild_middle && *shell->wild_middle)
-	{
-		printf("hey middle full\n");
+	if (shell->wild_middle && *shell->wild_middle && shell->wild_all != 1)
 		free_array(shell->wild_middle);
-	}
 	else if (shell->wild_middle)
-	{
-		printf("hey middle empty\n");
 		free(shell->wild_middle);
-	}
 	return (EXIT_SUCCESS);
 }

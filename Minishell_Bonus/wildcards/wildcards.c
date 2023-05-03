@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:53:45 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/26 11:16:17 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 13:15:41 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	get_asked_wildcards(char *var, t_shell *shell)
 
 	i = 0;
 	j = 0;
+	if (var[i] == '*' && !var[i + 1])
+	{
+		shell->wild_all = 1;
+		return (EXIT_SUCCESS);
+	}
 	while (var[i])
 	{
 		if (var[i] == '*' && i != 0 && no_wildcard_before(var, i - 1) == TRUE)
@@ -33,14 +38,6 @@ int	get_asked_wildcards(char *var, t_shell *shell)
 		i++;
 	}
 	shell->wild_middle[j] = NULL;
-	/*
-    int k = 0;
-    while (shell->wild_middle[k])
-    {
-        printf("middle[%d] = %s\n", k, shell->wild_middle[k]);
-        k++;
-    }
-    */
 	return (EXIT_SUCCESS);
 }
 
@@ -56,7 +53,7 @@ char	*get_wild_middle(char *str, int index)
 	return (middle);
 }
 
-int	get_wildcard_files(t_shell *shell)
+int	get_wildcard_files(t_shell *shell, t_tok *temp)
 {
 	char	*buffer;
 	int		fd_temp;
@@ -68,7 +65,7 @@ int	get_wildcard_files(t_shell *shell)
 	buffer = ft_calloc(1, 1);
 	add_files_to_toklist(buffer, fd_temp, shell);
 	if (shell->nb_of_sub != 0)
-		remove_wildcard_tok(shell->user_command);
+		remove_wildcard_tok(shell->user_command, temp);
 	close(fd_temp);
 	unlink(".tmp");
 	free_wildcards(shell);
