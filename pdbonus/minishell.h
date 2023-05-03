@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 13:46:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:43:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,7 +273,7 @@ int			two_wildcards(char *buffer, t_shell *shell);
 int			all_wildcards(char *buffer, t_shell *shell);
 int			is_matching_file(char *buffer, t_shell *shell);
 t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer);
-t_tok		*remove_wildcard_tok(t_toklst *tokenlst);
+t_tok		*remove_wildcard_tok(t_toklst *tokenlst, t_tok *temp);
 
 //************************** Wildcards Utils
 
