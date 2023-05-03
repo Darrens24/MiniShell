@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 18:43:46 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/03 21:09:50 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,7 @@ char		*get_command(t_shell *shell, int index);
 
 int			get_asked_wildcards(char *var, t_shell *shell);
 char		*get_wild_middle(char *str, int index);
-int			get_wildcard_files(t_shell *shell);
+int			get_wildcard_files(t_shell *shell, t_tok *tmp);
 int			compare_after_wildcard(char *buffer, t_shell *shell);
 int			compare_middle_wildcard(char *buffer, t_shell *shell);
 
@@ -261,13 +261,13 @@ int			compare_middle_wildcard(char *buffer, t_shell *shell);
 
 int			get_nb_of_wildcard(char *var);
 int			string_is_wildcard(char *str);
-int			cmd_has_wildcard(t_shell *shell);
+int			cmd_has_wildcard(t_tok *tmp);
 int			no_wildcard_before(char *str, int index);
 int			free_wildcards(t_shell *shell);
 
 //************************** Wildcards Parsing
 
-int			parse_wildcard(t_shell *shell, char **envp);
+int			parse_wildcard(t_shell *shell, char **envp, t_tok *tmp);
 int			one_wildcard_only(char *buffer, t_shell *shell);
 int			two_wildcards(char *buffer, t_shell *shell);
 int			all_wildcards(char *buffer, t_shell *shell);
@@ -308,6 +308,7 @@ t_branch	*create_right_leaf(t_branch *map);
 
 /***		TREE DATA		\***/
 
+t_toklst	*ft_tklstcpy(t_toklst *active_command);
 int			is_operator(char *str);
 int			is_and_or(char *str);
 int			operator_in_cmd(t_toklst *user_command);
@@ -356,5 +357,6 @@ int			is_or(char *cmd);
 int			not_execute_builtin(t_shell *shell, char **command, char *tmp,
 				struct stat buff);
 int			is_last_pipe_command(t_branch *map);
+int			execute_subshell(t_shell *shell, t_branch *map);
 
 #endif

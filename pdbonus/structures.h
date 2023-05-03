@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:52:52 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/02 18:58:14 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/03 19:28:43 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_shell
 	int					index_of_pid;
 	int					valid_pipe;
 	int					current_cmdb;
+	int					wild_all;
 }				t_shell;
 
 typedef struct s_node
@@ -126,6 +127,7 @@ typedef struct s_branch
 	struct s_toklst	*right_command;
 	int				err_code;
 	int				cmd_block;
+	struct s_toklst	*subshell;
 }				t_branch;
 
 typedef struct s_tree
