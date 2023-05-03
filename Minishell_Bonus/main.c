@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/02 17:15:46 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:49:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,15 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-				parse_wildcard(&shell, envp);
+				t_tok	*start = shell.user_command->start;
+				parse_wildcard(&shell, envp, start);
 				if ((shell.user_command->nb_elem != 0)
 					&& (infile_redirection_parsing(&shell) != 0
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
-				if (good == TRUE && and_or_in_cmd(shell.user_command))
+				if (good == TRUE)
+					pipe_command(&shell);
+				else if (good == TRUE && and_or_in_cmd(shell.user_command))
 				{
 					shell.nb_of_fds_to_malloc = 0;
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
@@ -106,8 +109,6 @@ int	main(int ac, char **av, char **envp)
 					free(shell.tree);
 					clean_between_cmds(&shell);
 				}
-				else if (good == TRUE)
-					pipe_command(&shell);
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);
 				dup2(shell.saved_stdout, STDOUT_FILENO);

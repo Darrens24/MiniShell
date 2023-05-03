@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/02 15:05:37 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 15:47:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,7 @@ char		*get_command(t_shell *shell, int index);
 
 int			get_asked_wildcards(char *var, t_shell *shell);
 char		*get_wild_middle(char *str, int index);
-int			get_wildcard_files(t_shell *shell);
+int			get_wildcard_files(t_shell *shell, t_tok *temp);
 int			compare_after_wildcard(char *buffer, t_shell *shell);
 int			compare_middle_wildcard(char *buffer, t_shell *shell);
 
@@ -261,19 +261,19 @@ int			compare_middle_wildcard(char *buffer, t_shell *shell);
 
 int			get_nb_of_wildcard(char *var);
 int			string_is_wildcard(char *str);
-int			cmd_has_wildcard(t_shell *shell);
+int			cmd_has_wildcard(t_tok *temp);
 int			no_wildcard_before(char *str, int index);
 int			free_wildcards(t_shell *shell);
 
 //************************** Wildcards Parsing
 
-int			parse_wildcard(t_shell *shell, char **envp);
+int			parse_wildcard(t_shell *shell, char **envp, t_tok *temp);
 int			one_wildcard_only(char *buffer, t_shell *shell);
 int			two_wildcards(char *buffer, t_shell *shell);
 int			all_wildcards(char *buffer, t_shell *shell);
 int			is_matching_file(char *buffer, t_shell *shell);
 t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer);
-t_tok		*remove_wildcard_tok(t_toklst *tokenlst);
+t_tok		*remove_wildcard_tok(t_toklst *tokenlst, t_tok *temp);
 
 //************************** Wildcards Utils
 
