@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:16:14 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:09:36 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	allocate_shell(t_shell *shell, char **envp)
 		fill_basic_env(shell);
 	increment_sh_level(shell);
 	shell->sorted_env_l = sort_list(shell->env_l);
+	if (i == 0)
+		new_front_node(shell->sorted_env_l, "OLDPWD");
 	shell->ls_cmd = malloc(sizeof(char *) * 2);
 	if (!shell->ls_cmd)
 		return (printf("Malloc: LsCommand failed\n"));

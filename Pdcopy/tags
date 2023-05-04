@@ -385,6 +385,7 @@ allocate_classic_cmd	tree/tree_utils.c	/^char	**allocate_classic_cmd(t_tok *temp
 allocate_operator_cmd	tree/tree_utils.c	/^char	**allocate_operator_cmd(t_tok *temp)$/;"	f
 allocate_pids_and_fds	execution/exec_bonus/clean_tree.c	/^void	allocate_pids_and_fds(t_shell *shell, int count)$/;"	f
 allocate_shell	data/data.c	/^int	allocate_shell(t_shell *shell, char **envp)$/;"	f
+allocate_subshell	execution/exec_bonus/subshell.c	/^int	allocate_subshell(t_shell *shell, t_chained *env, t_toklst *user_command, t_chained *export)$/;"	f
 already	Libft/ft_putnbr_base_fd.c	/^static int	already(char *str)$/;"	f	file:
 already	Libft/ft_sizebase_fd.c	/^static int	already(char *str)$/;"	f	file:
 and_or_in_cmd	tree/tree_data.c	/^int	and_or_in_cmd(t_toklst *user_command)$/;"	f
@@ -537,7 +538,7 @@ execute_map_dad	execution/exec_bonus/execute_final_boss.c	/^int	execute_map_dad(
 execute_map_left	execution/exec_bonus/execute_final_boss.c	/^int	execute_map_left(t_shell *shell, t_branch *map)$/;"	f
 execute_map_operator	execution/exec_bonus/execute_final_boss.c	/^int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)$/;"	f
 execute_map_right	execution/exec_bonus/execute_final_boss.c	/^int	execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp)$/;"	f
-execute_subshell	execution/exec_bonus/execute_final_boss.c	/^int	execute_subshell(t_shell *shell, t_branch *map)$/;"	f
+execute_subshell	execution/exec_bonus/subshell.c	/^int	execute_subshell(t_shell *shell, t_branch *map)$/;"	f
 execution_bonus	execution/exec_bonus/execute_final_boss.c	/^int	execution_bonus(t_shell *shell, t_branch *map)$/;"	f
 exit_shell	builtins/env_utils.c	/^int	exit_shell(t_shell *shell)$/;"	f
 export_ascii_sorted	builtins/export.c	/^int	export_ascii_sorted(t_tok *temp, t_chained *sorted_env)$/;"	f
@@ -628,6 +629,7 @@ ft_strnstr	Libft/ft_strnstr.c	/^char	*ft_strnstr(const char *big, const char *li
 ft_strrchr	Libft/ft_strrchr.c	/^char	*ft_strrchr(const char *str, int searched)$/;"	f
 ft_strtrim	Libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f
 ft_substr	Libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f
+ft_tklstcpy	tree/tree_data.c	/^t_toklst	*ft_tklstcpy(t_toklst *active_command)$/;"	f
 ft_tolower	Libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f
 ft_toupper	Libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f
 func	readline/share/readline/fileman.c	/^  rl_icpfunc_t *func;		\/* Function to call to do the job. *\/$/;"	m	struct:__anon1	file:
@@ -699,6 +701,7 @@ init_readline	readline/share/readline/rlptytest.c	/^init_readline (int inputfd, 
 init_readline	vendor/readline/share/readline/rlptytest.c	/^init_readline (int inputfd, int outputfd) $/;"	f	file:
 initialize_readline	readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
 initialize_readline	vendor/readline/share/readline/fileman.c	/^initialize_readline ()$/;"	f
+initialize_subvariables	execution/exec_bonus/subshell.c	/^int	initialize_subvariables(t_shell *shell)$/;"	f
 initialize_variables	data/data.c	/^int	initialize_variables(t_shell *shell)$/;"	f
 inside_redirection	execution/exec/pipe_utils.c	/^int	inside_redirection(int *fd)$/;"	f
 insmode	readline/include/readline/readline.h	/^  int insmode;$/;"	m	struct:readline_state
@@ -712,6 +715,7 @@ is_builtin_command_bonus	execution/exec_bonus/execution_bonus.c	/^int	is_builtin
 is_empty	lists/list_utils.c	/^int	is_empty(t_chained *list)$/;"	f
 is_emptytok	tokens/token_management.c	/^int	is_emptytok(t_toklst *list)$/;"	f
 is_infile_redirection	redirections/redirection_utils.c	/^int	is_infile_redirection(t_toklst *user_command)$/;"	f
+is_last_command	execution/exec_bonus/execute_final_boss.c	/^int	is_last_command(t_branch *map, t_branch *searched)$/;"	f
 is_last_pipe_command	execution/exec_bonus/execute_final_boss.c	/^int	is_last_pipe_command(t_branch *map)$/;"	f
 is_matching_file	wildcards/wildcards_parsing.c	/^int	is_matching_file(char *buffer, t_shell *shell)$/;"	f
 is_operator	tree/tree_data.c	/^int	is_operator(char *str)$/;"	f
@@ -1052,9 +1056,12 @@ stdcat	vendor/readline/share/readline/rlcat.c	/^stdcat (argc, argv)$/;"	f
 string_is_wildcard	wildcards/wildcards_data.c	/^int	string_is_wildcard(char *str)$/;"	f
 stripwhite	readline/share/readline/fileman.c	/^stripwhite (string)$/;"	f
 stripwhite	vendor/readline/share/readline/fileman.c	/^stripwhite (string)$/;"	f
+subshell	execution/exec_bonus/subshell.c	/^int	subshell(t_toklst *user_command, t_chained *env, t_chained *export)$/;"	f
+subshell	structures.h	/^	struct s_toklst	*subshell;$/;"	m	struct:s_branch	typeref:struct:s_branch::s_toklst
 syscom	readline/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	file:
 syscom	vendor/readline/share/readline/fileman.c	/^static char syscom[1024];$/;"	v	file:
 t_branch	structures.h	/^}				t_branch;$/;"	t	typeref:struct:s_branch
+t_branchcpy	execution/exec_bonus/execute_final_boss.c	/^t_branch *t_branchcpy(t_branch *map)$/;"	f
 t_chained	structures.h	/^}				t_chained;$/;"	t	typeref:struct:s_chained
 t_increment	structures.h	/^}				t_increment;$/;"	t	typeref:struct:s_increment
 t_list	Libft/libft.h	/^}					t_list;$/;"	t	typeref:struct:s_list

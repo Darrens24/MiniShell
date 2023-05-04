@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 15:49:42 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 20:54:39 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void print_cmds_with_blocks(t_branch *node) {
     }
 
     if (node->cmd != NULL) {
-        printf("Commands in block %d:\n", node->cmd_block);
+        fprintf(stderr, "Commands in block %d:\n", node->cmd_block);
         for (int i = 0; node->cmd[i] != NULL; i++) {
-            printf("\t%s\n", node->cmd[i]);
+            fprintf(stderr, "\t%s\n", node->cmd[i]);
         }
     }
 
@@ -87,21 +87,16 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-				t_tok	*start = shell.user_command->start;
-				parse_wildcard(&shell, envp, start);
+			//	parse_wildcard(&shell, envp);
 				if ((shell.user_command->nb_elem != 0)
 					&& (infile_redirection_parsing(&shell) != 0
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
-				if (good == TRUE)
-					pipe_command(&shell);
-				else if (good == TRUE && and_or_in_cmd(shell.user_command))
+				if (good == TRUE && and_or_in_cmd(shell.user_command))
 				{
 					shell.nb_of_fds_to_malloc = 0;
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
 					fill_trinary_tree(shell.user_command, &shell);
-					//print_cmds_with_blocks(shell.tree->start);
-					//printf("la tree est bonne\n");
 					//print_cmds_with_blocks(shell.tree->start);
 					execution_bonus(&shell, shell.tree->map);
 					free_array(shell.tree->start->cmd);
@@ -109,6 +104,8 @@ int	main(int ac, char **av, char **envp)
 					free(shell.tree);
 					clean_between_cmds(&shell);
 				}
+				else if (good == TRUE)
+					pipe_command(&shell);
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);
 				dup2(shell.saved_stdout, STDOUT_FILENO);

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 14:29:55 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/03 15:36:02 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/04 11:03:19 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	change_directory(t_shell *shell, const char *path)
 {
 	shell->previous_dir_path = getcwd(NULL, 0);
-	printf("previous is %s\n", shell->previous_dir_path);
 	if (chdir(path) < 0)
 	{
 		g_err = 1;
@@ -47,9 +46,14 @@ int	go_to_home_directory(t_shell *shell)
 
 int	go_to_previous_directory(t_shell *shell)
 {
-	if (!shell->previous_dir_path)
-		return (print_pwd_linux(shell));
-	if (change_directory(shell, shell->previous_dir_path) != 0)
+	t_node	*tmp;
+
+	tmp = shell->sorted_env_l->start;
+	while (tmp && ft_strncmp(tmp->variable, "OLDPWD=", 7))
+		tmp = tmp->next;
+	if (!tmp)
+		return (printf("cd: OLDPWD not set\n"));
+	if (change_directory(shell, tmp->variable + 7) != 0)
 		return (EXIT_FAILURE);
 	print_pwd_linux(shell);
 	return (EXIT_SUCCESS);

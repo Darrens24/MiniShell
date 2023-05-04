@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/01 11:54:11 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/03 21:46:00 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,40 @@ t_tree	*get_new_start_split_command(t_shell *shell, t_branch *map)
 	if (map && map->left_command)
 	{
 		create_left_leaf(map);
-		clear_toklst(map->left_command);
-		free(map->left_command);
-		map->left_command = NULL;
-		get_new_start_split_command(shell, map->left);
+		if (map->left->cmd_block > 0)
+		{
+			map->left->subshell = ft_tklstcpy(map->left_command);
+			clear_toklst(map->left_command);
+			free(map->left_command);
+			map->left_command = NULL;
+			get_new_start_split_command(shell, map);
+		}
+		else
+		{
+			clear_toklst(map->left_command);
+			free(map->left_command);
+			map->left_command = NULL;
+			get_new_start_split_command(shell, map->left);
+		}
 	}
 	else if (map && map->right_command)
 	{
 		create_right_leaf(map);
-		clear_toklst(map->right_command);
-		free(map->right_command);
-		map->right_command = NULL;
-		get_new_start_split_command(shell, map->right);
+		if (map->right->cmd_block > 0)
+		{
+			map->right->subshell = ft_tklstcpy(map->right_command);
+			clear_toklst(map->right_command);
+			free(map->right_command);
+			map->right_command = NULL;
+			get_new_start_split_command(shell, map);
+		}
+		else
+		{
+			clear_toklst(map->right_command);
+			free(map->right_command);
+			map->right_command = NULL;
+			get_new_start_split_command(shell, map->right);
+		}
 	}
 	else if (map && map->dad)
 		get_new_start_split_command(shell, map->dad);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 12:13:53 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/03 16:00:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/03/10 12:55:09 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ void	do_nothing(int num)
 		return ;
 }
 
-void	do_nothing_but_quit3(int num)
+int	reset_echo(void)
 {
-	if (num == SIGINT)
-		return ;
-	if (num == SIGQUIT)
-	{
-		printf("Quit: 3\n");
-		return ;
-	}
+	struct termios	old;
+	struct termios	new;
+
+	tcgetattr(STDIN_FILENO, &old);
+	new = old;
+	new.c_lflag |= ~(ECHOCTL);
+	tcsetattr(STDIN_FILENO, TCSANOW, &new);
+	return (EXIT_SUCCESS);
 }
 
 void	handler(int num)
