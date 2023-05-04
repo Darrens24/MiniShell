@@ -66,7 +66,7 @@ int	execute_subshell(t_shell *shell, t_branch *map)
 	{
 		redirection_bonus(shell);
 		subshell(map->subshell, shell->env_l, shell->sorted_env_l);
-		fprintf(stderr, "le code d'erreur est = %d\n", g_err);
+	//	fprintf(stderr, "le code d'erreur est = %d\n", g_err);
 		exit(g_err);
 	}
 	if (shell->index_of_pipes != shell->nb_of_pipes)
