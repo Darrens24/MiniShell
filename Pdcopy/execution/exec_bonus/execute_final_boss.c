@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/04 10:31:22 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/04 14:51:59 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	is_last_command(t_branch *map, t_branch *searched)
 		return (TRUE);
 	return (FALSE);
 }
-
-/* IL FAUT CHANGER LAST PIPE COMMAND */
 
 int	is_last_pipe_command(t_branch *map)
 {
@@ -66,9 +64,7 @@ int	execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp)
 	if (map && is_and_or(map->cmd[0]))
 	{
 		if (is_and(map->cmd[0]) && map->err_code == 0)
-		{
 			return (execution_bonus(shell, map->right));
-		}
 		else if (is_or(map->cmd[0]) && map->err_code > 0)
 			return (execution_bonus(shell, map->right));
 		else if (map && is_pipe(map->cmd[0]))
@@ -79,18 +75,30 @@ int	execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp)
 			map = map->dad;
 			if (map)
 			{
+				if (is_and_or(tmp->cmd[0]))
+					wait_pid_mono(shell, shell->index_of_commands - 1);
+				else
+				{
+					if (is_last_command(shell->tree->start, map))
+						wait_pids_bonus(shell->pid, shell,
+							shell->index_of_commands, shell->index_of_pid);
+				}
+				map->err_code = g_err;
 				clean(tmp->right, tmp);
-				if (is_last_command(shell->tree->start, map))
-					wait_pids_bonus(shell->pid, shell,
-						shell->index_of_commands, shell->index_of_pid);
 				return (execution_bonus(shell, map));
 			}
 			else if (!map)
 			{
+				if (is_and_or(tmp->cmd[0]))
+					wait_pid_mono(shell, shell->index_of_commands - 1);
+				else
+				{
+					if (is_last_command(shell->tree->start, tmp))
+						wait_pids_bonus(shell->pid, shell,
+							shell->index_of_commands, shell->index_of_pid);
+				}
+				tmp->err_code = g_err;
 				clean(shell->tree->start, tmp);
-				if (is_last_command(shell->tree->start, tmp))
-					wait_pids_bonus(shell->pid, shell,
-						shell->index_of_commands, shell->index_of_pid);
 				return (EXIT_SUCCESS);
 			}
 		}
@@ -130,26 +138,27 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	execute_command_clean_leaf(shell, tmp->cmd);
 	if (shell->index_of_pipes != shell->nb_of_pipes && shell->valid_pipe)
 	{
-		fprintf(stderr, "je close fd[%d]\n", shell->index_of_pipes - 1);
+		/* fprintf(stderr, "je close fd[%d]\n", shell->index_of_pipes - 1); */
 		close_fds(shell->fd[shell->index_of_pipes - 1]);
 	}
 	else if (is_last_pipe_command(tmp))
 	{
-		fprintf(stderr, "je last close fd[%d]\n", shell->index_of_pipes - 1);
+		/* fprintf(stderr, "je last close fd[%d]\n", shell->index_of_pipes - 1); */
 		close_fds(shell->fd[shell->index_of_pipes - 1]);
-	}
-	if (is_last_pipe_command(tmp))
-	{
 		shell->valid_pipe = 0;
 		shell->last_index = -1;
 	}
-	fprintf(stderr, "last pipe for %s is %d\n", tmp->cmd[0], is_last_pipe_command(tmp));
-	if (is_last_command(shell->tree->start, tmp))
-		wait_pids_bonus(shell->pid, shell,
-			shell->index_of_commands, shell->index_of_pid);
-	fprintf(stderr, "crash\n");
-	clean_node(tmp);
+	/* fprintf(stderr, "last pipe for %s is %d\n", tmp->cmd[0], is_last_pipe_command(tmp)); */
+	if (is_and_or(map->cmd[0]))
+		wait_pid_mono(shell, shell->index_of_commands);
+	else
+	{
+		if (is_last_command(shell->tree->start, tmp))
+			wait_pids_bonus(shell->pid, shell,
+				shell->index_of_commands, shell->index_of_pid);
+	}
 	map->err_code = g_err;
+	clean_node(tmp);
 	shell->index_of_commands++;
 	return (execution_bonus(shell, map));
 }
@@ -175,26 +184,27 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 		execute_subshell(shell, tmp);
 		if (shell->index_of_pipes != shell->nb_of_pipes && shell->valid_pipe)
 		{
-			fprintf(stderr, "sub: je close fd[%d]\n", shell->index_of_pipes - 1);
+			/* fprintf(stderr, "sub: je close fd[%d]\n", shell->index_of_pipes - 1); */
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
 		}
 		else if (is_last_pipe_command(map))
 		{
-			fprintf(stderr, "sub: je last close fd[%d]\n", shell->index_of_pipes - 1);
+			/* fprintf(stderr, "sub: je last close fd[%d]\n", shell->index_of_pipes - 1); */
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
-		}
-		if (is_last_pipe_command(map))
-		{
-			fprintf(stderr, "OHOHOHOOHOHOH\n");
 			shell->valid_pipe = 0;
 			shell->last_index = -1;
 		}
 		free(tmp);
 		tmp = map;
 		map = map->dad;
-		if (is_last_command(shell->tree->start, tmp))
-			wait_pids_bonus(shell->pid, shell,
-				shell->index_of_commands, shell->index_of_pid);
+		if (is_and_or(map->cmd[0]))
+			wait_pid_mono(shell, shell->index_of_commands);
+		else
+		{
+			if (is_last_command(shell->tree->start, tmp))
+				wait_pids_bonus(shell->pid, shell,
+					shell->index_of_commands, shell->index_of_pid);
+		}
 		map->err_code = g_err;
 		clear_toklst(tmp->subshell);	
 		free(tmp->subshell);

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:49:26 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/03 21:22:05 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:13:35 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	not_execute_builtin(t_shell *shell, char **command, char *tmp,
 	if (shell->pid[shell->index_of_commands] == 0)
 	{
 		redirection_bonus(shell);
-		fprintf(stderr, "execution de la commande %s\n", command[0]);
 		execve(tmp, command, shell->array_env);
 	}
 	if (shell->index_of_pipes != shell->nb_of_pipes)

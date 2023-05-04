@@ -6,42 +6,42 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/04 11:50:45 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/04 13:21:36 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdio.h>
 
-int	check_inside_block(
-int	bonus_errors(t_shell *shell)
-{
-	t_tok	*tempstart;
-	t_tok	*tempend;
-	int		open_par;
+/* int	check_inside_block( */
+/* int	bonus_errors(t_shell *shell) */
+/* { */
+/* 	t_tok	*tempstart; */
+/* 	t_tok	*tempend; */
+/* 	int		open_par; */
 
-	tempstart = shell->user_command->start;
-	tempend = shell->user_command->end;
-	open_par = 0;
-	if (is_operator(tempstart->var) || is_operator(tempend->var))
-		return (printf("Invalid syntax\n"));
-	while (tempstart)
-	{
-		if (!ft_strncmp(tempstart->var, "(", 2))
-		{
-			open_par++;
-			if (number_of_parentheses(tempstart) < 0)
-				return (EXIT_FAILURE);
-			else if (number_of_parentheses > 1)
-				if (check_inside_block(tempstart) < 0)
-					return (EXIT_FAILURE);
-			tempstart = operator_jump_parentheses(tempstart);
-		}
-		else
-			tempstart = tempstart->next;	
-	}
-	return (EXIT_SUCCESS);
-}
+/* 	tempstart = shell->user_command->start; */
+/* 	tempend = shell->user_command->end; */
+/* 	open_par = 0; */
+/* 	if (is_operator(tempstart->var) || is_operator(tempend->var)) */
+/* 		return (printf("Invalid syntax\n")); */
+/* 	while (tempstart) */
+/* 	{ */
+/* 		if (!ft_strncmp(tempstart->var, "(", 2)) */
+/* 		{ */
+/* 			open_par++; */
+/* 			if (number_of_parentheses(tempstart) < 0) */
+/* 				return (EXIT_FAILURE); */
+/* 			else if (number_of_parentheses > 1) */
+/* 				if (check_inside_block(tempstart) < 0) */
+/* 					return (EXIT_FAILURE); */
+/* 			tempstart = operator_jump_parentheses(tempstart); */
+/* 		} */
+/* 		else */
+/* 			tempstart = tempstart->next; */	
+/* 	} */
+/* 	return (EXIT_SUCCESS); */
+/* } */
 
 int	readline_manager(t_shell *shell)
 {
@@ -128,11 +128,11 @@ int	main(int ac, char **av, char **envp)
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
 					fill_trinary_tree(shell.user_command, &shell);
 					//print_cmds_with_blocks(shell.tree->start);
-					printf("Error : %d\n", bonus_errors(&shell));
-// execution_bonus(&shell, shell.tree->map);
-// free_array(shell.tree->start->cmd);
-// free(shell.tree->start);
-// free(shell.tree);
+					//printf("Error : %d\n", bonus_errors(&shell));
+					execution_bonus(&shell, shell.tree->map);
+					free_array(shell.tree->start->cmd);
+					free(shell.tree->start);
+					free(shell.tree);
 					clean_between_cmds(&shell);
 				}
 				else if (good == TRUE)
