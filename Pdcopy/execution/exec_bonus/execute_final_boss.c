@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/04 14:51:59 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:16:30 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,11 +200,10 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 		if (is_and_or(map->cmd[0]))
 			wait_pid_mono(shell, shell->index_of_commands);
 		else
-		{
-			if (is_last_command(shell->tree->start, tmp))
+			if (is_last_pipe_command(tmp))
 				wait_pids_bonus(shell->pid, shell,
 					shell->index_of_commands, shell->index_of_pid);
-		}
+		fprintf(stderr, "le code d'erreur est a la sortie = %d\n", g_err);
 		map->err_code = g_err;
 		clear_toklst(tmp->subshell);	
 		free(tmp->subshell);

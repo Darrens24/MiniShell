@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:49:26 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/04 14:13:35 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:11:52 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	wait_pids_bonus(pid_t *pid, t_shell *shell, int end, int i)
 	{
 		if (shell->pid[i] != -1)
 		{
-			printf("Waitpid de pid[%d] a faire\n", i);
+			fprintf(stderr, "Waitpid de pid[%d] a faire\n", i);
 			waitpid_return = waitpid(pid[i], &error_code, 0);
 			if (waitpid_return > 0)
 				error_func(error_code);
-			printf("Waitpid effectue pid[%d]\n", i);
+			fprintf(stderr, "Waitpid effectue pid[%d]\n", i);
 		}
 		i++;
 	}
