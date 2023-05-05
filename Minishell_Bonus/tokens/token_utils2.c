@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 11:29:05 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/04/24 16:22:03 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:37:28 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,17 @@ char	*get_command(t_shell *shell, int index)
 	if (!tmp)
 		return (NULL);
 	return (tmp->var);
+}
+
+char	*get_b_command(t_shell *shell, int index, char **command)
+{
+	int		i;
+
+	(void) shell;
+	i = 0;
+	while (i < index)
+		i++;
+	if (!command[i])
+		return (NULL);
+	return (command[i]);
 }

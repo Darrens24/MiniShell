@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 12:18:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:45:15 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -347,7 +347,7 @@ int			wait_pid_mono(t_shell *shell, int i);
 int			redirection_bonus(t_shell *shell);
 char		*get_correct_path_bonus(t_shell *shell, char *command);
 char		*find_path_bonus(char *command, t_shell *shell);
-int			execute_command_clean_leaf(t_shell *shell, char **command);
+int			execute_command_clean_leaf(t_shell *shell, char **command, int pipe);
 
 /***		EXEC UTILS				***/
 
@@ -364,5 +364,19 @@ int			is_last_pipe_command(t_branch *map);
 int			is_last_command(t_branch *map, t_branch *searched);
 t_branch	*t_branchcpy(t_branch *map);
 int			check_valid_pipe(t_branch *map);
+
+/***		BUILTIN BONUS				***/
+
+int			execute_builtin_bonus(t_shell *shell, char **command, int pipe);
+int			builtin_manager_bonus(t_shell *shell, char **command, int is_pipe);
+int			exit_b_shell(t_shell *shell, char **command, int pipe);
+int			export_b_manager(t_shell *shell, char **command, int pipe);
+int			export_b_variable(t_shell *shell, char **command);
+int			export_b_ascii_sorted(char *cmd, t_chained *sorted_env);
+int			unset_b_variable(t_shell *shell, char **command);
+void		norm_unset(t_unset *uns, t_shell *shell);
+int			print_b_echo(char **command, t_shell *shell);
+char		*get_b_command(t_shell *shell, int index, char **command);
+int			execute_b_directory_cmd(t_shell *shell, char **command, int pipe);
 
 #endif

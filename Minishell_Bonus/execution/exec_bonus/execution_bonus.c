@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 12:25:43 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:13:28 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char	*find_path_bonus(char *command, t_shell *shell)
 	return (temp);
 }
 
-int	execute_command_clean_leaf(t_shell *shell, char **command)
+int	execute_command_clean_leaf(t_shell *shell, char **command, int pipe)
 {
 	char		*tmp;
 	struct stat	buff;
@@ -92,10 +92,19 @@ int	execute_command_clean_leaf(t_shell *shell, char **command)
 	stat(command[0], &buff);
 	if (!is_builtin_command_bonus(command))
 		not_execute_builtin(shell, command, tmp, buff);
-	/*else
+	else
 	{
-		redirection_bonus(shell);
-		execute_builtin_bonus(command);
-	}*/
+		if (ft_strncmp(command[0], "export", 7) == 0)
+			export_b_manager(shell, command, pipe);
+		else if (ft_strncmp(command[0], "unset", 6) == 0)
+		{
+			if (!command[1] || pipe)
+				return (EXIT_SUCCESS);
+			else
+				return (unset_b_variable(shell, command));
+		}
+		else
+			builtin_manager_bonus(shell, command, pipe);
+	}
 	return (EXIT_SUCCESS);
 }

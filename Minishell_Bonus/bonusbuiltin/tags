@@ -1,0 +1,22 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+builtin_manager_bonus	builtin_bonus.c	/^int	builtin_manager_bonus(t_shell *shell, char **command, int is_pipe)$/;"	f
+change_directory	dir_management_bonus.c	/^int	change_directory(t_shell *shell, const char *path)$/;"	f
+execute_b_directory_cmd	dir_management_bonus.c	/^int	execute_b_directory_cmd(t_shell *shell, char **command, int i)$/;"	f
+execute_builtin_bonus	builtin_bonus.c	/^int	execute_builtin_bonus(t_shell *shell, char **command, int pipe)$/;"	f
+exit_b_shell	env_utils_bonus.c	/^int	exit_b_shell(t_shell *shell, char **command, int pipe)$/;"	f
+export_b_ascii_sorted	export_bonus.c	/^int	export_b_ascii_sorted(char *cmd, t_chained *sorted_env)$/;"	f
+export_b_manager	env_management_bonus.c	/^int	export_b_manager(t_shell *shell, char **command, int pipe)$/;"	f
+export_b_variable	export_bonus.c	/^int	export_b_variable(t_shell *shell, char **command, int pipe)$/;"	f
+go_to_home_directory	dir_management_bonus.c	/^int	go_to_home_directory(t_shell *shell)$/;"	f
+go_to_previous_directory	dir_management_bonus.c	/^int	go_to_previous_directory(t_shell *shell)$/;"	f
+print_b_echo	env_management_bonus.c	/^int	print_b_echo(char **command, t_shell *shell)$/;"	f
+print_pwd_linux	dir_management_bonus.c	/^int	print_pwd_linux(t_shell *shell)$/;"	f
+unset_b_variable	unset_bonus.c	/^int	unset_b_variable(t_shell *shell, char **command)$/;"	f
+update_oldpwd	dir_utils_bonus.c	/^int	update_oldpwd(t_shell *shell, t_chained *list)$/;"	f
+update_pwd	dir_utils_bonus.c	/^int	update_pwd(t_shell *shell, t_chained *list)$/;"	f
+variable_b_is_in_env	export_bonus.c	/^static void	variable_b_is_in_env(char *var, t_shell *shell, char *cmd)$/;"	f	file:

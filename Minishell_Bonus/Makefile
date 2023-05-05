@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/05/05 12:20:04 by pfaria-d         ###   ########.fr        #
+#    Updated: 2023/05/05 13:36:16 by pfaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = main.c \
-		data/data.c \
+SRC = data/data.c \
 		data/free.c \
 		data/path.c \
 		data/commands.c \
@@ -85,6 +84,16 @@ SRC = main.c \
 		execution/exec_bonus/execute_final_boss.c \
 		execution/exec_bonus/subshell.c \
 		execution/exec_bonus/execution_bonus_utils.c \
+		bonusbuiltin/builtin_bonus.c \
+		bonusbuiltin/dir_management_bonus.c \
+		bonusbuiltin/dir_utils_bonus.c \
+		bonusbuiltin/env_management_bonus.c \
+		bonusbuiltin/env_utils_bonus.c \
+		bonusbuiltin/export_bonus.c \
+		bonusbuiltin/export_unset_bonus.c \
+		bonusbuiltin/unset_bonus.c \
+		main.c \
+
 
 OBJ = $(SRC:.c=.o)
 

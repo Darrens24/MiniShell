@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 12:23:33 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:46:19 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	execute_map_dad(t_shell *shell, t_branch *map, t_branch *tmp)
 
 int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 {
-	execute_command_clean_leaf(shell, tmp->cmd);
+	execute_command_clean_leaf(shell, tmp->cmd, is_pipe(map->cmd[0]));
 	if (shell->index_of_pipes != shell->nb_of_pipes && shell->valid_pipe)
 		close_fds(shell->fd[shell->index_of_pipes - 1]);
 	else if (is_last_pipe_command(tmp))
