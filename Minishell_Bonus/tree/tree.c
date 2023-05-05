@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/04 18:33:42 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 11:04:14 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static t_tok	*start_when_and_or(t_tok *temp)
 {
-	while (temp && !is_and_or(temp->var))
+	while (temp)
 	{
-		if (temp && ft_strncmp(temp->var, ")", 2) == 0)
+		if (is_and_or(temp->var) && temp->quote == 0)
+			break ;
+		if (temp && ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0)
 			return (and_or_reverse_jump_parentheses(temp));
 		temp = temp->prev;
 	}
@@ -25,9 +27,11 @@ static t_tok	*start_when_and_or(t_tok *temp)
 
 static t_tok	*start_when_pipe(t_tok *temp)
 {
-	while (temp && !is_operator(temp->var))
+	while (temp)
 	{
-		if (temp && ft_strncmp(temp->var, ")", 2) == 0)
+		if (is_operator(temp->var) && temp->quote == 0)
+			break ;
+		if (temp && ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0)
 			return (pipe_reverse_jump_parentheses(temp));
 		temp = temp->prev;
 	}
@@ -54,7 +58,7 @@ t_tok	*go_to_branch_start(t_toklst *user_command)
             temp->prio = prio;
 		prio = 0;
     }
-	else if (temp && ft_strncmp(temp->var, ")", 2) == 0)
+	else if (temp && ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0)
 	{
 		remove_front_tok(user_command);
 		remove_back_tok(user_command);

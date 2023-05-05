@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 09:51:46 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 12:18:53 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,5 +358,11 @@ int			not_execute_builtin(t_shell *shell, char **command, char *tmp,
 				struct stat buff);
 int			is_last_pipe_command(t_branch *map);
 int			execute_subshell(t_shell *shell, t_branch *map);
+t_toklst	*new_front_tok_wq(t_toklst *tokenlst, char *line, int quote);
+t_toklst	*new_back_tok_wq(t_toklst *tokenlst, char *line, int quote);
+int			is_last_pipe_command(t_branch *map);
+int			is_last_command(t_branch *map, t_branch *searched);
+t_branch	*t_branchcpy(t_branch *map);
+int			check_valid_pipe(t_branch *map);
 
 #endif
