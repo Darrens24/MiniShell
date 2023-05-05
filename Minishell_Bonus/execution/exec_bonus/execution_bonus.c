@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 15:43:53 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:42:26 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	redirection_bonus(t_shell *shell)
 		early_out_redirection(shell->fd[shell->index_of_pipes]);
 	if (shell->last_index != -1)
 		inside_redirection(shell->fd[shell->index_of_pipes - 1]);
-	if (shell->out == TRUE
-		&& shell->index_of_pipes == shell->nb_of_pipes)
-		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
 
