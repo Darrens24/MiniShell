@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:02:41 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/24 11:15:57 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:34:09 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,13 @@ void	token_norm_parsing(t_tokation *tk, t_chained *env)
 
 char	*vagueparser(int i, char *newvar, t_chained	*envp)
 {
+	char	*vag;
+
 	if (i != 1)
-		return (newvar = join_without_leaks(newvar, "~"));
+	{
+		vag = ft_strdup("~");
+		return (newvar = join_without_leaks(newvar, vag));
+	}
 	newvar = envfinder("HOME", newvar, envp);
 	return (newvar);
 }
