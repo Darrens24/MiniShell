@@ -6,12 +6,67 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 09:48:51 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 09:57:49 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdio.h>
+
+static int	is_parenthese(char *str)
+{
+	if (ft_strncmp(str, "(", 2) == 0 || ft_strncmp(str, ")", 2) == 0)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	bonus_errors(t_shell *shell)
+{
+	t_tok	*tempstart;
+	t_tok	*tempend;
+	int		open_par;
+	int		count;
+	int		diff;
+
+ 	tempstart = shell->user_command->start;
+ 	tempend = shell->user_command->end;
+ 	open_par = 0;
+	count = 0;
+	diff = 0;
+ 	if (is_operator(tempstart->var) || is_operator(tempend->var))
+ 		return (printf("Invalid syntax1\n"));
+ 	while (tempstart)
+	{
+		if (!is_operator(tempstart->var) && !is_parenthese(tempstart->var) && tempstart->next && !ft_strncmp(tempstart->next->var, "(", 2))
+			return (printf("Invalid syntax2\n"));
+		else if (!ft_strncmp(tempstart->var, ")", 2) && tempstart->next && !is_operator(tempstart->next->var) && ft_strncmp(tempstart->next->var, ")", 2))
+			return (printf("Invalid syntax3\n"));
+		else if (!ft_strncmp(tempstart->var, "(", 2) && tempstart->next && !ft_strncmp(tempstart->next->var, ")", 2))
+			return (printf("Invalid syntax4\n"));
+		tempstart = tempstart->next;
+	}
+ 	tempstart = shell->user_command->start;
+ 	while (tempstart)
+ 	{
+ 		if (tempstart && !ft_strncmp(tempstart->var, ")", 2) && open_par == 0)
+			return (printf("Invalid syntax5\n"));
+ 		if (tempstart && !ft_strncmp(tempstart->var, "(", 2))
+ 		{
+ 			open_par++;
+ 			if (number_of_parentheses(tempstart) < 0)
+ 				return (EXIT_FAILURE);
+			count = number_of_parentheses(tempstart);
+ 			tempstart = go_to_first_closed_parenthese(tempstart, &count, &diff);
+ 			tempstart = go_to_last_closed_parenthese(tempstart, &count, &diff);
+			open_par--;
+			//printf("coucou\n");
+			//printf("tempvar is %s\n", tempstart->var);
+ 		}
+		else
+			tempstart = tempstart->next;
+ 	}
+ 	return (EXIT_SUCCESS);
+} 
 
 int	readline_manager(t_shell *shell)
 {
@@ -47,9 +102,9 @@ void print_cmds_with_blocks(t_branch *node) {
     }
 
     if (node->cmd != NULL) {
-        printf("Commands in block %d:\n", node->cmd_block);
+        fprintf(stderr, "Commands in block %d:\n", node->cmd_block);
         for (int i = 0; node->cmd[i] != NULL; i++) {
-            printf("\t%s\n", node->cmd[i]);
+            fprintf(stderr, "\t%s\n", node->cmd[i]);
         }
     }
 
@@ -87,24 +142,22 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-				t_tok	*start = shell.user_command->start;
-				parse_wildcard(&shell, envp, start);
+			//	parse_wildcard(&shell, envp);
 				if ((shell.user_command->nb_elem != 0)
 					&& (infile_redirection_parsing(&shell) != 0
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
 				if (good == TRUE && and_or_in_cmd(shell.user_command))
 				{
+					printf("Error : %d\n", bonus_errors(&shell));
 					shell.nb_of_fds_to_malloc = 0;
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
-					fill_trinary_tree(shell.user_command, &shell);
+					//fill_trinary_tree(shell.user_command, &shell);
 					//print_cmds_with_blocks(shell.tree->start);
-					//printf("la tree est bonne\n");
-					//print_cmds_with_blocks(shell.tree->start);
-					execution_bonus(&shell, shell.tree->map);
-					free_array(shell.tree->start->cmd);
-					free(shell.tree->start);
-					free(shell.tree);
+// execution_bonus(&shell, shell.tree->map);
+// free_array(shell.tree->start->cmd);
+// free(shell.tree->start);
+// free(shell.tree);
 					clean_between_cmds(&shell);
 				}
 				else if (good == TRUE)
