@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 16:19:04 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:32:56 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,17 +150,24 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
+				/*
 				t_tok	*temp = shell.user_command->start;
 				parse_wildcard(&shell, envp, temp);
+				temp = shell.user_command->start;
+				while (temp)
+				{
+					printf("%s\n", temp->var);
+					temp = temp->next;
+				}
+				*/
 				if ((shell.user_command->nb_elem != 0)
 					&& (infile_redirection_parsing(&shell) != 0
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
-				//if (good == TRUE && operator_in_cmd(shell.user_command))
 				shell.nb_of_fds_to_malloc = 0;
 				shell.bcmd = get_bcmd(shell.user_command, &shell);
-				printf("cc\n");
 				fill_trinary_tree(shell.user_command, &shell);
+				//print_cmds_with_blocks(shell.tree->start);
 				execution_bonus(&shell, shell.tree->map);
 				free_array(shell.tree->start->cmd);
 				shell.tree->start->cmd = NULL;
@@ -169,8 +176,6 @@ int	main(int ac, char **av, char **envp)
 				free(shell.tree);
 				shell.tree = NULL;
 				reinitializer(&shell);
-				//else if (good == TRUE)
-					//pipe_command(&shell);
 				clean_between_cmds(&shell);
 				clear_toklst(shell.user_command);
 				dup2(shell.saved_stdin, STDIN_FILENO);

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 10:33:49 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/05 18:39:26 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,30 @@ int	slash_manager(t_shell *shell, int index)
 	access_return = 0;
 	if (shell->multi_cmd[index][0][0] == '/')
 	{
-		access_return = access(shell->multi_cmd[index][0], X_OK);
+		access_return = access(shell->multi_cmd[index][0], F_OK);
 		if (access_return < 0)
 		{
-			g_err = 126;
-			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
-			return (EXIT_FAILURE);
-		}
-		stat(shell->multi_cmd[index][0], &buff);
-		if (S_ISDIR(buff.st_mode))
-		{
-			g_err = 126;
-			printf("%s : Is a directory\n", shell->multi_cmd[index][0]);
+			g_err = 127;
+			printf("%s : No such file or directory\n", shell->multi_cmd[index][0]);
 			return (EXIT_FAILURE);
 		}
 	}
+	stat(shell->multi_cmd[index][0], &buff);
+	if (S_ISDIR(buff.st_mode))
+	{
+		g_err = 126;
+		printf("%s : Is a directory\n", shell->multi_cmd[index][0]);
+		return (EXIT_FAILURE);
+	}
+	/*
+	access_return = access(shell->multi_cmd[index][0], F_OK);
+	if (access_return < 0)
+	{
+		g_err = 126;
+		printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
+		return (EXIT_FAILURE);
+	}
+	*/
 	return (EXIT_SUCCESS);
 }
 
@@ -66,7 +75,10 @@ static int	execute_commands(int index, t_shell *shell)
 	stat(shell->multi_cmd[index][0], &buff);
 	temp = NULL;
 	if (!ft_strncmp(shell->multi_cmd[0][0], ".", 2) && !shell->multi_cmd[0][1])
+	{
+		g_err = 2;
 		return (printf(DOT));
+	}
 	if (!is_builtin_command(shell, index))
 		execute_execve(shell, temp, buff, index);
 	else
