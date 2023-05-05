@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:57:42 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/01 10:09:17 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 10:42:25 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 
 t_tok	*go_to_first_closed_parenthese(t_tok *temp, int *count, int *diff)
 {
-	while (temp && ft_strncmp(temp->var, ")", 2) != 0)
+	while (temp)
 	{
-		if (temp && ft_strncmp(temp->var, "(", 2) == 0)
+		if (ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0) 
+			break ;
+		if (temp && ft_strncmp(temp->var, "(", 2) == 0 && temp->quote == 0)
 		{
 			*count += 1;
 			*diff += 1;
 		}
 		temp = temp->next;
 	}
-	if (temp && ft_strncmp(temp->var, ")", 2) == 0)
+	if (temp && ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0)
 	{
 		*diff -= 1;
 		temp = temp->next;
@@ -36,12 +38,12 @@ t_tok	*go_to_last_closed_parenthese(t_tok *temp, int *count, int *diff)
 {
 	while (temp && *diff > 0)
 	{
-		if (temp && ft_strncmp(temp->var, "(", 2) == 0)
+		if (temp && ft_strncmp(temp->var, "(", 2) == 0 && temp->quote == 0)
 		{
 			*count += 1;
 			*diff += 1;
 		}
-		else if (temp && ft_strncmp(temp->var, ")", 2) == 0)
+		else if (temp && ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0)
 			*diff -= 1;
 		temp = temp->next;
 	}
