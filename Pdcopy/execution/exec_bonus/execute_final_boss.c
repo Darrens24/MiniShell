@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/04 15:16:30 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/04 16:35:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	is_last_pipe_command(t_branch *map)
 	tmp = map;
 	while (tmp && !is_pipe(tmp->cmd[0]))
 		tmp = tmp->dad;
+	if (tmp && tmp->dad && tmp->dad->cmd && tmp->dad->cmd[0] && is_pipe(tmp->dad->cmd[0]))
+		return (FALSE);
 	if (tmp)
 		while (tmp && tmp->right)
 			tmp = tmp->right;
@@ -64,9 +66,13 @@ int	execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp)
 	if (map && is_and_or(map->cmd[0]))
 	{
 		if (is_and(map->cmd[0]) && map->err_code == 0)
+		{
 			return (execution_bonus(shell, map->right));
+		}
 		else if (is_or(map->cmd[0]) && map->err_code > 0)
+		{
 			return (execution_bonus(shell, map->right));
+		}
 		else if (map && is_pipe(map->cmd[0]))
 			return (execution_bonus(shell, map->right));
 		else
@@ -153,7 +159,7 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 		wait_pid_mono(shell, shell->index_of_commands);
 	else
 	{
-		if (is_last_command(shell->tree->start, tmp))
+		if (is_last_pipe_command(tmp))
 			wait_pids_bonus(shell->pid, shell,
 				shell->index_of_commands, shell->index_of_pid);
 	}
@@ -183,13 +189,9 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 		tmp = t_branchcpy(map);
 		execute_subshell(shell, tmp);
 		if (shell->index_of_pipes != shell->nb_of_pipes && shell->valid_pipe)
-		{
-			/* fprintf(stderr, "sub: je close fd[%d]\n", shell->index_of_pipes - 1); */
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
-		}
 		else if (is_last_pipe_command(map))
 		{
-			/* fprintf(stderr, "sub: je last close fd[%d]\n", shell->index_of_pipes - 1); */
 			close_fds(shell->fd[shell->index_of_pipes - 1]);
 			shell->valid_pipe = 0;
 			shell->last_index = -1;
@@ -203,7 +205,7 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 			if (is_last_pipe_command(tmp))
 				wait_pids_bonus(shell->pid, shell,
 					shell->index_of_commands, shell->index_of_pid);
-		fprintf(stderr, "le code d'erreur est a la sortie = %d\n", g_err);
+	//	fprintf(stderr, "le code d'erreur est a la sortie = %d\n", g_err);
 		map->err_code = g_err;
 		clear_toklst(tmp->subshell);	
 		free(tmp->subshell);

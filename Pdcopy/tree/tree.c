@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 21:46:00 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:33:42 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ t_tok	*go_to_branch_start(t_toklst *user_command)
 		temp = start_when_and_or(temp);
         if (prio)
             temp->prio = prio;
+		prio = 0;
     }
 	else if (temp && pipe_in_cmd_outside_parentheses(user_command))
     {
 		temp = start_when_pipe(temp);
         if (prio)
             temp->prio = prio;
+		prio = 0;
     }
 	else if (temp && ft_strncmp(temp->var, ")", 2) == 0)
 	{
