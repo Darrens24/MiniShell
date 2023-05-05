@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 10:30:43 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/04 18:27:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ int	main(int ac, char **av, char **envp)
 		readline_manager(&shell);
 		if (!shell.line_readed)
 		{
-			ft_putchar_fd('\n', STDOUT_FILENO);
+			//ft_putchar_fd('\n', STDOUT_FILENO);
+			printf(YEL "\033[AExit Minishell\n" WHT);
 			break ;
 		}
 		if (*shell.line_readed)
@@ -87,6 +88,5 @@ int	main(int ac, char **av, char **envp)
 	}
 	clean_memory(&shell);
 	system("leaks minishell");
-	printf(YEL "Exit Minishell\n" WHT);
 	return (0);
 }
