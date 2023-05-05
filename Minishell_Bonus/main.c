@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 10:56:31 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 12:29:03 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ int	bonus_errors(t_shell *shell)
  			tempstart = go_to_first_closed_parenthese(tempstart, &count, &diff);
  			tempstart = go_to_last_closed_parenthese(tempstart, &count, &diff);
 			open_par--;
-			//printf("coucou\n");
-			//printf("tempvar is %s\n", tempstart->var);
  		}
 		else
 			tempstart = tempstart->next;
@@ -142,18 +140,16 @@ int	main(int ac, char **av, char **envp)
 			if (shell.user_command->nb_elem)
 			{
 				tokenisation(shell.user_command, shell.sorted_env_l);
-			//	parse_wildcard(&shell, envp);
+				//parse_wildcard(&shell, envp);
 				if ((shell.user_command->nb_elem != 0)
 					&& (infile_redirection_parsing(&shell) != 0
 						|| outfile_redirection_parsing(&shell) != 0))
 					good = FALSE;
 				if (good == TRUE && and_or_in_cmd(shell.user_command))
 				{
-					//printf("Error : %d\n", bonus_errors(&shell));
 					shell.nb_of_fds_to_malloc = 0;
 					shell.bcmd = get_bcmd(shell.user_command, &shell);
 					fill_trinary_tree(shell.user_command, &shell);
-					//print_cmds_with_blocks(shell.tree->start);
 					execution_bonus(&shell, shell.tree->map);
 					free_array(shell.tree->start->cmd);
 					free(shell.tree->start);
