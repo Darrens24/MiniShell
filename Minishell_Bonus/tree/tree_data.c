@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:32:25 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/30 10:21:14 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/04 16:54:27 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,23 @@ int	operator_in_cmd(t_toklst *user_command)
 		temp = temp->next;
 	}
 	return (0);
+}
+
+t_toklst	*ft_tklstcpy(t_toklst *active_command)
+{
+	t_toklst	*new_list;
+	t_tok		*temp;
+
+	new_list = malloc(sizeof(t_toklst));
+	if (!new_list)
+		return (0);
+	new_list->nb_elem = 0;
+	temp = active_command->start;
+	while (temp)
+	{
+		new_back_tok(new_list, temp->var, 0, ft_strlen(temp->var));
+        new_list->end->prio = temp->prio;
+		temp = temp->next;
+	}
+	return (new_list);
 }
