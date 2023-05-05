@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/04 11:09:36 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/05 16:24:46 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int	get_number_of_commands(t_shell *shell)
 			nb_of_cmd++;
 		temp = temp->next;
 	}
+	/* printf("%d\n", nb_of_cmd); */
 	return (nb_of_cmd);
 }

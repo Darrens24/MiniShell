@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:49:26 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 12:24:49 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:43:18 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,10 @@ int	not_execute_builtin(t_shell *shell, char **command, char *tmp,
 		return (EXIT_FAILURE);
 	}
 	if (shell->index_of_pipes != shell->nb_of_pipes)
+	{
+		fprintf(stderr, "%d\n", shell->index_of_pipes);
 		pipe(shell->fd[shell->index_of_pipes]);
+	}
 	shell->pid[shell->index_of_commands] = fork();
 	signal(SIGINT, &do_nothing);
 	signal(SIGQUIT, &do_nothing);

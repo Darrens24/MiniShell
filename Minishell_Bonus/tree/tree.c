@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 11:04:14 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:17:52 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,6 @@ void	fill_trinary_tree(t_toklst *user_command, t_shell *shell)
 	shell->tree = create_start_branch(shell->tree, temp, user_command);
 	shell->array_env = get_array_env(shell);
 	shell->home = ft_strdup(get_home(shell->array_env));
-	shell->tree = get_new_start_split_command(shell, shell->tree->map);
+	if (operator_in_cmd(user_command))
+		shell->tree = get_new_start_split_command(shell, shell->tree->map);
 }

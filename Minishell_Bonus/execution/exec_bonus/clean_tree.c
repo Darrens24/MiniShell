@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 13:04:50 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:09:27 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_branch	*clean(t_branch *temp, t_branch *map)
 		return (clean(temp->left, map));
 	else if (temp && temp->right)
 		return (clean(temp->right, map));
-	else if (temp && temp->dad)
+	else if (temp && temp && temp->dad)
 	{		
 		temp2 = temp->dad;
 		clean_node(temp);
@@ -34,20 +34,21 @@ t_branch	*clean(t_branch *temp, t_branch *map)
 
 void	clean_node(t_branch *temp)
 {
-	if (temp->cmd && *temp->cmd)
+	if (temp && temp->cmd && *temp->cmd)
 		free_array(temp->cmd);
-	else if (temp->cmd)
+	else if (temp && temp->cmd)
 		free(temp->cmd);
 	temp->left = NULL;
 	temp->right = NULL;
 	temp->left_command = NULL;
 	temp->right_command = NULL;
-	if (temp->dad->left)
+	temp->subshell = NULL;
+	if (temp && temp->dad && temp->dad->left)
 	{
 		free(temp->dad->left);
 		temp->dad->left = NULL;
 	}
-	else if (temp->dad->right)
+	else if (temp && temp->dad && temp->dad->right)
 	{
 		free(temp->dad->right);
 		temp->dad->right = NULL;

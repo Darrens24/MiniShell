@@ -33,6 +33,7 @@ int	subshell(t_toklst *user_command, t_chained *env, t_chained *export)
 	t_shell	subshell;
 
 	allocate_subshell(&subshell, env, user_command, export);
+	printf("COUCOU\n");
 	/* good = TRUE; */
 	/* if (good == TRUE && and_or_in_cmd(subshell.user_command)) */
 	/* { */

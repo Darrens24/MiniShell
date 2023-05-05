@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:07:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 10:59:31 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:29:27 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ t_tree	*create_start_branch(t_tree *tree, t_tok *temp, t_toklst *user_command)
 		return (0);
 	branch->cmd[0] = ft_strdup(temp->var);
 	branch->cmd[1] = NULL;
-	branch->left_command = split_left(user_command);
-	branch->right_command = split_right(user_command);
+	if (temp->prev)
+		branch->left_command = split_left(user_command);
+	if (temp->next)
+		branch->right_command = split_right(user_command);
 	branch->err_code = -1;
 	tree->start = branch;
 	tree->map = tree->start;

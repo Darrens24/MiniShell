@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:45:48 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/04 18:56:26 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/05 16:01:24 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	close_fds(int *fd)
 
 int	execute_execve(t_shell *shell, char *temp, struct stat buff, int index)
 {
-	if (slash_manager(shell, index) != 0)
-		return (EXIT_FAILURE);
 	if (access(shell->multi_cmd[index][0], F_OK) == 0
 		&& S_ISREG(buff.st_mode))
 		temp = ft_strdup(shell->multi_cmd[index][0]);
