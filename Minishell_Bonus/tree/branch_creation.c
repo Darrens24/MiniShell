@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:07:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 16:29:27 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/06 10:37:35 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,36 @@ t_tree	*create_start_branch(t_tree *tree, t_tok *temp, t_toklst *user_command)
 		branch->left_command = split_left(user_command);
 	if (temp->next)
 		branch->right_command = split_right(user_command);
+	branch->err_code = -1;
+	tree->start = branch;
+	tree->map = tree->start;
+	return (tree);
+}
+
+t_tree      *create_single_branch(t_tree *tree, t_toklst *user_command, t_tok *temp)
+{
+	t_branch	*branch;
+    int         i;
+
+	branch = malloc(sizeof(t_branch));
+	if (!branch)
+		return (0);
+	branch->left = NULL;
+	branch->right = NULL;
+	branch->dad = NULL;
+	branch->cmd_block = 0;
+	branch->cmd = malloc(sizeof(char *) * (user_command->nb_elem + 1));
+	if (!branch->cmd)
+		return (0);
+    i = 0;
+    while (temp)
+    {
+        branch->cmd[i++] = ft_strdup(temp->var);
+        temp = temp->next;
+    }
+    branch->cmd[i] = NULL;
+    branch->left_command = NULL;
+    branch->right_command = NULL;
 	branch->err_code = -1;
 	tree->start = branch;
 	tree->map = tree->start;
