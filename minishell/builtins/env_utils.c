@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:44:37 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 09:34:39 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/06 11:50:02 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@ int	exit_shell(t_shell *shell)
 {
 	if (get_number_of_commands(shell) > 1)
 		return (EXIT_SUCCESS);
-	if (shell->multi_cmd[0][1] && ft_strisdigit(shell->multi_cmd[0][1]))
+	if ((shell->multi_cmd[0][1] && !ft_strisdigit(shell->multi_cmd[0][1]))
+			|| (ft_strisdigit(shell->multi_cmd[0][1]) 
+					&& exit_overflow(shell->multi_cmd[0][1])))
+	{
+		printf("exit: %s: numeric argument required\n", shell->multi_cmd[0][1]);
+		g_err = 255;
+	}
+	else if (shell->multi_cmd[0][1] && ft_strisdigit(shell->multi_cmd[0][1]))
 	{
 		if (shell->multi_cmd[0][2])
 		{
@@ -24,11 +31,6 @@ int	exit_shell(t_shell *shell)
 			return (printf("exit: too many arguments\n"));
 		}
 		g_err = ft_atoi(shell->multi_cmd[0][1]);
-	}
-	else if (shell->multi_cmd[0][1] && !ft_strisdigit(shell->multi_cmd[0][1]))
-	{
-		printf("exit: %s: numeric argument required\n", shell->multi_cmd[0][1]);
-		g_err = 255;
 	}
 	clear_toklst(shell->user_command);
 	clean_memory(shell);

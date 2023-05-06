@@ -6,11 +6,30 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/27 17:33:26 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/06 11:59:00 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int	exit_overflow(char *str)
+{
+	if (str && ft_strlen(str) > 20)
+		return (EXIT_FAILURE);
+	if (str && ft_strlen(str) < 19)
+		return (EXIT_SUCCESS);
+	if (str[0] == '-')
+	{
+		if (ft_strncmp(str, "-9223372036854775808", 20) > 0)
+			return (EXIT_FAILURE);
+	}
+	else
+	{
+		if (ft_strncmp(str, "9223372036854775807", 19) > 0)
+			return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
 
 int	print_echo(char **command, t_shell *shell)
 {

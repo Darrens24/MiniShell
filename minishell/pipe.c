@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/06 10:07:42 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/06 11:24:46 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ int	slash_manager(t_shell *shell, int index)
 	int			access_return;
 	struct stat	buff;
 
-    access_return = access(shell->multi_cmd[index][0], F_OK);
-	if (shell->multi_cmd[index][0][0] == '/' || shell->multi_cmd[index][0][0] == '.')
+	access_return = access(shell->multi_cmd[index][0], F_OK);
+	if (shell->multi_cmd[index][0][0] == '/'
+		|| shell->multi_cmd[index][0][0] == '.')
 	{
 		if (access_return < 0)
 		{
 			g_err = 127;
-			printf("%s : No such file or directory\n", shell->multi_cmd[index][0]);
+			printf("%s : No such file or directory\n",
+				shell->multi_cmd[index][0]);
 			return (EXIT_FAILURE);
 		}
 	}
@@ -54,16 +56,8 @@ int	slash_manager(t_shell *shell, int index)
 		printf("%s : Is a directory\n", shell->multi_cmd[index][0]);
 		return (EXIT_FAILURE);
 	}
-    access_return = access(shell->multi_cmd[index][0], X_OK);
-	if (shell->multi_cmd[index][0][0] == '.')
-    {
-        if (access_return < 0)
-        {
-            g_err = 126;
-            printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
-            return (EXIT_FAILURE);
-        }
-    }
+	if (!check_permission(shell, access_return, index))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 

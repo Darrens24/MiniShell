@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:49:27 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 09:38:24 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/06 11:23:16 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,19 @@ int	get_number_of_commands(t_shell *shell)
 		temp = temp->next;
 	}
 	return (nb_of_cmd);
+}
+
+int	check_permission(t_shell *shell, int access_return, int index)
+{
+	access_return = access(shell->multi_cmd[index][0], X_OK);
+	if (shell->multi_cmd[index][0][0] == '.')
+	{
+		if (access_return < 0)
+		{
+			g_err = 126;
+			printf("%s : Permission denied\n", shell->multi_cmd[index][0]);
+			return (FALSE);
+		}
+	}
+	return (TRUE);
 }

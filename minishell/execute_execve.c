@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:45:48 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/06 10:04:17 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/06 11:25:12 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	execute_execve(t_shell *shell, char *temp, struct stat buff, int index)
 {
 	if (slash_manager(shell, index) != 0)
 		return (EXIT_FAILURE);
-    printf("coucou\n");
 	if (access(shell->multi_cmd[index][0], F_OK) == 0
 		&& S_ISREG(buff.st_mode))
 		temp = ft_strdup(shell->multi_cmd[index][0]);

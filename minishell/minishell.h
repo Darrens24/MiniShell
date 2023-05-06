@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 16:00:22 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/06 11:40:24 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ char		**get_array_env(t_shell *shell);
 void		clear_chained_lst(t_chained *lst);
 int			free_increment(t_increment *incr);
 int			clean_between_cmds(t_shell *shell);
+int			check_permission(t_shell *shell, int access_return, int index);
 
 /***\	BUILTINS	\***/
 
 int			is_builtin_command(t_shell *shell, int index);
 int			builtin_manager(t_shell *shell, int index);
 int			exit_shell(t_shell *shell);
+int			exit_overflow(char *str);
 
 //************* Directory
 
