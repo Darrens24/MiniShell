@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/06 10:32:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/06 10:42:08 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,9 +155,9 @@ int	main(int ac, char **av, char **envp)
                 else
                 {
 
+                    t_tok	*temp = shell.user_command->start;
+                    parse_wildcard(&shell, envp, temp);
 				/*
-				t_tok	*temp = shell.user_command->start;
-				parse_wildcard(&shell, envp, temp);
 				temp = shell.user_command->start;
 				while (temp)
 				{
@@ -175,7 +175,6 @@ int	main(int ac, char **av, char **envp)
                         shell.bcmd = get_bcmd(shell.user_command, &shell);
                         fill_trinary_tree(shell.user_command, &shell);
                         //print_cmds_with_blocks(shell.tree->start);
-                        printf("map is %s\n", shell.tree->map->cmd[0]);
                         execution_bonus(&shell, shell.tree->map);
                         free_array(shell.tree->start->cmd);
                         shell.tree->start->cmd = NULL;
