@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:45:48 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 16:01:24 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:10:15 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	close_fds(int *fd)
 	return (EXIT_SUCCESS);
 }
 
+/*
 int	execute_execve(t_shell *shell, char *temp, struct stat buff, int index)
 {
 	if (access(shell->multi_cmd[index][0], F_OK) == 0
@@ -43,3 +44,4 @@ int	execute_execve(t_shell *shell, char *temp, struct stat buff, int index)
 	free(temp);
 	return (EXIT_SUCCESS);
 }
+*/

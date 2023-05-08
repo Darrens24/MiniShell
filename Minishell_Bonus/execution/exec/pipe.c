@@ -6,12 +6,13 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 11:54:10 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 16:14:19 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:21:10 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
+/*
 int	builtin_manager(t_shell *shell, int index)
 {
 	if (get_number_of_commands(shell) == 1)
@@ -75,18 +76,19 @@ static int	execute_commands(int index, t_shell *shell)
 		close_fds(shell->fd[index - 1]);
 	return (EXIT_SUCCESS);
 }
+*/
 
 int	final_redirection(t_shell *shell)
 {
 	if (shell->out == TRUE)
 	{
-		dup2(shell->saved_stdout, STDOUT_FILENO);
+		dup2(shell->outfile, STDOUT_FILENO);
 		shell->out = FALSE;
 	}
 	dup2(shell->saved_stdin, STDIN_FILENO);
 	return (EXIT_SUCCESS);
 }
-
+/*
 int	pipe_command(t_shell *shell)
 {
 	int			index;
@@ -107,3 +109,4 @@ int	pipe_command(t_shell *shell)
 	final_redirection(shell);
 	return (EXIT_SUCCESS);
 }
+*/

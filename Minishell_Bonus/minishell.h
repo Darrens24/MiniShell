@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/08 10:30:04 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/08 11:12:34 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 extern int	g_err;
 
 void print_cmds_with_blocks(t_branch *node);
+int			final_redirection(t_shell *shell);
 
 /***\	READLINE	\***/
 
@@ -361,8 +362,8 @@ int			is_last_pipe_command(t_branch *map);
 int			execute_subshell(t_shell *shell, t_branch *map);
 t_toklst	*new_front_tok_wq(t_toklst *tokenlst, char *line, int quote);
 t_toklst	*new_back_tok_wq(t_toklst *tokenlst, char *line, int quote);
-int			is_last_pipe_command(t_branch *map);
 int			is_last_command(t_branch *map, t_branch *searched);
+int			is_last_bancale_command(t_branch *map);
 t_branch	*t_branchcpy(t_branch *map);
 int			check_valid_pipe(t_branch *map);
 int			slash_manager_bonus(char **command);

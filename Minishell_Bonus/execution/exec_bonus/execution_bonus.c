@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/08 10:33:39 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/08 10:54:11 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@ int	is_builtin_command_bonus(char **command)
 		|| ft_strncmp(command[0], "unset", 6) == 0
 		|| ft_strncmp(command[0], "exit", 5) == 0
 		|| ft_strncmp(command[0], "echo", 5) == 0)
+		return (TRUE);
+	return (FALSE);
+}
+
+int	is_last_bancale_command(t_branch *map)
+{
+	t_branch	*temp;
+
+	temp = map;
+	while (map && map->dad)
+		map = map->dad;
+	while (map && map->right)
+		map = map->right;
+	if (map == temp)
 		return (TRUE);
 	return (FALSE);
 }

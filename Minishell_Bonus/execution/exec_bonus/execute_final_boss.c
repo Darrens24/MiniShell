@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 16:26:35 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:20:20 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ int	execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp)
 	pipe = 0;
 	if (map)
 		pipe = is_pipe(map->cmd[0]);
+	if (tmp && shell->out == TRUE && is_last_command(shell->tree->map, tmp))
+	{
+		printf("%s est la derniere commande\n", tmp->cmd[0]);
+		final_redirection(shell);
+	}
 	execute_command_clean_leaf(shell, tmp->cmd, pipe);
 	if (shell->index_of_pipes != shell->nb_of_pipes && shell->valid_pipe)
 		close_fds(shell->fd[shell->index_of_pipes - 1]);

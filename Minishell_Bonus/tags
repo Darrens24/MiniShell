@@ -418,7 +418,6 @@ buffer	vendor/readline/include/readline/readline.h	/^  char *buffer;$/;"	m	struc
 buffer_doc	structures.h	/^	char				*buffer_doc;$/;"	m	struct:s_shell
 buflen	readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state
 buflen	vendor/readline/include/readline/readline.h	/^  int buflen;$/;"	m	struct:readline_state
-builtin_manager	execution/exec/pipe.c	/^int	builtin_manager(t_shell *shell, int index)$/;"	f
 builtin_manager_bonus	bonusbuiltin/builtin_bonus.c	/^int	builtin_manager_bonus(t_shell *shell, char **command, int is_pipe)$/;"	f
 catchsigs	readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state
 catchsigs	vendor/readline/include/readline/readline.h	/^  int catchsigs;$/;"	m	struct:readline_state
@@ -429,6 +428,7 @@ cb_linehandler	vendor/readline/share/readline/rl-callbacktest.c	/^cb_linehandler
 change_directory	builtins/dir_management.c	/^int	change_directory(t_shell *shell, const char *path)$/;"	f
 change_prompt	readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
 change_prompt	vendor/readline/share/readline/excallback.c	/^change_prompt(void)$/;"	f
+check_permission_bonus	execution/exec_bonus/execution_bonus.c	/^int	check_permission_bonus(int access_return, char **command)$/;"	f
 check_valid_pipe	execution/exec_bonus/execution_bonus_utils.c	/^int	check_valid_pipe(t_branch *map)$/;"	f
 checknextquote	parsing/parsing_utils.c	/^int	checknextquote(char *line, char quote, int start)$/;"	f
 clean	execution/exec_bonus/clean_tree.c	/^t_branch	*clean(t_branch *temp, t_branch *map)$/;"	f
@@ -543,9 +543,7 @@ execute_b_directory_cmd	bonusbuiltin/dir_management_bonus.c	/^int	execute_b_dire
 execute_builtin_bonus	bonusbuiltin/builtin_bonus.c	/^int	execute_builtin_bonus(t_shell *shell, char **command, int pipe)$/;"	f
 execute_builtin_cmd	builtins/env_management.c	/^int	execute_builtin_cmd(t_shell *shell, int i)$/;"	f
 execute_command_clean_leaf	execution/exec_bonus/execution_bonus.c	/^int	execute_command_clean_leaf(t_shell *shell, char **command, int pipe)$/;"	f
-execute_commands	execution/exec/pipe.c	/^static int	execute_commands(int index, t_shell *shell)$/;"	f	file:
 execute_directory_cmd	builtins/dir_management.c	/^int	execute_directory_cmd(t_shell *shell, int i)$/;"	f
-execute_execve	execution/exec/execute_execve.c	/^int	execute_execve(t_shell *shell, char *temp, struct stat buff, int index)$/;"	f
 execute_line	readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
 execute_line	vendor/readline/share/readline/fileman.c	/^execute_line (line)$/;"	f
 execute_ls_in_tmp	wildcards/wildcards_utils.c	/^int	execute_ls_in_tmp(t_shell *shell, char **envp)$/;"	f
@@ -736,6 +734,7 @@ is_builtin_command_bonus	execution/exec_bonus/execution_bonus.c	/^int	is_builtin
 is_empty	lists/list_utils.c	/^int	is_empty(t_chained *list)$/;"	f
 is_emptytok	tokens/token_management.c	/^int	is_emptytok(t_toklst *list)$/;"	f
 is_infile_redirection	redirections/redirection_utils.c	/^int	is_infile_redirection(t_toklst *user_command)$/;"	f
+is_last_bancale_command	execution/exec_bonus/execution_bonus.c	/^int	is_last_bancale_command(t_branch *map)$/;"	f
 is_last_command	execution/exec_bonus/execution_bonus_utils.c	/^int	is_last_command(t_branch *map, t_branch *searched)$/;"	f
 is_last_pipe_command	execution/exec_bonus/execution_bonus_utils.c	/^int	is_last_pipe_command(t_branch *map)$/;"	f
 is_matching_file	wildcards/wildcards_parsing.c	/^int	is_matching_file(char *buffer, t_shell *shell)$/;"	f
@@ -902,7 +901,6 @@ parse_wildcard	wildcards/wildcards_parsing.c	/^int	parse_wildcard(t_shell *shell
 pendingin	readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state
 pendingin	vendor/readline/include/readline/readline.h	/^  int pendingin;$/;"	m	struct:readline_state
 pid	structures.h	/^	pid_t				*pid;$/;"	m	struct:s_shell
-pipe_command	execution/exec/pipe.c	/^int	pipe_command(t_shell *shell)$/;"	f
 pipe_in_cmd_outside_parentheses	tree/tree_data2.c	/^int	pipe_in_cmd_outside_parentheses(t_toklst *user_command)$/;"	f
 pipe_in_command	builtins/env_management.c	/^int	pipe_in_command(t_toklst *cmd)$/;"	f
 pipe_jump_parentheses	tree/parentheses_jump.c	/^t_tok	*pipe_jump_parentheses(t_tok *temp)$/;"	f
@@ -950,7 +948,6 @@ readline_manager	main.c	/^int	readline_manager(t_shell *shell)$/;"	f
 readline_state	readline/include/readline/readline.h	/^struct readline_state {$/;"	s
 readline_state	vendor/readline/include/readline/readline.h	/^struct readline_state {$/;"	s
 redirection_bonus	execution/exec_bonus/execution_bonus.c	/^int	redirection_bonus(t_shell *shell)$/;"	f
-redirection_parsing	redirections/redirection_parsing.c	/^int	redirection_parsing(t_shell *shell, int index)$/;"	f
 reinitializer	main.c	/^void	reinitializer(t_shell *shell)$/;"	f
 remove_back_node	lists/list_manip.c	/^t_chained	*remove_back_node(t_chained *list)$/;"	f
 remove_back_tok	tokens/token_management2.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
@@ -1055,8 +1052,7 @@ size	readline/include/readline/history.h	/^  int size;			\/* Number of slots all
 size	readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typeref:struct:winsize	file:
 size	vendor/readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state
 size	vendor/readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typeref:struct:winsize	file:
-slash_manager	execution/exec/pipe.c	/^int	slash_manager(t_shell *shell, int index)$/;"	f
-slash_manager_bonus	execution/exec_bonus/execution_bonus.c	/^int	slash_manager_bonus(t_shell *shell, char **command)$/;"	f
+slash_manager_bonus	execution/exec_bonus/execution_bonus.c	/^int	slash_manager_bonus(char **command)$/;"	f
 slavefd	readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
 slavefd	vendor/readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
 sort_list	lists/list_utils.c	/^t_chained	*sort_list(t_chained *list)$/;"	f

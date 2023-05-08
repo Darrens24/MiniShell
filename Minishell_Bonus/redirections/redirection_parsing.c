@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 19:36:36 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/23 12:24:59 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:02:49 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 //maybe a modifier
 
+/*
 int	redirection_parsing(t_shell *shell, int index)
 {
 	if (index < (get_number_of_commands(shell) - 1))
@@ -24,6 +25,7 @@ int	redirection_parsing(t_shell *shell, int index)
 		dup2(shell->outfile, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }
+*/
 
 int	infile_redirection_parsing(t_shell *shell)
 {
