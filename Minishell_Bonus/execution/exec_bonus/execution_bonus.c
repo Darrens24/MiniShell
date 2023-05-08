@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:55:45 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 16:42:26 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/08 10:33:39 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ int	execute_command_clean_leaf(t_shell *shell, char **command, int pipe)
 
 	tmp = NULL;
 	stat(command[0], &buff);
+	if (slash_manager_bonus(command))
+		return (EXIT_FAILURE);
 	if (!is_builtin_command_bonus(command))
 		not_execute_builtin(shell, command, tmp, buff);
 	else
@@ -104,4 +106,48 @@ int	execute_command_clean_leaf(t_shell *shell, char **command, int pipe)
 			builtin_manager_bonus(shell, command, pipe);
 	}
 	return (EXIT_SUCCESS);
+}
+
+int	slash_manager_bonus(char **command)
+{
+	int			access_return;
+	struct stat	buff;
+
+	access_return = access(command[0], F_OK);
+	if (command[0][0] == '/'
+		|| command[0][0] == '.')
+	{
+		if (access_return < 0)
+		{
+			g_err = 127;
+			printf("%s : No such file or directory\n",
+				command[0]);
+			return (EXIT_FAILURE);
+		}
+	}
+	stat(command[0], &buff);
+	if (S_ISDIR(buff.st_mode))
+	{
+		g_err = 126;
+		printf("%s : Is a directory\n", command[0]);
+		return (EXIT_FAILURE);
+	}
+	if (!check_permission_bonus(access_return, command))
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+int	check_permission_bonus(int access_return, char **command)
+{
+	access_return = access(command[0], X_OK);
+	if (command[0][0] == '.')
+	{
+		if (access_return < 0)
+		{
+			g_err = 126;
+			printf("%s : Permission denied\n", command[0]);
+			return (FALSE);
+		}
+	}
+	return (TRUE);
 }

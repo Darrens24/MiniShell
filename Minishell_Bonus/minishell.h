@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/06 10:24:22 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/08 10:30:04 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,6 +365,8 @@ int			is_last_pipe_command(t_branch *map);
 int			is_last_command(t_branch *map, t_branch *searched);
 t_branch	*t_branchcpy(t_branch *map);
 int			check_valid_pipe(t_branch *map);
+int			slash_manager_bonus(char **command);
+int			check_permission_bonus(int access_return, char **command);
 
 /***		BUILTIN BONUS				***/
 

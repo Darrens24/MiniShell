@@ -1056,6 +1056,7 @@ size	readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typ
 size	vendor/readline/include/readline/history.h	/^  int size;			\/* Number of slots allocated to this array. *\/$/;"	m	struct:_hist_state
 size	vendor/readline/share/readline/rlptytest.c	/^static struct winsize size;$/;"	v	typeref:struct:winsize	file:
 slash_manager	execution/exec/pipe.c	/^int	slash_manager(t_shell *shell, int index)$/;"	f
+slash_manager_bonus	execution/exec_bonus/execution_bonus.c	/^int	slash_manager_bonus(t_shell *shell, char **command)$/;"	f
 slavefd	readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
 slavefd	vendor/readline/share/readline/rlptytest.c	/^static int slavefd;$/;"	v	file:
 sort_list	lists/list_utils.c	/^t_chained	*sort_list(t_chained *list)$/;"	f

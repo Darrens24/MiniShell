@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/06 10:42:08 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/08 10:20:45 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,8 +184,8 @@ int	main(int ac, char **av, char **envp)
                         shell.tree = NULL;
                         reinitializer(&shell);
                         clean_between_cmds(&shell);
-                        clear_toklst(shell.user_command);
                     }
+					clear_toklst(shell.user_command);
                     dup2(shell.saved_stdin, STDIN_FILENO);
                     dup2(shell.saved_stdout, STDOUT_FILENO);
                 }
