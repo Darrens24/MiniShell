@@ -3,24 +3,40 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+antislash_norm	tokenisation.c	/^void	antislash_norm(t_tokation *tk, t_chained *env)$/;"	f
 clear_chained_lst	token_management2.c	/^void	clear_chained_lst(t_chained *lst)$/;"	f
 clear_toklst	token_management2.c	/^void	clear_toklst(t_toklst *lst)$/;"	f
+dollarcase	tokenisation.c	/^void	dollarcase(t_tokation *tk, t_chained *env)$/;"	f
+dquotej2	quotes_management.c	/^int	dquotej2(t_tok *token, int i)$/;"	f
 dquotejumper	quotes_management.c	/^int	dquotejumper(t_tok *token, int i)$/;"	f
+dquotep2	quotes_management.c	/^char	*dquotep2(t_tok *token, int *y, char *newvar, t_chained *env)$/;"	f
 dquoteparser	quotes_management.c	/^char	*dquoteparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
-envfinder	tokenisation.c	/^char	*envfinder(char *line, char *newvar, t_chained *env)$/;"	f
-envvarjumper	tokenisation.c	/^int    envvarjumper(t_tok *token, int i)$/;"	f
-envvarparser	tokenisation.c	/^char    *envvarparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+envfinder	token_utils.c	/^char	*envfinder(char *line, char *newvar, t_chained *env)$/;"	f
+envvarjumper	token_utils.c	/^int	envvarjumper(t_tok *token, int i)$/;"	f
+envvarparser	token_utils.c	/^char	*envvarparser(t_tok *token, int i, char *newvar, t_chained *env)$/;"	f
+ft_strjointok	token_management2.c	/^char	*ft_strjointok(char const *s1, char const *s2)$/;"	f
+get_b_command	token_utils2.c	/^char	*get_b_command(t_shell *shell, int index, char **command)$/;"	f
+get_command	token_utils2.c	/^char	*get_command(t_shell *shell, int index)$/;"	f
 is_emptytok	token_management.c	/^int	is_emptytok(t_toklst *list)$/;"	f
+join_without_leaks	quotes_management2.c	/^char	*join_without_leaks(char *newvar, char *temp)$/;"	f
+join_without_leaks2	quotes_management2.c	/^char	*join_without_leaks2(char *newvar, char *temp)$/;"	f
 new_back_tok	token_management.c	/^t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)$/;"	f
 new_back_tok_q	token_management.c	/^t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end)$/;"	f
+new_front_tok	token_management.c	/^t_toklst	*new_front_tok(t_toklst *list, char *line)$/;"	f
 new_wildcard_tok	token_wildcard.c	/^t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer)$/;"	f
+norm_checker	token_checker.c	/^static int	norm_checker(t_tok *tok)$/;"	f	file:
+norm_errors	tokenisation.c	/^void	norm_errors(t_tokation *tk, t_toklst *tokenlst)$/;"	f
 print_toklst	token_management.c	/^void	print_toklst(t_toklst *list)$/;"	f
 remove_back_tok	token_management2.c	/^t_toklst	*remove_back_tok(t_toklst *list)$/;"	f
 remove_current_tok	token_management.c	/^t_tok	*remove_current_tok(t_tok *tok, t_toklst *list)$/;"	f
 remove_front_tok	token_management2.c	/^t_toklst	*remove_front_tok(t_toklst *list)$/;"	f
-remove_wildcard_tok	token_wildcard.c	/^t_tok	*remove_wildcard_tok(t_toklst *tokenlst)$/;"	f
+remove_wildcard_tok	token_wildcard.c	/^t_tok	*remove_wildcard_tok(t_toklst *tokenlst, t_tok *temp)$/;"	f
 squotejumper	quotes_management2.c	/^int	squotejumper(t_tok *token, int i)$/;"	f
 squoteparser	quotes_management2.c	/^char	*squoteparser(t_tok *token, int i, char *newvar)$/;"	f
-tokenisation	tokenisation.c	/^void    tokenisation(t_toklst *tokenlst, t_chained *env)$/;"	f
-vagueparser	tokenisation.c	/^char	*vagueparser(int i, char *newvar, t_chained	*envp)$/;"	f
+tilde_and_classicnorm	tokenisation.c	/^void	tilde_and_classicnorm(t_tokation *tk, t_chained *env)$/;"	f
+token_checker	token_checker.c	/^int	token_checker(t_shell *shell)$/;"	f
+token_norm_parsing	token_utils.c	/^void	token_norm_parsing(t_tokation *tk, t_chained *env)$/;"	f
+tokenisation	tokenisation.c	/^int	tokenisation(t_toklst *tokenlst, t_chained *env)$/;"	f
+vagueparser	token_utils.c	/^char	*vagueparser(int i, char *newvar, t_chained	*envp)$/;"	f
+varjumper	quotes_management.c	/^static int	varjumper(char *var, int i)$/;"	f	file:

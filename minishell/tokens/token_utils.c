@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:02:41 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 16:34:09 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/08 10:37:56 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,13 @@ char	*envfinder(char *line, char *newvar, t_chained *env)
 	int		len;
 	char	*temp;
 
-	line = ft_strjoin(line, "=");
+	temp = line;
+	line = ft_strjoin(temp, "=");
+	if (temp)
+	{
+		free(temp);
+		temp = NULL;
+	}
 	elem = env->end;
 	len = ft_strlen(line);
 	while (elem)
