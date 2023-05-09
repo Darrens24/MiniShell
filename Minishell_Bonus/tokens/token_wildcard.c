@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:57:16 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 12:05:09 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/09 09:05:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_toklst	*new_wildcard_tok(t_toklst *tokenlst, char *buffer)
 		temp = temp->next;
 	if (!temp->next)
 		return (new_back_tok_q(tokenlst, buffer, 0,
-			ft_strlen(buffer) + 1));
+				ft_strlen(buffer) + 1));
 	elem = malloc(sizeof(*elem));
 	if (!elem)
 		return (tokenlst);

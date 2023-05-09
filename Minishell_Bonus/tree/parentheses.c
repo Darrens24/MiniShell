@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 10:57:42 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 10:42:25 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/09 09:16:09 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_tok	*go_to_first_closed_parenthese(t_tok *temp, int *count, int *diff)
 {
 	while (temp)
 	{
-		if (ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0) 
+		if (ft_strncmp(temp->var, ")", 2) == 0 && temp->quote == 0)
 			break ;
 		if (temp && ft_strncmp(temp->var, "(", 2) == 0 && temp->quote == 0)
 		{
@@ -49,27 +49,6 @@ t_tok	*go_to_last_closed_parenthese(t_tok *temp, int *count, int *diff)
 	}
 	return (temp);
 }
-
-/*
-t_tok	*go_to_last_opened_parenthese(t_tok *temp, int *count, int *diff)
-{
-	temp = go_to_reverse_parenthese(temp, count, diff);
-	while (temp && *diff > 0)
-	{
-		if (temp && ft_strncmp(temp->var, ")", 2) == 0)
-		{
-			*count += 1;
-			*diff += 1;
-		}
-		else if (temp && ft_strncmp(temp->var, "(", 2) == 0)
-			*diff -= 1;
-		if (*diff == 0)
-			return (temp);
-		temp = temp->prev;
-	}
-	return (temp);
-}
-*/
 
 int	number_of_parentheses(t_tok *temp)
 {

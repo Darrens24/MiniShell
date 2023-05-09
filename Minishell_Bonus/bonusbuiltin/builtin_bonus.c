@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:01:19 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 14:12:08 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/09 08:56:02 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	execute_builtin_bonus(t_shell *shell, char **command, int pipe)
 		print_list(shell->env_l);
 	}
 	else if (ft_strncmp(command[0], "export", 7) == 0)
-	 	export_b_manager(shell, command, pipe);
+		export_b_manager(shell, command, pipe);
 	else if (ft_strncmp(command[0], "unset", 6) == 0)
 	{
 		if (!command[1] || pipe)

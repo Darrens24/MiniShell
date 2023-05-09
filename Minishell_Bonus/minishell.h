@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/08 11:12:34 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/09 09:09:42 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -304,7 +304,7 @@ char		**give_active_command(t_toklst *left_command);
 
 t_tree		*create_start_branch(t_tree *tree,
 				t_tok *temp, t_toklst *user_command);
-t_tree      *create_single_branch(t_tree *tree, t_toklst *user_command, t_tok *temp);
+void		create_single_branch(t_tree *tree, t_toklst *user_command, t_tok *temp);
 t_branch	*create_left_leaf(t_branch *map);
 t_branch	*create_right_leaf(t_branch *map);
 

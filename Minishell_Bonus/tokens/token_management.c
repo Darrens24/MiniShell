@@ -6,30 +6,11 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:26:07 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/01 10:40:31 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/09 09:04:46 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-int	is_emptytok(t_toklst *list)
-{
-	if (list->nb_elem == 0)
-		return (1);
-	return (0);
-}
-
-void	print_toklst(t_toklst *list)
-{
-	t_tok	*temp;
-
-	temp = list->start;
-	while (temp)
-	{
-		printf("%s\n", temp->var);
-		temp = temp->next;
-	}
-}
 
 t_tok	*remove_current_tok(t_tok *tok, t_toklst *list)
 {
@@ -79,7 +60,6 @@ t_toklst	*new_front_tok(t_toklst *list, char *line)
 		list->start->prev = elem;
 		elem->next = list->start;
 		list->start = elem;
-		//list->end = go_to_end_tok(list);
 	}
 	list->nb_elem++;
 	return (list);
@@ -91,10 +71,7 @@ t_toklst	*new_back_tok(t_toklst *tokenlst, char *line, int start, int end)
 
 	elem = malloc(sizeof(*elem));
 	if (!elem)
-	{
-		printf("Node: Dynamic allocation failed\n");
 		return (NULL);
-	}
 	elem->var = ft_strndup(line, start, end);
 	elem->next = NULL;
 	elem->prev = NULL;
@@ -121,10 +98,7 @@ t_toklst	*new_back_tok_q(t_toklst *tokenlst, char *line, int start, int end)
 
 	elem = malloc(sizeof(*elem));
 	if (!elem)
-	{
-		printf("Node: Dynamic allocation failed\n");
 		return (NULL);
-	}
 	elem->var = ft_strndup(line, start, end);
 	elem->next = NULL;
 	elem->prev = NULL;

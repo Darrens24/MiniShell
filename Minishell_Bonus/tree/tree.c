@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 11:07:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/06 10:32:19 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/09 09:10:13 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,5 @@ void	fill_trinary_tree(t_toklst *user_command, t_shell *shell)
         shell->tree = get_new_start_split_command(shell, shell->tree->map);
     }
     else
-    {
-        shell->tree = create_single_branch(shell->tree, user_command, temp);
-    }
+        create_single_branch(shell->tree, user_command, temp);
 }
