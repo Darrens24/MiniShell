@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/09 09:09:42 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/09 10:02:34 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,7 @@ t_tok		*go_to_branch_start(t_toklst *user_command);
 t_toklst	*split_left(t_toklst *active_command);
 t_toklst	*split_right(t_toklst *active_command);
 char		**give_active_command(t_toklst *left_command);
+t_tree		*get_new_start_split_command(t_shell *shell, t_branch *map);
 
 /***		TREE UTILS 		\***/
 

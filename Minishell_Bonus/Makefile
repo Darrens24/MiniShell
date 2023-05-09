@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/05/09 09:01:30 by eleleux          ###   ########.fr        #
+#    Updated: 2023/05/09 09:51:10 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRC = data/data.c \
 		wildcards/wildcards_parsing.c \
 		wildcards/wildcards.c \
 		tree/tree.c \
+		tree/tree_construction.c \
 		tree/branch_creation.c \
 		tree/parentheses.c \
 		tree/tree_data.c \
