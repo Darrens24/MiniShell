@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:54:54 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 15:38:16 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/10 08:52:44 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ t_toklst	*split_right(t_toklst *active_command)
 	new_right_list->nb_elem = 0;
 	temp = go_to_branch_start(active_command);
 	if (temp && is_operator(temp->var) && temp->quote == 0)
-    {
+	{
 		temp = temp->next;
-        temp->prio = temp->prev->prio;
-    }
+		temp->prio = temp->prev->prio;
+	}
 	while (temp)
 	{
 		new_back_tok_wq(new_right_list, temp->var, temp->quote);
-        new_right_list->end->prio = temp->prio;
+		new_right_list->end->prio = temp->prio;
 		temp = temp->next;
 	}
 	return (new_right_list);
@@ -47,14 +47,14 @@ t_toklst	*split_left(t_toklst *active_command)
 	new_left_list->nb_elem = 0;
 	temp = go_to_branch_start(active_command);
 	if (temp && is_operator(temp->var) && temp->quote == 0)
-    {
+	{
 		temp = temp->prev;
-        temp->prio = temp->next->prio;
-    }
+		temp->prio = temp->next->prio;
+	}
 	while (temp)
 	{
 		new_front_tok_wq(new_left_list, temp->var, temp->quote);
-        new_left_list->start->prio = temp->prio;
+		new_left_list->start->prio = temp->prio;
 		temp = temp->prev;
 	}
 	return (new_left_list);

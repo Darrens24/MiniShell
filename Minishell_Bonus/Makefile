@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/05/09 09:51:10 by eleleux          ###   ########.fr        #
+#    Updated: 2023/05/10 10:09:05 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC = data/data.c \
 		data/free.c \
 		data/path.c \
 		data/commands.c \
+		data/errors_bonus.c \
 		utils.c \
 		lists/list_manip.c \
 		lists/list_manip2.c \
@@ -79,12 +80,15 @@ SRC = data/data.c \
 		tree/tree_data2.c \
 		tree/tree_utils.c \
 		tree/parentheses_jump.c \
+		tree/token_tree.c \
 		execution/exec_bonus/execution_bonus.c \
 		execution/exec_bonus/clean_tree.c \
 		execution/exec_bonus/execution_utils.c \
 		execution/exec_bonus/execute_final_boss.c \
 		execution/exec_bonus/subshell.c \
 		execution/exec_bonus/execution_bonus_utils.c \
+		execution/exec_bonus/path_bonus.c \
+		execution/exec_bonus/direction_execute.c \
 		bonusbuiltin/builtin_bonus.c \
 		bonusbuiltin/dir_management_bonus.c \
 		bonusbuiltin/dir_utils_bonus.c \

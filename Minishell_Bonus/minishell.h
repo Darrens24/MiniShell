@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/09 10:02:34 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/10 10:26:08 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@
 # include "structures.h"
 
 extern int	g_err;
-
-void print_cmds_with_blocks(t_branch *node);
-int			final_redirection(t_shell *shell);
 
 /***\	READLINE	\***/
 
@@ -158,6 +155,7 @@ int			heredoc_dup(t_shell *shell);
 int			redirection_parsing(t_shell *shell, int index);
 int			infile_redirection_parsing(t_shell *shell);
 int			outfile_redirection_parsing(t_shell *shell);
+int			final_redirection(t_shell *shell);
 
 //************* Redirection Utils
 
@@ -305,7 +303,8 @@ char		**give_active_command(t_toklst *left_command);
 
 t_tree		*create_start_branch(t_tree *tree,
 				t_tok *temp, t_toklst *user_command);
-void		create_single_branch(t_tree *tree, t_toklst *user_command, t_tok *temp);
+void		create_single_branch(t_tree *tree, t_toklst *user_command,
+				t_tok *temp);
 t_branch	*create_left_leaf(t_branch *map);
 t_branch	*create_right_leaf(t_branch *map);
 
@@ -350,7 +349,20 @@ int			wait_pid_mono(t_shell *shell, int i);
 int			redirection_bonus(t_shell *shell);
 char		*get_correct_path_bonus(t_shell *shell, char *command);
 char		*find_path_bonus(char *command, t_shell *shell);
-int			execute_command_clean_leaf(t_shell *shell, char **command, int pipe);
+int			execute_command_clean_leaf(t_shell *shell,
+				char **command, int pipe);
+int			execute_node_with_cmd(t_shell *shell, t_branch *map, t_branch *tmp);
+
+/***		EXEC DIRECTION				 ***/
+
+int			execute_map_operator(t_shell *shell, t_branch *map, t_branch *tmp);
+int			execute_map_right(t_shell *shell, t_branch *map, t_branch *tmp);
+int			execute_map_left(t_shell *shell, t_branch *map);
+int			execute_map_dad(t_shell *shell, t_branch *map, t_branch *tmp);
+int			execute_map_subshell(t_branch *map, t_branch *tmp, t_shell *shell);
+void		norm_cleaning(t_branch *map);
+void		norm_waitpid(t_branch *tmp, t_shell *shell);
+void		free_subshell_data(t_branch *tmp, t_branch *map);
 
 /***		EXEC UTILS				***/
 
@@ -383,5 +395,9 @@ void		norm_unset(t_unset *uns, t_shell *shell);
 int			print_b_echo(char **command, t_shell *shell);
 char		*get_b_command(t_shell *shell, int index, char **command);
 int			execute_b_directory_cmd(t_shell *shell, char **command, int pipe);
+
+/***		BONUS ERRORS			***/
+
+int			bonus_errors(t_shell *shell);
 
 #endif
