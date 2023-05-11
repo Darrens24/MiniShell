@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:24:42 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 10:49:03 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:16:57 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,18 @@ int	pipe_in_cmd_outside_parentheses(t_toklst *user_command)
 			break ;
 	}
 	return (0);
+}
+
+int	parenthese_in_command(t_toklst *user_command)
+{
+	t_tok	*temp;
+
+	temp = user_command->start;
+	while (temp)
+	{
+		if (ft_strncmp(temp->var, "(", 2) == 0)
+			return (TRUE);
+		temp = temp->next;
+	}
+	return (FALSE);
 }

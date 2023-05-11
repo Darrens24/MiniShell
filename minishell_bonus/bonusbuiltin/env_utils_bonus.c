@@ -6,17 +6,43 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:26:05 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 10:43:51 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 13:37:04 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+static int	exit_overflow(char *str)
+{
+	if (str && ft_strlen(str) > 20)
+		return (EXIT_FAILURE);
+	if (str && ft_strlen(str) < 19)
+		return (EXIT_SUCCESS);
+	if (str[0] == '-')
+	{
+		if (ft_strncmp(str, "-9223372036854775808", 20) > 0)
+			return (EXIT_FAILURE);
+	}
+	else
+	{
+		if (ft_strncmp(str, "9223372036854775807", 19) > 0)
+			return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	exit_b_shell(t_shell *shell, char **command, int pipe)
 {
 	if (pipe)
 		return (EXIT_SUCCESS);
-	if (command[1] && ft_strisdigit(command[1]))
+	if ((command[1] && !ft_strisdigit(command[1]))
+			|| (command[1] && ft_strisdigit(command[1])
+				&& exit_overflow(command[1])))
+	{
+		printf("exit: %s: numeric argument required\n", command[1]);
+		g_err = 255;
+	}
+	else if (command[1] && ft_strisdigit(command[1]))
 	{
 		if (command[2])
 		{
@@ -25,95 +51,9 @@ int	exit_b_shell(t_shell *shell, char **command, int pipe)
 		}
 		g_err = ft_atoi(command[1]);
 	}
-	else if (command[1] && !ft_strisdigit(command[1]))
-	{
-		printf("exit: %s: numeric argument required\n", command[1]);
-		g_err = 255;
-	}
 	clear_toklst(shell->user_command);
 	clean_memory(shell);
 	printf(YEL "Exit Minishell\n" WHT);
 	exit(g_err);
 	return (EXIT_SUCCESS);
 }
-/*
-char	**get_array_env(t_shell *shell)
-{
-	t_node	*temp;
-	char	**array;
-	int		i;
-
-	temp = shell->sorted_env_l->start;
-	array = malloc(sizeof(char *) * (shell->sorted_env_l->nb_elem + 1));
-	if (!array)
-		return (NULL);
-	i = 0;
-	while (temp)
-	{
-		array[i] = ft_strdup(temp->variable);
-		temp = temp->next;
-		i++;
-	}
-	array[i] = NULL;
-	return (array);
-}
-
-int	fill_basic_env(t_shell *shell)
-{
-	char	*pwd;
-	char	*underscore;
-	char	*str_sh_level;
-	char	*temp;
-	char	*cwd;
-
-	temp = ft_itoa(1);
-	cwd = getcwd(0, 0);
-	pwd = ft_strjoin("PWD=", cwd);
-	free(cwd);
-	str_sh_level = ft_strjoin("SHLVL=", temp);
-	free(temp);
-	underscore = ft_strjoin("_=", "/usr/bin/env");
-	new_back_node(shell->env_l, pwd);
-	new_back_node(shell->env_l, str_sh_level);
-	new_back_node(shell->env_l, underscore);
-	free(underscore);
-	free(pwd);
-	free(str_sh_level);
-	return (EXIT_SUCCESS);
-}
-
-int	envchecker(char *line, t_chained *env)
-{
-	t_node	*elem;
-	int		len;
-
-	elem = env->start;
-	len = ft_strlen(line);
-	while (elem)
-	{
-		if (ft_strncmp(line, elem->variable, len) == 0
-			&& (elem->variable[len] == '=' || elem->variable[len] == '\0'))
-			return (1);
-		elem = elem->next;
-	}
-	return (0);
-}
-
-int	envindex(char *line, t_chained *env)
-{
-	t_node	*elem;
-	int		len;
-	int		index;
-
-	elem = env->start;
-	len = ft_strlen(line);
-	index = 0;
-	while (elem)
-	{
-		if (ft_strncmp(line, elem->variable, len) == 0)
-			return (index);
-		elem = elem->next;
-		index++;
-	}
-	return (-1);
-}*/

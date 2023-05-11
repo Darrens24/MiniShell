@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/10 10:39:19 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 13:27:11 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int	main(int ac, char **av, char **envp)
 			check_and_execute(&shell, good, envp);
 	}
 	clean_memory(&shell);
-	printf(YEL "Exit Minishell\n" WHT);
+	system("leaks minishell");
 	return (0);
 }

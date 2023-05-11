@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/11 11:08:58 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:15:38 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,6 +381,7 @@ t_branch	*t_branchcpy(t_branch *map);
 int			check_valid_pipe(t_branch *map);
 int			slash_manager_bonus(char **command);
 int			check_permission_bonus(int access_return, char **command);
+int			parenthese_in_command(t_toklst *user_command);
 
 /***		BUILTIN BONUS				***/
 
