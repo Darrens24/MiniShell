@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/11 16:14:40 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 18:29:37 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,17 @@ void	norm_waitpid(t_branch *tmp, t_shell *shell)
 
 void	free_subshell_data(t_branch *tmp, t_branch *map)
 {
-	clear_toklst(tmp->subshell);
-	free(tmp->subshell);
-	clear_toklst(tmp->left_command);
-	free(tmp->left_command);
-	clear_toklst(tmp->right_command);
-	free(tmp->right_command);
-	if (map)
-		clean(tmp, map);
+	if (tmp && tmp->left_command)
+	{
+		clear_toklst(tmp->left_command);
+		free(tmp->left_command);
+	}
+	if (tmp && tmp->right_command)
+	{
+		clear_toklst(tmp->right_command);
+		free(tmp->right_command);
+	}
+	clean(tmp, map);
 }
 
 int	execution_bonus(t_shell *shell, t_branch *map)

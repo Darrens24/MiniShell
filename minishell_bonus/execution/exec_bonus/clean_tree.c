@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/11 16:44:18 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 18:28:47 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,15 @@ void	clean_node(t_branch *temp)
 		free_array(temp->cmd);
 	else if (temp && temp->cmd)
 		free(temp->cmd);
-	temp->left = NULL;
-	temp->right = NULL;
 	temp->left_command = NULL;
 	temp->right_command = NULL;
+	if (temp->cmd_block > 0)
+	{
+		clear_toklst(temp->subshell);
+		free(temp->subshell);
+	}
+	temp->left = NULL;
+	temp->right = NULL;
 	temp->subshell = NULL;
 	if (temp && temp->dad && temp->dad->left)
 	{

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:13:56 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/03/11 14:55:56 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 18:06:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,7 @@ t_toklst	*remove_back_tok(t_toklst *list)
 	t_tok	*temp;
 
 	if (is_emptytok(list))
-	{
-		printf("ListRemove: Nothing to free\n");
 		return (NULL);
-	}
 	if (list->nb_elem == 1)
 	{
 		list->nb_elem--;
@@ -99,8 +96,9 @@ t_toklst	*remove_back_tok(t_toklst *list)
 
 void	clear_toklst(t_toklst *lst)
 {
-	while (lst->nb_elem)
+	while (lst && lst->nb_elem)
 		remove_back_tok(lst);
+	lst->nb_elem = 0;
 }
 
 void	clear_chained_lst(t_chained *lst)

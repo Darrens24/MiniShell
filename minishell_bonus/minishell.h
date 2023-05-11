@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/11 13:15:38 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 17:04:01 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ extern int	g_err;
 /***\	READLINE	\***/
 
 void		rl_replace_line(const char *text, int clear_undo);
+void		free_subshell_data2(t_branch *tmp);
 
 /***\	DATA	\***/
 

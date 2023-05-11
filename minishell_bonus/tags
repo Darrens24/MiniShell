@@ -387,6 +387,7 @@ free_array	data/free.c	/^int	free_array(char **array)$/;"	f
 free_increment	data/free.c	/^int	free_increment(t_increment *incr)$/;"	f
 free_pids_fds	data/free.c	/^void	free_pids_fds(t_shell *shell)$/;"	f
 free_subshell_data	execution/exec_bonus/execute_final_boss.c	/^void	free_subshell_data(t_branch *tmp, t_branch *map)$/;"	f
+free_subshell_data2	execution/exec_bonus/execute_final_boss.c	/^void	free_subshell_data2(t_branch *tmp)$/;"	f
 free_wildcards	wildcards/wildcards_data.c	/^int	free_wildcards(t_shell *shell)$/;"	f
 freetab	Libft/ft_split.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
 freetab	Libft/ft_split_slash.c	/^static void	freetab(char **recipe, int i)$/;"	f	file:
