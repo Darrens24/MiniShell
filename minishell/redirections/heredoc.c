@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:30:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/04 18:18:59 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 16:02:00 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,14 @@ int	heredoc_prompt(t_shell *shell)
 		remove_ctrlc(1);
 		shell->buffer_doc = readline("here_doc >> ");
 		remove_ctrlc(0);
-		if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc,
-				shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
+		if (!shell->buffer_doc)
 		{
 			printf("\033[Ahere_doc >> ");
 			exit(0);
 		}
+		else if (ft_strncmp(shell->buffer_doc,
+				shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
+			exit (0);
 		shell->buffer_doc = replace_by_env(shell, shell->buffer_doc);
 		ft_putstr_fd(shell->buffer_doc, shell->doc_fd[1]);
 		ft_putchar_fd('\n', shell->doc_fd[1]);

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:51:51 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/11 13:27:11 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 16:27:17 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static void	execute_user_command(t_shell *shell, int good, char **envp)
 		shell->nb_of_fds_to_malloc = 0;
 		shell->bcmd = get_bcmd(shell->user_command, shell);
 		fill_trinary_tree(shell->user_command, shell);
-		execution_bonus(shell, shell->tree->map);
+		if (*shell->tree->start->cmd)
+			execution_bonus(shell, shell->tree->map);
 		free_array(shell->tree->start->cmd);
 		shell->tree->start->cmd = NULL;
 		free(shell->tree->start);

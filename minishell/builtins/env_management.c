@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 16:28:55 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/06 11:59:00 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 15:15:46 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	print_echo(char **command, t_shell *shell)
 	while (command[i])
 	{
 		ft_putstr_fd(command[i], STDOUT_FILENO);
-		if (get_command(shell, i++) != NULL)
+		if (get_command(shell, ++i) != NULL)
 			ft_putchar_fd(' ', STDOUT_FILENO);
 	}
 	if (tmp)

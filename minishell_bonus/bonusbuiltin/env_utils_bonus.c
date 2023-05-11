@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:26:05 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/11 13:37:04 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 14:37:17 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	exit_b_shell(t_shell *shell, char **command, int pipe)
 	if (pipe)
 		return (EXIT_SUCCESS);
 	if ((command[1] && !ft_strisdigit(command[1]))
-			|| (command[1] && ft_strisdigit(command[1])
-				&& exit_overflow(command[1])))
+		|| (command[1] && ft_strisdigit(command[1])
+			&& exit_overflow(command[1])))
 	{
 		printf("exit: %s: numeric argument required\n", command[1]);
 		g_err = 255;

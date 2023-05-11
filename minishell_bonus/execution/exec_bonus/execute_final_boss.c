@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:09:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/10 09:50:01 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 16:14:40 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ int	execution_bonus(t_shell *shell, t_branch *map)
 
 	tmp = NULL;
 	if (map && map->cmd_block > 0)
-	{
 		execute_map_subshell(map, tmp, shell);
-	}
 	else if (map && map->left)
 		execute_map_left(shell, map);
 	else if (map && map->right)

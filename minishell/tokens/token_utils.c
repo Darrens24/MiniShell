@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:02:41 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/08 10:37:56 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:03:34 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,13 @@ char	*envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 	char	*temp;
 
 	start = i;
+	temp = NULL;
 	if (token->var[i] && token->var[i] == '{' && i++ > -1)
 	{
 		while (token->var[i] && token->var[i] != '}')
 			i++;
 		temp = ft_strndup(token->var, start, i++);
 		newvar = envfinder(temp, newvar, env);
-		free(temp);
 	}
 	else if (!token->var[i] || is_wspace(token->var[i])
 		|| token->var[i] == '\"' || token->var[i] == '\'')
@@ -113,7 +113,6 @@ char	*envvarparser(t_tok *token, int i, char *newvar, t_chained *env)
 			i++;
 		temp = ft_strndup(token->var, start, i);
 		newvar = envfinder(temp, newvar, env);
-		free(temp);
 	}
 	return (newvar);
 }

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 16:11:53 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/03 13:01:16 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 15:51:41 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ int	execute_ls_in_tmp(t_shell *shell, char **envp)
 
 	fd_temp = open(".tmp", O_CREAT | O_TRUNC | O_RDWR, 0644);
 	if (fd_temp < 0)
-		return (printf("Temp opening failed\n"));
+	{
+		free(shell->wild_middle);
+		return (EXIT_FAILURE);
+	}
 	shell->saved_stdout = dup(STDOUT_FILENO);
 	pid = fork();
 	if (pid < 0)

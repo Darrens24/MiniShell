@@ -6,7 +6,7 @@
 /*   By: eleleux <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 10:25:59 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/09 08:57:01 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 15:16:07 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	print_b_echo(char **command, t_shell *shell)
 	while (command[i])
 	{
 		ft_putstr_fd(command[i], STDOUT_FILENO);
-		if (get_b_command(shell, i++, command) != NULL)
+		if (get_b_command(shell, ++i, command) != NULL)
 			ft_putchar_fd(' ', STDOUT_FILENO);
 	}
 	if (tmp)

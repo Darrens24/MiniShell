@@ -6,7 +6,7 @@
 #    By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/28 10:28:45 by eleleux           #+#    #+#              #
-#    Updated: 2023/05/10 10:09:05 by eleleux          ###   ########.fr        #
+#    Updated: 2023/05/11 15:45:31 by eleleux          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,6 @@ SRC = data/data.c \
 		execution/exec_bonus/direction_execute.c \
 		bonusbuiltin/builtin_bonus.c \
 		bonusbuiltin/dir_management_bonus.c \
-		bonusbuiltin/dir_utils_bonus.c \
 		bonusbuiltin/env_management_bonus.c \
 		bonusbuiltin/env_utils_bonus.c \
 		bonusbuiltin/export_bonus.c \

@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:30:35 by eleleux           #+#    #+#             */
-/*   Updated: 2023/04/28 09:13:21 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 16:03:28 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,12 @@ int	heredoc_prompt(t_shell *shell)
 		remove_ctrlc(1);
 		shell->buffer_doc = readline("here_doc >> ");
 		remove_ctrlc(0);
-		if (!shell->buffer_doc || ft_strncmp(shell->buffer_doc,
+		if (!shell->buffer_doc)
+		{
+			printf("\033[Ahere_doc >> ");
+			exit(0);
+		}
+		else if (ft_strncmp(shell->buffer_doc,
 				shell->limiter_doc, ft_strlen(shell->limiter_doc) + 1) == 0)
 			exit(0);
 		shell->buffer_doc = replace_by_env(shell, shell->buffer_doc);
@@ -105,7 +110,6 @@ int	heredoc_redirection(t_shell *shell, t_tok *temp)
 	signal(SIGQUIT, &do_nothing);
 	if (shell->here == 0)
 		heredoc_prompt(shell);
-	printf("%s\r", "");
 	waitpid_return = waitpid(shell->here, &error_code, 0);
 	if (waitpid_return > 0)
 		error_func(error_code);

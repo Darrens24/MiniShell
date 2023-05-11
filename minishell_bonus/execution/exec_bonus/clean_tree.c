@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 15:11:29 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/05 15:09:27 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:44:18 by eleleux          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_branch	*clean(t_branch *temp, t_branch *map)
 		return (clean(temp->left, map));
 	else if (temp && temp->right)
 		return (clean(temp->right, map));
-	else if (temp && temp && temp->dad)
-	{		
+	else if (temp && temp->dad)
+	{	
 		temp2 = temp->dad;
 		clean_node(temp);
 		if (temp2 == map)
