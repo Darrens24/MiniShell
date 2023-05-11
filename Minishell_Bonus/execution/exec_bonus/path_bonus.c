@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 08:59:31 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/10 09:00:06 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 11:09:12 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ char	*find_path_bonus(char *command, t_shell *shell)
 	return (temp);
 }
 
+int	printdot(void)
+{
+	g_err = 2;
+	return (printf(DOT));
+}
+
 int	slash_manager_bonus(char **command)
 {
 	int			access_return;
@@ -66,16 +72,11 @@ int	slash_manager_bonus(char **command)
 	access_return = access(command[0], F_OK);
 	if (command[0][0] == '/'
 		|| command[0][0] == '.')
-	{
 		if (access_return < 0)
-		{
-			g_err = 127;
-			printf("%s : No such file or directory\n",
-				command[0]);
-			return (EXIT_FAILURE);
-		}
-	}
+			return (printnoaccess(command));
 	stat(command[0], &buff);
+	if (!ft_strncmp(command[0], ".", 2) && !command[1])
+		return (printdot());
 	if (S_ISDIR(buff.st_mode))
 	{
 		g_err = 126;

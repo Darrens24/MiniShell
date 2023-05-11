@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:49:26 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/08 10:37:17 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 11:13:35 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	not_execute_builtin(t_shell *shell, char **command, char *tmp,
 	{
 		redirection_bonus(shell);
 		execve(tmp, command, shell->array_env);
+		exit(1);
 	}
 	if (shell->index_of_pipes != shell->nb_of_pipes)
 		shell->last_index = shell->index_of_pipes;

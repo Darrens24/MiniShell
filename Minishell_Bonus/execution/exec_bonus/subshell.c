@@ -6,11 +6,19 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 12:24:18 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/05 15:26:54 by pfaria-d         ###   ########.fr       */
+/*   Updated: 2023/05/11 11:09:48 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
+
+int	printnoaccess(char **command)
+{
+	g_err = 127;
+	printf("%s : No such file or directory\n",
+		command[0]);
+	return (127);
+}
 
 int	initialize_subvariables(t_shell *shell)
 {

@@ -6,7 +6,7 @@
 /*   By: pfaria-d <pfaria-d@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 17:01:19 by pfaria-d          #+#    #+#             */
-/*   Updated: 2023/05/09 08:56:02 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 10:46:03 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	execute_builtin_bonus(t_shell *shell, char **command, int pipe)
 {
 	execute_b_directory_cmd(shell, command, pipe);
-	if (ft_strncmp(command[0], "exit", 5) == 0)
-		exit_b_shell(shell, command, pipe);
 	if (ft_strncmp(command[0], "env", 4) == 0)
 	{
 		if (command[1])

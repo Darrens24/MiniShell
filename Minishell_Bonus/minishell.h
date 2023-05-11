@@ -6,7 +6,7 @@
 /*   By: eleleux <eleleux@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 18:34:22 by eleleux           #+#    #+#             */
-/*   Updated: 2023/05/10 10:26:08 by eleleux          ###   ########.fr       */
+/*   Updated: 2023/05/11 11:08:58 by pfaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -398,6 +398,7 @@ int			execute_b_directory_cmd(t_shell *shell, char **command, int pipe);
 
 /***		BONUS ERRORS			***/
 
+int			printnoaccess(char **command);
 int			bonus_errors(t_shell *shell);
 
 #endif
